@@ -152,10 +152,13 @@ space bar.</li>
 example, <code>^Wgf</code> indicates that you should type Ctrl-W, then g, and finally f.</li>
 </ul>
 <h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
-<p>iamb is free and open source. You can find the source code, report bugs and
+<p><strong>iamb</strong> is free and open source. You can find the source code, report bugs and
 request features on <a href="https://github.com/ulyssa/iamb/">GitHub</a>.</p>
 <p>If you find a mistake in this documentation, you can report it or submit a pull
 request at the <a href="https://github.com/ulyssa/iamb.chat/">iamb.chat</a> GitHub repository. </p>
+<p>Most of the Vim emulation in <strong>iamb</strong> comes from the <a href="https://github.com/ulyssa/modalkit">modalkit</a> crate. If you
+find a bug in text editing, window management, or need a Vim keybinding added,
+you can file an issue there.</p>
 <h2 id="license"><a class="header" href="#license">License</a></h2>
 <p>iamb and its documentation are released under the <a href="https://github.com/ulyssa/iamb/blob/master/LICENSE">Apache License, Version 2.0</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
@@ -173,7 +176,7 @@ published, you can clone the source from <a href="https://github.com/ulyssa/iamb
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.2
+iamb 0.0.3
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
 <p><strong>iamb</strong> is configurable via a JSON configuration file located in the
@@ -208,6 +211,7 @@ Logging in for @user1:example.com...
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>typing_notice</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to diplay the typing notifications bar.</td></tr>
+<tr><td><code>users</code></td><td><code>{}</code></td><td>Configure how other users get displayed in the client. See <a href="configure.html#user-display">User Display</a>.</td></tr>
 </tbody></table>
 <h2 id="directories"><a class="header" href="#directories">Directories</a></h2>
 <p><strong>iamb</strong> will use the standard directories for your operating system, but you
@@ -218,6 +222,45 @@ any of the following fields:</p>
 <tr><td><code>logs</code></td><td><code>${cache}/logs</code></td><td>Output directory for <strong>iamb</strong> logs.</td></tr>
 <tr><td><code>downloads</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.download_dir.html">dirs::download_dir</a></td><td>Output directory for downloaded attachments.</td></tr>
 </tbody></table>
+<h2 id="user-display"><a class="header" href="#user-display">User Display</a></h2>
+<p>You can override how individual users get displayed in the scrollback using the
+<code>&quot;users&quot;</code> field of the <code>&quot;settings&quot;</code> object.</p>
+<table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>color</code></td><td>Determined per-user</td><td>The color to use when showing this user on the screen.</td></tr>
+<tr><td><code>name</code></td><td>Determined per-user</td><td>The name to use when showing this user on the screen.</td></tr>
+</tbody></table>
+<p>Valid values for the <code>&quot;colors&quot;</code> field are:</p>
+<ul>
+<li><code>&quot;black&quot;</code></li>
+<li><code>&quot;blue&quot;</code></li>
+<li><code>&quot;cyan&quot;</code></li>
+<li><code>&quot;dark-gray&quot;</code></li>
+<li><code>&quot;gray&quot;</code></li>
+<li><code>&quot;green&quot;</code></li>
+<li><code>&quot;light-blue&quot;</code></li>
+<li><code>&quot;light-cyan&quot;</code></li>
+<li><code>&quot;light-green&quot;</code></li>
+<li><code>&quot;light-magenta&quot;</code></li>
+<li><code>&quot;light-red&quot;</code></li>
+<li><code>&quot;light-yellow&quot;</code></li>
+<li><code>&quot;magenta&quot;</code></li>
+<li><code>&quot;none&quot;</code></li>
+<li><code>&quot;red&quot;</code></li>
+<li><code>&quot;white&quot;</code></li>
+<li><code>&quot;yellow&quot;</code></li>
+</ul>
+<p>For example, if you wanted to override how a bot in a room gets displayed:</p>
+<pre><code class="language-json">{
+    &quot;settings&quot;: {
+        &quot;users&quot;: {
+            &quot;@jenkins:example.com&quot;: {
+                &quot;name&quot;: &quot;jenkins (CI BOT)&quot;,
+                &quot;color&quot;: &quot;light-red&quot;
+            }
+        }
+    }
+}
+</code></pre>
 <style>
 table {
     width: 100%;
@@ -263,6 +306,19 @@ join the Matrix community space, you can run:</p>
 <p>When viewing a room or a space, you can use the <code>:members</code> command to open a
 new window displaying the active members.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="management"><a class="header" href="#management">Management</a></h1>
+<h2 id="room-invitations"><a class="header" href="#room-invitations">Room Invitations</a></h2>
+<p>Private Matrix rooms require someone to be let in by a current member with a
+high enough power level. You can invite someone to join a room through the
+<code>:invite send</code> command:</p>
+<pre><code>:invite send @user:example.com
+</code></pre>
+<p>The user will receive an invitation that they can then choose to accept or
+reject. If you’ve received an invitation to a room, space, or direct message,
+you can open it up, focus the window and run:</p>
+<ul>
+<li><code>:invite accept</code> to accept the invitation and join the room</li>
+<li><code>:invite reject</code> to rejept the invitation</li>
+</ul>
 <h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
 <p>You can set the description of the currently focused room using the <code>:set</code> command:</p>
 <pre><code>:set room.topic &quot;This is the new room topic&quot;
@@ -280,6 +336,10 @@ key from either Normal or Insert mode.</p>
 <code>^V^J</code>.  You can also use the <code>O</code> and <code>o</code> keys to insert a blank line before
 or after the current line respectively.</p>
 </blockquote>
+<p>The <code>:upload</code> command allows you to specify a file to send to the currently
+focused room:</p>
+<pre><code>:upload &quot;/home/user/Documents/Shared Document.pdf&quot;
+</code></pre>
 <h2 id="message-scrollback"><a class="header" href="#message-scrollback">Message Scrollback</a></h2>
 <p>You can scroll through messages from the message bar using the following keys:</p>
 <ul>
@@ -288,7 +348,36 @@ or after the current line respectively.</p>
 <li><code>^F</code>/<code>^B</code> to scroll downwards and upwards respectively by the window height</li>
 </ul>
 <p>If you want to use movement keys to select individual messages, you can toggle
-focus between the message bar and the scrollback by pressing <code>^Wm</code>. </p>
+focus between the message bar and the scrollback by pressing <code>^Wm</code>.</p>
+<h2 id="replying-to-a-message"><a class="header" href="#replying-to-a-message">Replying To A Message</a></h2>
+<p>If you select a message in the scrollback, you can reply to it using the
+<code>:reply</code> command. This will refocus the message bar, where you can type out
+your reply. You can then <a href="messages/index.html#sending">send it</a> the same way that you would a
+normal message.</p>
+<p>If you change your mind, or select the wrong message to reply to, you can use
+<code>:cancel</code> to undo your <code>:reply</code>.</p>
+<h2 id="redacting-a-message"><a class="header" href="#redacting-a-message">Redacting A Message</a></h2>
+<p>If you need to remove a message from a room, you can do so using the <code>:redact</code>
+command on the message. This command optionally takes a single argument giving
+the reason for removing it. For example:</p>
+<pre><code>:redact &quot;Message violates room rules&quot; 
+</code></pre>
+<p>If you’re removing a message because it contains secrets (e.g. passwords,
+authentication tokens, etc.), make sure to rotate them: redacting a message
+prevents people from seeing it in the future, but users in the room at the time
+it was originally sent may have already seen it, and it may still live in the
+room logs of some clients or bots.</p>
+<h2 id="downloading-attachments"><a class="header" href="#downloading-attachments">Downloading Attachments</a></h2>
+<p>If you select an attachment in the scrollback, you can download it using the
+<code>:download</code> command:</p>
+<ul>
+<li>When given no arguments, <strong>iamb</strong> will download the attachment to the
+configured <code>downloads</code> directory</li>
+<li>When given a directory as an argument, the file will be saved there</li>
+<li>Otherwise, the file file will be saved to the given path</li>
+</ul>
+<p>If there is already a file of the same name, <strong>iamb</strong> will not overwrite it.
+You can use <code>:download!</code> to replace the file.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="screen-navigation"><a class="header" href="#screen-navigation">Screen Navigation</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="window-management"><a class="header" href="#window-management">Window Management</a></h1>
 <h2 id="opening-windows"><a class="header" href="#opening-windows">Opening Windows</a></h2>
@@ -299,6 +388,11 @@ For example:</p>
 </code></pre>
 <p>Will vertically split the current window and open <code>#alias:example.com</code> in the
 new window.</p>
+<blockquote>
+<p>If you only need to duplicate the window without changing its content, you
+can use <code>^Ws</code> and <code>^Wv</code> to horizontally and vertically split the current
+window.</p>
+</blockquote>
 <p>By default, the split commands will open the new window so that it is
 visually before the current one, but you can alter this using <code>:belowright</code>
 (as opposed to the default <code>:aboveleft</code> behaviour). Similarly, you can also
@@ -331,6 +425,12 @@ full screen width</li>
 screen width</li>
 <li><code>^WL</code> will move the current window to the right side of the screen, and use
 the full screen height</li>
+</ul>
+<p>Sometimes, you may find yourself wanting to make a window occupy
+the whole screen without closing any of the other windows. You can:</p>
+<ul>
+<li>Use <code>^Wz</code> to zoom in and out of a window without changing your current layout</li>
+<li>Use <code>^WT</code> to extract the window into its own <a href="layout/./tabs.html">tab</a></li>
 </ul>
 <h2 id="closing-windows"><a class="header" href="#closing-windows">Closing Windows</a></h2>
 <p>You can close a window using <code>^Wq</code>, or close all windows but the current one
@@ -384,12 +484,19 @@ arguments, but you can specify a position to close:</p>
 <h2 id="iamb-commands"><a class="header" href="#iamb-commands">iamb commands</a></h2>
 <table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
 <tr><td><code>:dms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-direct-messages">Browsing Direct Messages</a></td></tr>
-<tr><td><code>:join</code></td><td></td><td>See <a href="./rooms/README.html">Rooms</a></td></tr>
+<tr><td><code>:download</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
+<tr><td><code>:invite accept</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
+<tr><td><code>:invite reject</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
+<tr><td><code>:invite send</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
+<tr><td><code>:join</code></td><td></td><td>See <a href="./rooms/">Rooms</a></td></tr>
 <tr><td><code>:members</code></td><td></td><td>See <a href="./rooms/members.html#viewing-roomspace-members">Viewing Room/Space Members</a></td></tr>
+<tr><td><code>:redact</code></td><td></td><td>See <a href="./messages/#redacting-a-message">Redacting A Message</a></td></tr>
+<tr><td><code>:reply</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:rooms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms">Browsing Rooms</a></td></tr>
 <tr><td><code>:set room.name</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:set room.topic</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
+<tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td><code>:verify</code></td><td></td><td>See <a href="./verify.html">Verification</a></td></tr>
 <tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
 </tbody></table>
@@ -430,6 +537,58 @@ table th:nth-of-type(3) {
 }
 </style>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="keybinding-reference-1"><a class="header" href="#keybinding-reference-1">Keybinding Reference</a></h1>
+<h2 id="iamb-keybindings"><a class="header" href="#iamb-keybindings">iamb keybindings</a></h2>
+<table><thead><tr><th>Modes</th><th>Keybinding</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
+<tr><td>Normal</td><td><code>^Wm</code></td><td><code>^W^M</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>^Wz</code></td><td><code>^W^Z</code></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+</tbody></table>
+<h2 id="vim-keybindings"><a class="header" href="#vim-keybindings">Vim keybindings</a></h2>
+<p>Note that this is not a complete list of all Vim keybindings available within
+<strong>iamb</strong>, but just some of those referenced and explained throughout this
+documentation.</p>
+<table><thead><tr><th>Modes</th><th>Keybinding</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
+<tr><td>Normal</td><td><code>gt</code></td><td><code>&lt;C-PageDown&gt;</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
+<tr><td>Normal</td><td><code>gT</code></td><td><code>&lt;C-PageUp&gt;</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
+<tr><td>Normal</td><td><code>o</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td>Normal</td><td><code>O</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^B</code></td><td><code>&lt;PageUp&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^E</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^F</code></td><td><code>&lt;PageDown&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^D</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^U</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wf</code></td><td><code>^W^F</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wh</code></td><td><code>^W^H</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^WH</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wj</code></td><td><code>^W^J</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^WJ</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wk</code></td><td><code>^W^K</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^WK</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wl</code></td><td><code>^W^L</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^WL</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wo</code></td><td><code>^W^O</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wq</code></td><td><code>^W^Q</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Ws</code></td><td><code>^W^S</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^WT</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wv</code></td><td><code>^W^V</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Y</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+</tbody></table>
+<style>
+table {
+    width: 100%;
+}
+table th:first-of-type {
+    width: 25%;
+}
+table th:nth-of-type(2) {
+    width: 10%;
+}
+table th:nth-of-type(3) {
+    width: 25%;
+}
+table th:nth-of-type(4) {
+    width: 40%;
+}
+</style>
 
                     </main>
 

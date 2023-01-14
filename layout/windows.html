@@ -146,6 +146,11 @@ For example:</p>
 </code></pre>
 <p>Will vertically split the current window and open <code>#alias:example.com</code> in the
 new window.</p>
+<blockquote>
+<p>If you only need to duplicate the window without changing its content, you
+can use <code>^Ws</code> and <code>^Wv</code> to horizontally and vertically split the current
+window.</p>
+</blockquote>
 <p>By default, the split commands will open the new window so that it is
 visually before the current one, but you can alter this using <code>:belowright</code>
 (as opposed to the default <code>:aboveleft</code> behaviour). Similarly, you can also
@@ -178,6 +183,12 @@ full screen width</li>
 screen width</li>
 <li><code>^WL</code> will move the current window to the right side of the screen, and use
 the full screen height</li>
+</ul>
+<p>Sometimes, you may find yourself wanting to make a window occupy
+the whole screen without closing any of the other windows. You can:</p>
+<ul>
+<li>Use <code>^Wz</code> to zoom in and out of a window without changing your current layout</li>
+<li>Use <code>^WT</code> to extract the window into its own <a href="./tabs.html">tab</a></li>
 </ul>
 <h2 id="closing-windows"><a class="header" href="#closing-windows">Closing Windows</a></h2>
 <p>You can close a window using <code>^Wq</code>, or close all windows but the current one

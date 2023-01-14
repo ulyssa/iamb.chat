@@ -138,6 +138,19 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="management"><a class="header" href="#management">Management</a></h1>
+<h2 id="room-invitations"><a class="header" href="#room-invitations">Room Invitations</a></h2>
+<p>Private Matrix rooms require someone to be let in by a current member with a
+high enough power level. You can invite someone to join a room through the
+<code>:invite send</code> command:</p>
+<pre><code>:invite send @user:example.com
+</code></pre>
+<p>The user will receive an invitation that they can then choose to accept or
+reject. If you’ve received an invitation to a room, space, or direct message,
+you can open it up, focus the window and run:</p>
+<ul>
+<li><code>:invite accept</code> to accept the invitation and join the room</li>
+<li><code>:invite reject</code> to rejept the invitation</li>
+</ul>
 <h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
 <p>You can set the description of the currently focused room using the <code>:set</code> command:</p>
 <pre><code>:set room.topic &quot;This is the new room topic&quot;

@@ -147,6 +147,10 @@ key from either Normal or Insert mode.</p>
 <code>^V^J</code>.  You can also use the <code>O</code> and <code>o</code> keys to insert a blank line before
 or after the current line respectively.</p>
 </blockquote>
+<p>The <code>:upload</code> command allows you to specify a file to send to the currently
+focused room:</p>
+<pre><code>:upload &quot;/home/user/Documents/Shared Document.pdf&quot;
+</code></pre>
 <h2 id="message-scrollback"><a class="header" href="#message-scrollback">Message Scrollback</a></h2>
 <p>You can scroll through messages from the message bar using the following keys:</p>
 <ul>
@@ -155,7 +159,36 @@ or after the current line respectively.</p>
 <li><code>^F</code>/<code>^B</code> to scroll downwards and upwards respectively by the window height</li>
 </ul>
 <p>If you want to use movement keys to select individual messages, you can toggle
-focus between the message bar and the scrollback by pressing <code>^Wm</code>. </p>
+focus between the message bar and the scrollback by pressing <code>^Wm</code>.</p>
+<h2 id="replying-to-a-message"><a class="header" href="#replying-to-a-message">Replying To A Message</a></h2>
+<p>If you select a message in the scrollback, you can reply to it using the
+<code>:reply</code> command. This will refocus the message bar, where you can type out
+your reply. You can then <a href="#sending">send it</a> the same way that you would a
+normal message.</p>
+<p>If you change your mind, or select the wrong message to reply to, you can use
+<code>:cancel</code> to undo your <code>:reply</code>.</p>
+<h2 id="redacting-a-message"><a class="header" href="#redacting-a-message">Redacting A Message</a></h2>
+<p>If you need to remove a message from a room, you can do so using the <code>:redact</code>
+command on the message. This command optionally takes a single argument giving
+the reason for removing it. For example:</p>
+<pre><code>:redact &quot;Message violates room rules&quot; 
+</code></pre>
+<p>If you’re removing a message because it contains secrets (e.g. passwords,
+authentication tokens, etc.), make sure to rotate them: redacting a message
+prevents people from seeing it in the future, but users in the room at the time
+it was originally sent may have already seen it, and it may still live in the
+room logs of some clients or bots.</p>
+<h2 id="downloading-attachments"><a class="header" href="#downloading-attachments">Downloading Attachments</a></h2>
+<p>If you select an attachment in the scrollback, you can download it using the
+<code>:download</code> command:</p>
+<ul>
+<li>When given no arguments, <strong>iamb</strong> will download the attachment to the
+configured <code>downloads</code> directory</li>
+<li>When given a directory as an argument, the file will be saved there</li>
+<li>Otherwise, the file file will be saved to the given path</li>
+</ul>
+<p>If there is already a file of the same name, <strong>iamb</strong> will not overwrite it.
+You can use <code>:download!</code> to replace the file.</p>
 
                     </main>
 

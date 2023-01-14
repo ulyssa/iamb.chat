@@ -170,6 +170,7 @@ Logging in for @user1:example.com...
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>typing_notice</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to diplay the typing notifications bar.</td></tr>
+<tr><td><code>users</code></td><td><code>{}</code></td><td>Configure how other users get displayed in the client. See <a href="#user-display">User Display</a>.</td></tr>
 </tbody></table>
 <h2 id="directories"><a class="header" href="#directories">Directories</a></h2>
 <p><strong>iamb</strong> will use the standard directories for your operating system, but you
@@ -180,6 +181,45 @@ any of the following fields:</p>
 <tr><td><code>logs</code></td><td><code>${cache}/logs</code></td><td>Output directory for <strong>iamb</strong> logs.</td></tr>
 <tr><td><code>downloads</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.download_dir.html">dirs::download_dir</a></td><td>Output directory for downloaded attachments.</td></tr>
 </tbody></table>
+<h2 id="user-display"><a class="header" href="#user-display">User Display</a></h2>
+<p>You can override how individual users get displayed in the scrollback using the
+<code>&quot;users&quot;</code> field of the <code>&quot;settings&quot;</code> object.</p>
+<table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>color</code></td><td>Determined per-user</td><td>The color to use when showing this user on the screen.</td></tr>
+<tr><td><code>name</code></td><td>Determined per-user</td><td>The name to use when showing this user on the screen.</td></tr>
+</tbody></table>
+<p>Valid values for the <code>&quot;colors&quot;</code> field are:</p>
+<ul>
+<li><code>&quot;black&quot;</code></li>
+<li><code>&quot;blue&quot;</code></li>
+<li><code>&quot;cyan&quot;</code></li>
+<li><code>&quot;dark-gray&quot;</code></li>
+<li><code>&quot;gray&quot;</code></li>
+<li><code>&quot;green&quot;</code></li>
+<li><code>&quot;light-blue&quot;</code></li>
+<li><code>&quot;light-cyan&quot;</code></li>
+<li><code>&quot;light-green&quot;</code></li>
+<li><code>&quot;light-magenta&quot;</code></li>
+<li><code>&quot;light-red&quot;</code></li>
+<li><code>&quot;light-yellow&quot;</code></li>
+<li><code>&quot;magenta&quot;</code></li>
+<li><code>&quot;none&quot;</code></li>
+<li><code>&quot;red&quot;</code></li>
+<li><code>&quot;white&quot;</code></li>
+<li><code>&quot;yellow&quot;</code></li>
+</ul>
+<p>For example, if you wanted to override how a bot in a room gets displayed:</p>
+<pre><code class="language-json">{
+    &quot;settings&quot;: {
+        &quot;users&quot;: {
+            &quot;@jenkins:example.com&quot;: {
+                &quot;name&quot;: &quot;jenkins (CI BOT)&quot;,
+                &quot;color&quot;: &quot;light-red&quot;
+            }
+        }
+    }
+}
+</code></pre>
 <style>
 table {
     width: 100%;
