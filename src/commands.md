@@ -5,12 +5,19 @@
 | Command           | Aliases                               | Help                                |
 | ---------------   | ------------------------------------- | ----------------------------------- |
 | `:dms`            |                                       | See [Browsing Direct Messages]      |
+| `:download`       |                                       | See [Downloading Attachments]       |
+| `:invite accept`  |                                       | See [Room Invitations]              |
+| `:invite reject`  |                                       | See [Room Invitations]              |
+| `:invite send`    |                                       | See [Room Invitations]              |
 | `:join`           |                                       | See [Rooms]                         |
 | `:members`        |                                       | See [Viewing Room/Space Members]    |
+| `:redact`         |                                       | See [Redacting A Message]           |
+| `:reply`          |                                       | See [Replying To A Message]         |
 | `:rooms`          |                                       | See [Browsing Rooms]                |
-| `:set room.name`  |                                       | See [Setting Room Properties]               |
-| `:set room.topic` |                                       | See [Setting Room Properties]               |
+| `:set room.name`  |                                       | See [Setting Room Properties]       |
+| `:set room.topic` |                                       | See [Setting Room Properties]       |
 | `:spaces`         |                                       | See [Browsing Spaces]               |
+| `:upload`         |                                       | See [Sending]                       |
 | `:verify`         |                                       | See [Verification]                  |
 | `:welcome`        |                                       | Shows the startup Welcome window    |
 
@@ -58,10 +65,15 @@ table th:nth-of-type(3) {
 [Browsing Spaces]: ./rooms/browsing.md#browsing-spaces
 [Closing Tabs]: ./layout/tabs.md#closing-tabs
 [Closing Windows]: ./layout/tabs.md#closing-windows
+[Downloading Attachments]: ./messages/#downloading-attachments
 [Opening Tabs]: ./layout/tabs.md#opening-tabs
 [Opening Windows]: ./layout/tabs.md#opening-windows
 [Organizing Tabs]: ./layout/tabs.md#organizing-tabs
-[Rooms]: ./rooms/README.md
+[Redacting A Message]: ./messages/#redacting-a-message
+[Replying To A Message]: ./messages/#replying-to-a-message
+[Room Invitations]: ./rooms/management.md#room-invitations
+[Rooms]: ./rooms/
+[Sending]: ./messages/#sending
 [Setting Room Properties]: ./rooms/management.md#setting-room-properties
 [Switching Tabs]: ./layout/tabs.md#switching-tabs
 [Verification]: ./verify.md

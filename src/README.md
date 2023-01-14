@@ -16,11 +16,15 @@ This documentation indicates keybindings using the following conventions:
 
 ## Contributing
 
-iamb is free and open source. You can find the source code, report bugs and
+__iamb__ is free and open source. You can find the source code, report bugs and
 request features on [GitHub][iamb].
 
 If you find a mistake in this documentation, you can report it or submit a pull
 request at the [iamb.chat] GitHub repository. 
+
+Most of the Vim emulation in __iamb__ comes from the [modalkit] crate. If you
+find a bug in text editing, window management, or need a Vim keybinding added,
+you can file an issue there.
 
 ## License
 
@@ -30,3 +34,4 @@ iamb and its documentation are released under the [Apache License, Version 2.0].
 [iamb]: https://github.com/ulyssa/iamb/
 [iamb.chat]: https://github.com/ulyssa/iamb.chat/
 [Matrix]: https://matrix.org/
+[modalkit]: https://github.com/ulyssa/modalkit

@@ -38,10 +38,11 @@ Logging in for @user1:example.com...
 
 ## Settings
 
-| Name                    | Default              | Description                                                      |
-| ----------------------- | -------------------- | ---------------------------------------------------------------- | 
-| `typing_notice`         | `true`               | Whether to send notifications to other room members when typing. |
-| `typing_notice_display` | `true`               | Whether to diplay the typing notifications bar.                  |
+| Name                    | Default              | Description                                                                               |
+| ----------------------- | -------------------- | ----------------------------------------------------------------------------------------- |
+| `typing_notice`         | `true`               | Whether to send notifications to other room members when typing.                          |
+| `typing_notice_display` | `true`               | Whether to diplay the typing notifications bar.                                           |
+| `users`                 | `{}`                 | Configure how other users get displayed in the client. See [User Display](#user-display). |
 
 ## Directories
 
@@ -54,6 +55,51 @@ any of the following fields:
 | `cache`                 | [dirs::cache_dir]    | Directory for __iamb__ data and output that can be safely deleted. |
 | `logs`                  | `${cache}/logs`      | Output directory for __iamb__ logs.                                |
 | `downloads`             | [dirs::download_dir] | Output directory for downloaded attachments.                       |
+
+## User Display
+
+You can override how individual users get displayed in the scrollback using the
+`"users"` field of the `"settings"` object.
+
+| Name                    | Default              | Description                                                        |
+| ----------------------- | -------------------- | ------------------------------------------------------------------ |
+| `color`                 | Determined per-user  | The color to use when showing this user on the screen.             |
+| `name`                  | Determined per-user  | The name to use when showing this user on the screen.              |
+
+Valid values for the `"colors"` field are:
+
+- `"black"`
+- `"blue"`
+- `"cyan"`
+- `"dark-gray"`
+- `"gray"`
+- `"green"`
+- `"light-blue"`
+- `"light-cyan"`
+- `"light-green"`
+- `"light-magenta"`
+- `"light-red"`
+- `"light-yellow"`
+- `"magenta"`
+- `"none"`
+- `"red"`
+- `"white"`
+- `"yellow"`
+
+For example, if you wanted to override how a bot in a room gets displayed:
+
+```json
+{
+    "settings": {
+        "users": {
+            "@jenkins:example.com": {
+                "name": "jenkins (CI BOT)",
+                "color": "light-red"
+            }
+        }
+    }
+}
+```
 
 <style>
 table {

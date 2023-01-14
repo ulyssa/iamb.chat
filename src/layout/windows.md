@@ -13,6 +13,10 @@ For example:
 Will vertically split the current window and open `#alias:example.com` in the
 new window.
 
+> If you only need to duplicate the window without changing its content, you
+> can use `^Ws` and `^Wv` to horizontally and vertically split the current
+> window.
+
 By default, the split commands will open the new window so that it is
 visually before the current one, but you can alter this using `:belowright`
 (as opposed to the default `:aboveleft` behaviour). Similarly, you can also
@@ -55,6 +59,12 @@ You can reposition open windows using the following keybindings:
   screen width
 - `^WL` will move the current window to the right side of the screen, and use
   the full screen height
+
+Sometimes, you may find yourself wanting to make a window occupy
+the whole screen without closing any of the other windows. You can:
+
+- Use `^Wz` to zoom in and out of a window without changing your current layout
+- Use `^WT` to extract the window into its own [tab](./tabs.md)
 
 ## Closing Windows
 
