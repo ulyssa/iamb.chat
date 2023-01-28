@@ -153,11 +153,35 @@ you can open it up, focus the window and run:</p>
 </ul>
 <h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
 <p>You can set the description of the currently focused room using the <code>:set</code> command:</p>
-<pre><code>:set room.topic &quot;This is the new room topic&quot;
+<pre><code>:room topic set &quot;This is the new room topic&quot;
 </code></pre>
 <p>Similarly, if you need to change the room’s name:</p>
-<pre><code>:set room.topic &quot;Watercooler Discussion&quot;
+<pre><code>:room name set &quot;Watercooler Discussion&quot;
 </code></pre>
+<p>If you want to remove the topic or name, you can use <code>:room topic unset</code> or
+<code>:room name unset</code>.</p>
+<h2 id="setting-room-tags"><a class="header" href="#setting-room-tags">Setting Room Tags</a></h2>
+<p>Matrix rooms can be tagged to help with sorting them. Several special tags that
+Matrix defines are:</p>
+<ul>
+<li><code>m.favourite</code> for favorite rooms that you look at often</li>
+<li><code>m.lowpriority</code> for rooms that you don’t look at often</li>
+<li><code>m.server_notice</code> for rooms where homeserver announcements are made</li>
+</ul>
+<p>In <strong>iamb</strong>, you can modify the tags of an open room using:</p>
+<pre><code>:room tag set m.favourite
+</code></pre>
+<p>You can use <code>:room tag set fav</code> as a shorthand for <code>m.favourite</code>, and <code>:room tag set low</code> as a shorthand for <code>m.lowpriority</code>.</p>
+<p>If you want to unset a tag, you can do:</p>
+<pre><code>:room tag unset fav
+</code></pre>
+<p>Matrix also allows users to apply their own tags that start with <code>u.</code>. For
+example, if you wanted to mark rooms that are bridged to an IRC channel, you
+could do:</p>
+<pre><code>:room tag set u.irc
+</code></pre>
+<p>Note that user tags are not shown by all clients, so while they will appear in
+<strong>iamb</strong>, you won’t necessarily see them elsewhere.</p>
 
                     </main>
 
