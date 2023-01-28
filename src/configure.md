@@ -38,11 +38,14 @@ Logging in for @user1:example.com...
 
 ## Settings
 
-| Name                    | Default              | Description                                                                               |
-| ----------------------- | -------------------- | ----------------------------------------------------------------------------------------- |
-| `typing_notice`         | `true`               | Whether to send notifications to other room members when typing.                          |
-| `typing_notice_display` | `true`               | Whether to diplay the typing notifications bar.                                           |
-| `users`                 | `{}`                 | Configure how other users get displayed in the client. See [User Display](#user-display). |
+| Name                    | Default              | Description                                                                                 |
+| ----------------------- | -------------------- | ------------------------------------------------------------------------------------------- |
+| `default_room`          |                      | A default room name or username to open at startup, in place of showing the welcome screen. |
+| `read_receipt_send`     | `true`               | Whether to send read receipts for viewed rooms.                                             |
+| `read_receipt_display`  | `true`               | Whether to diplay read receipts next to messages in the room scrollback.                    |
+| `typing_notice_send`    | `true`               | Whether to send notifications to other room members when typing.                            |
+| `typing_notice_display` | `true`               | Whether to diplay the typing notifications bar.                                             |
+| `users`                 | `{}`                 | Configure how other users get displayed in the client. See [User Display](#user-display).   |
 
 ## Directories
 

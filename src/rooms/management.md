@@ -22,11 +22,49 @@ you can open it up, focus the window and run:
 You can set the description of the currently focused room using the `:set` command:
 
 ```
-:set room.topic "This is the new room topic"
+:room topic set "This is the new room topic"
 ```
 
 Similarly, if you need to change the room's name:
 
 ```
-:set room.topic "Watercooler Discussion"
+:room name set "Watercooler Discussion"
 ```
+
+If you want to remove the topic or name, you can use `:room topic unset` or
+`:room name unset`.
+
+## Setting Room Tags
+
+Matrix rooms can be tagged to help with sorting them. Several special tags that
+Matrix defines are:
+
+- `m.favourite` for favorite rooms that you look at often
+- `m.lowpriority` for rooms that you don't look at often
+- `m.server_notice` for rooms where homeserver announcements are made
+
+In __iamb__, you can modify the tags of an open room using:
+
+```
+:room tag set m.favourite
+```
+
+You can use `:room tag set fav` as a shorthand for `m.favourite`, and `:room
+tag set low` as a shorthand for `m.lowpriority`.
+
+If you want to unset a tag, you can do:
+
+```
+:room tag unset fav
+```
+
+Matrix also allows users to apply their own tags that start with `u.`. For
+example, if you wanted to mark rooms that are bridged to an IRC channel, you
+could do:
+
+```
+:room tag set u.irc
+```
+
+Note that user tags are not shown by all clients, so while they will appear in
+__iamb__, you won't necessarily see them elsewhere.

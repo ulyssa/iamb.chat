@@ -38,6 +38,16 @@ normal message.
 If you change your mind, or select the wrong message to reply to, you can use
 `:cancel` to undo your `:reply`.
 
+## Editing Messages
+
+Once a message has been sent, you might find that you need to amend it, to fix
+typos or correct information. You can select the message and run the `:edit`
+command. This will update the textbox to include the message's original body
+for you to edit.
+
+Once you've finished correcting the message, you can send it just like other
+messages to update the original.
+
 ## Redacting A Message
 
 If you need to remove a message from a room, you can do so using the `:redact`

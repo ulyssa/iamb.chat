@@ -1,25 +1,30 @@
-# Keybinding Reference
+# Command Reference
 
 ## iamb commands
 
-| Command           | Aliases                               | Help                                |
-| ---------------   | ------------------------------------- | ----------------------------------- |
-| `:dms`            |                                       | See [Browsing Direct Messages]      |
-| `:download`       |                                       | See [Downloading Attachments]       |
-| `:invite accept`  |                                       | See [Room Invitations]              |
-| `:invite reject`  |                                       | See [Room Invitations]              |
-| `:invite send`    |                                       | See [Room Invitations]              |
-| `:join`           |                                       | See [Rooms]                         |
-| `:members`        |                                       | See [Viewing Room/Space Members]    |
-| `:redact`         |                                       | See [Redacting A Message]           |
-| `:reply`          |                                       | See [Replying To A Message]         |
-| `:rooms`          |                                       | See [Browsing Rooms]                |
-| `:set room.name`  |                                       | See [Setting Room Properties]       |
-| `:set room.topic` |                                       | See [Setting Room Properties]       |
-| `:spaces`         |                                       | See [Browsing Spaces]               |
-| `:upload`         |                                       | See [Sending]                       |
-| `:verify`         |                                       | See [Verification]                  |
-| `:welcome`        |                                       | Shows the startup Welcome window    |
+| Command             | Aliases                               | Help                                |
+| ------------------- | ------------------------------------- | ----------------------------------- |
+| `:dms`              |                                       | See [Browsing Direct Messages]      |
+| `:download`         |                                       | See [Downloading Attachments]       |
+| `:edit`             |                                       | See [Editing Messages]              |
+| `:invite accept`    |                                       | See [Room Invitations]              |
+| `:invite reject`    |                                       | See [Room Invitations]              |
+| `:invite send`      |                                       | See [Room Invitations]              |
+| `:join`             |                                       | See [Rooms]                         |
+| `:members`          |                                       | See [Viewing Room/Space Members]    |
+| `:redact`           |                                       | See [Redacting A Message]           |
+| `:reply`            |                                       | See [Replying To A Message]         |
+| `:rooms`            |                                       | See [Browsing Rooms]                |
+| `:room name set`    |                                       | See [Setting Room Properties]       |
+| `:room name unset`  |                                       | See [Setting Room Properties]       |
+| `:room tag set`     |                                       | See [Setting Room Tags]             |
+| `:room tag unset`   |                                       | See [Setting Room Tags]             |
+| `:room topic set`   |                                       | See [Setting Room Properties]       |
+| `:room topic unset` |                                       | See [Setting Room Properties]       |
+| `:spaces`           |                                       | See [Browsing Spaces]               |
+| `:upload`           |                                       | See [Sending]                       |
+| `:verify`           |                                       | See [Verification]                  |
+| `:welcome`          |                                       | Shows the startup Welcome window    |
 
 ## Vim commands
 
@@ -50,10 +55,10 @@ table {
     width: 100%;
 }
 table th:first-of-type {
-    width: 25%;
+    width: 30%;
 }
 table th:nth-of-type(2) {
-    width: 30%;
+    width: 25%;
 }
 table th:nth-of-type(3) {
     width: 45%;
@@ -66,6 +71,7 @@ table th:nth-of-type(3) {
 [Closing Tabs]: ./layout/tabs.md#closing-tabs
 [Closing Windows]: ./layout/tabs.md#closing-windows
 [Downloading Attachments]: ./messages/#downloading-attachments
+[Editing Messages]: ./messages/#editing-messages
 [Opening Tabs]: ./layout/tabs.md#opening-tabs
 [Opening Windows]: ./layout/tabs.md#opening-windows
 [Organizing Tabs]: ./layout/tabs.md#organizing-tabs
@@ -75,6 +81,7 @@ table th:nth-of-type(3) {
 [Rooms]: ./rooms/
 [Sending]: ./messages/#sending
 [Setting Room Properties]: ./rooms/management.md#setting-room-properties
+[Setting Room Tags]: ./rooms/management.md#setting-room-tags
 [Switching Tabs]: ./layout/tabs.md#switching-tabs
 [Verification]: ./verify.md
 [Viewing Room/Space Members]: ./rooms/members.md#viewing-roomspace-members

@@ -22,7 +22,7 @@ $ git clone https://github.com/ulyssa/iamb.git
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.3
+iamb 0.0.4
 ```
 
 [crates.io]: https://crates.io/crates/iamb
