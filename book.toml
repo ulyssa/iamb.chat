@@ -8,3 +8,4 @@ title = "iamb documentation"
 [output.html]
 curly-quotes = true
 git-repository-url = "https://github.com/ulyssa/iamb"
+cname = "iamb.chat"
