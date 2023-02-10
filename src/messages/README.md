@@ -48,6 +48,30 @@ for you to edit.
 Once you've finished correcting the message, you can send it just like other
 messages to update the original.
 
+## Reacting To A Message
+
+If you want to react to a message with an Emoji, you can select it in the
+scrollback, and then use the `:react` command. For example:
+
+```
+:react ❤️
+```
+
+As a convenience, you can use the [GitHub Emoji shortcodes] to refer to them
+instead. For example, we could have also written the above as:
+
+```
+:react heart
+```
+
+If you want to remove a reaction, you can do so with the `:unreact` command. By
+default, this will remove all your reactions from the specified message, but
+you can give a name if you've made any that you want to keep:
+
+```
+:unreact heart
+```
+
 ## Redacting A Message
 
 If you need to remove a message from a room, you can do so using the `:redact`
@@ -76,3 +100,7 @@ If you select an attachment in the scrollback, you can download it using the
 
 If there is already a file of the same name, __iamb__ will not overwrite it.
 You can use `:download!` to replace the file.
+
+To open the file after downloading the file, use the `:open` command instead.
+
+[GitHub Emoji shortcodes]: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md

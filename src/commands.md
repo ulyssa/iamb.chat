@@ -12,6 +12,8 @@
 | `:invite send`      |                                       | See [Room Invitations]              |
 | `:join`             |                                       | See [Rooms]                         |
 | `:members`          |                                       | See [Viewing Room/Space Members]    |
+| `:open`             |                                       | See [Downloading Attachments]       |
+| `:react`            |                                       | See [Reacting To A Message]         |
 | `:redact`           |                                       | See [Redacting A Message]           |
 | `:reply`            |                                       | See [Replying To A Message]         |
 | `:rooms`            |                                       | See [Browsing Rooms]                |
@@ -22,6 +24,7 @@
 | `:room topic set`   |                                       | See [Setting Room Properties]       |
 | `:room topic unset` |                                       | See [Setting Room Properties]       |
 | `:spaces`           |                                       | See [Browsing Spaces]               |
+| `:unreact`          |                                       | See [Reacting To A Message]         |
 | `:upload`           |                                       | See [Sending]                       |
 | `:verify`           |                                       | See [Verification]                  |
 | `:welcome`          |                                       | Shows the startup Welcome window    |
@@ -75,6 +78,7 @@ table th:nth-of-type(3) {
 [Opening Tabs]: ./layout/tabs.md#opening-tabs
 [Opening Windows]: ./layout/tabs.md#opening-windows
 [Organizing Tabs]: ./layout/tabs.md#organizing-tabs
+[Reacting To A Message]: ./messages/#reacting-to-a-message
 [Redacting A Message]: ./messages/#redacting-a-message
 [Replying To A Message]: ./messages/#replying-to-a-message
 [Room Invitations]: ./rooms/management.md#room-invitations

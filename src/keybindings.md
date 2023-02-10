@@ -4,8 +4,8 @@
 
 | Modes           | Keybinding        | Aliases | Help                                |
 | --------------- | ---------------   | ------- | ----------------------------------- |
-| Normal          | `^Wm`             | `^W^M`  | See [Message Scrollback]            |
-| Normal          | `^Wz`             | `^W^Z`  | See [Organizing Windows]            |
+| Normal, Visual  | `^Wm`             | `^W^M`  | See [Message Scrollback]            |
+| Normal, Visual  | `^Wz`             | `^W^Z`  | See [Organizing Windows]            |
 
 ## Vim keybindings
 
