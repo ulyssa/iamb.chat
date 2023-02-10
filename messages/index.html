@@ -174,6 +174,20 @@ command. This will update the textbox to include the message’s original body
 for you to edit.</p>
 <p>Once you’ve finished correcting the message, you can send it just like other
 messages to update the original.</p>
+<h2 id="reacting-to-a-message"><a class="header" href="#reacting-to-a-message">Reacting To A Message</a></h2>
+<p>If you want to react to a message with an Emoji, you can select it in the
+scrollback, and then use the <code>:react</code> command. For example:</p>
+<pre><code>:react ❤️
+</code></pre>
+<p>As a convenience, you can use the <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md">GitHub Emoji shortcodes</a> to refer to them
+instead. For example, we could have also written the above as:</p>
+<pre><code>:react heart
+</code></pre>
+<p>If you want to remove a reaction, you can do so with the <code>:unreact</code> command. By
+default, this will remove all your reactions from the specified message, but
+you can give a name if you’ve made any that you want to keep:</p>
+<pre><code>:unreact heart
+</code></pre>
 <h2 id="redacting-a-message"><a class="header" href="#redacting-a-message">Redacting A Message</a></h2>
 <p>If you need to remove a message from a room, you can do so using the <code>:redact</code>
 command on the message. This command optionally takes a single argument giving
@@ -196,6 +210,7 @@ configured <code>downloads</code> directory</li>
 </ul>
 <p>If there is already a file of the same name, <strong>iamb</strong> will not overwrite it.
 You can use <code>:download!</code> to replace the file.</p>
+<p>To open the file after downloading the file, use the <code>:open</code> command instead.</p>
 
                     </main>
 

@@ -210,6 +210,8 @@ Logging in for @user1:example.com...
 <h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
+<tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
+<tr><td><code>reaction_shortcode_display</code></td><td><code>false</code></td><td>Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won’t be displayed.</td></tr>
 <tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
 <tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to diplay read receipts next to messages in the room scrollback.</td></tr>
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
@@ -390,6 +392,20 @@ command. This will update the textbox to include the message’s original body
 for you to edit.</p>
 <p>Once you’ve finished correcting the message, you can send it just like other
 messages to update the original.</p>
+<h2 id="reacting-to-a-message"><a class="header" href="#reacting-to-a-message">Reacting To A Message</a></h2>
+<p>If you want to react to a message with an Emoji, you can select it in the
+scrollback, and then use the <code>:react</code> command. For example:</p>
+<pre><code>:react ❤️
+</code></pre>
+<p>As a convenience, you can use the <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md">GitHub Emoji shortcodes</a> to refer to them
+instead. For example, we could have also written the above as:</p>
+<pre><code>:react heart
+</code></pre>
+<p>If you want to remove a reaction, you can do so with the <code>:unreact</code> command. By
+default, this will remove all your reactions from the specified message, but
+you can give a name if you’ve made any that you want to keep:</p>
+<pre><code>:unreact heart
+</code></pre>
 <h2 id="redacting-a-message"><a class="header" href="#redacting-a-message">Redacting A Message</a></h2>
 <p>If you need to remove a message from a room, you can do so using the <code>:redact</code>
 command on the message. This command optionally takes a single argument giving
@@ -412,6 +428,7 @@ configured <code>downloads</code> directory</li>
 </ul>
 <p>If there is already a file of the same name, <strong>iamb</strong> will not overwrite it.
 You can use <code>:download!</code> to replace the file.</p>
+<p>To open the file after downloading the file, use the <code>:open</code> command instead.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="screen-navigation"><a class="header" href="#screen-navigation">Screen Navigation</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="window-management"><a class="header" href="#window-management">Window Management</a></h1>
 <h2 id="opening-windows"><a class="header" href="#opening-windows">Opening Windows</a></h2>
@@ -525,6 +542,8 @@ arguments, but you can specify a position to close:</p>
 <tr><td><code>:invite send</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:join</code></td><td></td><td>See <a href="./rooms/">Rooms</a></td></tr>
 <tr><td><code>:members</code></td><td></td><td>See <a href="./rooms/members.html#viewing-roomspace-members">Viewing Room/Space Members</a></td></tr>
+<tr><td><code>:open</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
+<tr><td><code>:react</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:redact</code></td><td></td><td>See <a href="./messages/#redacting-a-message">Redacting A Message</a></td></tr>
 <tr><td><code>:reply</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:rooms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms">Browsing Rooms</a></td></tr>
@@ -535,6 +554,7 @@ arguments, but you can specify a position to close:</p>
 <tr><td><code>:room topic set</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room topic unset</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
+<tr><td><code>:unreact</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td><code>:verify</code></td><td></td><td>See <a href="./verify.html">Verification</a></td></tr>
 <tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
@@ -578,8 +598,8 @@ table th:nth-of-type(3) {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="keybinding-reference"><a class="header" href="#keybinding-reference">Keybinding Reference</a></h1>
 <h2 id="iamb-keybindings"><a class="header" href="#iamb-keybindings">iamb keybindings</a></h2>
 <table><thead><tr><th>Modes</th><th>Keybinding</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
-<tr><td>Normal</td><td><code>^Wm</code></td><td><code>^W^M</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal</td><td><code>^Wz</code></td><td><code>^W^Z</code></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wm</code></td><td><code>^W^M</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^Wz</code></td><td><code>^W^Z</code></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
 </tbody></table>
 <h2 id="vim-keybindings"><a class="header" href="#vim-keybindings">Vim keybindings</a></h2>
 <p>Note that this is not a complete list of all Vim keybindings available within
