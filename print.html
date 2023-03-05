@@ -142,6 +142,7 @@
 <p><strong>iamb</strong> is a terminal-based client for <a href="https://matrix.org/">Matrix</a> for the Vim addict. You can
 edit messages, navigate windows and manage tabs in the same ways that your
 fingers are used to you from your favorite text editor!</p>
+<p><img src="/static/images/iamb-demo.gif" alt="Example Usage" /></p>
 <h2 id="reading-this-documentation"><a class="header" href="#reading-this-documentation">Reading This Documentation</a></h2>
 <p>This documentation indicates keybindings using the following conventions:</p>
 <ul>
@@ -165,7 +166,7 @@ you can file an issue there.</p>
 <h2 id="from-cratesio"><a class="header" href="#from-cratesio">From crates.io</a></h2>
 <p>You can install the most recently published version of <strong>iamb</strong> from
 <a href="https://crates.io/crates/iamb">crates.io</a> using <code>cargo</code>: </p>
-<pre><code>$ cargo install iamb
+<pre><code>$ cargo install --locked iamb
 </code></pre>
 <p>This will install the <code>iamb</code> binary to <code>~/.cargo/bin/</code>, which you should then
 place in your <code>$PATH</code>.</p>
@@ -176,7 +177,7 @@ published, you can clone the source from <a href="https://github.com/ulyssa/iamb
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.4
+iamb 0.0.6
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
 <p><strong>iamb</strong> is configurable via a JSON configuration file located in the
@@ -311,6 +312,19 @@ join the Matrix community space, you can run:</p>
 <p>When viewing a room or a space, you can use the <code>:members</code> command to open a
 new window displaying the active members.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="management"><a class="header" href="#management">Management</a></h1>
+<h2 id="room-creation"><a class="header" href="#room-creation">Room Creation</a></h2>
+<p>You can create new rooms and spaces using the <code>:create</code> command. By default,
+the room is private and unencrypted, but you can use the following flags to
+configure how it is initally created:</p>
+<ul>
+<li><code>++space</code> to make it a space</li>
+<li><code>++public</code> to make the room publicly joinable</li>
+<li><code>++enc</code>/<code>++encrypted</code> to make it an encrypted room</li>
+<li><code>++alias=__localpart__</code> to set a canonical alias</li>
+</ul>
+<p>For example, you could use the following to create a new public space <code>#community:example.com</code>:</p>
+<pre><code>:create ++space ++alias=community ++public
+</code></pre>
 <h2 id="room-invitations"><a class="header" href="#room-invitations">Room Invitations</a></h2>
 <p>Private Matrix rooms require someone to be let in by a current member with a
 high enough power level. You can invite someone to join a room through the
@@ -534,6 +548,7 @@ arguments, but you can specify a position to close:</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="command-reference"><a class="header" href="#command-reference">Command Reference</a></h1>
 <h2 id="iamb-commands"><a class="header" href="#iamb-commands">iamb commands</a></h2>
 <table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
+<tr><td><code>:create</code></td><td></td><td>See <a href="./rooms/management.html#room-creation">Room Creation</a></td></tr>
 <tr><td><code>:dms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-direct-messages">Browsing Direct Messages</a></td></tr>
 <tr><td><code>:download</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
 <tr><td><code>:edit</code></td><td></td><td>See <a href="./messages/#editing-messages">Editing Messages</a></td></tr>
