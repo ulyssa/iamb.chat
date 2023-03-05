@@ -6,7 +6,7 @@ You can install the most recently published version of __iamb__ from
 [crates.io] using `cargo`: 
 
 ```
-$ cargo install iamb
+$ cargo install --locked iamb
 ```
 
 This will install the `iamb` binary to `~/.cargo/bin/`, which you should then
@@ -22,7 +22,7 @@ $ git clone https://github.com/ulyssa/iamb.git
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.4
+iamb 0.0.6
 ```
 
 [crates.io]: https://crates.io/crates/iamb

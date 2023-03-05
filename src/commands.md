@@ -4,6 +4,7 @@
 
 | Command             | Aliases                               | Help                                |
 | ------------------- | ------------------------------------- | ----------------------------------- |
+| `:create`           |                                       | See [Room Creation]                 |
 | `:dms`              |                                       | See [Browsing Direct Messages]      |
 | `:download`         |                                       | See [Downloading Attachments]       |
 | `:edit`             |                                       | See [Editing Messages]              |
@@ -81,6 +82,7 @@ table th:nth-of-type(3) {
 [Reacting To A Message]: ./messages/#reacting-to-a-message
 [Redacting A Message]: ./messages/#redacting-a-message
 [Replying To A Message]: ./messages/#replying-to-a-message
+[Room Creation]: ./rooms/management.md#room-creation
 [Room Invitations]: ./rooms/management.md#room-invitations
 [Rooms]: ./rooms/
 [Sending]: ./messages/#sending

@@ -1,5 +1,22 @@
 # Management
 
+## Room Creation
+
+You can create new rooms and spaces using the `:create` command. By default,
+the room is private and unencrypted, but you can use the following flags to
+configure how it is initally created:
+
+- `++space` to make it a space
+- `++public` to make the room publicly joinable
+- `++enc`/`++encrypted` to make it an encrypted room
+- `++alias=__localpart__` to set a canonical alias
+
+For example, you could use the following to create a new public space `#community:example.com`:
+
+```
+:create ++space ++alias=community ++public
+```
+
 ## Room Invitations
 
 Private Matrix rooms require someone to be let in by a current member with a

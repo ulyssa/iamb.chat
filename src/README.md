@@ -4,6 +4,8 @@ __iamb__ is a terminal-based client for [Matrix] for the Vim addict. You can
 edit messages, navigate windows and manage tabs in the same ways that your
 fingers are used to you from your favorite text editor!
 
+![Example Usage](/static/images/iamb-demo.gif)
+
 ## Reading This Documentation
 
 This documentation indicates keybindings using the following conventions:
