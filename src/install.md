@@ -1,5 +1,13 @@
 # Installation
 
+## From a package manager
+
+### NetBSD
+
+```
+pkgin install iamb
+```
+
 ## From crates.io
 
 You can install the most recently published version of __iamb__ from
