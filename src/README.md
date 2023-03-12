@@ -2,7 +2,7 @@
 
 __iamb__ is a terminal-based client for [Matrix] for the Vim addict. You can
 edit messages, navigate windows and manage tabs in the same ways that your
-fingers are used to you from your favorite text editor!
+fingers are used to from your favorite text editor!
 
 ![Example Usage](/static/images/iamb-demo.gif)
 
@@ -28,11 +28,23 @@ Most of the Vim emulation in __iamb__ comes from the [modalkit] crate. If you
 find a bug in text editing, window management, or need a Vim keybinding added,
 you can file an issue there.
 
+## Join us on Matrix!
+
+Please feel free to join us in:
+
+- [#iamb-users:0x.badd.cafe] for discussing using __iamb__
+- [#iamb-dev:0x.badd.cafe] for discussing developing __iamb__
+
+Both of these are in the [#iamb:0x.badd.cafe] space.
+
 ## License
 
 iamb and its documentation are released under the [Apache License, Version 2.0].
 
 [Apache License, Version 2.0]: https://github.com/ulyssa/iamb/blob/master/LICENSE
+[#iamb:0x.badd.cafe]: https://matrix.to/#/#iamb:0x.badd.cafe
+[#iamb-dev:0x.badd.cafe]: https://matrix.to/#/#iamb-dev:0x.badd.cafe
+[#iamb-users:0x.badd.cafe]: https://matrix.to/#/#iamb-users:0x.badd.cafe
 [iamb]: https://github.com/ulyssa/iamb/
 [iamb.chat]: https://github.com/ulyssa/iamb.chat/
 [Matrix]: https://matrix.org/
