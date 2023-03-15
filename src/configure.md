@@ -41,13 +41,28 @@ Logging in for @user1:example.com...
 | Name                         | Default              | Description                                                                                                                       |
 | ---------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `default_room`               |                      | A default room name or username to open at startup, in place of showing the welcome screen.                                       |
+| `log_level`                  | `"info"`             | Configures the minimum log level. Valid values are `"trace"`, `"debug"`, `"info"`, `"warn"` or `"error"`.                         |
+| `request_timeout`            | 120                  | How long to wait in seconds before timing out requests to the homeserver.                                                         |
 | `reaction_display`           | `true`               | Whether to display message reactions. You can use this or `reaction_shortcode_display` if your terminal doesn't show Emojis well. |
 | `reaction_shortcode_display` | `false`              | Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won't be displayed. |
 | `read_receipt_send`          | `true`               | Whether to send read receipts for viewed rooms.                                                                                   |
-| `read_receipt_display`       | `true`               | Whether to diplay read receipts next to messages in the room scrollback.                                                          |
+| `read_receipt_display`       | `true`               | Whether to display read receipts next to messages in the room scrollback.                                                          |
 | `typing_notice_send`         | `true`               | Whether to send notifications to other room members when typing.                                                                  |
-| `typing_notice_display`      | `true`               | Whether to diplay the typing notifications bar.                                                                                   |
+| `typing_notice_display`      | `true`               | Whether to display the typing notifications bar.                                                                                   |
 | `users`                      | `{}`                 | Configure how other users get displayed in the client. See [User Display](#user-display).                                         |
+
+For example, if you wanted to raise the timeout to accommodate a long initial
+sync, and show more log messages, you could put the following into your
+`config.json`:
+
+```json
+{
+    "settings": {
+        "log_level": "debug",
+        "request_timeout": 180
+    }
+}
+```
 
 ## Directories
 

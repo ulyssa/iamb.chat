@@ -42,7 +42,7 @@ If you change your mind, or select the wrong message to reply to, you can use
 
 Once a message has been sent, you might find that you need to amend it, to fix
 typos or correct information. You can select the message and run the `:edit`
-command. This will update the textbox to include the message's original body
+command. This will update the text box to include the message's original body
 for you to edit.
 
 Once you've finished correcting the message, you can send it just like other

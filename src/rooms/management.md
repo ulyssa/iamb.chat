@@ -4,7 +4,7 @@
 
 You can create new rooms and spaces using the `:create` command. By default,
 the room is private and unencrypted, but you can use the following flags to
-configure how it is initally created:
+configure how it is initially created:
 
 - `++space` to make it a space
 - `++public` to make the room publicly joinable
@@ -32,7 +32,7 @@ reject. If you've received an invitation to a room, space, or direct message,
 you can open it up, focus the window and run:
 
 - `:invite accept` to accept the invitation and join the room
-- `:invite reject` to rejept the invitation
+- `:invite reject` to reject the invitation
 
 ## Setting Room Properties
 
