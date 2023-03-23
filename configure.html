@@ -169,14 +169,26 @@ Logging in for @user1:example.com...
 <h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
+<tr><td><code>log_level</code></td><td><code>&quot;info&quot;</code></td><td>Configures the minimum log level. Valid values are <code>&quot;trace&quot;</code>, <code>&quot;debug&quot;</code>, <code>&quot;info&quot;</code>, <code>&quot;warn&quot;</code> or <code>&quot;error&quot;</code>.</td></tr>
+<tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
 <tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
 <tr><td><code>reaction_shortcode_display</code></td><td><code>false</code></td><td>Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won’t be displayed.</td></tr>
 <tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
-<tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to diplay read receipts next to messages in the room scrollback.</td></tr>
+<tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to display read receipts next to messages in the room scrollback.</td></tr>
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
-<tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to diplay the typing notifications bar.</td></tr>
+<tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
 <tr><td><code>users</code></td><td><code>{}</code></td><td>Configure how other users get displayed in the client. See <a href="#user-display">User Display</a>.</td></tr>
 </tbody></table>
+<p>For example, if you wanted to raise the timeout to accommodate a long initial
+sync, and show more log messages, you could put the following into your
+<code>config.json</code>:</p>
+<pre><code class="language-json">{
+    &quot;settings&quot;: {
+        &quot;log_level&quot;: &quot;debug&quot;,
+        &quot;request_timeout&quot;: 180
+    }
+}
+</code></pre>
 <h2 id="directories"><a class="header" href="#directories">Directories</a></h2>
 <p><strong>iamb</strong> will use the standard directories for your operating system, but you
 can override them by placing a <code>&quot;dirs&quot;</code> field in your <code>config.json</code> containing

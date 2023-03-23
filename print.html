@@ -171,6 +171,11 @@ you can file an issue there.</p>
 <p>iamb and its documentation are released under the <a href="https://github.com/ulyssa/iamb/blob/master/LICENSE">Apache License, Version 2.0</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <h2 id="from-a-package-manager"><a class="header" href="#from-a-package-manager">From a package manager</a></h2>
+<h3 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h3>
+<p>Using your preferred <a href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>, you can install <code>iamb-git</code>. For example,
+using <code>paru</code>:</p>
+<pre><code>paru iamb-git
+</code></pre>
 <h3 id="netbsd"><a class="header" href="#netbsd">NetBSD</a></h3>
 <pre><code>pkgin install iamb
 </code></pre>
@@ -188,7 +193,7 @@ published, you can clone the source from <a href="https://github.com/ulyssa/iamb
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.6
+iamb 0.0.7
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
 <p><strong>iamb</strong> is configurable via a JSON configuration file located in the
@@ -222,14 +227,26 @@ Logging in for @user1:example.com...
 <h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
+<tr><td><code>log_level</code></td><td><code>&quot;info&quot;</code></td><td>Configures the minimum log level. Valid values are <code>&quot;trace&quot;</code>, <code>&quot;debug&quot;</code>, <code>&quot;info&quot;</code>, <code>&quot;warn&quot;</code> or <code>&quot;error&quot;</code>.</td></tr>
+<tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
 <tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
 <tr><td><code>reaction_shortcode_display</code></td><td><code>false</code></td><td>Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won’t be displayed.</td></tr>
 <tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
-<tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to diplay read receipts next to messages in the room scrollback.</td></tr>
+<tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to display read receipts next to messages in the room scrollback.</td></tr>
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
-<tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to diplay the typing notifications bar.</td></tr>
+<tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
 <tr><td><code>users</code></td><td><code>{}</code></td><td>Configure how other users get displayed in the client. See <a href="configure.html#user-display">User Display</a>.</td></tr>
 </tbody></table>
+<p>For example, if you wanted to raise the timeout to accommodate a long initial
+sync, and show more log messages, you could put the following into your
+<code>config.json</code>:</p>
+<pre><code class="language-json">{
+    &quot;settings&quot;: {
+        &quot;log_level&quot;: &quot;debug&quot;,
+        &quot;request_timeout&quot;: 180
+    }
+}
+</code></pre>
 <h2 id="directories"><a class="header" href="#directories">Directories</a></h2>
 <p><strong>iamb</strong> will use the standard directories for your operating system, but you
 can override them by placing a <code>&quot;dirs&quot;</code> field in your <code>config.json</code> containing
@@ -295,13 +312,13 @@ table th:nth-of-type(3) {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="verification"><a class="header" href="#verification">Verification</a></h1>
 <h2 id="incoming-verifications"><a class="header" href="#incoming-verifications">Incoming Verifications</a></h2>
 <p>If another user or one of your other devices has sent you a verification
-request, then it will appear in the Verifications list, accesible via running
+request, then it will appear in the Verifications list, accessible via running
 <code>:verify</code> with no arguments.</p>
 <h2 id="requesting-verifications"><a class="header" href="#requesting-verifications">Requesting Verifications</a></h2>
 <p>If you’d like to verify another user, you can do so by running
 <code>:verify request USERID</code>. Once they accept, you can check the Emojis and
 confirm that they match in the same way as shown above for incoming
-verifcations.</p>
+verifications.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="rooms"><a class="header" href="#rooms">Rooms</a></h1>
 <h2 id="joining-a-new-room"><a class="header" href="#joining-a-new-room">Joining A New Room</a></h2>
 <p>You can join a new room or space using the <code>:join</code> command. For example, to
@@ -326,7 +343,7 @@ new window displaying the active members.</p>
 <h2 id="room-creation"><a class="header" href="#room-creation">Room Creation</a></h2>
 <p>You can create new rooms and spaces using the <code>:create</code> command. By default,
 the room is private and unencrypted, but you can use the following flags to
-configure how it is initally created:</p>
+configure how it is initially created:</p>
 <ul>
 <li><code>++space</code> to make it a space</li>
 <li><code>++public</code> to make the room publicly joinable</li>
@@ -347,7 +364,7 @@ reject. If you’ve received an invitation to a room, space, or direct message,
 you can open it up, focus the window and run:</p>
 <ul>
 <li><code>:invite accept</code> to accept the invitation and join the room</li>
-<li><code>:invite reject</code> to rejept the invitation</li>
+<li><code>:invite reject</code> to reject the invitation</li>
 </ul>
 <h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
 <p>You can set the description of the currently focused room using the <code>:set</code> command:</p>
@@ -413,7 +430,7 @@ normal message.</p>
 <h2 id="editing-messages"><a class="header" href="#editing-messages">Editing Messages</a></h2>
 <p>Once a message has been sent, you might find that you need to amend it, to fix
 typos or correct information. You can select the message and run the <code>:edit</code>
-command. This will update the textbox to include the message’s original body
+command. This will update the text box to include the message’s original body
 for you to edit.</p>
 <p>Once you’ve finished correcting the message, you can send it just like other
 messages to update the original.</p>
