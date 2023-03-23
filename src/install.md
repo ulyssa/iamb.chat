@@ -2,6 +2,15 @@
 
 ## From a package manager
 
+### Arch Linux
+
+Using your preferred [AUR helper], you can install `iamb-git`. For example,
+using `paru`:
+
+```
+paru iamb-git
+```
+
 ### NetBSD
 
 ```
@@ -30,8 +39,9 @@ $ git clone https://github.com/ulyssa/iamb.git
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.6
+iamb 0.0.7
 ```
 
+[AUR helper]: https://wiki.archlinux.org/title/AUR_helpers
 [crates.io]: https://crates.io/crates/iamb
 [GitHub]: https://github.com/ulyssa/iamb
