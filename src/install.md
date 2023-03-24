@@ -17,6 +17,10 @@ paru iamb-git
 pkgin install iamb
 ```
 
+## GitHub Releases
+
+You can find binaries built for x86\_64 Linux from the [Releases] page on GitHub.
+
 ## From crates.io
 
 You can install the most recently published version of __iamb__ from
@@ -45,3 +49,4 @@ iamb 0.0.7
 [AUR helper]: https://wiki.archlinux.org/title/AUR_helpers
 [crates.io]: https://crates.io/crates/iamb
 [GitHub]: https://github.com/ulyssa/iamb
+[Releases]: https://github.com/ulyssa/iamb/releases/
