@@ -17,6 +17,9 @@ focused room:
 :upload "/home/user/Documents/Shared Document.pdf"
 ```
 
+Clipboard images can be uploaded by pasting from the clipboard register `"*p`,
+and following the confirmation dialog.
+
 ## Message Scrollback
 
 You can scroll through messages from the message bar using the following keys:

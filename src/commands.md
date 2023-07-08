@@ -11,7 +11,8 @@
 | `:invite accept`    |                                       | See [Room Invitations]              |
 | `:invite reject`    |                                       | See [Room Invitations]              |
 | `:invite send`      |                                       | See [Room Invitations]              |
-| `:join`             |                                       | See [Rooms]                         |
+| `:join`             |                                       | See [Joining And Leaving Rooms]     |
+| `:leave`            |                                       | See [Joining And Leaving Rooms]     |
 | `:members`          |                                       | See [Viewing Room/Space Members]    |
 | `:open`             |                                       | See [Downloading Attachments]       |
 | `:react`            |                                       | See [Reacting To A Message]         |
@@ -84,7 +85,7 @@ table th:nth-of-type(3) {
 [Replying To A Message]: ./messages/#replying-to-a-message
 [Room Creation]: ./rooms/management.md#room-creation
 [Room Invitations]: ./rooms/management.md#room-invitations
-[Rooms]: ./rooms/
+[Joining And Leaving Rooms]: ./rooms/#joining-and-leaving-rooms
 [Sending]: ./messages/#sending
 [Setting Room Properties]: ./rooms/management.md#setting-room-properties
 [Setting Room Tags]: ./rooms/management.md#setting-room-tags

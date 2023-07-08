@@ -42,6 +42,7 @@ Logging in for @user1:example.com...
 | ---------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `default_room`               |                      | A default room name or username to open at startup, in place of showing the welcome screen.                                       |
 | `log_level`                  | `"info"`             | Configures the minimum log level. Valid values are `"trace"`, `"debug"`, `"info"`, `"warn"` or `"error"`.                         |
+| `open_command`               |                      | Configures a command to use for opening downloads instead of the default. (e.g., `["my-open", "--file"]` to run a custom script   |
 | `request_timeout`            | 120                  | How long to wait in seconds before timing out requests to the homeserver.                                                         |
 | `reaction_display`           | `true`               | Whether to display message reactions. You can use this or `reaction_shortcode_display` if your terminal doesn't show Emojis well. |
 | `reaction_shortcode_display` | `false`              | Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won't be displayed. |
@@ -50,6 +51,7 @@ Logging in for @user1:example.com...
 | `typing_notice_send`         | `true`               | Whether to send notifications to other room members when typing.                                                                  |
 | `typing_notice_display`      | `true`               | Whether to display the typing notifications bar.                                                                                   |
 | `users`                      | `{}`                 | Configure how other users get displayed in the client. See [User Display](#user-display).                                         |
+| `username_display`           | `"username"`         | Configure what name is shown for senders. Valid values are `"username"` (e.g., `@user:example.org`), `"localpart"` (e.g., `user`), or `"displayname"` (e.g., `User Name`) |
 
 For example, if you wanted to raise the timeout to accommodate a long initial
 sync, and show more log messages, you could put the following into your
@@ -60,6 +62,67 @@ sync, and show more log messages, you could put the following into your
     "settings": {
         "log_level": "debug",
         "request_timeout": 180
+    }
+}
+```
+
+## Startup Layout
+
+You can configure what windows get shown when __iamb__ starts by adding a
+`"layout"` object.
+
+### Restore Previous Layout
+
+By default, the client will try to restore all of the tabs and windows from the
+last time it was run. You can explicitly configure this behaviour with:
+
+```json
+{
+    "layout": { "style": "restore" }
+}
+```
+
+### New Window
+
+If you want to see a single new window each time you start up, you can set:
+
+```json
+{
+    "layout": { "style": "new" }
+}
+```
+
+This will show the `:welcome` window by default, but you can set
+`"default_room"` to change it to something else.
+
+### Configured Layout
+
+If you want to start up with the same layout every time regardless of the state
+at last exit, you can specify an array of tabs and the window tree in each one:
+
+```json
+{
+    "layout": {
+        "style": "config",
+        "tabs": [
+            {
+                "split": [
+                    { "window": "#room1:example.org" },
+                    { "window": "#room2:example.org" }
+                ]
+            },
+            {
+                "split": [
+                    {
+                        "split": [
+                            { "window": "#room3:example.org" },
+                            { "window": "#room4:example.org" }
+                        ]
+                    },
+                    { "window": "@user:example.org" }
+                ]
+            }
+        ]
     }
 }
 ```
