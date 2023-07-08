@@ -170,6 +170,7 @@ Logging in for @user1:example.com...
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
 <tr><td><code>log_level</code></td><td><code>&quot;info&quot;</code></td><td>Configures the minimum log level. Valid values are <code>&quot;trace&quot;</code>, <code>&quot;debug&quot;</code>, <code>&quot;info&quot;</code>, <code>&quot;warn&quot;</code> or <code>&quot;error&quot;</code>.</td></tr>
+<tr><td><code>open_command</code></td><td></td><td>Configures a command to use for opening downloads instead of the default. (e.g., <code>[&quot;my-open&quot;, &quot;--file&quot;]</code> to run a custom script</td></tr>
 <tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
 <tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
 <tr><td><code>reaction_shortcode_display</code></td><td><code>false</code></td><td>Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won’t be displayed.</td></tr>
@@ -178,6 +179,7 @@ Logging in for @user1:example.com...
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
 <tr><td><code>users</code></td><td><code>{}</code></td><td>Configure how other users get displayed in the client. See <a href="#user-display">User Display</a>.</td></tr>
+<tr><td><code>username_display</code></td><td><code>&quot;username&quot;</code></td><td>Configure what name is shown for senders. Valid values are <code>&quot;username&quot;</code> (e.g., <code>@user:example.org</code>), <code>&quot;localpart&quot;</code> (e.g., <code>user</code>), or <code>&quot;displayname&quot;</code> (e.g., <code>User Name</code>)</td></tr>
 </tbody></table>
 <p>For example, if you wanted to raise the timeout to accommodate a long initial
 sync, and show more log messages, you could put the following into your
@@ -186,6 +188,52 @@ sync, and show more log messages, you could put the following into your
     &quot;settings&quot;: {
         &quot;log_level&quot;: &quot;debug&quot;,
         &quot;request_timeout&quot;: 180
+    }
+}
+</code></pre>
+<h2 id="startup-layout"><a class="header" href="#startup-layout">Startup Layout</a></h2>
+<p>You can configure what windows get shown when <strong>iamb</strong> starts by adding a
+<code>&quot;layout&quot;</code> object.</p>
+<h3 id="restore-previous-layout"><a class="header" href="#restore-previous-layout">Restore Previous Layout</a></h3>
+<p>By default, the client will try to restore all of the tabs and windows from the
+last time it was run. You can explicitly configure this behaviour with:</p>
+<pre><code class="language-json">{
+    &quot;layout&quot;: { &quot;style&quot;: &quot;restore&quot; }
+}
+</code></pre>
+<h3 id="new-window"><a class="header" href="#new-window">New Window</a></h3>
+<p>If you want to see a single new window each time you start up, you can set:</p>
+<pre><code class="language-json">{
+    &quot;layout&quot;: { &quot;style&quot;: &quot;new&quot; }
+}
+</code></pre>
+<p>This will show the <code>:welcome</code> window by default, but you can set
+<code>&quot;default_room&quot;</code> to change it to something else.</p>
+<h3 id="configured-layout"><a class="header" href="#configured-layout">Configured Layout</a></h3>
+<p>If you want to start up with the same layout every time regardless of the state
+at last exit, you can specify an array of tabs and the window tree in each one:</p>
+<pre><code class="language-json">{
+    &quot;layout&quot;: {
+        &quot;style&quot;: &quot;config&quot;,
+        &quot;tabs&quot;: [
+            {
+                &quot;split&quot;: [
+                    { &quot;window&quot;: &quot;#room1:example.org&quot; },
+                    { &quot;window&quot;: &quot;#room2:example.org&quot; }
+                ]
+            },
+            {
+                &quot;split&quot;: [
+                    {
+                        &quot;split&quot;: [
+                            { &quot;window&quot;: &quot;#room3:example.org&quot; },
+                            { &quot;window&quot;: &quot;#room4:example.org&quot; }
+                        ]
+                    },
+                    { &quot;window&quot;: &quot;@user:example.org&quot; }
+                ]
+            }
+        ]
     }
 }
 </code></pre>
