@@ -31,6 +31,8 @@ documentation.
 | Normal, Visual  | `^E`              |                | See [Message Scrollback]            |
 | Normal, Visual  | `^F`              | `<PageDown>`   | See [Message Scrollback]            |
 | Normal, Visual  | `^D`              |                | See [Message Scrollback]            |
+| Normal          | `^I`              | `<Tab>`        | See [Switching Windows]             |
+| Normal          | `^O`              |                | See [Switching Windows]             |
 | Normal, Visual  | `^U`              |                | See [Message Scrollback]            |
 | Normal, Visual  | `^Wf`             | `^W^F`         | See [Opening Tabs]                  |
 | Normal, Visual  | `^Wh`             | `^W^H`         | See [Switching Windows]             |

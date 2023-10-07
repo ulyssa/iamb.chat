@@ -45,7 +45,14 @@ You can switch between between neighboring windows using the following keybindin
 - `^Wk` will move to the window above the current one 
 - `^Wl` will move to the window right of the current one 
 
-You can provide a count to the above keybindings to move across multiple windows.
+If you want to move to previous content in the window, you can navigate through
+the jumplist using:
+
+- `^O` to move backwards through the jumplist
+- `^I` to move forward through the jumplist
+
+You can provide a count to all of the above keybindings to repeat them multiple
+times.
 
 ## Organizing Windows
 
