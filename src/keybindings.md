@@ -32,7 +32,9 @@ documentation.
 | Normal, Visual  | `^F`              | `<PageDown>`   | See [Message Scrollback]            |
 | Normal, Visual  | `^D`              |                | See [Message Scrollback]            |
 | Normal          | `^I`              | `<Tab>`        | See [Switching Windows]             |
+| Insert          | `^N`              |                | See [Sending]                       |
 | Normal          | `^O`              |                | See [Switching Windows]             |
+| Insert          | `^P`              |                | See [Sending]                       |
 | Normal, Visual  | `^U`              |                | See [Message Scrollback]            |
 | Normal, Visual  | `^Wf`             | `^W^F`         | See [Opening Tabs]                  |
 | Normal, Visual  | `^Wh`             | `^W^H`         | See [Switching Windows]             |

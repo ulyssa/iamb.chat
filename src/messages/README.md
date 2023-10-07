@@ -10,6 +10,11 @@ key from either Normal or Insert mode.
 > `^V^J`.  You can also use the `O` and `o` keys to insert a blank line before
 > or after the current line respectively.
 
+From within the message bar, you can complete Matrix usernames, room aliases
+and identifiers, and Emoji shortcodes (e.g., `:heart:`) by using `^N` and `^P`
+to start cycling forwards or backwards through the list of possible
+completions.
+
 The `:upload` command allows you to specify a file to send to the currently
 focused room:
 
