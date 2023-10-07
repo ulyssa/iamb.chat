@@ -31,6 +31,14 @@ You can scroll through messages from the message bar using the following keys:
 If you want to use movement keys to select individual messages, you can toggle
 focus between the message bar and the scrollback by pressing `^Wm`.
 
+The plaintext content of messages can be copied to registers using yank
+keybindings like `yy` or `Y`, and marked with `m{a-z}`. Marked messages can
+then be returned to via `'{a-z}`.
+
+You can search the plaintext content of messages using `?` and `/` for reverse
+and forward search respectively. The `n` and `N` keys can be used to jump
+between results.
+
 ## Replying To A Message
 
 If you select a message in the scrollback, you can reply to it using the

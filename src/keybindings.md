@@ -17,8 +17,16 @@ documentation.
 | -----           | ---------------   | -------------- | ----------------------------------- |
 | Normal          | `gt`              | `<C-PageDown>` | See [Switching Tabs]                |
 | Normal          | `gT`              | `<C-PageUp>`   | See [Switching Tabs]                |
+| Normal          | `m{a-z}`          |                | See [Message Scrollback]            |
+| Normal          | `n`               |                | See [Message Scrollback]            |
+| Normal          | `N`               |                | See [Message Scrollback]            |
 | Normal          | `o`               |                | See [Sending]                       |
 | Normal          | `O`               |                | See [Sending]                       |
+| Normal          | `yy`              |                | See [Message Scrollback]            |
+| Normal          | `Y`               |                | See [Message Scrollback]            |
+| Normal          | `'{a-z}`          |                | See [Message Scrollback]            |
+| Normal          | `/`               |                | See [Message Scrollback]            |
+| Normal          | `?`               |                | See [Message Scrollback]            |
 | Normal, Visual  | `^B`              | `<PageUp>`     | See [Message Scrollback]            |
 | Normal, Visual  | `^E`              |                | See [Message Scrollback]            |
 | Normal, Visual  | `^F`              | `<PageDown>`   | See [Message Scrollback]            |
