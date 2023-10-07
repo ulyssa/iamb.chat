@@ -46,6 +46,11 @@ documentation.
 | Normal, Visual  | `^Ws`             | `^W^S`         | See [Opening Windows]               |
 | Normal, Visual  | `^WT`             |                | See [Organizing Windows]            |
 | Normal, Visual  | `^Wv`             | `^W^V`         | See [Opening Windows]               |
+| Normal, Visual  | `^W-`             |                | See [Resizing Windows]              |
+| Normal, Visual  | `^W+`             |                | See [Resizing Windows]              |
+| Normal, Visual  | `^W<`             |                | See [Resizing Windows]              |
+| Normal, Visual  | `^W>`             |                | See [Resizing Windows]              |
+| Normal, Visual  | `^W=`             |                | See [Resizing Windows]              |
 | Normal, Visual  | `^Y`              |                | See [Message Scrollback]            |
 
 <style>
@@ -71,6 +76,7 @@ table th:nth-of-type(4) {
 [Opening Tabs]: ./layout/tabs.md#opening-tabs
 [Opening Windows]: ./layout/windows.md#opening-windows
 [Organizing Windows]: ./layout/windows.md#organizing-windows
+[Resizing Windows]: ./layout/windows.md#resizing-windows
 [Sending]: ./messages/#sending
 [Switching Tabs]: ./layout/tabs.md#switching-tabs
 [Switching Windows]: ./layout/windows.md#switching-windows

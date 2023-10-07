@@ -41,6 +41,7 @@
 | `:only`         | `:on`                                 | See [Closing Windows]               |
 | `:quitall`      | `:qa`, `:qall`, `:quita`              | See [Closing Windows]               |
 | `:quit`         | `:q`                                  | See [Closing Windows]               |
+| `:resize`       |                                       | See [Resizing Windows]              |
 | `:rightbelow`   | `:rightb`, `:belowright`, `:bel`      | See [Opening Windows]               |
 | `:split`        | `:sp`                                 | See [Opening Windows]               |
 | `:tab`          |                                       | See [Opening Tabs]                  |
@@ -83,6 +84,7 @@ table th:nth-of-type(3) {
 [Reacting To A Message]: ./messages/#reacting-to-a-message
 [Redacting A Message]: ./messages/#redacting-a-message
 [Replying To A Message]: ./messages/#replying-to-a-message
+[Resizing Windows]: ./layout/windows.md#resizing-windows
 [Room Creation]: ./rooms/management.md#room-creation
 [Room Invitations]: ./rooms/management.md#room-invitations
 [Joining And Leaving Rooms]: ./rooms/#joining-and-leaving-rooms

@@ -66,6 +66,23 @@ the whole screen without closing any of the other windows. You can:
 - Use `^Wz` to zoom in and out of a window without changing your current layout
 - Use `^WT` to extract the window into its own [tab](./tabs.md)
 
+## Resizing Windows
+
+You can resize windows using the following keybindings:
+
+- `^W-` will decrease the current window height by the specified count
+- `^W+` will increase the current window height by the specified count
+- `^W<` will decrease the current window width by the specified count
+- `^W>` will increase the current window width by the specified count
+- `^W=` will attempt to resize all windows in the same row or column to have
+  equal height and width
+
+> If your window manager or terminal is capturing `^W`, you can use the
+> `:resize` command to change window height. For example, `:resize -10` will
+> decrease the height by ten, and `:resize +5` will increase it by 5.
+>
+> To change the window width, use `:vertical resize` instead.
+
 ## Closing Windows
 
 You can close a window using `^Wq`, or close all windows but the current one
