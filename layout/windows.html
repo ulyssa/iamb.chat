@@ -171,7 +171,14 @@ commands. For example, to open the list of rooms below the current window:</p>
 <li><code>^Wk</code> will move to the window above the current one </li>
 <li><code>^Wl</code> will move to the window right of the current one </li>
 </ul>
-<p>You can provide a count to the above keybindings to move across multiple windows.</p>
+<p>If you want to move to previous content in the window, you can navigate through
+the jumplist using:</p>
+<ul>
+<li><code>^O</code> to move backwards through the jumplist</li>
+<li><code>^I</code> to move forward through the jumplist</li>
+</ul>
+<p>You can provide a count to all of the above keybindings to repeat them multiple
+times.</p>
 <h2 id="organizing-windows"><a class="header" href="#organizing-windows">Organizing Windows</a></h2>
 <p>You can reposition open windows using the following keybindings:</p>
 <ul>
@@ -190,6 +197,22 @@ the whole screen without closing any of the other windows. You can:</p>
 <li>Use <code>^Wz</code> to zoom in and out of a window without changing your current layout</li>
 <li>Use <code>^WT</code> to extract the window into its own <a href="./tabs.html">tab</a></li>
 </ul>
+<h2 id="resizing-windows"><a class="header" href="#resizing-windows">Resizing Windows</a></h2>
+<p>You can resize windows using the following keybindings:</p>
+<ul>
+<li><code>^W-</code> will decrease the current window height by the specified count</li>
+<li><code>^W+</code> will increase the current window height by the specified count</li>
+<li><code>^W&lt;</code> will decrease the current window width by the specified count</li>
+<li><code>^W&gt;</code> will increase the current window width by the specified count</li>
+<li><code>^W=</code> will attempt to resize all windows in the same row or column to have
+equal height and width</li>
+</ul>
+<blockquote>
+<p>If your window manager or terminal is capturing <code>^W</code>, you can use the
+<code>:resize</code> command to change window height. For example, <code>:resize -10</code> will
+decrease the height by ten, and <code>:resize +5</code> will increase it by 5.</p>
+<p>To change the window width, use <code>:vertical resize</code> instead.</p>
+</blockquote>
 <h2 id="closing-windows"><a class="header" href="#closing-windows">Closing Windows</a></h2>
 <p>You can close a window using <code>^Wq</code>, or close all windows but the current one
 using <code>^Wo</code>. When provided with a count, these keybindings will operate against

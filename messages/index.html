@@ -147,6 +147,10 @@ key from either Normal or Insert mode.</p>
 <code>^V^J</code>.  You can also use the <code>O</code> and <code>o</code> keys to insert a blank line before
 or after the current line respectively.</p>
 </blockquote>
+<p>From within the message bar, you can complete Matrix usernames, room aliases
+and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>^N</code> and <code>^P</code>
+to start cycling forwards or backwards through the list of possible
+completions.</p>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>
 <pre><code>:upload &quot;/home/user/Documents/Shared Document.pdf&quot;
@@ -162,6 +166,12 @@ and following the confirmation dialog.</p>
 </ul>
 <p>If you want to use movement keys to select individual messages, you can toggle
 focus between the message bar and the scrollback by pressing <code>^Wm</code>.</p>
+<p>The plaintext content of messages can be copied to registers using yank
+keybindings like <code>yy</code> or <code>Y</code>, and marked with <code>m{a-z}</code>. Marked messages can
+then be returned to via <code>'{a-z}</code>.</p>
+<p>You can search the plaintext content of messages using <code>?</code> and <code>/</code> for reverse
+and forward search respectively. The <code>n</code> and <code>N</code> keys can be used to jump
+between results.</p>
 <h2 id="replying-to-a-message"><a class="header" href="#replying-to-a-message">Replying To A Message</a></h2>
 <p>If you select a message in the scrollback, you can reply to it using the
 <code>:reply</code> command. This will refocus the message bar, where you can type out

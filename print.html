@@ -468,6 +468,10 @@ key from either Normal or Insert mode.</p>
 <code>^V^J</code>.  You can also use the <code>O</code> and <code>o</code> keys to insert a blank line before
 or after the current line respectively.</p>
 </blockquote>
+<p>From within the message bar, you can complete Matrix usernames, room aliases
+and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>^N</code> and <code>^P</code>
+to start cycling forwards or backwards through the list of possible
+completions.</p>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>
 <pre><code>:upload &quot;/home/user/Documents/Shared Document.pdf&quot;
@@ -483,6 +487,12 @@ and following the confirmation dialog.</p>
 </ul>
 <p>If you want to use movement keys to select individual messages, you can toggle
 focus between the message bar and the scrollback by pressing <code>^Wm</code>.</p>
+<p>The plaintext content of messages can be copied to registers using yank
+keybindings like <code>yy</code> or <code>Y</code>, and marked with <code>m{a-z}</code>. Marked messages can
+then be returned to via <code>'{a-z}</code>.</p>
+<p>You can search the plaintext content of messages using <code>?</code> and <code>/</code> for reverse
+and forward search respectively. The <code>n</code> and <code>N</code> keys can be used to jump
+between results.</p>
 <h2 id="replying-to-a-message"><a class="header" href="#replying-to-a-message">Replying To A Message</a></h2>
 <p>If you select a message in the scrollback, you can reply to it using the
 <code>:reply</code> command. This will refocus the message bar, where you can type out
@@ -569,7 +579,14 @@ commands. For example, to open the list of rooms below the current window:</p>
 <li><code>^Wk</code> will move to the window above the current one </li>
 <li><code>^Wl</code> will move to the window right of the current one </li>
 </ul>
-<p>You can provide a count to the above keybindings to move across multiple windows.</p>
+<p>If you want to move to previous content in the window, you can navigate through
+the jumplist using:</p>
+<ul>
+<li><code>^O</code> to move backwards through the jumplist</li>
+<li><code>^I</code> to move forward through the jumplist</li>
+</ul>
+<p>You can provide a count to all of the above keybindings to repeat them multiple
+times.</p>
 <h2 id="organizing-windows"><a class="header" href="#organizing-windows">Organizing Windows</a></h2>
 <p>You can reposition open windows using the following keybindings:</p>
 <ul>
@@ -588,6 +605,22 @@ the whole screen without closing any of the other windows. You can:</p>
 <li>Use <code>^Wz</code> to zoom in and out of a window without changing your current layout</li>
 <li>Use <code>^WT</code> to extract the window into its own <a href="layout/./tabs.html">tab</a></li>
 </ul>
+<h2 id="resizing-windows"><a class="header" href="#resizing-windows">Resizing Windows</a></h2>
+<p>You can resize windows using the following keybindings:</p>
+<ul>
+<li><code>^W-</code> will decrease the current window height by the specified count</li>
+<li><code>^W+</code> will increase the current window height by the specified count</li>
+<li><code>^W&lt;</code> will decrease the current window width by the specified count</li>
+<li><code>^W&gt;</code> will increase the current window width by the specified count</li>
+<li><code>^W=</code> will attempt to resize all windows in the same row or column to have
+equal height and width</li>
+</ul>
+<blockquote>
+<p>If your window manager or terminal is capturing <code>^W</code>, you can use the
+<code>:resize</code> command to change window height. For example, <code>:resize -10</code> will
+decrease the height by ten, and <code>:resize +5</code> will increase it by 5.</p>
+<p>To change the window width, use <code>:vertical resize</code> instead.</p>
+</blockquote>
 <h2 id="closing-windows"><a class="header" href="#closing-windows">Closing Windows</a></h2>
 <p>You can close a window using <code>^Wq</code>, or close all windows but the current one
 using <code>^Wo</code>. When provided with a count, these keybindings will operate against
@@ -674,6 +707,7 @@ arguments, but you can specify a position to close:</p>
 <tr><td><code>:only</code></td><td><code>:on</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
 <tr><td><code>:quitall</code></td><td><code>:qa</code>, <code>:qall</code>, <code>:quita</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
 <tr><td><code>:quit</code></td><td><code>:q</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
+<tr><td><code>:resize</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
 <tr><td><code>:rightbelow</code></td><td><code>:rightb</code>, <code>:belowright</code>, <code>:bel</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
 <tr><td><code>:split</code></td><td><code>:sp</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
 <tr><td><code>:tab</code></td><td></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
@@ -715,12 +749,24 @@ documentation.</p>
 <table><thead><tr><th>Modes</th><th>Keybinding</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
 <tr><td>Normal</td><td><code>gt</code></td><td><code>&lt;C-PageDown&gt;</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
 <tr><td>Normal</td><td><code>gT</code></td><td><code>&lt;C-PageUp&gt;</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
+<tr><td>Normal</td><td><code>m{a-z}</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>n</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>N</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>o</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td>Normal</td><td><code>O</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td>Normal</td><td><code>yy</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>Y</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>'{a-z}</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>/</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>?</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^B</code></td><td><code>&lt;PageUp&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^E</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^F</code></td><td><code>&lt;PageDown&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^D</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>^I</code></td><td><code>&lt;Tab&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Insert</td><td><code>^N</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td>Normal</td><td><code>^O</code></td><td></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Insert</td><td><code>^P</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^U</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^Wf</code></td><td><code>^W^F</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^Wh</code></td><td><code>^W^H</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
@@ -736,6 +782,11 @@ documentation.</p>
 <tr><td>Normal, Visual</td><td><code>^Ws</code></td><td><code>^W^S</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^WT</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^Wv</code></td><td><code>^W^V</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^W-</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^W+</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^W&lt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^W&gt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>^W=</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>^Y</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 </tbody></table>
 <style>
