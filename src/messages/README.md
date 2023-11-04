@@ -22,8 +22,19 @@ focused room:
 :upload "/home/user/Documents/Shared Document.pdf"
 ```
 
-Clipboard images can be uploaded by pasting from the clipboard register `"*p`,
-and following the confirmation dialog.
+Clipboard images can be uploaded by pasting with `p` or `P` from the `"+` and
+`"*` registers, and following the confirmation dialog. On macOS and Windows
+they contain the same contents, but they differ on Linux and other \*nix
+systems running X11 or Wayland, where:
+
+- `"+` contains the CLIPBOARD selection, usually set with `^C` or by selecting
+  "Copy Image" in a menu dialog.
+- `"*` contains the PRIMARY selection, usually contains last selected text) on X11.
+
+So, for example, if you had copied an image from a web browser on Linux
+(placing it into the CLIPBOARD selection), you could paste it into `iamb` with
+`"+p`. Or, if you instead selected some text with your cursor (placing it into
+the PRIMARY selection), then you could paste it with `"*p`.
 
 ## Message Scrollback
 
