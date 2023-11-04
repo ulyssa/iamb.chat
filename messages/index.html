@@ -155,8 +155,19 @@ completions.</p>
 focused room:</p>
 <pre><code>:upload &quot;/home/user/Documents/Shared Document.pdf&quot;
 </code></pre>
-<p>Clipboard images can be uploaded by pasting from the clipboard register <code>&quot;*p</code>,
-and following the confirmation dialog.</p>
+<p>Clipboard images can be uploaded by pasting with <code>p</code> or <code>P</code> from the <code>&quot;+</code> and
+<code>&quot;*</code> registers, and following the confirmation dialog. On macOS and Windows
+they contain the same contents, but they differ on Linux and other *nix
+systems running X11 or Wayland, where:</p>
+<ul>
+<li><code>&quot;+</code> contains the CLIPBOARD selection, usually set with <code>^C</code> or by selecting
+“Copy Image” in a menu dialog.</li>
+<li><code>&quot;*</code> contains the PRIMARY selection, usually contains last selected text) on X11.</li>
+</ul>
+<p>So, for example, if you had copied an image from a web browser on Linux
+(placing it into the CLIPBOARD selection), you could paste it into <code>iamb</code> with
+<code>&quot;+p</code>. Or, if you instead selected some text with your cursor (placing it into
+the PRIMARY selection), then you could paste it with <code>&quot;*p</code>.</p>
 <h2 id="message-scrollback"><a class="header" href="#message-scrollback">Message Scrollback</a></h2>
 <p>You can scroll through messages from the message bar using the following keys:</p>
 <ul>
