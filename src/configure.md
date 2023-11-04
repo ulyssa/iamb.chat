@@ -36,6 +36,13 @@ $ iamb -P admin
 Logging in for @user1:example.com...
 ```
 
+Several of the fields that you can place under the global configuration can also be
+placed within profile configurations to achieve per-profile values:
+
+- `"settings"`
+- `"dirs"`
+- `"layout"`
+
 ## Settings
 
 | Name                         | Default              | Description                                                                                                                       |
