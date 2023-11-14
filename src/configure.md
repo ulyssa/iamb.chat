@@ -48,6 +48,7 @@ placed within profile configurations to achieve per-profile values:
 | Name                         | Default              | Description                                                                                                                       |
 | ---------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `default_room`               |                      | A default room name or username to open at startup, in place of showing the welcome screen.                                       |
+| `image_preview`              | (unset)              | Configures displaying image attachments for terminals that support previewing images. See [Image Previews](#image-previews).      |
 | `log_level`                  | `"info"`             | Configures the minimum log level. Valid values are `"trace"`, `"debug"`, `"info"`, `"warn"` or `"error"`.                         |
 | `open_command`               |                      | Configures a command to use for opening downloads instead of the default. (e.g., `["my-open", "--file"]` to run a custom script   |
 | `request_timeout`            | 120                  | How long to wait in seconds before timing out requests to the homeserver.                                                         |
@@ -134,17 +135,76 @@ at last exit, you can specify an array of tabs and the window tree in each one:
 }
 ```
 
+## Image Previews
+
+When the `"image_preview"` object is added to your `"settings"`, __iamb__ will
+try to detect an appropriate way to show previews of image attachments:
+
+```json
+{
+    "settings": {
+        "image_preview": {}
+    }
+}
+```
+
+There are several different supported ways of showing images:
+
+- `"sixel"`, a method supported by several different terminals (see [arewesixelyet.com])
+- `"kitty"`, a method supported by the [Kitty] terminal (requires at least version 0.28.0)
+- `"halfblocks"`, a pixelated representation of the image using colored blocks, and used as a fallback
+
+If a method that works for your terminal can't be autodetected (e.g., when
+running on Windows or in a terminal that doesn't provide pixel information),
+you can manually specify how image previews are done using the `"protocol"`
+field:
+
+```json
+{
+    "settings": {
+        "image_preview": {
+            "protocol": {
+                "type": "halfblocks",
+                "font_size": [ 11, 26 ]
+            }
+        }
+    }
+}
+```
+
+The `"type"` field is one of the three methods from above, and `"font_size"`
+can be used to specify the width and height of each character cell in pixels.
+(Like specifying the `"type"`, this is only necessary if the size in pixels
+can't be detected normally using the standard terminal `ioctl` calls.)  
+
+You can control the maximum amount of columns/rows that the images take up in
+the scrollback using the `"size"` field:
+
+```json
+{
+    "settings": {
+        "image_preview": {
+            "size": {
+                "height": 10,
+                "width": 66
+            }
+        }
+    }
+}
+```
+
 ## Directories
 
 __iamb__ will use the standard directories for your operating system, but you
 can override them by placing a `"dirs"` field in your `config.json` containing
 any of the following fields:
 
-| Name                    | Default              | Description                                                        |
-| ----------------------- | -------------------- | ------------------------------------------------------------------ |
-| `cache`                 | [dirs::cache_dir]    | Directory for __iamb__ data and output that can be safely deleted. |
-| `logs`                  | `${cache}/logs`      | Output directory for __iamb__ logs.                                |
-| `downloads`             | [dirs::download_dir] | Output directory for downloaded attachments.                       |
+| Name                    | Default                            | Description                                                             |
+| ----------------------- | ---------------------------------- | ----------------------------------------------------------------------- |
+| `cache`                 | [dirs::cache_dir]                  | Directory for __iamb__ data and output that can be safely deleted.      |
+| `logs`                  | `${cache}/logs`                    | Output directory for __iamb__ logs.                                     |
+| `downloads`             | [dirs::download_dir]               | Output directory for downloaded attachments.                            |
+| `image_previews`        | `${cache}/image_preview_downloads` | Output directory for caching image displayed when using `image_preview` |
 
 ## User Display
 
@@ -156,7 +216,7 @@ You can override how individual users get displayed in the scrollback using the
 | `color`                 | Determined per-user  | The color to use when showing this user on the screen.             |
 | `name`                  | Determined per-user  | The name to use when showing this user on the screen.              |
 
-Valid values for the `"colors"` field are:
+Valid values for the `"color"` field are:
 
 - `"black"`
 - `"blue"`
@@ -206,6 +266,8 @@ table th:nth-of-type(3) {
 }
 </style>
 
+[arewesixelyet.com]: https://www.arewesixelyet.com/
 [dirs::cache_dir]: https://docs.rs/dirs/latest/dirs/fn.cache_dir.html
 [dirs::config_dir]: https://docs.rs/dirs/latest/dirs/fn.config_dir.html
 [dirs::download_dir]: https://docs.rs/dirs/latest/dirs/fn.download_dir.html
+[Kitty]: https://sw.kovidgoyal.net/kitty/
