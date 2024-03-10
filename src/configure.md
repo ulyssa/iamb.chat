@@ -151,6 +151,7 @@ try to detect an appropriate way to show previews of image attachments:
 There are several different supported ways of showing images:
 
 - `"sixel"`, a method supported by several different terminals (see [arewesixelyet.com])
+- `"iterm2"`, a method supported by the [iTerm2] terminal for macOS
 - `"kitty"`, a method supported by the [Kitty] terminal (requires at least version 0.28.0)
 - `"halfblocks"`, a pixelated representation of the image using colored blocks, and used as a fallback
 
@@ -270,4 +271,5 @@ table th:nth-of-type(3) {
 [dirs::cache_dir]: https://docs.rs/dirs/latest/dirs/fn.cache_dir.html
 [dirs::config_dir]: https://docs.rs/dirs/latest/dirs/fn.config_dir.html
 [dirs::download_dir]: https://docs.rs/dirs/latest/dirs/fn.download_dir.html
+[iTerm2]: https://iterm2.com/
 [Kitty]: https://sw.kovidgoyal.net/kitty/
