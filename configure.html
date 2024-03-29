@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/css/custom.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -75,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html" class="active"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="verify.html"><strong aria-hidden="true">3.</strong> Verification</a></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html" class="active"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -138,129 +139,260 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
-<p><strong>iamb</strong> is configurable via a JSON configuration file located in the
+<p><strong>iamb</strong> is configurable via a TOML configuration file located in the
 configuration directory. By default, the configuration directory is determined
 by <a href="https://docs.rs/dirs/latest/dirs/fn.config_dir.html">dirs::config_dir</a>, but you can override it at startup with the <code>-C</code>
 command-line flag.</p>
 <h2 id="profiles"><a class="header" href="#profiles">Profiles</a></h2>
-<p>You can configure a Matrix account in your <code>config.json</code> by adding a new field
-to the <code>&quot;profiles&quot;</code> object. For example, if you had two different accounts on
-your homeserver:</p>
-<pre><code class="language-json">{
-    &quot;profiles&quot;: {
-        &quot;admin&quot;: {
-            &quot;user_id&quot;: &quot;@user1:example.com&quot;,
-            &quot;url&quot;: &quot;https://example.com&quot;
-        },
-        &quot;user&quot;: {
-            &quot;user_id&quot;: &quot;@user2:example.com&quot;,
-            &quot;url&quot;: &quot;https://example.com&quot;
-        }
-    },
-    &quot;default_profile&quot;: &quot;user&quot;
-}
+<p>You can configure a Matrix account in your <code>config.toml</code> by creating a
+<code>profiles</code> subsection with a <code>user_id</code> field specifying your account:</p>
+<pre><code class="language-toml">[profiles.user]
+user_id = &quot;@user2:example.com&quot;
 </code></pre>
-<p>With the <code>&quot;default_profile&quot;</code> field set, <strong>iamb</strong> will default to using the
+<p>When you start <strong>iamb</strong> for the first time, it will ask you whether you want to
+log in with a password (enter <code>p</code> to select), or SSO (enter <code>s</code> to select). If
+you choose SSO, then a page will open in your browser to go through the SSO
+authentication flow.</p>
+<h3 id="multiple-profiles"><a class="header" href="#multiple-profiles">Multiple Profiles</a></h3>
+<p>You can create multiple profiles for different accounts or settings by adding
+additional subsections to the <code>profiles</code> section:</p>
+<pre><code class="language-toml">default_profile = &quot;user&quot;
+
+[profiles.admin]
+user_id = &quot;@user1:example.com&quot;
+
+[profiles.user]
+user_id = &quot;@user2:example.com&quot;
+</code></pre>
+<p>With the <code>default_profile</code> field set, <strong>iamb</strong> will default to using the
 <code>user</code> profile at startup. You can manually specify what you want via the <code>-P</code>
 flag. For example:</p>
 <pre><code>$ iamb -P admin
 Logging in for @user1:example.com...
 </code></pre>
-<p>Several of the fields that you can place under the global configuration can also be
-placed within profile configurations to achieve per-profile values:</p>
+<h3 id="per-profile-configuration"><a class="header" href="#per-profile-configuration">Per-Profile Configuration</a></h3>
+<p>Several of the sectioncs that you can place under the global configuration can
+also be placed within profile configurations to achieve per-profile values:</p>
 <ul>
-<li><code>&quot;settings&quot;</code></li>
-<li><code>&quot;dirs&quot;</code></li>
-<li><code>&quot;layout&quot;</code></li>
+<li><code>dirs</code></li>
+<li><code>layout</code></li>
+<li><code>macros</code></li>
+<li><code>settings</code></li>
 </ul>
+<p>Per-profile values will be merged on top of the global values. For example:</p>
+<pre><code class="language-toml">[profiles.user.layout]
+style = &quot;restore&quot;
+
+[profiles.admin.layout]
+style = &quot;new&quot;
+</code></pre>
+<h3 id="explicit-homeserver-urls"><a class="header" href="#explicit-homeserver-urls">Explicit Homeserver URLs</a></h3>
+<p>If your homeserver is located on a different domain than the server part of the
+<code>user_id</code> and you don’t have a <a href="https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient"><code>/.well-known</code></a> entry, then
+you can explicitly specify the homeserver URL to use:</p>
+<pre><code class="language-toml">default_profile = &quot;user&quot;
+
+[profiles.admin]
+user_id = &quot;@user1:example.com&quot;
+url = &quot;https://example.com&quot;
+
+[profiles.user]
+user_id = &quot;@user2:example.com&quot;
+url = &quot;https://example.com&quot;
+</code></pre>
 <h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
+<tr><td><code>image_preview</code></td><td>(unset)</td><td>Configures displaying image attachments for terminals that support previewing images. See <a href="#image-previews">Image Previews</a> below.</td></tr>
 <tr><td><code>log_level</code></td><td><code>&quot;info&quot;</code></td><td>Configures the minimum log level. Valid values are <code>&quot;trace&quot;</code>, <code>&quot;debug&quot;</code>, <code>&quot;info&quot;</code>, <code>&quot;warn&quot;</code> or <code>&quot;error&quot;</code>.</td></tr>
+<tr><td><code>message_user_color</code></td><td><code>false</code></td><td>Whether to color entire messages using the same color used for the sender’s username and display name.</td></tr>
+<tr><td><code>message_shortcode_display</code></td><td><code>false</code></td><td>Whether to replace Emojis in message bodies with their shortcodes.</td></tr>
+<tr><td><code>notifications</code></td><td>(unset)</td><td>Whether to generate desktop notifications for messages sent to rooms not currently being viewed. See <a href="#notifications">Notifications</a></td></tr>
 <tr><td><code>open_command</code></td><td></td><td>Configures a command to use for opening downloads instead of the default. (e.g., <code>[&quot;my-open&quot;, &quot;--file&quot;]</code> to run a custom script</td></tr>
-<tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
 <tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
 <tr><td><code>reaction_shortcode_display</code></td><td><code>false</code></td><td>Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won’t be displayed.</td></tr>
-<tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
 <tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to display read receipts next to messages in the room scrollback.</td></tr>
-<tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
+<tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
+<tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
+<tr><td><code>sort</code></td><td></td><td>Configures how to sort the lists in different windows like <code>:rooms</code> or <code>:members</code>. See <a href="#sorting-lists">Sorting Lists</a> below.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
+<tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
+<tr><td><code>user_gutter_width</code></td><td><code>30</code></td><td>How much space to reserve for displaying the message sender in room history.</td></tr>
 <tr><td><code>users</code></td><td><code>{}</code></td><td>Configure how other users get displayed in the client. See <a href="#user-display">User Display</a>.</td></tr>
 <tr><td><code>username_display</code></td><td><code>&quot;username&quot;</code></td><td>Configure what name is shown for senders. Valid values are <code>&quot;username&quot;</code> (e.g., <code>@user:example.org</code>), <code>&quot;localpart&quot;</code> (e.g., <code>user</code>), or <code>&quot;displayname&quot;</code> (e.g., <code>User Name</code>)</td></tr>
 </tbody></table>
 <p>For example, if you wanted to raise the timeout to accommodate a long initial
 sync, and show more log messages, you could put the following into your
-<code>config.json</code>:</p>
-<pre><code class="language-json">{
-    &quot;settings&quot;: {
-        &quot;log_level&quot;: &quot;debug&quot;,
-        &quot;request_timeout&quot;: 180
-    }
-}
+<code>config.toml</code>:</p>
+<pre><code class="language-toml">[settings]
+log_level = &quot;debug&quot;
+request_timeout = 180
 </code></pre>
+<h3 id="image-previews"><a class="header" href="#image-previews">Image Previews</a></h3>
+<p>When the <code>settings.image_preview</code> subsection is present, <strong>iamb</strong> will
+try to detect an appropriate way to show previews of image attachments:</p>
+<pre><code class="language-toml">[settings]
+image_preview = {}
+</code></pre>
+<p>There are several different supported ways of showing images:</p>
+<ul>
+<li><code>&quot;sixel&quot;</code>, a method supported by several different terminals (see <a href="https://www.arewesixelyet.com/">arewesixelyet.com</a>)</li>
+<li><code>&quot;iterm2&quot;</code>, a method supported by the <a href="https://iterm2.com/">iTerm2</a> terminal for macOS</li>
+<li><code>&quot;kitty&quot;</code>, a method supported by the <a href="https://sw.kovidgoyal.net/kitty/">Kitty</a> terminal (requires at least version 0.28.0)</li>
+<li><code>&quot;halfblocks&quot;</code>, a pixelated representation of the image using colored blocks, and used as a fallback</li>
+</ul>
+<p>If a method that works for your terminal can’t be autodetected (e.g., when
+running on Windows or in a terminal that doesn’t provide pixel information),
+you can manually specify how image previews are done using the <code>&quot;protocol&quot;</code>
+field:</p>
+<pre><code class="language-toml">[settings.image_preview]
+protocol.type = &quot;halfblocks&quot;
+protocol.font_size = [ 11, 26 ]
+</code></pre>
+<p>The <code>&quot;type&quot;</code> field is one of the three methods from above, and <code>&quot;font_size&quot;</code>
+can be used to specify the width and height of each character cell in pixels.
+(Like specifying the <code>&quot;type&quot;</code>, this is only necessary if the size in pixels
+can’t be detected normally using the standard terminal <code>ioctl</code> calls.)</p>
+<p>You can control the maximum amount of columns/rows that the images take up in
+the scrollback using the <code>&quot;size&quot;</code> field:</p>
+<pre><code class="language-toml">[settings.image_preview]
+size = { height = 10, width = 66 }
+</code></pre>
+<h3 id="notifications"><a class="header" href="#notifications">Notifications</a></h3>
+<p>The <code>settings.notifications</code> section allows enabling notifications for messages
+sent to rooms not currently open. For example, to enable desktop notifications,
+you can put the following in your configuration:</p>
+<pre><code class="language-toml">[settings.notifications]
+enabled = true
+</code></pre>
+<h4 id="notification-fields"><a class="header" href="#notification-fields">Notification fields</a></h4>
+<table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>enabled</code></td><td><code>false</code></td><td>Whether to send notifications</td></tr>
+<tr><td><code>show_message</code></td><td><code>true</code></td><td>Whether to include the message body when showing the notification</td></tr>
+<tr><td><code>via</code></td><td><code>&quot;desktop&quot;</code></td><td>How to deliver the notification: <code>&quot;desktop&quot;</code> for desktop mechanism, or <code>&quot;bell&quot;</code> for terminal bell.</td></tr>
+</tbody></table>
+<h3 id="sorting-lists"><a class="header" href="#sorting-lists">Sorting Lists</a></h3>
+<p>The <code>settings.sort</code> section allows you to customize how lists of rooms or users are
+sorted in the different <strong>iamb</strong> windows by specifying which values you want to
+sort on. Values are provided as an array of fields, with an optional leading <code>~</code>
+to flip the sort order from ascending to descending.</p>
+<p>For example, if you wanted to group users in the <code>:members</code> list together by their
+ascending server name and descending localparts, you could do:</p>
+<pre><code class="language-toml">[settings.sort]
+members = [&quot;server&quot;, &quot;~localpart&quot;]
+</code></pre>
+<h3 id="sort-fields"><a class="header" href="#sort-fields">Sort Fields</a></h3>
+<table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>rooms</code></td><td><code>[&quot;favorite&quot;, &quot;lowpriority&quot;, &quot;unread&quot;, &quot;name&quot;]</code></td><td>How to sort the <code>:rooms</code> window</td></tr>
+<tr><td><code>chats</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:chats</code> window</td></tr>
+<tr><td><code>dms</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:dms</code> window</td></tr>
+<tr><td><code>spaces</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:spaces</code> window</td></tr>
+<tr><td><code>members</code></td><td><code>[&quot;power&quot;, &quot;id&quot;]</code></td><td>How to sort the <code>:members</code> window</td></tr>
+</tbody></table>
+<h4 id="room-fields"><a class="header" href="#room-fields">Room Fields</a></h4>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>&quot;favorite&quot;</code></td><td>Sort rooms with the “Favorite” tag towards the top.</td></tr>
+<tr><td><code>&quot;lowpriority&quot;</code></td><td>Sort rooms with the “Low Priority” tag towards the bottom.</td></tr>
+<tr><td><code>&quot;recent&quot;</code></td><td>Sort rooms with recent messages towards the top.</td></tr>
+<tr><td><code>&quot;unread&quot;</code></td><td>Sort rooms with unread messages towards the top.</td></tr>
+<tr><td><code>&quot;name&quot;</code></td><td>Sort rooms alphabetically by their room name.</td></tr>
+<tr><td><code>&quot;alias&quot;</code></td><td>Sort rooms alphabetically by thei canonical alias (e.g., <code>#iamb-users:0x.badd.cafe</code>)</td></tr>
+<tr><td><code>&quot;id&quot;</code></td><td>Sort rooms alphabetically by their unique room identifier (e.g., <code>!nQTgloqKBScxNjsQzR:0x.badd.cafe</code>).</td></tr>
+</tbody></table>
+<h4 id="user-fields"><a class="header" href="#user-fields">User Fields</a></h4>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>&quot;power&quot;</code></td><td>Sort users by decreasing power level.</td></tr>
+<tr><td><code>&quot;id&quot;</code></td><td>Sort users alphabetically by their username (e.g. <code>@user:example.com</code>)</td></tr>
+<tr><td><code>&quot;localpart&quot;</code></td><td>Sort users alphabetically by the localpart of their username (e.g. the <code>@user</code> portion of <code>@user:example.com</code></td></tr>
+<tr><td><code>&quot;server&quot;</code></td><td>Sort users alphabetically by the server in their username (e.g. the <code>example.com</code> portion of <code>@user:example.com</code>)</td></tr>
+</tbody></table>
 <h2 id="startup-layout"><a class="header" href="#startup-layout">Startup Layout</a></h2>
 <p>You can configure what windows get shown when <strong>iamb</strong> starts by adding a
-<code>&quot;layout&quot;</code> object.</p>
+<code>layout</code> section.</p>
 <h3 id="restore-previous-layout"><a class="header" href="#restore-previous-layout">Restore Previous Layout</a></h3>
 <p>By default, the client will try to restore all of the tabs and windows from the
 last time it was run. You can explicitly configure this behaviour with:</p>
-<pre><code class="language-json">{
-    &quot;layout&quot;: { &quot;style&quot;: &quot;restore&quot; }
-}
+<pre><code class="language-toml">[layout]
+style = &quot;restore&quot;
 </code></pre>
 <h3 id="new-window"><a class="header" href="#new-window">New Window</a></h3>
 <p>If you want to see a single new window each time you start up, you can set:</p>
-<pre><code class="language-json">{
-    &quot;layout&quot;: { &quot;style&quot;: &quot;new&quot; }
-}
+<pre><code class="language-toml">[layout]
+style = &quot;new&quot;
 </code></pre>
 <p>This will show the <code>:welcome</code> window by default, but you can set
 <code>&quot;default_room&quot;</code> to change it to something else.</p>
 <h3 id="configured-layout"><a class="header" href="#configured-layout">Configured Layout</a></h3>
 <p>If you want to start up with the same layout every time regardless of the state
 at last exit, you can specify an array of tabs and the window tree in each one:</p>
-<pre><code class="language-json">{
-    &quot;layout&quot;: {
-        &quot;style&quot;: &quot;config&quot;,
-        &quot;tabs&quot;: [
-            {
-                &quot;split&quot;: [
-                    { &quot;window&quot;: &quot;#room1:example.org&quot; },
-                    { &quot;window&quot;: &quot;#room2:example.org&quot; }
-                ]
-            },
-            {
-                &quot;split&quot;: [
-                    {
-                        &quot;split&quot;: [
-                            { &quot;window&quot;: &quot;#room3:example.org&quot; },
-                            { &quot;window&quot;: &quot;#room4:example.org&quot; }
-                        ]
-                    },
-                    { &quot;window&quot;: &quot;@user:example.org&quot; }
-                ]
-            }
-        ]
-    }
-}
+<pre><code class="language-toml">[layout]
+style = &quot;config&quot;
+
+[[layout.tabs]]
+split = [
+    { window = &quot;#room1:example.org&quot; },
+    { window = &quot;#room2:example.org&quot; }
+]
+
+[[layout.tabs]]
+split = [
+    { split = [ { window = &quot;#room3:example.org&quot; }, { window = &quot;#room4:example.org&quot; } ] },
+    { window = &quot;@user:example.org&quot; }
+]
 </code></pre>
+<h2 id="custom-keybindings"><a class="header" href="#custom-keybindings">Custom Keybindings</a></h2>
+<p>You can add custom keybindings in <code>macros</code> subsections, which describes the Vim
+modes to map the commands to, the input keys you want to map, and the keys that
+you want it to then run. These keybindings behave like macros when a count is
+given, and will repeat the target key sequnce <em>n</em> times.</p>
+<p>For example, you could use the following to map <code>jj</code> to <code>&lt;Esc&gt;</code> in Insert mode
+and <code>V</code> to <code>&lt;C-W&gt;m</code> in Normal and Visual mode:</p>
+<pre><code class="language-toml">[macros.insert]
+&quot;jj&quot; = &quot;&lt;Esc&gt;&quot;
+
+[macros.&quot;normal|visual&quot;]
+&quot;V&quot; = &quot;&lt;C-W&gt;m&quot;
+</code></pre>
+<p>The available modes are:</p>
+<ul>
+<li><code>normal</code>/<code>n</code> for Normal mode</li>
+<li><code>insert</code>/<code>i</code> for Insert mode</li>
+<li><code>visual</code>/<code>v</code> for Visual mode</li>
+<li><code>command</code>/<code>c</code> for Command mode</li>
+<li><code>select</code> for Select mode</li>
+<li><code>operator-pending</code> for Operator Pending mode</li>
+</ul>
+<p>Use <code>|</code> to specify that something should be mapped in several modes.</p>
+<blockquote>
+<p>If you are unsure how to represent a key, you can you record a macro that use
+it and then look at its representation in the register. For example, you could
+do the following to find the value of the left arrow key:</p>
+<ul>
+<li>Type <code>qa</code> to start recording to the <code>a</code> register</li>
+<li>Press the left arrow key</li>
+<li>Press <code>q</code> to stop recording</li>
+<li>Type <code>&quot;ap</code> to paste the contents of the <code>a</code> register, yielding <code>&lt;Left&gt;</code></li>
+</ul>
+</blockquote>
 <h2 id="directories"><a class="header" href="#directories">Directories</a></h2>
 <p><strong>iamb</strong> will use the standard directories for your operating system, but you
-can override them by placing a <code>&quot;dirs&quot;</code> field in your <code>config.json</code> containing
+can override them by placing a <code>&quot;dirs&quot;</code> field in your <code>config.toml</code> containing
 any of the following fields:</p>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>cache</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.cache_dir.html">dirs::cache_dir</a></td><td>Directory for <strong>iamb</strong> data and output that can be safely deleted.</td></tr>
+<tr><td><code>cache</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.cache_dir.html"><code>${dirs::cache_dir}</code></a><code>/iamb</code></td><td>Directory for <strong>iamb</strong> data and output that can be safely deleted.</td></tr>
+<tr><td><code>data</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.data_dir.html"><code>${dirs::data_dir}</code></a><code>/iamb</code></td><td>Directory for <strong>iamb</strong> data persisted between sessions, like E2EE keys.</td></tr>
+<tr><td><code>downloads</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.download_dir.html"><code>${dirs::download_dir}</code></a></td><td>Output directory for downloaded attachments.</td></tr>
+<tr><td><code>image_previews</code></td><td><code>${cache}/image_preview_downloads</code></td><td>Output directory for caching image displayed when using <code>image_preview</code></td></tr>
 <tr><td><code>logs</code></td><td><code>${cache}/logs</code></td><td>Output directory for <strong>iamb</strong> logs.</td></tr>
-<tr><td><code>downloads</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.download_dir.html">dirs::download_dir</a></td><td>Output directory for downloaded attachments.</td></tr>
 </tbody></table>
 <h2 id="user-display"><a class="header" href="#user-display">User Display</a></h2>
 <p>You can override how individual users get displayed in the scrollback using the
-<code>&quot;users&quot;</code> field of the <code>&quot;settings&quot;</code> object.</p>
+<code>settings.users</code> section.</p>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>color</code></td><td>Determined per-user</td><td>The color to use when showing this user on the screen.</td></tr>
 <tr><td><code>name</code></td><td>Determined per-user</td><td>The name to use when showing this user on the screen.</td></tr>
 </tbody></table>
-<p>Valid values for the <code>&quot;colors&quot;</code> field are:</p>
+<p>Valid values for the <code>color</code> field are:</p>
 <ul>
 <li><code>&quot;black&quot;</code></li>
 <li><code>&quot;blue&quot;</code></li>
@@ -281,16 +413,8 @@ any of the following fields:</p>
 <li><code>&quot;yellow&quot;</code></li>
 </ul>
 <p>For example, if you wanted to override how a bot in a room gets displayed:</p>
-<pre><code class="language-json">{
-    &quot;settings&quot;: {
-        &quot;users&quot;: {
-            &quot;@jenkins:example.com&quot;: {
-                &quot;name&quot;: &quot;jenkins (CI BOT)&quot;,
-                &quot;color&quot;: &quot;light-red&quot;
-            }
-        }
-    }
-}
+<pre><code class="language-toml">[settings.users]
+&quot;@jenkins:example.com&quot; = { name = &quot;jenkins (CI BOT)&quot;, color = &quot;light-red&quot; }
 </code></pre>
 <style>
 table {
@@ -314,7 +438,7 @@ table th:nth-of-type(3) {
                             <a rel="prev" href="install.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="verify.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="e2ee/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -326,7 +450,7 @@ table th:nth-of-type(3) {
                     <a rel="prev" href="install.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="verify.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="e2ee/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

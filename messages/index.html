@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/css/custom.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -75,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../verify.html"><strong aria-hidden="true">3.</strong> Verification</a></li><li class="chapter-item expanded "><a href="../rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="../rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="../rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="../messages/index.html" class="active"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="../layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="../layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="../commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="../keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="../e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="../rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="../rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="../rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="../messages/index.html" class="active"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="../layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="../layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="../commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="../keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -144,12 +145,12 @@ wish to send. When it’s complete, you can send it by pressing the <code>&lt;En
 key from either Normal or Insert mode.</p>
 <blockquote>
 <p>If you need to type a multiline message, you can start a line by typing
-<code>^V^J</code>.  You can also use the <code>O</code> and <code>o</code> keys to insert a blank line before
-or after the current line respectively.</p>
+<code>&lt;C-V&gt;&lt;C-J&gt;</code>. You can also use the <code>O</code> and <code>o</code> keys to insert a blank line
+before or after the current line respectively.</p>
 </blockquote>
 <p>From within the message bar, you can complete Matrix usernames, room aliases
-and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>^N</code> and <code>^P</code>
-to start cycling forwards or backwards through the list of possible
+and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
+<code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
 completions.</p>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>
@@ -160,23 +161,29 @@ focused room:</p>
 they contain the same contents, but they differ on Linux and other *nix
 systems running X11 or Wayland, where:</p>
 <ul>
-<li><code>&quot;+</code> contains the CLIPBOARD selection, usually set with <code>^C</code> or by selecting
-“Copy Image” in a menu dialog.</li>
-<li><code>&quot;*</code> contains the PRIMARY selection, usually contains last selected text) on X11.</li>
+<li><code>&quot;+</code> contains the CLIPBOARD selection, which is usually set in a GUI
+application with <code>&lt;C-C&gt;</code> or by selecting “Copy Image” in a menu dialog.</li>
+<li><code>&quot;*</code> contains the PRIMARY selection, which is usually the last selected text
+in X11 or Wayland.</li>
 </ul>
 <p>So, for example, if you had copied an image from a web browser on Linux
 (placing it into the CLIPBOARD selection), you could paste it into <code>iamb</code> with
 <code>&quot;+p</code>. Or, if you instead selected some text with your cursor (placing it into
 the PRIMARY selection), then you could paste it with <code>&quot;*p</code>.</p>
+<blockquote>
+<p>If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
+text editor, you can use the <code>:editor</code> command to launch your configured
+<code>$EDITOR</code>.</p>
+</blockquote>
 <h2 id="message-scrollback"><a class="header" href="#message-scrollback">Message Scrollback</a></h2>
 <p>You can scroll through messages from the message bar using the following keys:</p>
 <ul>
-<li><code>^E</code>/<code>^Y</code> to scroll downwards and upwards respectively a line at a time</li>
-<li><code>^D</code>/<code>^U</code> to scroll downwards and upwards respectively by half the window height</li>
-<li><code>^F</code>/<code>^B</code> to scroll downwards and upwards respectively by the window height</li>
+<li><code>&lt;C-E&gt;</code>/<code>&lt;C-Y&gt;</code> to scroll downwards and upwards respectively a line at a time</li>
+<li><code>&lt;C-D&gt;</code>/<code>&lt;C-U&gt;</code> to scroll downwards and upwards respectively by half the window height</li>
+<li><code>&lt;C-F&gt;</code>/<code>&lt;C-B&gt;</code> to scroll downwards and upwards respectively by the window height</li>
 </ul>
 <p>If you want to use movement keys to select individual messages, you can toggle
-focus between the message bar and the scrollback by pressing <code>^Wm</code>.</p>
+focus between the message bar and the scrollback by pressing <code>&lt;C-W&gt;m</code>.</p>
 <p>The plaintext content of messages can be copied to registers using yank
 keybindings like <code>yy</code> or <code>Y</code>, and marked with <code>m{a-z}</code>. Marked messages can
 then be returned to via <code>'{a-z}</code>.</p>
@@ -234,6 +241,11 @@ configured <code>downloads</code> directory</li>
 <p>If there is already a file of the same name, <strong>iamb</strong> will not overwrite it.
 You can use <code>:download!</code> to replace the file.</p>
 <p>To open the file after downloading the file, use the <code>:open</code> command instead.</p>
+<h2 id="opening-links"><a class="header" href="#opening-links">Opening Links</a></h2>
+<p>Links in messages are each assigned a number (or a letter when there are more
+than 10 links), which is shown within brackets (like <code>[0]</code>). You can use
+<code>:open</code> to view a list of their matching URLs, and pick one to open in a
+browser by typing its assigned character.</p>
 
                     </main>
 

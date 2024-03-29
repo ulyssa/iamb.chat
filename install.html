@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/css/custom.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -75,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html" class="active"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="verify.html"><strong aria-hidden="true">3.</strong> Verification</a></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html" class="active"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -139,21 +140,36 @@
                     <main>
                         <h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <h2 id="from-a-package-manager"><a class="header" href="#from-a-package-manager">From a package manager</a></h2>
+<p>Several community members have taken care of setting up packages for their
+preferred operating systems and distributions. If you don’t see your system
+on this page, try checking <a href="https://repology.org/project/iamb/versions">repology</a> to see whether one exists for your
+system.</p>
 <h3 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h3>
 <p>Using your preferred <a href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>, you can install <code>iamb-git</code>. For example,
 using <code>paru</code>:</p>
 <pre><code>paru iamb-git
 </code></pre>
-<h3 id="netbsd"><a class="header" href="#netbsd">NetBSD</a></h3>
+<h3 id="netbsd--pkgsrc"><a class="header" href="#netbsd--pkgsrc">NetBSD / pkgsrc</a></h3>
+<p>On NetBSD (or any other system <a href="https://pkgsrc.smartos.org/">with pkgsrc available</a>), you can
+install the <code>iamb</code> package:</p>
 <pre><code>pkgin install iamb
 </code></pre>
 <h3 id="nixos"><a class="header" href="#nixos">NixOS</a></h3>
-<p>There is an <code>iamb</code> package available in the 23.05 channel, or, if you have
+<p>There is an <code>iamb</code> package available in the 23.11 channel, or, if you have
 <a href="https://nixos.wiki/wiki/Flakes#Enable_flakes">enabled flakes</a> in Nix, you can install <strong>iamb</strong> from the Git repository via:</p>
 <pre><code>nix profile install &quot;github:ulyssa/iamb/latest&quot;
 </code></pre>
 <p>You can replace <code>latest</code> with a branch or specific version tag name if you want
 to install something besides the most recent release (e.g. <code>main</code> or <code>v0.0.8</code>).</p>
+<h3 id="opensuse-tumbleweed"><a class="header" href="#opensuse-tumbleweed">openSUSE Tumbleweed</a></h3>
+<p>On openSUSE Tumbleweed a <a href="https://build.opensuse.org/package/show/home%3Asmolsheep/iamb">package</a> is available from openSUSE Build
+Service (OBS). You can install it using OBS Package Installer:</p>
+<pre><code>opi iamb
+</code></pre>
+<h3 id="snap"><a class="header" href="#snap">Snap</a></h3>
+<p>A snap is available for Linux distributions [which support it][install-snap]:</p>
+<pre><code>snap install iamb
+</code></pre>
 <h2 id="github-releases"><a class="header" href="#github-releases">GitHub Releases</a></h2>
 <p>You can find binaries built for x86_64 Linux from the <a href="https://github.com/ulyssa/iamb/releases/">Releases</a> page on GitHub.</p>
 <h2 id="from-cratesio"><a class="header" href="#from-cratesio">From crates.io</a></h2>
@@ -170,7 +186,7 @@ published, you can clone the source from <a href="https://github.com/ulyssa/iamb
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.8 (89bb107)
+iamb 0.0.9 (82645c8)
 </code></pre>
 
                     </main>

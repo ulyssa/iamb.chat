@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/css/custom.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -76,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="verify.html"><strong aria-hidden="true">3.</strong> Verification</a></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -146,11 +147,12 @@ fingers are used to from your favorite text editor!</p>
 <h2 id="reading-this-documentation"><a class="header" href="#reading-this-documentation">Reading This Documentation</a></h2>
 <p>This documentation indicates keybindings using the following conventions:</p>
 <ul>
-<li>The control key is shown with a leading caret; for example, <code>^W</code> is Ctrl-W.</li>
 <li>Named keys are shown between angle brackets; for example, <code>&lt;Space&gt;</code> is the
 space bar.</li>
+<li>Modifiers like the control key or shift are shown with their combining key
+between brackets; for example, <code>&lt;C-W&gt;</code> is Ctrl-W and <code>&lt;S-Tab&gt;</code> is Shift+Tab.</li>
 <li>Sequences of keys to be pressed are shown in the order to press them; for
-example, <code>^Wgf</code> indicates that you should type Ctrl-W, then g, and finally f.</li>
+example, <code>&lt;C-W&gt;gf</code> indicates that you should type Ctrl-W, then g, and finally f.</li>
 </ul>
 <h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
 <p><strong>iamb</strong> is free and open source. You can find the source code, report bugs and
@@ -171,21 +173,36 @@ you can file an issue there.</p>
 <p>iamb and its documentation are released under the <a href="https://github.com/ulyssa/iamb/blob/master/LICENSE">Apache License, Version 2.0</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <h2 id="from-a-package-manager"><a class="header" href="#from-a-package-manager">From a package manager</a></h2>
+<p>Several community members have taken care of setting up packages for their
+preferred operating systems and distributions. If you don’t see your system
+on this page, try checking <a href="https://repology.org/project/iamb/versions">repology</a> to see whether one exists for your
+system.</p>
 <h3 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h3>
 <p>Using your preferred <a href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>, you can install <code>iamb-git</code>. For example,
 using <code>paru</code>:</p>
 <pre><code>paru iamb-git
 </code></pre>
-<h3 id="netbsd"><a class="header" href="#netbsd">NetBSD</a></h3>
+<h3 id="netbsd--pkgsrc"><a class="header" href="#netbsd--pkgsrc">NetBSD / pkgsrc</a></h3>
+<p>On NetBSD (or any other system <a href="https://pkgsrc.smartos.org/">with pkgsrc available</a>), you can
+install the <code>iamb</code> package:</p>
 <pre><code>pkgin install iamb
 </code></pre>
 <h3 id="nixos"><a class="header" href="#nixos">NixOS</a></h3>
-<p>There is an <code>iamb</code> package available in the 23.05 channel, or, if you have
+<p>There is an <code>iamb</code> package available in the 23.11 channel, or, if you have
 <a href="https://nixos.wiki/wiki/Flakes#Enable_flakes">enabled flakes</a> in Nix, you can install <strong>iamb</strong> from the Git repository via:</p>
 <pre><code>nix profile install &quot;github:ulyssa/iamb/latest&quot;
 </code></pre>
 <p>You can replace <code>latest</code> with a branch or specific version tag name if you want
 to install something besides the most recent release (e.g. <code>main</code> or <code>v0.0.8</code>).</p>
+<h3 id="opensuse-tumbleweed"><a class="header" href="#opensuse-tumbleweed">openSUSE Tumbleweed</a></h3>
+<p>On openSUSE Tumbleweed a <a href="https://build.opensuse.org/package/show/home%3Asmolsheep/iamb">package</a> is available from openSUSE Build
+Service (OBS). You can install it using OBS Package Installer:</p>
+<pre><code>opi iamb
+</code></pre>
+<h3 id="snap"><a class="header" href="#snap">Snap</a></h3>
+<p>A snap is available for Linux distributions [which support it][install-snap]:</p>
+<pre><code>snap install iamb
+</code></pre>
 <h2 id="github-releases"><a class="header" href="#github-releases">GitHub Releases</a></h2>
 <p>You can find binaries built for x86_64 Linux from the <a href="https://github.com/ulyssa/iamb/releases/">Releases</a> page on GitHub.</p>
 <h2 id="from-cratesio"><a class="header" href="#from-cratesio">From crates.io</a></h2>
@@ -202,132 +219,263 @@ published, you can clone the source from <a href="https://github.com/ulyssa/iamb
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.8 (89bb107)
+iamb 0.0.9 (82645c8)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
-<p><strong>iamb</strong> is configurable via a JSON configuration file located in the
+<p><strong>iamb</strong> is configurable via a TOML configuration file located in the
 configuration directory. By default, the configuration directory is determined
 by <a href="https://docs.rs/dirs/latest/dirs/fn.config_dir.html">dirs::config_dir</a>, but you can override it at startup with the <code>-C</code>
 command-line flag.</p>
 <h2 id="profiles"><a class="header" href="#profiles">Profiles</a></h2>
-<p>You can configure a Matrix account in your <code>config.json</code> by adding a new field
-to the <code>&quot;profiles&quot;</code> object. For example, if you had two different accounts on
-your homeserver:</p>
-<pre><code class="language-json">{
-    &quot;profiles&quot;: {
-        &quot;admin&quot;: {
-            &quot;user_id&quot;: &quot;@user1:example.com&quot;,
-            &quot;url&quot;: &quot;https://example.com&quot;
-        },
-        &quot;user&quot;: {
-            &quot;user_id&quot;: &quot;@user2:example.com&quot;,
-            &quot;url&quot;: &quot;https://example.com&quot;
-        }
-    },
-    &quot;default_profile&quot;: &quot;user&quot;
-}
+<p>You can configure a Matrix account in your <code>config.toml</code> by creating a
+<code>profiles</code> subsection with a <code>user_id</code> field specifying your account:</p>
+<pre><code class="language-toml">[profiles.user]
+user_id = &quot;@user2:example.com&quot;
 </code></pre>
-<p>With the <code>&quot;default_profile&quot;</code> field set, <strong>iamb</strong> will default to using the
+<p>When you start <strong>iamb</strong> for the first time, it will ask you whether you want to
+log in with a password (enter <code>p</code> to select), or SSO (enter <code>s</code> to select). If
+you choose SSO, then a page will open in your browser to go through the SSO
+authentication flow.</p>
+<h3 id="multiple-profiles"><a class="header" href="#multiple-profiles">Multiple Profiles</a></h3>
+<p>You can create multiple profiles for different accounts or settings by adding
+additional subsections to the <code>profiles</code> section:</p>
+<pre><code class="language-toml">default_profile = &quot;user&quot;
+
+[profiles.admin]
+user_id = &quot;@user1:example.com&quot;
+
+[profiles.user]
+user_id = &quot;@user2:example.com&quot;
+</code></pre>
+<p>With the <code>default_profile</code> field set, <strong>iamb</strong> will default to using the
 <code>user</code> profile at startup. You can manually specify what you want via the <code>-P</code>
 flag. For example:</p>
 <pre><code>$ iamb -P admin
 Logging in for @user1:example.com...
 </code></pre>
-<p>Several of the fields that you can place under the global configuration can also be
-placed within profile configurations to achieve per-profile values:</p>
+<h3 id="per-profile-configuration"><a class="header" href="#per-profile-configuration">Per-Profile Configuration</a></h3>
+<p>Several of the sectioncs that you can place under the global configuration can
+also be placed within profile configurations to achieve per-profile values:</p>
 <ul>
-<li><code>&quot;settings&quot;</code></li>
-<li><code>&quot;dirs&quot;</code></li>
-<li><code>&quot;layout&quot;</code></li>
+<li><code>dirs</code></li>
+<li><code>layout</code></li>
+<li><code>macros</code></li>
+<li><code>settings</code></li>
 </ul>
+<p>Per-profile values will be merged on top of the global values. For example:</p>
+<pre><code class="language-toml">[profiles.user.layout]
+style = &quot;restore&quot;
+
+[profiles.admin.layout]
+style = &quot;new&quot;
+</code></pre>
+<h3 id="explicit-homeserver-urls"><a class="header" href="#explicit-homeserver-urls">Explicit Homeserver URLs</a></h3>
+<p>If your homeserver is located on a different domain than the server part of the
+<code>user_id</code> and you don’t have a <a href="https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient"><code>/.well-known</code></a> entry, then
+you can explicitly specify the homeserver URL to use:</p>
+<pre><code class="language-toml">default_profile = &quot;user&quot;
+
+[profiles.admin]
+user_id = &quot;@user1:example.com&quot;
+url = &quot;https://example.com&quot;
+
+[profiles.user]
+user_id = &quot;@user2:example.com&quot;
+url = &quot;https://example.com&quot;
+</code></pre>
 <h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
+<tr><td><code>image_preview</code></td><td>(unset)</td><td>Configures displaying image attachments for terminals that support previewing images. See <a href="configure.html#image-previews">Image Previews</a> below.</td></tr>
 <tr><td><code>log_level</code></td><td><code>&quot;info&quot;</code></td><td>Configures the minimum log level. Valid values are <code>&quot;trace&quot;</code>, <code>&quot;debug&quot;</code>, <code>&quot;info&quot;</code>, <code>&quot;warn&quot;</code> or <code>&quot;error&quot;</code>.</td></tr>
+<tr><td><code>message_user_color</code></td><td><code>false</code></td><td>Whether to color entire messages using the same color used for the sender’s username and display name.</td></tr>
+<tr><td><code>message_shortcode_display</code></td><td><code>false</code></td><td>Whether to replace Emojis in message bodies with their shortcodes.</td></tr>
+<tr><td><code>notifications</code></td><td>(unset)</td><td>Whether to generate desktop notifications for messages sent to rooms not currently being viewed. See <a href="configure.html#notifications">Notifications</a></td></tr>
 <tr><td><code>open_command</code></td><td></td><td>Configures a command to use for opening downloads instead of the default. (e.g., <code>[&quot;my-open&quot;, &quot;--file&quot;]</code> to run a custom script</td></tr>
-<tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
 <tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
 <tr><td><code>reaction_shortcode_display</code></td><td><code>false</code></td><td>Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won’t be displayed.</td></tr>
-<tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
 <tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to display read receipts next to messages in the room scrollback.</td></tr>
-<tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
+<tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
+<tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
+<tr><td><code>sort</code></td><td></td><td>Configures how to sort the lists in different windows like <code>:rooms</code> or <code>:members</code>. See <a href="configure.html#sorting-lists">Sorting Lists</a> below.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
+<tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
+<tr><td><code>user_gutter_width</code></td><td><code>30</code></td><td>How much space to reserve for displaying the message sender in room history.</td></tr>
 <tr><td><code>users</code></td><td><code>{}</code></td><td>Configure how other users get displayed in the client. See <a href="configure.html#user-display">User Display</a>.</td></tr>
 <tr><td><code>username_display</code></td><td><code>&quot;username&quot;</code></td><td>Configure what name is shown for senders. Valid values are <code>&quot;username&quot;</code> (e.g., <code>@user:example.org</code>), <code>&quot;localpart&quot;</code> (e.g., <code>user</code>), or <code>&quot;displayname&quot;</code> (e.g., <code>User Name</code>)</td></tr>
 </tbody></table>
 <p>For example, if you wanted to raise the timeout to accommodate a long initial
 sync, and show more log messages, you could put the following into your
-<code>config.json</code>:</p>
-<pre><code class="language-json">{
-    &quot;settings&quot;: {
-        &quot;log_level&quot;: &quot;debug&quot;,
-        &quot;request_timeout&quot;: 180
-    }
-}
+<code>config.toml</code>:</p>
+<pre><code class="language-toml">[settings]
+log_level = &quot;debug&quot;
+request_timeout = 180
 </code></pre>
+<h3 id="image-previews"><a class="header" href="#image-previews">Image Previews</a></h3>
+<p>When the <code>settings.image_preview</code> subsection is present, <strong>iamb</strong> will
+try to detect an appropriate way to show previews of image attachments:</p>
+<pre><code class="language-toml">[settings]
+image_preview = {}
+</code></pre>
+<p>There are several different supported ways of showing images:</p>
+<ul>
+<li><code>&quot;sixel&quot;</code>, a method supported by several different terminals (see <a href="https://www.arewesixelyet.com/">arewesixelyet.com</a>)</li>
+<li><code>&quot;iterm2&quot;</code>, a method supported by the <a href="https://iterm2.com/">iTerm2</a> terminal for macOS</li>
+<li><code>&quot;kitty&quot;</code>, a method supported by the <a href="https://sw.kovidgoyal.net/kitty/">Kitty</a> terminal (requires at least version 0.28.0)</li>
+<li><code>&quot;halfblocks&quot;</code>, a pixelated representation of the image using colored blocks, and used as a fallback</li>
+</ul>
+<p>If a method that works for your terminal can’t be autodetected (e.g., when
+running on Windows or in a terminal that doesn’t provide pixel information),
+you can manually specify how image previews are done using the <code>&quot;protocol&quot;</code>
+field:</p>
+<pre><code class="language-toml">[settings.image_preview]
+protocol.type = &quot;halfblocks&quot;
+protocol.font_size = [ 11, 26 ]
+</code></pre>
+<p>The <code>&quot;type&quot;</code> field is one of the three methods from above, and <code>&quot;font_size&quot;</code>
+can be used to specify the width and height of each character cell in pixels.
+(Like specifying the <code>&quot;type&quot;</code>, this is only necessary if the size in pixels
+can’t be detected normally using the standard terminal <code>ioctl</code> calls.)</p>
+<p>You can control the maximum amount of columns/rows that the images take up in
+the scrollback using the <code>&quot;size&quot;</code> field:</p>
+<pre><code class="language-toml">[settings.image_preview]
+size = { height = 10, width = 66 }
+</code></pre>
+<h3 id="notifications"><a class="header" href="#notifications">Notifications</a></h3>
+<p>The <code>settings.notifications</code> section allows enabling notifications for messages
+sent to rooms not currently open. For example, to enable desktop notifications,
+you can put the following in your configuration:</p>
+<pre><code class="language-toml">[settings.notifications]
+enabled = true
+</code></pre>
+<h4 id="notification-fields"><a class="header" href="#notification-fields">Notification fields</a></h4>
+<table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>enabled</code></td><td><code>false</code></td><td>Whether to send notifications</td></tr>
+<tr><td><code>show_message</code></td><td><code>true</code></td><td>Whether to include the message body when showing the notification</td></tr>
+<tr><td><code>via</code></td><td><code>&quot;desktop&quot;</code></td><td>How to deliver the notification: <code>&quot;desktop&quot;</code> for desktop mechanism, or <code>&quot;bell&quot;</code> for terminal bell.</td></tr>
+</tbody></table>
+<h3 id="sorting-lists"><a class="header" href="#sorting-lists">Sorting Lists</a></h3>
+<p>The <code>settings.sort</code> section allows you to customize how lists of rooms or users are
+sorted in the different <strong>iamb</strong> windows by specifying which values you want to
+sort on. Values are provided as an array of fields, with an optional leading <code>~</code>
+to flip the sort order from ascending to descending.</p>
+<p>For example, if you wanted to group users in the <code>:members</code> list together by their
+ascending server name and descending localparts, you could do:</p>
+<pre><code class="language-toml">[settings.sort]
+members = [&quot;server&quot;, &quot;~localpart&quot;]
+</code></pre>
+<h3 id="sort-fields"><a class="header" href="#sort-fields">Sort Fields</a></h3>
+<table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>rooms</code></td><td><code>[&quot;favorite&quot;, &quot;lowpriority&quot;, &quot;unread&quot;, &quot;name&quot;]</code></td><td>How to sort the <code>:rooms</code> window</td></tr>
+<tr><td><code>chats</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:chats</code> window</td></tr>
+<tr><td><code>dms</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:dms</code> window</td></tr>
+<tr><td><code>spaces</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:spaces</code> window</td></tr>
+<tr><td><code>members</code></td><td><code>[&quot;power&quot;, &quot;id&quot;]</code></td><td>How to sort the <code>:members</code> window</td></tr>
+</tbody></table>
+<h4 id="room-fields"><a class="header" href="#room-fields">Room Fields</a></h4>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>&quot;favorite&quot;</code></td><td>Sort rooms with the “Favorite” tag towards the top.</td></tr>
+<tr><td><code>&quot;lowpriority&quot;</code></td><td>Sort rooms with the “Low Priority” tag towards the bottom.</td></tr>
+<tr><td><code>&quot;recent&quot;</code></td><td>Sort rooms with recent messages towards the top.</td></tr>
+<tr><td><code>&quot;unread&quot;</code></td><td>Sort rooms with unread messages towards the top.</td></tr>
+<tr><td><code>&quot;name&quot;</code></td><td>Sort rooms alphabetically by their room name.</td></tr>
+<tr><td><code>&quot;alias&quot;</code></td><td>Sort rooms alphabetically by thei canonical alias (e.g., <code>#iamb-users:0x.badd.cafe</code>)</td></tr>
+<tr><td><code>&quot;id&quot;</code></td><td>Sort rooms alphabetically by their unique room identifier (e.g., <code>!nQTgloqKBScxNjsQzR:0x.badd.cafe</code>).</td></tr>
+</tbody></table>
+<h4 id="user-fields"><a class="header" href="#user-fields">User Fields</a></h4>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>&quot;power&quot;</code></td><td>Sort users by decreasing power level.</td></tr>
+<tr><td><code>&quot;id&quot;</code></td><td>Sort users alphabetically by their username (e.g. <code>@user:example.com</code>)</td></tr>
+<tr><td><code>&quot;localpart&quot;</code></td><td>Sort users alphabetically by the localpart of their username (e.g. the <code>@user</code> portion of <code>@user:example.com</code></td></tr>
+<tr><td><code>&quot;server&quot;</code></td><td>Sort users alphabetically by the server in their username (e.g. the <code>example.com</code> portion of <code>@user:example.com</code>)</td></tr>
+</tbody></table>
 <h2 id="startup-layout"><a class="header" href="#startup-layout">Startup Layout</a></h2>
 <p>You can configure what windows get shown when <strong>iamb</strong> starts by adding a
-<code>&quot;layout&quot;</code> object.</p>
+<code>layout</code> section.</p>
 <h3 id="restore-previous-layout"><a class="header" href="#restore-previous-layout">Restore Previous Layout</a></h3>
 <p>By default, the client will try to restore all of the tabs and windows from the
 last time it was run. You can explicitly configure this behaviour with:</p>
-<pre><code class="language-json">{
-    &quot;layout&quot;: { &quot;style&quot;: &quot;restore&quot; }
-}
+<pre><code class="language-toml">[layout]
+style = &quot;restore&quot;
 </code></pre>
 <h3 id="new-window"><a class="header" href="#new-window">New Window</a></h3>
 <p>If you want to see a single new window each time you start up, you can set:</p>
-<pre><code class="language-json">{
-    &quot;layout&quot;: { &quot;style&quot;: &quot;new&quot; }
-}
+<pre><code class="language-toml">[layout]
+style = &quot;new&quot;
 </code></pre>
 <p>This will show the <code>:welcome</code> window by default, but you can set
 <code>&quot;default_room&quot;</code> to change it to something else.</p>
 <h3 id="configured-layout"><a class="header" href="#configured-layout">Configured Layout</a></h3>
 <p>If you want to start up with the same layout every time regardless of the state
 at last exit, you can specify an array of tabs and the window tree in each one:</p>
-<pre><code class="language-json">{
-    &quot;layout&quot;: {
-        &quot;style&quot;: &quot;config&quot;,
-        &quot;tabs&quot;: [
-            {
-                &quot;split&quot;: [
-                    { &quot;window&quot;: &quot;#room1:example.org&quot; },
-                    { &quot;window&quot;: &quot;#room2:example.org&quot; }
-                ]
-            },
-            {
-                &quot;split&quot;: [
-                    {
-                        &quot;split&quot;: [
-                            { &quot;window&quot;: &quot;#room3:example.org&quot; },
-                            { &quot;window&quot;: &quot;#room4:example.org&quot; }
-                        ]
-                    },
-                    { &quot;window&quot;: &quot;@user:example.org&quot; }
-                ]
-            }
-        ]
-    }
-}
+<pre><code class="language-toml">[layout]
+style = &quot;config&quot;
+
+[[layout.tabs]]
+split = [
+    { window = &quot;#room1:example.org&quot; },
+    { window = &quot;#room2:example.org&quot; }
+]
+
+[[layout.tabs]]
+split = [
+    { split = [ { window = &quot;#room3:example.org&quot; }, { window = &quot;#room4:example.org&quot; } ] },
+    { window = &quot;@user:example.org&quot; }
+]
 </code></pre>
+<h2 id="custom-keybindings"><a class="header" href="#custom-keybindings">Custom Keybindings</a></h2>
+<p>You can add custom keybindings in <code>macros</code> subsections, which describes the Vim
+modes to map the commands to, the input keys you want to map, and the keys that
+you want it to then run. These keybindings behave like macros when a count is
+given, and will repeat the target key sequnce <em>n</em> times.</p>
+<p>For example, you could use the following to map <code>jj</code> to <code>&lt;Esc&gt;</code> in Insert mode
+and <code>V</code> to <code>&lt;C-W&gt;m</code> in Normal and Visual mode:</p>
+<pre><code class="language-toml">[macros.insert]
+&quot;jj&quot; = &quot;&lt;Esc&gt;&quot;
+
+[macros.&quot;normal|visual&quot;]
+&quot;V&quot; = &quot;&lt;C-W&gt;m&quot;
+</code></pre>
+<p>The available modes are:</p>
+<ul>
+<li><code>normal</code>/<code>n</code> for Normal mode</li>
+<li><code>insert</code>/<code>i</code> for Insert mode</li>
+<li><code>visual</code>/<code>v</code> for Visual mode</li>
+<li><code>command</code>/<code>c</code> for Command mode</li>
+<li><code>select</code> for Select mode</li>
+<li><code>operator-pending</code> for Operator Pending mode</li>
+</ul>
+<p>Use <code>|</code> to specify that something should be mapped in several modes.</p>
+<blockquote>
+<p>If you are unsure how to represent a key, you can you record a macro that use
+it and then look at its representation in the register. For example, you could
+do the following to find the value of the left arrow key:</p>
+<ul>
+<li>Type <code>qa</code> to start recording to the <code>a</code> register</li>
+<li>Press the left arrow key</li>
+<li>Press <code>q</code> to stop recording</li>
+<li>Type <code>&quot;ap</code> to paste the contents of the <code>a</code> register, yielding <code>&lt;Left&gt;</code></li>
+</ul>
+</blockquote>
 <h2 id="directories"><a class="header" href="#directories">Directories</a></h2>
 <p><strong>iamb</strong> will use the standard directories for your operating system, but you
-can override them by placing a <code>&quot;dirs&quot;</code> field in your <code>config.json</code> containing
+can override them by placing a <code>&quot;dirs&quot;</code> field in your <code>config.toml</code> containing
 any of the following fields:</p>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>cache</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.cache_dir.html">dirs::cache_dir</a></td><td>Directory for <strong>iamb</strong> data and output that can be safely deleted.</td></tr>
+<tr><td><code>cache</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.cache_dir.html"><code>${dirs::cache_dir}</code></a><code>/iamb</code></td><td>Directory for <strong>iamb</strong> data and output that can be safely deleted.</td></tr>
+<tr><td><code>data</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.data_dir.html"><code>${dirs::data_dir}</code></a><code>/iamb</code></td><td>Directory for <strong>iamb</strong> data persisted between sessions, like E2EE keys.</td></tr>
+<tr><td><code>downloads</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.download_dir.html"><code>${dirs::download_dir}</code></a></td><td>Output directory for downloaded attachments.</td></tr>
+<tr><td><code>image_previews</code></td><td><code>${cache}/image_preview_downloads</code></td><td>Output directory for caching image displayed when using <code>image_preview</code></td></tr>
 <tr><td><code>logs</code></td><td><code>${cache}/logs</code></td><td>Output directory for <strong>iamb</strong> logs.</td></tr>
-<tr><td><code>downloads</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.download_dir.html">dirs::download_dir</a></td><td>Output directory for downloaded attachments.</td></tr>
 </tbody></table>
 <h2 id="user-display"><a class="header" href="#user-display">User Display</a></h2>
 <p>You can override how individual users get displayed in the scrollback using the
-<code>&quot;users&quot;</code> field of the <code>&quot;settings&quot;</code> object.</p>
+<code>settings.users</code> section.</p>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>color</code></td><td>Determined per-user</td><td>The color to use when showing this user on the screen.</td></tr>
 <tr><td><code>name</code></td><td>Determined per-user</td><td>The name to use when showing this user on the screen.</td></tr>
 </tbody></table>
-<p>Valid values for the <code>&quot;colors&quot;</code> field are:</p>
+<p>Valid values for the <code>color</code> field are:</p>
 <ul>
 <li><code>&quot;black&quot;</code></li>
 <li><code>&quot;blue&quot;</code></li>
@@ -348,16 +496,8 @@ any of the following fields:</p>
 <li><code>&quot;yellow&quot;</code></li>
 </ul>
 <p>For example, if you wanted to override how a bot in a room gets displayed:</p>
-<pre><code class="language-json">{
-    &quot;settings&quot;: {
-        &quot;users&quot;: {
-            &quot;@jenkins:example.com&quot;: {
-                &quot;name&quot;: &quot;jenkins (CI BOT)&quot;,
-                &quot;color&quot;: &quot;light-red&quot;
-            }
-        }
-    }
-}
+<pre><code class="language-toml">[settings.users]
+&quot;@jenkins:example.com&quot; = { name = &quot;jenkins (CI BOT)&quot;, color = &quot;light-red&quot; }
 </code></pre>
 <style>
 table {
@@ -373,6 +513,7 @@ table th:nth-of-type(3) {
     width: 40%;
 }
 </style>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="end-to-end-encryption"><a class="header" href="#end-to-end-encryption">End-To-End Encryption</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="verification"><a class="header" href="#verification">Verification</a></h1>
 <h2 id="incoming-verifications"><a class="header" href="#incoming-verifications">Incoming Verifications</a></h2>
 <p>If another user or one of your other devices has sent you a verification
@@ -383,6 +524,17 @@ request, then it will appear in the Verifications list, accessible via running
 <code>:verify request USERID</code>. Once they accept, you can check the Emojis and
 confirm that they match in the same way as shown above for incoming
 verifications.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="room-keys"><a class="header" href="#room-keys">Room Keys</a></h1>
+<h2 id="exporting--importing-keys"><a class="header" href="#exporting--importing-keys">Exporting / Importing Keys</a></h2>
+<p>If you want to export your room keys, either to save them as a backup or
+to import them into another session, you can use:</p>
+<pre><code>:keys export /path/to/output.keys passphrase
+</code></pre>
+<p>This will write out the keys encrypted with the given passphrase.</p>
+<p>When you have keys that you would like to import into <strong>iamb</strong>, you can do so
+with:</p>
+<pre><code>:keys import /path/to/input.keys passphrase
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="rooms"><a class="header" href="#rooms">Rooms</a></h1>
 <h2 id="joining-and-leaving-rooms"><a class="header" href="#joining-and-leaving-rooms">Joining And Leaving Rooms</a></h2>
 <p>You can join a new room or space using the <code>:join</code> command. For example, to
@@ -401,6 +553,9 @@ prompt for confirmation by default, but you can override it by appending <code>!
 <p>You can switch to a list of joined rooms using the <code>:rooms</code> command.</p>
 <h2 id="browsing-direct-messages"><a class="header" href="#browsing-direct-messages">Browsing Direct Messages</a></h2>
 <p>You can switch to a list of direct messages using the <code>:dms</code> command.</p>
+<h2 id="browsing-rooms-and-dms-together"><a class="header" href="#browsing-rooms-and-dms-together">Browsing Rooms And DMs Together</a></h2>
+<p>You can switch to a list of both joined rooms and direct messages using the
+<code>:chats</code> command.</p>
 <h2 id="browsing-spaces"><a class="header" href="#browsing-spaces">Browsing Spaces</a></h2>
 <p>You can switch to a list of joined spaces using the <code>:spaces</code> command.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="members"><a class="header" href="#members">Members</a></h1>
@@ -472,12 +627,12 @@ wish to send. When it’s complete, you can send it by pressing the <code>&lt;En
 key from either Normal or Insert mode.</p>
 <blockquote>
 <p>If you need to type a multiline message, you can start a line by typing
-<code>^V^J</code>.  You can also use the <code>O</code> and <code>o</code> keys to insert a blank line before
-or after the current line respectively.</p>
+<code>&lt;C-V&gt;&lt;C-J&gt;</code>. You can also use the <code>O</code> and <code>o</code> keys to insert a blank line
+before or after the current line respectively.</p>
 </blockquote>
 <p>From within the message bar, you can complete Matrix usernames, room aliases
-and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>^N</code> and <code>^P</code>
-to start cycling forwards or backwards through the list of possible
+and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
+<code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
 completions.</p>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>
@@ -488,23 +643,29 @@ focused room:</p>
 they contain the same contents, but they differ on Linux and other *nix
 systems running X11 or Wayland, where:</p>
 <ul>
-<li><code>&quot;+</code> contains the CLIPBOARD selection, usually set with <code>^C</code> or by selecting
-“Copy Image” in a menu dialog.</li>
-<li><code>&quot;*</code> contains the PRIMARY selection, usually contains last selected text) on X11.</li>
+<li><code>&quot;+</code> contains the CLIPBOARD selection, which is usually set in a GUI
+application with <code>&lt;C-C&gt;</code> or by selecting “Copy Image” in a menu dialog.</li>
+<li><code>&quot;*</code> contains the PRIMARY selection, which is usually the last selected text
+in X11 or Wayland.</li>
 </ul>
 <p>So, for example, if you had copied an image from a web browser on Linux
 (placing it into the CLIPBOARD selection), you could paste it into <code>iamb</code> with
 <code>&quot;+p</code>. Or, if you instead selected some text with your cursor (placing it into
 the PRIMARY selection), then you could paste it with <code>&quot;*p</code>.</p>
+<blockquote>
+<p>If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
+text editor, you can use the <code>:editor</code> command to launch your configured
+<code>$EDITOR</code>.</p>
+</blockquote>
 <h2 id="message-scrollback"><a class="header" href="#message-scrollback">Message Scrollback</a></h2>
 <p>You can scroll through messages from the message bar using the following keys:</p>
 <ul>
-<li><code>^E</code>/<code>^Y</code> to scroll downwards and upwards respectively a line at a time</li>
-<li><code>^D</code>/<code>^U</code> to scroll downwards and upwards respectively by half the window height</li>
-<li><code>^F</code>/<code>^B</code> to scroll downwards and upwards respectively by the window height</li>
+<li><code>&lt;C-E&gt;</code>/<code>&lt;C-Y&gt;</code> to scroll downwards and upwards respectively a line at a time</li>
+<li><code>&lt;C-D&gt;</code>/<code>&lt;C-U&gt;</code> to scroll downwards and upwards respectively by half the window height</li>
+<li><code>&lt;C-F&gt;</code>/<code>&lt;C-B&gt;</code> to scroll downwards and upwards respectively by the window height</li>
 </ul>
 <p>If you want to use movement keys to select individual messages, you can toggle
-focus between the message bar and the scrollback by pressing <code>^Wm</code>.</p>
+focus between the message bar and the scrollback by pressing <code>&lt;C-W&gt;m</code>.</p>
 <p>The plaintext content of messages can be copied to registers using yank
 keybindings like <code>yy</code> or <code>Y</code>, and marked with <code>m{a-z}</code>. Marked messages can
 then be returned to via <code>'{a-z}</code>.</p>
@@ -562,6 +723,11 @@ configured <code>downloads</code> directory</li>
 <p>If there is already a file of the same name, <strong>iamb</strong> will not overwrite it.
 You can use <code>:download!</code> to replace the file.</p>
 <p>To open the file after downloading the file, use the <code>:open</code> command instead.</p>
+<h2 id="opening-links"><a class="header" href="#opening-links">Opening Links</a></h2>
+<p>Links in messages are each assigned a number (or a letter when there are more
+than 10 links), which is shown within brackets (like <code>[0]</code>). You can use
+<code>:open</code> to view a list of their matching URLs, and pick one to open in a
+browser by typing its assigned character.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="screen-navigation"><a class="header" href="#screen-navigation">Screen Navigation</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="window-management"><a class="header" href="#window-management">Window Management</a></h1>
 <h2 id="opening-windows"><a class="header" href="#opening-windows">Opening Windows</a></h2>
@@ -574,8 +740,8 @@ For example:</p>
 new window.</p>
 <blockquote>
 <p>If you only need to duplicate the window without changing its content, you
-can use <code>^Ws</code> and <code>^Wv</code> to horizontally and vertically split the current
-window.</p>
+can use <code>&lt;C-W&gt;s</code> and <code>&lt;C-W&gt;v</code> to horizontally and vertically split the
+current window.</p>
 </blockquote>
 <p>By default, the split commands will open the new window so that it is
 visually before the current one, but you can alter this using <code>:belowright</code>
@@ -592,56 +758,56 @@ commands. For example, to open the list of rooms below the current window:</p>
 <h2 id="switching-windows"><a class="header" href="#switching-windows">Switching Windows</a></h2>
 <p>You can switch between between neighboring windows using the following keybindings:</p>
 <ul>
-<li><code>^Wh</code> will move to the window left of the current one </li>
-<li><code>^Wj</code> will move to the window below the current one </li>
-<li><code>^Wk</code> will move to the window above the current one </li>
-<li><code>^Wl</code> will move to the window right of the current one </li>
+<li><code>&lt;C-W&gt;h</code> will move to the window left of the current one </li>
+<li><code>&lt;C-W&gt;j</code> will move to the window below the current one </li>
+<li><code>&lt;C-W&gt;k</code> will move to the window above the current one </li>
+<li><code>&lt;C-W&gt;l</code> will move to the window right of the current one </li>
 </ul>
 <p>If you want to move to previous content in the window, you can navigate through
 the jumplist using:</p>
 <ul>
-<li><code>^O</code> to move backwards through the jumplist</li>
-<li><code>^I</code> to move forward through the jumplist</li>
+<li><code>&lt;C-O&gt;</code> to move backwards through the jumplist</li>
+<li><code>&lt;C-I&gt;</code> to move forward through the jumplist</li>
 </ul>
 <p>You can provide a count to all of the above keybindings to repeat them multiple
 times.</p>
 <h2 id="organizing-windows"><a class="header" href="#organizing-windows">Organizing Windows</a></h2>
 <p>You can reposition open windows using the following keybindings:</p>
 <ul>
-<li><code>^WH</code> will move the current window to the left side of the screen, and use
+<li><code>&lt;C-W&gt;H</code> will move the current window to the left side of the screen, and use
 the full screen height</li>
-<li><code>^WJ</code> will move the current window to the bottom of the screen, and use the
+<li><code>&lt;C-W&gt;J</code> will move the current window to the bottom of the screen, and use the
 full screen width</li>
-<li><code>^WK</code> will move the current window to the top of the screen, and use the full
+<li><code>&lt;C-W&gt;K</code> will move the current window to the top of the screen, and use the full
 screen width</li>
-<li><code>^WL</code> will move the current window to the right side of the screen, and use
+<li><code>&lt;C-W&gt;L</code> will move the current window to the right side of the screen, and use
 the full screen height</li>
 </ul>
 <p>Sometimes, you may find yourself wanting to make a window occupy
 the whole screen without closing any of the other windows. You can:</p>
 <ul>
-<li>Use <code>^Wz</code> to zoom in and out of a window without changing your current layout</li>
-<li>Use <code>^WT</code> to extract the window into its own <a href="layout/./tabs.html">tab</a></li>
+<li>Use <code>&lt;C-W&gt;z</code> to zoom in and out of a window without changing your current layout</li>
+<li>Use <code>&lt;C-W&gt;T</code> to extract the window into its own <a href="layout/./tabs.html">tab</a></li>
 </ul>
 <h2 id="resizing-windows"><a class="header" href="#resizing-windows">Resizing Windows</a></h2>
 <p>You can resize windows using the following keybindings:</p>
 <ul>
-<li><code>^W-</code> will decrease the current window height by the specified count</li>
-<li><code>^W+</code> will increase the current window height by the specified count</li>
-<li><code>^W&lt;</code> will decrease the current window width by the specified count</li>
-<li><code>^W&gt;</code> will increase the current window width by the specified count</li>
-<li><code>^W=</code> will attempt to resize all windows in the same row or column to have
+<li><code>&lt;C-W&gt;-</code> will decrease the current window height by the specified count</li>
+<li><code>&lt;C-W&gt;+</code> will increase the current window height by the specified count</li>
+<li><code>&lt;C-W&gt;&lt;</code> will decrease the current window width by the specified count</li>
+<li><code>&lt;C-W&gt;&gt;</code> will increase the current window width by the specified count</li>
+<li><code>&lt;C-W&gt;=</code> will attempt to resize all windows in the same row or column to have
 equal height and width</li>
 </ul>
 <blockquote>
-<p>If your window manager or terminal is capturing <code>^W</code>, you can use the
+<p>If your window manager or terminal is capturing <code>&lt;C-W&gt;</code>, you can use the
 <code>:resize</code> command to change window height. For example, <code>:resize -10</code> will
 decrease the height by ten, and <code>:resize +5</code> will increase it by 5.</p>
 <p>To change the window width, use <code>:vertical resize</code> instead.</p>
 </blockquote>
 <h2 id="closing-windows"><a class="header" href="#closing-windows">Closing Windows</a></h2>
-<p>You can close a window using <code>^Wq</code>, or close all windows but the current one
-using <code>^Wo</code>. When provided with a count, these keybindings will operate against
+<p>You can close a window using <code>&lt;C-W&gt;q</code>, or close all windows but the current one
+using <code>&lt;C-W&gt;o</code>. When provided with a count, these keybindings will operate against
 that window position instead of the currently focused one.</p>
 <blockquote>
 <p>If you prefer using commands, you can use <code>:quit</code> to close the current
@@ -660,7 +826,7 @@ if you already know what room you want to open:</p>
 <p>The above command is equivalent to running:</p>
 <pre><code>:tabedit #watercooler:example.com`
 </code></pre>
-<p>You can also press <code>^Wf</code> while navigating a list of rooms and users to open it
+<p>You can also press <code>&lt;C-W&gt;f</code> while navigating a list of rooms and users to open it
 in a new tab instead.</p>
 <h2 id="switching-tabs"><a class="header" href="#switching-tabs">Switching Tabs</a></h2>
 <p>You can move forwards or backwards through the open tabs using <code>gt</code> or <code>gT</code>
@@ -690,17 +856,22 @@ arguments, but you can specify a position to close:</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="command-reference"><a class="header" href="#command-reference">Command Reference</a></h1>
 <h2 id="iamb-commands"><a class="header" href="#iamb-commands">iamb commands</a></h2>
 <table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
+<tr><td><code>:chats</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms-and-dms-together">Browsing Rooms And DMs Together</a></td></tr>
 <tr><td><code>:create</code></td><td></td><td>See <a href="./rooms/management.html#room-creation">Room Creation</a></td></tr>
 <tr><td><code>:dms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-direct-messages">Browsing Direct Messages</a></td></tr>
 <tr><td><code>:download</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
 <tr><td><code>:edit</code></td><td></td><td>See <a href="./messages/#editing-messages">Editing Messages</a></td></tr>
+<tr><td><code>:editor</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td><code>:invite accept</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:invite reject</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:invite send</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:join</code></td><td></td><td>See <a href="./rooms/#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
+<tr><td><code>:keys export</code></td><td></td><td>See <a href="./e2ee/keys.html#exporting-importing-keys">Exporting / Importing Keys</a></td></tr>
+<tr><td><code>:keys import</code></td><td></td><td>See <a href="./e2ee/keys.html#exporting-importing-keys">Exporting / Importing Keys</a></td></tr>
 <tr><td><code>:leave</code></td><td></td><td>See <a href="./rooms/#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
+<tr><td><code>:logout</code></td><td></td><td>Log out of the client.</td></tr>
 <tr><td><code>:members</code></td><td></td><td>See <a href="./rooms/members.html#viewing-roomspace-members">Viewing Room/Space Members</a></td></tr>
-<tr><td><code>:open</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
+<tr><td><code>:open</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a> and <a href="./messages/#opening-links">Opening Links</a></td></tr>
 <tr><td><code>:react</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:redact</code></td><td></td><td>See <a href="./messages/#redacting-a-message">Redacting A Message</a></td></tr>
 <tr><td><code>:reply</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
@@ -714,7 +885,7 @@ arguments, but you can specify a position to close:</p>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
 <tr><td><code>:unreact</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
-<tr><td><code>:verify</code></td><td></td><td>See <a href="./verify.html">Verification</a></td></tr>
+<tr><td><code>:verify</code></td><td></td><td>See <a href="./e2ee/verify.html">Verification</a></td></tr>
 <tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
 </tbody></table>
 <h2 id="vim-commands"><a class="header" href="#vim-commands">Vim commands</a></h2>
@@ -757,8 +928,8 @@ table th:nth-of-type(3) {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="keybinding-reference"><a class="header" href="#keybinding-reference">Keybinding Reference</a></h1>
 <h2 id="iamb-keybindings"><a class="header" href="#iamb-keybindings">iamb keybindings</a></h2>
 <table><thead><tr><th>Modes</th><th>Keybinding</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
-<tr><td>Normal, Visual</td><td><code>^Wm</code></td><td><code>^W^M</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wz</code></td><td><code>^W^Z</code></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;m</code></td><td><code>&lt;C-W&gt;&lt;C-M&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;z</code></td><td><code>&lt;C-W&gt;&lt;C-Z&gt;</code></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
 </tbody></table>
 <h2 id="vim-keybindings"><a class="header" href="#vim-keybindings">Vim keybindings</a></h2>
 <p>Note that this is not a complete list of all Vim keybindings available within
@@ -777,35 +948,35 @@ documentation.</p>
 <tr><td>Normal</td><td><code>'{a-z}</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>/</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>?</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^B</code></td><td><code>&lt;PageUp&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^E</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^F</code></td><td><code>&lt;PageDown&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^D</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal</td><td><code>^I</code></td><td><code>&lt;Tab&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Insert</td><td><code>^N</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
-<tr><td>Normal</td><td><code>^O</code></td><td></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Insert</td><td><code>^P</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^U</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wf</code></td><td><code>^W^F</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wh</code></td><td><code>^W^H</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WH</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wj</code></td><td><code>^W^J</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WJ</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wk</code></td><td><code>^W^K</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WK</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wl</code></td><td><code>^W^L</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WL</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wo</code></td><td><code>^W^O</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wq</code></td><td><code>^W^Q</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Ws</code></td><td><code>^W^S</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WT</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wv</code></td><td><code>^W^V</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W-</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W+</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W&lt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W&gt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W=</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Y</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-B&gt;</code></td><td><code>&lt;PageUp&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-E&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-F&gt;</code></td><td><code>&lt;PageDown&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-D&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>&lt;C-I&gt;</code></td><td><code>&lt;Tab&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Insert</td><td><code>&lt;C-N&gt;</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td>Normal</td><td><code>&lt;C-O&gt;</code></td><td></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Insert</td><td><code>&lt;C-P&gt;</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-U&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;f</code></td><td><code>&lt;C-W&gt;&lt;C-F&gt;</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;h</code></td><td><code>&lt;C-W&gt;&lt;C-H&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;H</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;j</code></td><td><code>&lt;C-W&gt;&lt;C-J&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;J</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;k</code></td><td><code>&lt;C-W&gt;&lt;C-K&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;K</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;l</code></td><td><code>&lt;C-W&lt;C-L&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;L</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;o</code></td><td><code>&lt;C-W&gt;&lt;C-O&gt;</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;q</code></td><td><code>&lt;C-W&gt;&lt;C-Q&gt;</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;s</code></td><td><code>&lt;C-W&gt;&lt;C-S&gt;</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;T</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;v</code></td><td><code>&lt;C-W&gt;&lt;C-V&gt;</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;-</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;+</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;&lt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;&gt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;=</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-Y&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 </tbody></table>
 <style>
 table {

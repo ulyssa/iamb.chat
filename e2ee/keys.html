@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Window Management - iamb documentation</title>
+        <title>Room Keys - iamb documentation</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="../e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="../rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="../rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="../rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="../messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="../layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../layout/windows.html" class="active"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="../layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="../commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="../keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="../e2ee/keys.html" class="active"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="../rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="../rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="../rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="../messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="../layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="../layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="../commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="../keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -138,99 +138,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="window-management"><a class="header" href="#window-management">Window Management</a></h1>
-<h2 id="opening-windows"><a class="header" href="#opening-windows">Opening Windows</a></h2>
-<p>You can use <code>:split</code> (or its vertical variant <code>:vsplit</code>) to split the current
-window. You can optionally provide a room or user to open that room instead.
-For example:</p>
-<pre><code>:vsplit #alias:example.com
+                        <h1 id="room-keys"><a class="header" href="#room-keys">Room Keys</a></h1>
+<h2 id="exporting--importing-keys"><a class="header" href="#exporting--importing-keys">Exporting / Importing Keys</a></h2>
+<p>If you want to export your room keys, either to save them as a backup or
+to import them into another session, you can use:</p>
+<pre><code>:keys export /path/to/output.keys passphrase
 </code></pre>
-<p>Will vertically split the current window and open <code>#alias:example.com</code> in the
-new window.</p>
-<blockquote>
-<p>If you only need to duplicate the window without changing its content, you
-can use <code>&lt;C-W&gt;s</code> and <code>&lt;C-W&gt;v</code> to horizontally and vertically split the
-current window.</p>
-</blockquote>
-<p>By default, the split commands will open the new window so that it is
-visually before the current one, but you can alter this using <code>:belowright</code>
-(as opposed to the default <code>:aboveleft</code> behaviour). Similarly, you can also
-change the axis of a split using the <code>:vertical</code> and <code>:horizontal</code> commands.</p>
-<p>Several of the commands within <strong>iamb</strong> change the displayed content in the
-current window. You can force them to instead open a new window using the above
-commands. For example, to open the list of rooms below the current window:</p>
-<pre><code>:bel rooms
+<p>This will write out the keys encrypted with the given passphrase.</p>
+<p>When you have keys that you would like to import into <strong>iamb</strong>, you can do so
+with:</p>
+<pre><code>:keys import /path/to/input.keys passphrase
 </code></pre>
-<p>Or, to show a room’s members to the left side of the room instead of the right:</p>
-<pre><code>:abo hor members
-</code></pre>
-<h2 id="switching-windows"><a class="header" href="#switching-windows">Switching Windows</a></h2>
-<p>You can switch between between neighboring windows using the following keybindings:</p>
-<ul>
-<li><code>&lt;C-W&gt;h</code> will move to the window left of the current one </li>
-<li><code>&lt;C-W&gt;j</code> will move to the window below the current one </li>
-<li><code>&lt;C-W&gt;k</code> will move to the window above the current one </li>
-<li><code>&lt;C-W&gt;l</code> will move to the window right of the current one </li>
-</ul>
-<p>If you want to move to previous content in the window, you can navigate through
-the jumplist using:</p>
-<ul>
-<li><code>&lt;C-O&gt;</code> to move backwards through the jumplist</li>
-<li><code>&lt;C-I&gt;</code> to move forward through the jumplist</li>
-</ul>
-<p>You can provide a count to all of the above keybindings to repeat them multiple
-times.</p>
-<h2 id="organizing-windows"><a class="header" href="#organizing-windows">Organizing Windows</a></h2>
-<p>You can reposition open windows using the following keybindings:</p>
-<ul>
-<li><code>&lt;C-W&gt;H</code> will move the current window to the left side of the screen, and use
-the full screen height</li>
-<li><code>&lt;C-W&gt;J</code> will move the current window to the bottom of the screen, and use the
-full screen width</li>
-<li><code>&lt;C-W&gt;K</code> will move the current window to the top of the screen, and use the full
-screen width</li>
-<li><code>&lt;C-W&gt;L</code> will move the current window to the right side of the screen, and use
-the full screen height</li>
-</ul>
-<p>Sometimes, you may find yourself wanting to make a window occupy
-the whole screen without closing any of the other windows. You can:</p>
-<ul>
-<li>Use <code>&lt;C-W&gt;z</code> to zoom in and out of a window without changing your current layout</li>
-<li>Use <code>&lt;C-W&gt;T</code> to extract the window into its own <a href="./tabs.html">tab</a></li>
-</ul>
-<h2 id="resizing-windows"><a class="header" href="#resizing-windows">Resizing Windows</a></h2>
-<p>You can resize windows using the following keybindings:</p>
-<ul>
-<li><code>&lt;C-W&gt;-</code> will decrease the current window height by the specified count</li>
-<li><code>&lt;C-W&gt;+</code> will increase the current window height by the specified count</li>
-<li><code>&lt;C-W&gt;&lt;</code> will decrease the current window width by the specified count</li>
-<li><code>&lt;C-W&gt;&gt;</code> will increase the current window width by the specified count</li>
-<li><code>&lt;C-W&gt;=</code> will attempt to resize all windows in the same row or column to have
-equal height and width</li>
-</ul>
-<blockquote>
-<p>If your window manager or terminal is capturing <code>&lt;C-W&gt;</code>, you can use the
-<code>:resize</code> command to change window height. For example, <code>:resize -10</code> will
-decrease the height by ten, and <code>:resize +5</code> will increase it by 5.</p>
-<p>To change the window width, use <code>:vertical resize</code> instead.</p>
-</blockquote>
-<h2 id="closing-windows"><a class="header" href="#closing-windows">Closing Windows</a></h2>
-<p>You can close a window using <code>&lt;C-W&gt;q</code>, or close all windows but the current one
-using <code>&lt;C-W&gt;o</code>. When provided with a count, these keybindings will operate against
-that window position instead of the currently focused one.</p>
-<blockquote>
-<p>If you prefer using commands, you can use <code>:quit</code> to close the current
-window, or <code>:only</code> to close all windows but the current one.</p>
-</blockquote>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../layout/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../e2ee/verify.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../layout/tabs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../rooms/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -239,10 +166,10 @@ window, or <code>:only</code> to close all windows but the current one.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../layout/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../e2ee/verify.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../layout/tabs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../rooms/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

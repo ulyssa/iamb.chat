@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/css/custom.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -75,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="verify.html"><strong aria-hidden="true">3.</strong> Verification</a></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html" class="active"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html" class="active"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -140,8 +141,8 @@
                         <h1 id="keybinding-reference"><a class="header" href="#keybinding-reference">Keybinding Reference</a></h1>
 <h2 id="iamb-keybindings"><a class="header" href="#iamb-keybindings">iamb keybindings</a></h2>
 <table><thead><tr><th>Modes</th><th>Keybinding</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
-<tr><td>Normal, Visual</td><td><code>^Wm</code></td><td><code>^W^M</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wz</code></td><td><code>^W^Z</code></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;m</code></td><td><code>&lt;C-W&gt;&lt;C-M&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;z</code></td><td><code>&lt;C-W&gt;&lt;C-Z&gt;</code></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
 </tbody></table>
 <h2 id="vim-keybindings"><a class="header" href="#vim-keybindings">Vim keybindings</a></h2>
 <p>Note that this is not a complete list of all Vim keybindings available within
@@ -160,35 +161,35 @@ documentation.</p>
 <tr><td>Normal</td><td><code>'{a-z}</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>/</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>?</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^B</code></td><td><code>&lt;PageUp&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^E</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^F</code></td><td><code>&lt;PageDown&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^D</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal</td><td><code>^I</code></td><td><code>&lt;Tab&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Insert</td><td><code>^N</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
-<tr><td>Normal</td><td><code>^O</code></td><td></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Insert</td><td><code>^P</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^U</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wf</code></td><td><code>^W^F</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wh</code></td><td><code>^W^H</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WH</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wj</code></td><td><code>^W^J</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WJ</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wk</code></td><td><code>^W^K</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WK</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wl</code></td><td><code>^W^L</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WL</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wo</code></td><td><code>^W^O</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wq</code></td><td><code>^W^Q</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Ws</code></td><td><code>^W^S</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^WT</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Wv</code></td><td><code>^W^V</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W-</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W+</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W&lt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W&gt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^W=</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>^Y</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-B&gt;</code></td><td><code>&lt;PageUp&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-E&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-F&gt;</code></td><td><code>&lt;PageDown&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-D&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>&lt;C-I&gt;</code></td><td><code>&lt;Tab&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Insert</td><td><code>&lt;C-N&gt;</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td>Normal</td><td><code>&lt;C-O&gt;</code></td><td></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Insert</td><td><code>&lt;C-P&gt;</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-U&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;f</code></td><td><code>&lt;C-W&gt;&lt;C-F&gt;</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;h</code></td><td><code>&lt;C-W&gt;&lt;C-H&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;H</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;j</code></td><td><code>&lt;C-W&gt;&lt;C-J&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;J</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;k</code></td><td><code>&lt;C-W&gt;&lt;C-K&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;K</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;l</code></td><td><code>&lt;C-W&lt;C-L&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;L</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;o</code></td><td><code>&lt;C-W&gt;&lt;C-O&gt;</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;q</code></td><td><code>&lt;C-W&gt;&lt;C-Q&gt;</code></td><td>See <a href="./layout/windows.html#closing-windows">Closing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;s</code></td><td><code>&lt;C-W&gt;&lt;C-S&gt;</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;T</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;v</code></td><td><code>&lt;C-W&gt;&lt;C-V&gt;</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;-</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;+</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;&lt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;&gt;</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;=</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-Y&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 </tbody></table>
 <style>
 table {
