@@ -4,7 +4,9 @@
 
 - [Installation](./install.md)
 - [Configuration](./configure.md)
-- [Verification](./verify.md)
+- [E2EE](./e2ee/README.md)
+    - [Verification](./e2ee/verify.md)
+    - [Room Keys](./e2ee/keys.md)
 - [Rooms](./rooms/README.md)
     - [Browsing](./rooms/browsing.md)
     - [Members](./rooms/members.md)

@@ -2,34 +2,39 @@
 
 ## iamb commands
 
-| Command             | Aliases                               | Help                                |
-| ------------------- | ------------------------------------- | ----------------------------------- |
-| `:create`           |                                       | See [Room Creation]                 |
-| `:dms`              |                                       | See [Browsing Direct Messages]      |
-| `:download`         |                                       | See [Downloading Attachments]       |
-| `:edit`             |                                       | See [Editing Messages]              |
-| `:invite accept`    |                                       | See [Room Invitations]              |
-| `:invite reject`    |                                       | See [Room Invitations]              |
-| `:invite send`      |                                       | See [Room Invitations]              |
-| `:join`             |                                       | See [Joining And Leaving Rooms]     |
-| `:leave`            |                                       | See [Joining And Leaving Rooms]     |
-| `:members`          |                                       | See [Viewing Room/Space Members]    |
-| `:open`             |                                       | See [Downloading Attachments]       |
-| `:react`            |                                       | See [Reacting To A Message]         |
-| `:redact`           |                                       | See [Redacting A Message]           |
-| `:reply`            |                                       | See [Replying To A Message]         |
-| `:rooms`            |                                       | See [Browsing Rooms]                |
-| `:room name set`    |                                       | See [Setting Room Properties]       |
-| `:room name unset`  |                                       | See [Setting Room Properties]       |
-| `:room tag set`     |                                       | See [Setting Room Tags]             |
-| `:room tag unset`   |                                       | See [Setting Room Tags]             |
-| `:room topic set`   |                                       | See [Setting Room Properties]       |
-| `:room topic unset` |                                       | See [Setting Room Properties]       |
-| `:spaces`           |                                       | See [Browsing Spaces]               |
-| `:unreact`          |                                       | See [Reacting To A Message]         |
-| `:upload`           |                                       | See [Sending]                       |
-| `:verify`           |                                       | See [Verification]                  |
-| `:welcome`          |                                       | Shows the startup Welcome window    |
+| Command             | Aliases                               | Help                                                |
+| ------------------- | ------------------------------------- | -----------------------------------------           |
+| `:chats`            |                                       | See [Browsing Rooms And DMs Together]               |
+| `:create`           |                                       | See [Room Creation]                                 |
+| `:dms`              |                                       | See [Browsing Direct Messages]                      |
+| `:download`         |                                       | See [Downloading Attachments]                       |
+| `:edit`             |                                       | See [Editing Messages]                              |
+| `:editor`           |                                       | See [Sending]                                       |
+| `:invite accept`    |                                       | See [Room Invitations]                              |
+| `:invite reject`    |                                       | See [Room Invitations]                              |
+| `:invite send`      |                                       | See [Room Invitations]                              |
+| `:join`             |                                       | See [Joining And Leaving Rooms]                     |
+| `:keys export`      |                                       | See [Exporting / Importing Keys]                    |
+| `:keys import`      |                                       | See [Exporting / Importing Keys]                    |
+| `:leave`            |                                       | See [Joining And Leaving Rooms]                     |
+| `:logout`           |                                       | Log out of the client.                              |
+| `:members`          |                                       | See [Viewing Room/Space Members]                    |
+| `:open`             |                                       | See [Downloading Attachments] and [Opening Links]   |
+| `:react`            |                                       | See [Reacting To A Message]                         |
+| `:redact`           |                                       | See [Redacting A Message]                           |
+| `:reply`            |                                       | See [Replying To A Message]                         |
+| `:rooms`            |                                       | See [Browsing Rooms]                                |
+| `:room name set`    |                                       | See [Setting Room Properties]                       |
+| `:room name unset`  |                                       | See [Setting Room Properties]                       |
+| `:room tag set`     |                                       | See [Setting Room Tags]                             |
+| `:room tag unset`   |                                       | See [Setting Room Tags]                             |
+| `:room topic set`   |                                       | See [Setting Room Properties]                       |
+| `:room topic unset` |                                       | See [Setting Room Properties]                       |
+| `:spaces`           |                                       | See [Browsing Spaces]                               |
+| `:unreact`          |                                       | See [Reacting To A Message]                         |
+| `:upload`           |                                       | See [Sending]                                       |
+| `:verify`           |                                       | See [Verification]                                  |
+| `:welcome`          |                                       | Shows the startup Welcome window                    |
 
 ## Vim commands
 
@@ -73,11 +78,14 @@ table th:nth-of-type(3) {
 
 [Browsing Direct Messages]: ./rooms/browsing.md#browsing-direct-messages
 [Browsing Rooms]: ./rooms/browsing.md#browsing-rooms
+[Browsing Rooms And DMs Together]: ./rooms/browsing.md#browsing-rooms-and-dms-together
 [Browsing Spaces]: ./rooms/browsing.md#browsing-spaces
 [Closing Tabs]: ./layout/tabs.md#closing-tabs
 [Closing Windows]: ./layout/tabs.md#closing-windows
 [Downloading Attachments]: ./messages/#downloading-attachments
 [Editing Messages]: ./messages/#editing-messages
+[Exporting / Importing Keys]: ./e2ee/keys.md#exporting-importing-keys
+[Opening Links]: ./messages/#opening-links
 [Opening Tabs]: ./layout/tabs.md#opening-tabs
 [Opening Windows]: ./layout/tabs.md#opening-windows
 [Organizing Tabs]: ./layout/tabs.md#organizing-tabs
@@ -92,5 +100,5 @@ table th:nth-of-type(3) {
 [Setting Room Properties]: ./rooms/management.md#setting-room-properties
 [Setting Room Tags]: ./rooms/management.md#setting-room-tags
 [Switching Tabs]: ./layout/tabs.md#switching-tabs
-[Verification]: ./verify.md
+[Verification]: ./e2ee/verify.md
 [Viewing Room/Space Members]: ./rooms/members.md#viewing-roomspace-members

@@ -2,10 +2,10 @@
 
 ## iamb keybindings
 
-| Modes           | Keybinding        | Aliases | Help                                |
-| --------------- | ---------------   | ------- | ----------------------------------- |
-| Normal, Visual  | `^Wm`             | `^W^M`  | See [Message Scrollback]            |
-| Normal, Visual  | `^Wz`             | `^W^Z`  | See [Organizing Windows]            |
+| Modes           | Keybinding        | Aliases        | Help                                |
+| --------------- | ----------------- | -------------- | ----------------------------------- |
+| Normal, Visual  | `<C-W>m`          | `<C-W><C-M>`   | See [Message Scrollback]            |
+| Normal, Visual  | `<C-W>z`          | `<C-W><C-Z>`   | See [Organizing Windows]            |
 
 ## Vim keybindings
 
@@ -27,35 +27,35 @@ documentation.
 | Normal          | `'{a-z}`          |                | See [Message Scrollback]            |
 | Normal          | `/`               |                | See [Message Scrollback]            |
 | Normal          | `?`               |                | See [Message Scrollback]            |
-| Normal, Visual  | `^B`              | `<PageUp>`     | See [Message Scrollback]            |
-| Normal, Visual  | `^E`              |                | See [Message Scrollback]            |
-| Normal, Visual  | `^F`              | `<PageDown>`   | See [Message Scrollback]            |
-| Normal, Visual  | `^D`              |                | See [Message Scrollback]            |
-| Normal          | `^I`              | `<Tab>`        | See [Switching Windows]             |
-| Insert          | `^N`              |                | See [Sending]                       |
-| Normal          | `^O`              |                | See [Switching Windows]             |
-| Insert          | `^P`              |                | See [Sending]                       |
-| Normal, Visual  | `^U`              |                | See [Message Scrollback]            |
-| Normal, Visual  | `^Wf`             | `^W^F`         | See [Opening Tabs]                  |
-| Normal, Visual  | `^Wh`             | `^W^H`         | See [Switching Windows]             |
-| Normal, Visual  | `^WH`             |                | See [Organizing Windows]            |
-| Normal, Visual  | `^Wj`             | `^W^J`         | See [Switching Windows]             |
-| Normal, Visual  | `^WJ`             |                | See [Organizing Windows]            |
-| Normal, Visual  | `^Wk`             | `^W^K`         | See [Switching Windows]             |
-| Normal, Visual  | `^WK`             |                | See [Organizing Windows]            |
-| Normal, Visual  | `^Wl`             | `^W^L`         | See [Switching Windows]             |
-| Normal, Visual  | `^WL`             |                | See [Organizing Windows]            |
-| Normal, Visual  | `^Wo`             | `^W^O`         | See [Closing Windows]               |
-| Normal, Visual  | `^Wq`             | `^W^Q`         | See [Closing Windows]               |
-| Normal, Visual  | `^Ws`             | `^W^S`         | See [Opening Windows]               |
-| Normal, Visual  | `^WT`             |                | See [Organizing Windows]            |
-| Normal, Visual  | `^Wv`             | `^W^V`         | See [Opening Windows]               |
-| Normal, Visual  | `^W-`             |                | See [Resizing Windows]              |
-| Normal, Visual  | `^W+`             |                | See [Resizing Windows]              |
-| Normal, Visual  | `^W<`             |                | See [Resizing Windows]              |
-| Normal, Visual  | `^W>`             |                | See [Resizing Windows]              |
-| Normal, Visual  | `^W=`             |                | See [Resizing Windows]              |
-| Normal, Visual  | `^Y`              |                | See [Message Scrollback]            |
+| Normal, Visual  | `<C-B>`           | `<PageUp>`     | See [Message Scrollback]            |
+| Normal, Visual  | `<C-E>`           |                | See [Message Scrollback]            |
+| Normal, Visual  | `<C-F>`           | `<PageDown>`   | See [Message Scrollback]            |
+| Normal, Visual  | `<C-D>`           |                | See [Message Scrollback]            |
+| Normal          | `<C-I>`           | `<Tab>`        | See [Switching Windows]             |
+| Insert          | `<C-N>`           |                | See [Sending]                       |
+| Normal          | `<C-O>`           |                | See [Switching Windows]             |
+| Insert          | `<C-P>`           |                | See [Sending]                       |
+| Normal, Visual  | `<C-U>`           |                | See [Message Scrollback]            |
+| Normal, Visual  | `<C-W>f`          | `<C-W><C-F>`   | See [Opening Tabs]                  |
+| Normal, Visual  | `<C-W>h`          | `<C-W><C-H>`   | See [Switching Windows]             |
+| Normal, Visual  | `<C-W>H`          |                | See [Organizing Windows]            |
+| Normal, Visual  | `<C-W>j`          | `<C-W><C-J>`   | See [Switching Windows]             |
+| Normal, Visual  | `<C-W>J`          |                | See [Organizing Windows]            |
+| Normal, Visual  | `<C-W>k`          | `<C-W><C-K>`   | See [Switching Windows]             |
+| Normal, Visual  | `<C-W>K`          |                | See [Organizing Windows]            |
+| Normal, Visual  | `<C-W>l`          | `<C-W<C-L>`    | See [Switching Windows]             |
+| Normal, Visual  | `<C-W>L`          |                | See [Organizing Windows]            |
+| Normal, Visual  | `<C-W>o`          | `<C-W><C-O>`   | See [Closing Windows]               |
+| Normal, Visual  | `<C-W>q`          | `<C-W><C-Q>`   | See [Closing Windows]               |
+| Normal, Visual  | `<C-W>s`          | `<C-W><C-S>`   | See [Opening Windows]               |
+| Normal, Visual  | `<C-W>T`          |                | See [Organizing Windows]            |
+| Normal, Visual  | `<C-W>v`          | `<C-W><C-V>`   | See [Opening Windows]               |
+| Normal, Visual  | `<C-W>-`          |                | See [Resizing Windows]              |
+| Normal, Visual  | `<C-W>+`          |                | See [Resizing Windows]              |
+| Normal, Visual  | `<C-W><`          |                | See [Resizing Windows]              |
+| Normal, Visual  | `<C-W>>`          |                | See [Resizing Windows]              |
+| Normal, Visual  | `<C-W>=`          |                | See [Resizing Windows]              |
+| Normal, Visual  | `<C-Y>`           |                | See [Message Scrollback]            |
 
 <style>
 table {

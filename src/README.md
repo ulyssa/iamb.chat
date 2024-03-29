@@ -10,11 +10,12 @@ fingers are used to from your favorite text editor!
 
 This documentation indicates keybindings using the following conventions:
 
-- The control key is shown with a leading caret; for example, `^W` is Ctrl-W.
 - Named keys are shown between angle brackets; for example, `<Space>` is the
   space bar.
+- Modifiers like the control key or shift are shown with their combining key
+  between brackets; for example, `<C-W>` is Ctrl-W and `<S-Tab>` is Shift+Tab.
 - Sequences of keys to be pressed are shown in the order to press them; for
-  example, `^Wgf` indicates that you should type Ctrl-W, then g, and finally f.
+  example, `<C-W>gf` indicates that you should type Ctrl-W, then g, and finally f.
 
 ## Contributing
 

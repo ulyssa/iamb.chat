@@ -7,12 +7,12 @@ wish to send. When it's complete, you can send it by pressing the `<Enter>`
 key from either Normal or Insert mode.
 
 > If you need to type a multiline message, you can start a line by typing
-> `^V^J`.  You can also use the `O` and `o` keys to insert a blank line before
-> or after the current line respectively.
+> `<C-V><C-J>`. You can also use the `O` and `o` keys to insert a blank line
+> before or after the current line respectively.
 
 From within the message bar, you can complete Matrix usernames, room aliases
-and identifiers, and Emoji shortcodes (e.g., `:heart:`) by using `^N` and `^P`
-to start cycling forwards or backwards through the list of possible
+and identifiers, and Emoji shortcodes (e.g., `:heart:`) by using `<C-N>` and
+`<C-P>` to start cycling forwards or backwards through the list of possible
 completions.
 
 The `:upload` command allows you to specify a file to send to the currently
@@ -27,25 +27,30 @@ Clipboard images can be uploaded by pasting with `p` or `P` from the `"+` and
 they contain the same contents, but they differ on Linux and other \*nix
 systems running X11 or Wayland, where:
 
-- `"+` contains the CLIPBOARD selection, usually set with `^C` or by selecting
-  "Copy Image" in a menu dialog.
-- `"*` contains the PRIMARY selection, usually contains last selected text) on X11.
+- `"+` contains the CLIPBOARD selection, which is usually set in a GUI
+  application with `<C-C>` or by selecting "Copy Image" in a menu dialog.
+- `"*` contains the PRIMARY selection, which is usually the last selected text
+  in X11 or Wayland.
 
 So, for example, if you had copied an image from a web browser on Linux
 (placing it into the CLIPBOARD selection), you could paste it into `iamb` with
 `"+p`. Or, if you instead selected some text with your cursor (placing it into
 the PRIMARY selection), then you could paste it with `"*p`.
 
+> If you want to compose a longer message outside of __iamb__ in your preferred
+> text editor, you can use the `:editor` command to launch your configured
+> `$EDITOR`.
+
 ## Message Scrollback
 
 You can scroll through messages from the message bar using the following keys:
 
-- `^E`/`^Y` to scroll downwards and upwards respectively a line at a time
-- `^D`/`^U` to scroll downwards and upwards respectively by half the window height
-- `^F`/`^B` to scroll downwards and upwards respectively by the window height
+- `<C-E>`/`<C-Y>` to scroll downwards and upwards respectively a line at a time
+- `<C-D>`/`<C-U>` to scroll downwards and upwards respectively by half the window height
+- `<C-F>`/`<C-B>` to scroll downwards and upwards respectively by the window height
 
 If you want to use movement keys to select individual messages, you can toggle
-focus between the message bar and the scrollback by pressing `^Wm`.
+focus between the message bar and the scrollback by pressing `<C-W>m`.
 
 The plaintext content of messages can be copied to registers using yank
 keybindings like `yy` or `Y`, and marked with `m{a-z}`. Marked messages can
@@ -130,4 +135,12 @@ You can use `:download!` to replace the file.
 
 To open the file after downloading the file, use the `:open` command instead.
 
+## Opening Links
+
+Links in messages are each assigned a number (or a letter when there are more
+than 10 links), which is shown within brackets (like `[0]`). You can use
+`:open` to view a list of their matching URLs, and pick one to open in a
+browser by typing its assigned character.
+
 [GitHub Emoji shortcodes]: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
+[open_command]: ./configure.md#Settings
