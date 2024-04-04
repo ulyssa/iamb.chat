@@ -17,3 +17,4 @@
     - [Tab Management](./layout/tabs.md)
 - [Command Reference](./commands.md)
 - [Keybinding Reference](./keybindings.md)
+- [Development](./development.md)
