@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - iamb documentation</title>
+        <title>Development - iamb documentation</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html" class="active">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">9.</strong> Development</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li><li class="chapter-item expanded "><a href="development.html" class="active"><strong aria-hidden="true">9.</strong> Development</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -138,45 +138,68 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p><strong>iamb</strong> is a terminal-based client for <a href="https://matrix.org/">Matrix</a> for the Vim addict. You can
-edit messages, navigate windows and manage tabs in the same ways that your
-fingers are used to from your favorite text editor!</p>
-<p><img src="/static/images/iamb-demo.gif" alt="Example Usage" /></p>
-<h2 id="reading-this-documentation"><a class="header" href="#reading-this-documentation">Reading This Documentation</a></h2>
-<p>This documentation indicates keybindings using the following conventions:</p>
+                        <h1 id="development"><a class="header" href="#development">Development</a></h1>
+<h2 id="setting-up-your-environment"><a class="header" href="#setting-up-your-environment">Setting Up Your Environment</a></h2>
+<p>In order to work on and build <strong>iamb</strong> locally, you will need:</p>
 <ul>
-<li>Named keys are shown between angle brackets; for example, <code>&lt;Space&gt;</code> is the
-space bar.</li>
-<li>Modifiers like the control key or shift are shown with their combining key
-between brackets; for example, <code>&lt;C-W&gt;</code> is Ctrl-W and <code>&lt;S-Tab&gt;</code> is Shift+Tab.</li>
-<li>Sequences of keys to be pressed are shown in the order to press them; for
-example, <code>&lt;C-W&gt;gf</code> indicates that you should type Ctrl-W, then g, and finally f.</li>
+<li><code>stable</code> Rust toolchain with <code>clippy</code> installed</li>
+<li><code>nightly</code> Rust toolchain with <code>rustfmt</code> installed</li>
 </ul>
-<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
-<p><strong>iamb</strong> is free and open source. You can find the source code, report bugs and
-request features on <a href="https://github.com/ulyssa/iamb/">GitHub</a>.</p>
-<p>If you find a mistake in this documentation, you can report it or submit a pull
-request at the <a href="https://github.com/ulyssa/iamb.chat/">iamb.chat</a> GitHub repository. </p>
-<p>Most of the Vim emulation in <strong>iamb</strong> comes from the <a href="https://github.com/ulyssa/modalkit">modalkit</a> crate. If you
-find a bug in text editing, window management, or need a Vim keybinding added,
-you can file an issue there.</p>
-<h2 id="join-us-on-matrix"><a class="header" href="#join-us-on-matrix">Join us on Matrix!</a></h2>
-<p>Please feel free to join us in:</p>
+<p>You can install the necessary Rust dependencies using <a href="https://rustup.rs/">rustup</a>:</p>
+<pre><code class="language-shell">rustup toolchain install stable --component clippy
+rustup toolchain install nightly --component rustfmt
+</code></pre>
+<p>You will also likely want to use <a href="https://rust-analyzer.github.io/">rust-analyzer</a> during your development. Refer
+to its documentation for help on setting it up in your preferred editor.</p>
+<p>If you are new to Rust, some helpful resources to learn or refer to are:</p>
 <ul>
-<li><a href="https://matrix.to/#/#iamb-users:0x.badd.cafe">#iamb-users:0x.badd.cafe</a> for discussing using <strong>iamb</strong></li>
-<li><a href="https://matrix.to/#/#iamb-dev:0x.badd.cafe">#iamb-dev:0x.badd.cafe</a> for discussing developing <strong>iamb</strong></li>
+<li><a href="https://doc.rust-lang.org/book/">The Rust Book</a> (or <a href="https://rust-book.cs.brown.edu/">an alternative version</a> with quizzes and visualizations)</li>
+<li><a href="https://doc.rust-lang.org/std/index.html">The Rust Standard Library</a> documentation</li>
+<li><a href="https://rust-lang.github.io/async-book/">Asynchronous Programming in Rust</a></li>
+<li><a href="https://play.rust-lang.org/">Rust Playground</a> is helpful for trying small examples and learning how things work</li>
 </ul>
-<p>Both of these are in the <a href="https://matrix.to/#/#iamb:0x.badd.cafe">#iamb:0x.badd.cafe</a> space.</p>
-<h2 id="license"><a class="header" href="#license">License</a></h2>
-<p>iamb and its documentation are released under the <a href="https://github.com/ulyssa/iamb/blob/master/LICENSE">Apache License, Version 2.0</a>.</p>
+<p>You can find more resources on <a href="https://www.rust-lang.org/learn">the Rust website</a>.</p>
+<p>At some point while working on <strong>iamb</strong>, you will have to touch one of its
+dependencies. Some of the libraries you may whose docs you may need are:</p>
+<ul>
+<li><a href="https://docs.rs/matrix-sdk/latest/matrix_sdk/">matrix-sdk</a></li>
+<li><a href="https://docs.rs/modalkit/latest/modalkit/">modalkit</a></li>
+<li><a href="https://docs.rs/modalkit-ratatui/latest/modalkit_ratatui/">modalkit-ratatui</a></li>
+<li><a href="https://docs.rs/ratatui/latest/ratatui/">ratatui</a> (see also the <a href="https://ratatui.rs/introduction/">ratatui book</a>, which includes small demos and How-Tos)</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/">tokio</a> (see also the <a href="https://tokio.rs/tokio/tutorial">tokio tutorial</a>)</li>
+</ul>
+<h2 id="building-formatting-and-testing"><a class="header" href="#building-formatting-and-testing">Building, Formatting and Testing</a></h2>
+<p>The commands you will want to run the most are:</p>
+<ul>
+<li><code>cargo check</code> to run the type checker and borrow checker</li>
+<li><code>cargo build</code> to build a debug binary (outputs to <code>target/debug/iamb</code>)</li>
+<li><code>cargo test</code> to run the unit tests</li>
+<li><code>cargo clippy</code> to run lints and get suggestions for simplifying code</li>
+<li><code>cargo +nightly fmt</code> to apply the crate’s standard formatting to your changes</li>
+</ul>
+<p>Once you have something you’re happy with, you can run <code>cargo build --release</code>
+to get a release binary. If you have a machine with plenty of RAM, you can use
+<code>cargo build --profile release-lto</code> to build a smaller, optimized binary using
+Link-Time Optimization.</p>
+<h2 id="making-a-pull-request"><a class="header" href="#making-a-pull-request">Making a Pull Request</a></h2>
+<p>If you are unfamiliar with Git or GitHub, refer to the <a href="https://git-scm.com/book/en/v2">Git Book</a> or
+<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Creating a pull request</a> to get started.</p>
+<p>If you want feedback while you’re still working on something, then
+please open a Draft Pull Request, so that someone can take a look.</p>
+<h2 id="getting-help"><a class="header" href="#getting-help">Getting Help</a></h2>
+<p>There are several different places you can reach out for help:</p>
+<ul>
+<li><a href="https://matrix.to/#/#iamb-dev:0x.badd.cafe">#iamb-dev:0x.badd.cafe</a> to discuss in a Matrix room</li>
+<li>File a <a href="https://github.com/ulyssa/iamb/issues">GitHub issue</a> to discuss your change (or comment on an existing one)</li>
+<li>Open a Draft Pull Request to show and discuss code</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="next" href="install.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="keybindings.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -184,8 +207,8 @@ you can file an issue there.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="next" href="install.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="keybindings.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
             </nav>
 
