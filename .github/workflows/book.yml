@@ -15,8 +15,14 @@ jobs:
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: '0.4.14'
+      - name: Install static-sitemap-cli
+        run: npm install static-sitemap-cli
       - name: Build
         run: mdbook build
+      - name: Generate sitemap
+        run: |
+          cd book
+          npx sscli --no-clean --base https://iamb.chat
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}

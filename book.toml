@@ -4,6 +4,7 @@ language = "en"
 multilingual = false
 src = "src"
 title = "iamb documentation"
+description = "Documentation for the iamb Matrix client"
 
 [output.html]
 curly-quotes = true
