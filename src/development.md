@@ -17,6 +17,8 @@ rustup toolchain install nightly --component rustfmt
 You will also likely want to use [rust-analyzer] during your development. Refer
 to its documentation for help on setting it up in your preferred editor.
 
+## Programming In Rust
+
 If you are new to Rust, some helpful resources to learn or refer to are:
 
 - [The Rust Book](https://doc.rust-lang.org/book/) (or [an alternative version](https://rust-book.cs.brown.edu/) with quizzes and visualizations)
@@ -27,7 +29,7 @@ If you are new to Rust, some helpful resources to learn or refer to are:
 You can find more resources on [the Rust website](https://www.rust-lang.org/learn).
 
 At some point while working on __iamb__, you will have to touch one of its
-dependencies. Some of the libraries you may whose docs you may need are:
+dependencies. Some of the libraries whose docs you may need are:
 
 - [matrix-sdk]
 - [modalkit]

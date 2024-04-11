@@ -1,0 +1,34 @@
+{{#with {
+    "meta": {
+        "index.md": { "canonical": "", "keywords": "" },
+        "commands.md": { "canonical": "commands.html", "keywords": ", commands" },
+        "e2ee/keys.md": { "canonical": "e2ee/keys.html", "keywords": ", e2ee, room keys" },
+        "e2ee/verify.md": { "canonical": "e2ee/verify.html", "keywords": ", e2ee, verification" },
+        "e2ee/index.md": { "canonical": "e2ee/", "keywords": "" },
+        "rooms/management.md": { "canonical": "rooms/management.html", "keywords": ", rooms" },
+        "rooms/index.md": { "canonical": "rooms/", "keywords": "" },
+        "rooms/browsing.md": { "canonical": "rooms/browsing.html", "keywords": "" },
+        "rooms/members.md": { "canonical": "rooms/members.html", "keywords": ", users, members" },
+        "configure.md": { "canonical": "configure.html", "keywords": ", configuration" },
+        "development.md": { "canonical": "development.html", "keywords": ", development, rust" },
+        "install.md": { "canonical": "install.html", "keywords": ", install" },
+        "layout/index.md": { "canonical": "layout/", "keywords": "" },
+        "layout/tabs.md": { "canonical": "layout/tabs.html", "keywords": ", tab management" },
+        "layout/windows.md": { "canonical": "layout/windows.html", "keywords": ", window management" },
+        "keybindings.md": { "canonical": "keybindings.html", "keywords": ", keybindings" },
+        "messages/index.md": { "canonical": "messages/", "keywords": ", messages" }
+    }
+} }}
+
+{{#each meta}}
+{{#if (eq ../../path @key)}}
+{{#with this}}
+
+<meta rel="canonical" href="https://iamb.chat/{{canonical}}" />
+<meta name="keywords" content="iamb, matrix client, tui, terminal{{keywords}}" />
+
+{{/with}}
+{{/if}}
+{{/each}}
+
+{{/with}}
