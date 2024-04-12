@@ -60,6 +60,16 @@ You can search the plaintext content of messages using `?` and `/` for reverse
 and forward search respectively. The `n` and `N` keys can be used to jump
 between results.
 
+## Threads
+
+You can enter or create a thread by selecting the message in the scrollback and
+pressing `<Enter>`. This will open a thread view that will show you messages
+in that thread. If you send a message in this view, it will be sent in-thread.
+
+Entering the thread view puts an entry into the jumplist, so when you are ready
+to return to the main room view, you can use `^O` to move backwards through the
+jumplist.
+
 ## Replying To A Message
 
 If you select a message in the scrollback, you can reply to it using the
@@ -111,7 +121,7 @@ command on the message. This command optionally takes a single argument giving
 the reason for removing it. For example:
 
 ```
-:redact "Message violates room rules" 
+:redact "Message violates room rules"
 ```
 
 If you're removing a message because it contains secrets (e.g. passwords,

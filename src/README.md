@@ -6,6 +6,17 @@ fingers are used to from your favorite text editor!
 
 ![Example Usage](/static/images/iamb-demo.gif)
 
+## Features
+
+- Threads, spaces, E2EE, and read receipts
+- Image previews in terminals that support it (sixels, Kitty, and iTerm2), or using pixelated blocks for those that don't
+- Notifications via terminal bell or desktop environment
+- Creating, joining, and leaving rooms
+- Sending and accepting room invitations
+- Editing, redacting, and reacting to messages
+- Custom keybindings
+- Multiple profiles
+
 ## Reading This Documentation
 
 This documentation indicates keybindings using the following conventions:
