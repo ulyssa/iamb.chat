@@ -747,6 +747,15 @@ than 10 links), which is shown within brackets (like <code>[0]</code>). You can 
 <code>:open</code> to view a list of their matching URLs, and pick one to open in a
 browser by typing its assigned character.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="screen-navigation"><a class="header" href="#screen-navigation">Screen Navigation</a></h1>
+<h2 id="following-matrix-ids"><a class="header" href="#following-matrix-ids">Following Matrix IDs</a></h2>
+<p>When your cursor is placed on top of a room, space, or user identifier (or an
+item for them when when <a href="layout/../rooms/browsing.html">browsing</a> lists of rooms, spaces, or users),
+you can open a window for it using:</p>
+<ul>
+<li><code>gf</code> to open in the current window</li>
+<li><code>&lt;C-W&gt;f</code> to open a new window split for the identifier</li>
+<li><code>&lt;C-W&gt;gf</code> to open a new tab for the identifier</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="window-management"><a class="header" href="#window-management">Window Management</a></h1>
 <h2 id="opening-windows"><a class="header" href="#opening-windows">Opening Windows</a></h2>
 <p>You can use <code>:split</code> (or its vertical variant <code>:vsplit</code>) to split the current
@@ -844,7 +853,7 @@ if you already know what room you want to open:</p>
 <p>The above command is equivalent to running:</p>
 <pre><code>:tabedit #watercooler:example.com`
 </code></pre>
-<p>You can also press <code>&lt;C-W&gt;f</code> while navigating a list of rooms and users to open it
+<p>You can also press <code>&lt;C-W&gt;gf</code> while navigating a list of rooms and users to open it
 in a new tab instead.</p>
 <h2 id="switching-tabs"><a class="header" href="#switching-tabs">Switching Tabs</a></h2>
 <p>You can move forwards or backwards through the open tabs using <code>gt</code> or <code>gT</code>
@@ -954,6 +963,7 @@ table th:nth-of-type(3) {
 <strong>iamb</strong>, but just some of those referenced and explained throughout this
 documentation.</p>
 <table><thead><tr><th>Modes</th><th>Keybinding</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
+<tr><td>Normal, Visual</td><td><code>gf</code></td><td></td><td>See <a href="./layout/index.html#following-matrix-ids">Following Matrix IDs</a></td></tr>
 <tr><td>Normal</td><td><code>gt</code></td><td><code>&lt;C-PageDown&gt;</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
 <tr><td>Normal</td><td><code>gT</code></td><td><code>&lt;C-PageUp&gt;</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
 <tr><td>Normal</td><td><code>m{a-z}</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
@@ -971,11 +981,13 @@ documentation.</p>
 <tr><td>Normal, Visual</td><td><code>&lt;C-F&gt;</code></td><td><code>&lt;PageDown&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>&lt;C-D&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>&lt;C-I&gt;</code></td><td><code>&lt;Tab&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
+<tr><td>Normal</td><td><code>&lt;C-L&gt;</code></td><td></td><td>Force the window to redraw</td></tr>
 <tr><td>Insert</td><td><code>&lt;C-N&gt;</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td>Normal</td><td><code>&lt;C-O&gt;</code></td><td></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
 <tr><td>Insert</td><td><code>&lt;C-P&gt;</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>&lt;C-U&gt;</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
-<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;f</code></td><td><code>&lt;C-W&gt;&lt;C-F&gt;</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;f</code></td><td><code>&lt;C-W&gt;&lt;C-F&gt;</code></td><td>See <a href="./layout/index.html#following-matrix-ids">Following Matrix IDs</a></td></tr>
+<tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;gf</code></td><td></td><td>See <a href="./layout/index.html#following-matrix-ids">Following Matrix IDs</a> and <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;h</code></td><td><code>&lt;C-W&gt;&lt;C-H&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;H</code></td><td></td><td>See <a href="./layout/windows.html#organizing-windows">Organizing Windows</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;j</code></td><td><code>&lt;C-W&gt;&lt;C-J&gt;</code></td><td>See <a href="./layout/windows.html#switching-windows">Switching Windows</a></td></tr>
