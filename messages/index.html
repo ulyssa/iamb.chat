@@ -193,6 +193,13 @@ then be returned to via <code>'{a-z}</code>.</p>
 <p>You can search the plaintext content of messages using <code>?</code> and <code>/</code> for reverse
 and forward search respectively. The <code>n</code> and <code>N</code> keys can be used to jump
 between results.</p>
+<h2 id="threads"><a class="header" href="#threads">Threads</a></h2>
+<p>You can enter or create a thread by selecting the message in the scrollback and
+pressing <code>&lt;Enter&gt;</code>. This will open a thread view that will show you messages
+in that thread. If you send a message in this view, it will be sent in-thread.</p>
+<p>Entering the thread view puts an entry into the jumplist, so when you are ready
+to return to the main room view, you can use <code>^O</code> to move backwards through the
+jumplist.</p>
 <h2 id="replying-to-a-message"><a class="header" href="#replying-to-a-message">Replying To A Message</a></h2>
 <p>If you select a message in the scrollback, you can reply to it using the
 <code>:reply</code> command. This will refocus the message bar, where you can type out
@@ -225,7 +232,7 @@ you can give a name if you’ve made any that you want to keep:</p>
 <p>If you need to remove a message from a room, you can do so using the <code>:redact</code>
 command on the message. This command optionally takes a single argument giving
 the reason for removing it. For example:</p>
-<pre><code>:redact &quot;Message violates room rules&quot; 
+<pre><code>:redact &quot;Message violates room rules&quot;
 </code></pre>
 <p>If you’re removing a message because it contains secrets (e.g. passwords,
 authentication tokens, etc.), make sure to rotate them: redacting a message
