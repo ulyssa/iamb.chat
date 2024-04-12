@@ -22,7 +22,7 @@ The above command is equivalent to running:
 :tabedit #watercooler:example.com`
 ```
 
-You can also press `<C-W>f` while navigating a list of rooms and users to open it
+You can also press `<C-W>gf` while navigating a list of rooms and users to open it
 in a new tab instead.
 
 ## Switching Tabs
