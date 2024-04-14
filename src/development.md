@@ -17,7 +17,7 @@ rustup toolchain install nightly --component rustfmt
 You will also likely want to use [rust-analyzer] during your development. Refer
 to its documentation for help on setting it up in your preferred editor.
 
-## Programming In Rust
+## Programming in Rust
 
 If you are new to Rust, some helpful resources to learn or refer to are:
 
@@ -36,6 +36,20 @@ dependencies. Some of the libraries whose docs you may need are:
 - [modalkit-ratatui]
 - [ratatui] (see also the [ratatui book], which includes small demos and How-Tos)
 - [tokio] (see also the [tokio tutorial])
+
+## Finding an Issue
+
+You may already have an idea of a feature you want to add or a bug that's
+affecting you, but if you're looking for something to get started learning
+how to contribute to __iamb__, you can search for a [GitHub issue] that
+interests you, and comment on it when you start working on it!
+
+A couple useful ways to search through the open issues are:
+
+- The [`good first issue`](https://github.com/ulyssa/iamb/labels/good%20first%20issue) label
+- The [Future Release](https://github.com/ulyssa/iamb/milestone/5) milestone
+  for things that would be useful in __iamb__, but is currently unplanned/not
+  started.
 
 ## Building, Formatting and Testing
 
