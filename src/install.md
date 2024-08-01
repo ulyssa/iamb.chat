@@ -16,6 +16,24 @@ using `paru`:
 paru iamb-git
 ```
 
+### FreeBSD
+
+On FreeBSD a package is available from the official repositories. To install it
+simply run:
+
+```
+pkg install iamb
+```
+
+### macOS
+
+On macOS a [package][homebrew] is available in Homebrew's repository. To
+install it simply run:
+
+```
+brew install iamb
+```
+
 ### NetBSD / pkgsrc
 
 On NetBSD (or any other system [with pkgsrc available][pkgsrc]), you can
@@ -87,7 +105,8 @@ iamb 0.0.9 (82645c8)
 [crates.io]: https://crates.io/crates/iamb
 [enabled flakes]: https://nixos.wiki/wiki/Flakes#Enable_flakes
 [GitHub]: https://github.com/ulyssa/iamb
-[installing-snap]: https://snapcraft.io/docs/installing-snapd
+[homebrew]: https://formulae.brew.sh/formula/iamb#default
+[install-snap]: https://snapcraft.io/docs/installing-snapd
 [openSUSE]: https://build.opensuse.org/package/show/home%3Asmolsheep/iamb
 [pkgsrc]: https://pkgsrc.smartos.org/
 [Releases]: https://github.com/ulyssa/iamb/releases/
