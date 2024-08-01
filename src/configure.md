@@ -46,7 +46,7 @@ Logging in for @user1:example.com...
 
 ### Per-Profile Configuration
 
-Several of the sectioncs that you can place under the global configuration can
+Several of the sections that you can place under the global configuration can
 also be placed within profile configurations to achieve per-profile values:
 
 - `dirs`
@@ -210,7 +210,7 @@ members = ["server", "~localpart"]
 | `"recent"`      | Sort rooms with recent messages towards the top.                                                                  |
 | `"unread"`      | Sort rooms with unread messages towards the top.                                                                  |
 | `"name"`        | Sort rooms alphabetically by their room name.                                                                     |
-| `"alias"`       | Sort rooms alphabetically by thei canonical alias (e.g., `#iamb-users:0x.badd.cafe`)                              |
+| `"alias"`       | Sort rooms alphabetically by their canonical alias (e.g., `#iamb-users:0x.badd.cafe`)                              |
 | `"id"`          | Sort rooms alphabetically by their unique room identifier (e.g., `!nQTgloqKBScxNjsQzR:0x.badd.cafe`).             |
 
 #### User Fields 
@@ -276,7 +276,7 @@ split = [
 You can add custom keybindings in `macros` subsections, which describes the Vim
 modes to map the commands to, the input keys you want to map, and the keys that
 you want it to then run. These keybindings behave like macros when a count is
-given, and will repeat the target key sequnce *n* times.
+given, and will repeat the target key sequence *n* times.
 
 For example, you could use the following to map `jj` to `<Esc>` in Insert mode
 and `V` to `<C-W>m` in Normal and Visual mode:
