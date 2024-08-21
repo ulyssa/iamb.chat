@@ -34,22 +34,22 @@ you can open it up, focus the window and run:
 - `:invite accept` to accept the invitation and join the room
 - `:invite reject` to reject the invitation
 
-## Setting Room Properties
+## Marking Direct Rooms
 
-You can set the description of the currently focused room using the `:set` command:
-
-```
-:room topic set "This is the new room topic"
-```
-
-Similarly, if you need to change the room's name:
+Matrix keeps a list of direct message rooms in account data on the server. If
+you have a room that you want to appear under `:dms` and it's not currently
+there, you can add the currently focused room to your account's list of direct
+messages with:
 
 ```
-:room name set "Watercooler Discussion"
+:room dm set
 ```
 
-If you want to remove the topic or name, you can use `:room topic unset` or
-`:room name unset`.
+Similarly, if you *don't* want it to be a DM:
+
+```
+:room dm unset
+```
 
 ## Setting Room Tags
 
@@ -85,3 +85,32 @@ could do:
 
 Note that user tags are not shown by all clients, so while they will appear in
 __iamb__, you won't necessarily see them elsewhere.
+
+## Configuring Room Notifications
+
+If you've [enabled notifications], you may want to reconfigure some rooms to
+not notify you as much. The different notification levels are:
+
+- `mute`, which disables notifications for this room.
+- `keywords`/`mentions`, which only shows notifications for mentions of the user and configured keywords.
+- `all`, which shows notifications for every message to this room.
+
+You can update a room with:
+
+```
+:room notify set [mute|keywords|mentions|all]
+```
+
+You can remove the per-room override with:
+
+```
+:room notify unset
+```
+
+And see the currently configured value for the room with:
+
+```
+:room notify show
+```
+
+[enabled notifications]: ../configure.md#notifications

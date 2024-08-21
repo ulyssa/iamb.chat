@@ -41,6 +41,25 @@ the PRIMARY selection), then you could paste it with `"*p`.
 > text editor, you can use the `:editor` command to launch your configured
 > `$EDITOR`.
 
+## Message Slash Commands
+
+You can prefix a message with several different slash commands to change the
+message type or format:
+
+- `/me` to send an emote message
+- `/html`/`/h` to send an HTML body
+- `/plain`/`/p` to send a plaintext body
+
+These slash commands won't appear with any special effects in __iamb__, but do
+produce effects in other clients:
+
+- `/confetti` to add confetti effects
+- `/fireworks` to add fireworks effects
+- `/hearts` to add floating hearts
+- `/snowfall` to add snowfall effects
+- `/rainfall` to add rainfall effects
+- `/spaceinvaders` to add falling [Space Invaders]
+
 ## Message Scrollback
 
 You can scroll through messages from the message bar using the following keys:
@@ -106,6 +125,16 @@ instead. For example, we could have also written the above as:
 :react heart
 ```
 
+If the argument isn't the shortcode name of an Emoji, then you will be prompted
+for whether you want to react with the literal text. You can force literal text
+by adding a `!` to the argument. For example, none of these will appear as Emoji:
+
+```
+:react! heart
+:react! laughing
+:react! "hello world"
+```
+
 If you want to remove a reaction, you can do so with the `:unreact` command. By
 default, this will remove all your reactions from the specified message, but
 you can give a name if you've made any that you want to keep:
@@ -154,3 +183,4 @@ browser by typing its assigned character.
 
 [GitHub Emoji shortcodes]: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
 [open_command]: ./configure.md#Settings
+[Space Invaders]: https://en.wikipedia.org/wiki/Space_Invaders

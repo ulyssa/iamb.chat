@@ -57,11 +57,11 @@ to install something besides the most recent release (e.g. `main` or `v0.0.8`).
 
 ### openSUSE Tumbleweed
 
-On openSUSE Tumbleweed a [package][openSUSE] is available from openSUSE Build
-Service (OBS). You can install it using OBS Package Installer:
+On openSUSE Tumbleweed a [package][openSUSE] is available from the official
+repositories. To install it simply run:
 
 ```
-opi iamb
+zypper install iamb
 ```
 
 ### Snap
@@ -74,7 +74,8 @@ snap install iamb
 
 ## GitHub Releases
 
-You can find binaries built for x86\_64 Linux from the [Releases] page on GitHub.
+You can find `.deb`, `.rpm` and binaries built for `x86_64` and `aarch64` Linux
+from the [Releases] page on GitHub.
 
 ## From crates.io
 
@@ -98,16 +99,29 @@ $ git clone https://github.com/ulyssa/iamb.git
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.9 (82645c8)
+iamb 0.0.10 (2e6376f)
+```
+
+If you would like to build `.deb` or `.rpm` packages from the repository,
+you can do so using [cargo-deb] and [cargo-generate-rpm] respectively. For
+example:
+
+```
+$ cargo deb
+   Compiling iamb v0.0.10 (/home/ufsm/src/iamb)
+    Finished `release` profile [optimized] target(s) in 2m 25s
+/home/ufsm/src/iamb/target/debian/iamb_0.0.10-1_amd64.deb
 ```
 
 [AUR helper]: https://wiki.archlinux.org/title/AUR_helpers
+[cargo-deb]: https://crates.io/crates/cargo-deb
+[cargo-generate-rpm]: https://crates.io/crates/cargo-generate-rpm
 [crates.io]: https://crates.io/crates/iamb
 [enabled flakes]: https://nixos.wiki/wiki/Flakes#Enable_flakes
 [GitHub]: https://github.com/ulyssa/iamb
 [homebrew]: https://formulae.brew.sh/formula/iamb#default
 [install-snap]: https://snapcraft.io/docs/installing-snapd
-[openSUSE]: https://build.opensuse.org/package/show/home%3Asmolsheep/iamb
+[openSUSE]: https://build.opensuse.org/package/show/openSUSE:Factory/iamb
 [pkgsrc]: https://pkgsrc.smartos.org/
 [Releases]: https://github.com/ulyssa/iamb/releases/
 [repology]: https://repology.org/project/iamb/versions

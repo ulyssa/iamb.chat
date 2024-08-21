@@ -87,6 +87,7 @@ url = "https://example.com"
 | Name                         | Default              | Description                                                                                                                          |
 | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `default_room`               |                      | A default room name or username to open at startup, in place of showing the welcome screen.                                          |
+| `external_edit_file_suffix`  | `.md`                | The file suffix to use when creating temporary files with message contents for `:edit`. (Usually you want the default `.md` for syntax highlighting.) |
 | `image_preview`              | (unset)              | Configures displaying image attachments for terminals that support previewing images. See [Image Previews](#image-previews) below.   |
 | `log_level`                  | `"info"`             | Configures the minimum log level. Valid values are `"trace"`, `"debug"`, `"info"`, `"warn"` or `"error"`.                            |
 | `message_user_color`         | `false`              | Whether to color entire messages using the same color used for the sender's username and display name.                               |
@@ -166,6 +167,9 @@ you can put the following in your configuration:
 [settings.notifications]
 enabled = true
 ```
+
+See [Configuring Room Notifications] for how to adjust the per-room
+notification level.
 
 #### Notification fields
 
@@ -380,6 +384,7 @@ table th:nth-of-type(3) {
 [dirs::config_dir]: https://docs.rs/dirs/latest/dirs/fn.config_dir.html
 [`${dirs::data_dir}`]: https://docs.rs/dirs/latest/dirs/fn.data_dir.html
 [`${dirs::download_dir}`]: https://docs.rs/dirs/latest/dirs/fn.download_dir.html
+[Configuring Room Notifications]: ./rooms/management.md#configuring-room-notifications
 [iTerm2]: https://iterm2.com/
 [Kitty]: https://sw.kovidgoyal.net/kitty/
 [well_known_entry]: https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient
