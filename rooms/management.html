@@ -79,7 +79,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="../e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="../rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="../rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="../rooms/management.html" class="active"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="../messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="../layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="../layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="../commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="../keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li><li class="chapter-item expanded "><a href="../development.html"><strong aria-hidden="true">9.</strong> Development</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="../e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="../rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="../rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="../rooms/management.html" class="active"><strong aria-hidden="true">4.3.</strong> Management</a></li><li class="chapter-item expanded "><a href="../rooms/admin.html"><strong aria-hidden="true">4.4.</strong> Admin</a></li></ol></li><li class="chapter-item expanded "><a href="../messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="../layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="../layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="../development.html"><strong aria-hidden="true">7.</strong> Development</a></li><li class="chapter-item expanded affix "><a href="../commands.html">Command Reference</a></li><li class="chapter-item expanded affix "><a href="../keybindings.html">Keybinding Reference</a></li><li class="chapter-item expanded affix "><a href="../terminals.html">Terminal Comparisons</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -168,15 +168,16 @@ you can open it up, focus the window and run:</p>
 <li><code>:invite accept</code> to accept the invitation and join the room</li>
 <li><code>:invite reject</code> to reject the invitation</li>
 </ul>
-<h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
-<p>You can set the description of the currently focused room using the <code>:set</code> command:</p>
-<pre><code>:room topic set &quot;This is the new room topic&quot;
+<h2 id="marking-direct-rooms"><a class="header" href="#marking-direct-rooms">Marking Direct Rooms</a></h2>
+<p>Matrix keeps a list of direct message rooms in account data on the server. If
+you have a room that you want to appear under <code>:dms</code> and it’s not currently
+there, you can add the currently focused room to your account’s list of direct
+messages with:</p>
+<pre><code>:room dm set
 </code></pre>
-<p>Similarly, if you need to change the room’s name:</p>
-<pre><code>:room name set &quot;Watercooler Discussion&quot;
+<p>Similarly, if you <em>don’t</em> want it to be a DM:</p>
+<pre><code>:room dm unset
 </code></pre>
-<p>If you want to remove the topic or name, you can use <code>:room topic unset</code> or
-<code>:room name unset</code>.</p>
 <h2 id="setting-room-tags"><a class="header" href="#setting-room-tags">Setting Room Tags</a></h2>
 <p>Matrix rooms can be tagged to help with sorting them. Several special tags that
 Matrix defines are:</p>
@@ -199,6 +200,23 @@ could do:</p>
 </code></pre>
 <p>Note that user tags are not shown by all clients, so while they will appear in
 <strong>iamb</strong>, you won’t necessarily see them elsewhere.</p>
+<h2 id="configuring-room-notifications"><a class="header" href="#configuring-room-notifications">Configuring Room Notifications</a></h2>
+<p>If you’ve <a href="../configure.html#notifications">enabled notifications</a>, you may want to reconfigure some rooms to
+not notify you as much. The different notification levels are:</p>
+<ul>
+<li><code>mute</code>, which disables notifications for this room.</li>
+<li><code>keywords</code>/<code>mentions</code>, which only shows notifications for mentions of the user and configured keywords.</li>
+<li><code>all</code>, which shows notifications for every message to this room.</li>
+</ul>
+<p>You can update a room with:</p>
+<pre><code>:room notify set [mute|keywords|mentions|all]
+</code></pre>
+<p>You can remove the per-room override with:</p>
+<pre><code>:room notify unset
+</code></pre>
+<p>And see the currently configured value for the room with:</p>
+<pre><code>:room notify show
+</code></pre>
 
                     </main>
 
@@ -207,7 +225,7 @@ could do:</p>
                             <a rel="prev" href="../rooms/members.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../messages/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../rooms/admin.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -219,7 +237,7 @@ could do:</p>
                     <a rel="prev" href="../rooms/members.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../messages/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../rooms/admin.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

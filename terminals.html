@@ -3,11 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Installation - iamb documentation</title>
+        <title>Terminal Comparisons - iamb documentation</title>
         <!-- Custom HTML head -->
-<link rel="canonical" href="https://iamb.chat/install.html" />
-<meta name="keywords" content="iamb, matrix client, tui, terminal, install" />
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Documentation for the iamb Matrix client">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html" class="active"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li><li class="chapter-item expanded "><a href="rooms/admin.html"><strong aria-hidden="true">4.4.</strong> Admin</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">7.</strong> Development</a></li><li class="chapter-item expanded affix "><a href="commands.html">Command Reference</a></li><li class="chapter-item expanded affix "><a href="keybindings.html">Keybinding Reference</a></li><li class="chapter-item expanded affix "><a href="terminals.html">Terminal Comparisons</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li><li class="chapter-item expanded "><a href="rooms/admin.html"><strong aria-hidden="true">4.4.</strong> Admin</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">7.</strong> Development</a></li><li class="chapter-item expanded affix "><a href="commands.html">Command Reference</a></li><li class="chapter-item expanded affix "><a href="keybindings.html">Keybinding Reference</a></li><li class="chapter-item expanded affix "><a href="terminals.html" class="active">Terminal Comparisons</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -141,85 +138,54 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
-<h2 id="from-a-package-manager"><a class="header" href="#from-a-package-manager">From a package manager</a></h2>
-<p>Several community members have taken care of setting up packages for their
-preferred operating systems and distributions. If you don’t see your system
-on this page, try checking <a href="https://repology.org/project/iamb/versions">repology</a> to see whether one exists for your
-system.</p>
-<h3 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h3>
-<p>Using your preferred <a href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>, you can install <code>iamb-git</code>. For example,
-using <code>paru</code>:</p>
-<pre><code>paru iamb-git
-</code></pre>
-<h3 id="freebsd"><a class="header" href="#freebsd">FreeBSD</a></h3>
-<p>On FreeBSD a package is available from the official repositories. To install it
-simply run:</p>
-<pre><code>pkg install iamb
-</code></pre>
-<h3 id="macos"><a class="header" href="#macos">macOS</a></h3>
-<p>On macOS a <a href="https://formulae.brew.sh/formula/iamb#default">package</a> is available in Homebrew’s repository. To
-install it simply run:</p>
-<pre><code>brew install iamb
-</code></pre>
-<h3 id="netbsd--pkgsrc"><a class="header" href="#netbsd--pkgsrc">NetBSD / pkgsrc</a></h3>
-<p>On NetBSD (or any other system <a href="https://pkgsrc.smartos.org/">with pkgsrc available</a>), you can
-install the <code>iamb</code> package:</p>
-<pre><code>pkgin install iamb
-</code></pre>
-<h3 id="nixos"><a class="header" href="#nixos">NixOS</a></h3>
-<p>There is an <code>iamb</code> package available in the 23.11 channel, or, if you have
-<a href="https://nixos.wiki/wiki/Flakes#Enable_flakes">enabled flakes</a> in Nix, you can install <strong>iamb</strong> from the Git repository via:</p>
-<pre><code>nix profile install &quot;github:ulyssa/iamb/latest&quot;
-</code></pre>
-<p>You can replace <code>latest</code> with a branch or specific version tag name if you want
-to install something besides the most recent release (e.g. <code>main</code> or <code>v0.0.8</code>).</p>
-<h3 id="opensuse-tumbleweed"><a class="header" href="#opensuse-tumbleweed">openSUSE Tumbleweed</a></h3>
-<p>On openSUSE Tumbleweed a <a href="https://build.opensuse.org/package/show/openSUSE:Factory/iamb">package</a> is available from the official
-repositories. To install it simply run:</p>
-<pre><code>zypper install iamb
-</code></pre>
-<h3 id="snap"><a class="header" href="#snap">Snap</a></h3>
-<p>A snap is available for Linux distributions <a href="https://snapcraft.io/docs/installing-snapd">which support it</a>:</p>
-<pre><code>snap install iamb
-</code></pre>
-<h2 id="github-releases"><a class="header" href="#github-releases">GitHub Releases</a></h2>
-<p>You can find <code>.deb</code>, <code>.rpm</code> and binaries built for <code>x86_64</code> and <code>aarch64</code> Linux
-from the <a href="https://github.com/ulyssa/iamb/releases/">Releases</a> page on GitHub.</p>
-<h2 id="from-cratesio"><a class="header" href="#from-cratesio">From crates.io</a></h2>
-<p>You can install the most recently published version of <strong>iamb</strong> from
-<a href="https://crates.io/crates/iamb">crates.io</a> using <code>cargo</code>: </p>
-<pre><code>$ cargo install --locked iamb
-</code></pre>
-<p>This will install the <code>iamb</code> binary to <code>~/.cargo/bin/</code>, which you should then
-place in your <code>$PATH</code>.</p>
-<h2 id="from-git-repository"><a class="header" href="#from-git-repository">From Git Repository</a></h2>
-<p>If you are working on <strong>iamb</strong> or need a change that has not yet been
-published, you can clone the source from <a href="https://github.com/ulyssa/iamb">GitHub</a> and build from that:</p>
-<pre><code>$ git clone https://github.com/ulyssa/iamb.git
-$ cd iamb
-$ cargo build --release
-$ ./target/release/iamb --version
-iamb 0.0.10 (2e6376f)
-</code></pre>
-<p>If you would like to build <code>.deb</code> or <code>.rpm</code> packages from the repository,
-you can do so using <a href="https://crates.io/crates/cargo-deb">cargo-deb</a> and <a href="https://crates.io/crates/cargo-generate-rpm">cargo-generate-rpm</a> respectively. For
-example:</p>
-<pre><code>$ cargo deb
-   Compiling iamb v0.0.10 (/home/ufsm/src/iamb)
-    Finished `release` profile [optimized] target(s) in 2m 25s
-/home/ufsm/src/iamb/target/debian/iamb_0.0.10-1_amd64.deb
-</code></pre>
+                        <h1 id="terminal-comparisons"><a class="header" href="#terminal-comparisons">Terminal Comparisons</a></h1>
+<p>While you should be able to use <strong>iamb</strong> in any terminal with reasonable UTF-8
+support, if you want to be able to see images in room history or use keypresses
+like <code>&lt;S-Enter&gt;</code>, you might find this table useful:</p>
+<table><thead><tr><th>Terminal</th><th>Operating Systems</th><th>Images</th><th>Extended Keypresses</th></tr></thead><tbody>
+<tr><td><a href="https://alacritty.org/">alacritty</a></td><td>FreeBSD, Linux, macOS, NetBSD, OpenBSD, Windows</td><td>N</td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://conemu.github.io/">ConEmu</a></td><td>Windows</td><td>N<sup class="footnote-reference"><a href="#note-conemu">2</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-win-keys">3</a></sup></td></tr>
+<tr><td><a href="https://codeberg.org/dnkl/foot">foot</a></td><td>FreeBSD, Linux, OpenBSD</td><td>Y<sup class="footnote-reference"><a href="#note-sixel">4</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://help.gnome.org/users/gnome-terminal/stable/">gnome-terminal</a></td><td>FreeBSD, Linux, NetBSD, OpenBSD</td><td>N</td><td>N<sup class="footnote-reference"><a href="#note-gnome-term">5</a></sup></td></tr>
+<tr><td><a href="https://iterm2.com/">iTerm2</a></td><td>macOS</td><td>Y<sup class="footnote-reference"><a href="#note-iterm2-img">6</a></sup></td><td>N</td></tr>
+<tr><td><a href="https://sw.kovidgoyal.net/kitty/">kitty</a></td><td>FreeBSD, Linux, macOS, NetBSD, OpenBSD</td><td>Y<sup class="footnote-reference"><a href="#note-kitty-img-new">7</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://konsole.kde.org/">konsole</a></td><td>FreeBSD, Linux, NetBSD, OpenBSD</td><td>Y<sup class="footnote-reference"><a href="#note-sixel">4</a></sup></td><td>N<sup class="footnote-reference"><a href="#note-konsole">8</a></sup></td></tr>
+<tr><td><a href="https://mlterm.sourceforge.net/">mlterm</a></td><td>FreeBSD, Linux, NetBSD, OpenBSD</td><td>Y<sup class="footnote-reference"><a href="#note-sixel">4</a></sup></td><td>N</td></tr>
+<tr><td><a href="https://raphamorim.io/rio/">rio</a></td><td>FreeBSD, Linux, macOS, Windows</td><td>Y<sup class="footnote-reference"><a href="#note-iterm2-img">6</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://wezfurlong.org/wezterm/index.html">wezterm</a></td><td>FreeBSD, Linux, macOS, Windows</td><td>Y<sup class="footnote-reference"><a href="#note-iterm2-img">6</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://apps.microsoft.com/detail/9n0dx20hk701">Windows Terminal</a></td><td>Windows</td><td>Y<sup class="footnote-reference"><a href="#note-sixel">4</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-win-keys">3</a></sup></td></tr>
+</tbody></table>
+<div class="footnote-definition" id="note-kitty-keys"><sup class="footnote-definition-label">1</sup>
+<p>Uses Kitty enhanced keyboard protocol</p>
+</div>
+<div class="footnote-definition" id="note-conemu"><sup class="footnote-definition-label">2</sup>
+<p>See <a href="https://github.com/Maximus5/ConEmu/issues/807">ConEmu tracking issue</a></p>
+</div>
+<div class="footnote-definition" id="note-win-keys"><sup class="footnote-definition-label">3</sup>
+<p>Uses Windows APIs</p>
+</div>
+<div class="footnote-definition" id="note-sixel"><sup class="footnote-definition-label">4</sup>
+<p>Uses <a href="https://www.arewesixelyet.com/">sixel</a> image protocol</p>
+</div>
+<div class="footnote-definition" id="note-gnome-term"><sup class="footnote-definition-label">5</sup>
+<p>See <a href="https://gitlab.gnome.org/GNOME/vte/-/issues/2601">vte tracking issue</a></p>
+</div>
+<div class="footnote-definition" id="note-iterm2-img"><sup class="footnote-definition-label">6</sup>
+<p>Uses iTerm2 inlines images protocol</p>
+</div>
+<div class="footnote-definition" id="note-kitty-img-new"><sup class="footnote-definition-label">7</sup>
+<p>Uses the <a href="https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders">new Kitty image protocol</a></p>
+</div>
+<div class="footnote-definition" id="note-konsole"><sup class="footnote-definition-label">8</sup>
+<p>See <a href="https://bugs.kde.org/show_bug.cgi?id=435975">konsole tracking issue</a></p>
+</div>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="keybindings.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a rel="next" href="configure.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -227,11 +193,8 @@ example:</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="keybindings.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a rel="next" href="configure.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 

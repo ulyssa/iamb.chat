@@ -4,6 +4,7 @@ https://iamb.chat/development.html
 https://iamb.chat/index.html
 https://iamb.chat/install.html
 https://iamb.chat/keybindings.html
+https://iamb.chat/terminals.html
 https://iamb.chat/e2ee/index.html
 https://iamb.chat/e2ee/keys.html
 https://iamb.chat/e2ee/verify.html
@@ -11,6 +12,7 @@ https://iamb.chat/layout/index.html
 https://iamb.chat/layout/tabs.html
 https://iamb.chat/layout/windows.html
 https://iamb.chat/messages/index.html
+https://iamb.chat/rooms/admin.html
 https://iamb.chat/rooms/browsing.html
 https://iamb.chat/rooms/index.html
 https://iamb.chat/rooms/management.html

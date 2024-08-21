@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">9.</strong> Development</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li><li class="chapter-item expanded "><a href="rooms/admin.html"><strong aria-hidden="true">4.4.</strong> Admin</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">7.</strong> Development</a></li><li class="chapter-item expanded affix "><a href="commands.html">Command Reference</a></li><li class="chapter-item expanded affix "><a href="keybindings.html">Keybinding Reference</a></li><li class="chapter-item expanded affix "><a href="terminals.html">Terminal Comparisons</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -216,16 +216,17 @@ install the <code>iamb</code> package:</p>
 <p>You can replace <code>latest</code> with a branch or specific version tag name if you want
 to install something besides the most recent release (e.g. <code>main</code> or <code>v0.0.8</code>).</p>
 <h3 id="opensuse-tumbleweed"><a class="header" href="#opensuse-tumbleweed">openSUSE Tumbleweed</a></h3>
-<p>On openSUSE Tumbleweed a <a href="https://build.opensuse.org/package/show/home%3Asmolsheep/iamb">package</a> is available from openSUSE Build
-Service (OBS). You can install it using OBS Package Installer:</p>
-<pre><code>opi iamb
+<p>On openSUSE Tumbleweed a <a href="https://build.opensuse.org/package/show/openSUSE:Factory/iamb">package</a> is available from the official
+repositories. To install it simply run:</p>
+<pre><code>zypper install iamb
 </code></pre>
 <h3 id="snap"><a class="header" href="#snap">Snap</a></h3>
 <p>A snap is available for Linux distributions <a href="https://snapcraft.io/docs/installing-snapd">which support it</a>:</p>
 <pre><code>snap install iamb
 </code></pre>
 <h2 id="github-releases"><a class="header" href="#github-releases">GitHub Releases</a></h2>
-<p>You can find binaries built for x86_64 Linux from the <a href="https://github.com/ulyssa/iamb/releases/">Releases</a> page on GitHub.</p>
+<p>You can find <code>.deb</code>, <code>.rpm</code> and binaries built for <code>x86_64</code> and <code>aarch64</code> Linux
+from the <a href="https://github.com/ulyssa/iamb/releases/">Releases</a> page on GitHub.</p>
 <h2 id="from-cratesio"><a class="header" href="#from-cratesio">From crates.io</a></h2>
 <p>You can install the most recently published version of <strong>iamb</strong> from
 <a href="https://crates.io/crates/iamb">crates.io</a> using <code>cargo</code>: </p>
@@ -240,7 +241,15 @@ published, you can clone the source from <a href="https://github.com/ulyssa/iamb
 $ cd iamb
 $ cargo build --release
 $ ./target/release/iamb --version
-iamb 0.0.9 (82645c8)
+iamb 0.0.10 (2e6376f)
+</code></pre>
+<p>If you would like to build <code>.deb</code> or <code>.rpm</code> packages from the repository,
+you can do so using <a href="https://crates.io/crates/cargo-deb">cargo-deb</a> and <a href="https://crates.io/crates/cargo-generate-rpm">cargo-generate-rpm</a> respectively. For
+example:</p>
+<pre><code>$ cargo deb
+   Compiling iamb v0.0.10 (/home/ufsm/src/iamb)
+    Finished `release` profile [optimized] target(s) in 2m 25s
+/home/ufsm/src/iamb/target/debian/iamb_0.0.10-1_amd64.deb
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
 <p><strong>iamb</strong> is configurable via a TOML configuration file located in the
@@ -307,6 +316,7 @@ url = &quot;https://example.com&quot;
 <h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
+<tr><td><code>external_edit_file_suffix</code></td><td><code>.md</code></td><td>The file suffix to use when creating temporary files with message contents for <code>:edit</code>. (Usually you want the default <code>.md</code> for syntax highlighting.)</td></tr>
 <tr><td><code>image_preview</code></td><td>(unset)</td><td>Configures displaying image attachments for terminals that support previewing images. See <a href="configure.html#image-previews">Image Previews</a> below.</td></tr>
 <tr><td><code>log_level</code></td><td><code>&quot;info&quot;</code></td><td>Configures the minimum log level. Valid values are <code>&quot;trace&quot;</code>, <code>&quot;debug&quot;</code>, <code>&quot;info&quot;</code>, <code>&quot;warn&quot;</code> or <code>&quot;error&quot;</code>.</td></tr>
 <tr><td><code>message_user_color</code></td><td><code>false</code></td><td>Whether to color entire messages using the same color used for the sender’s username and display name.</td></tr>
@@ -369,6 +379,8 @@ you can put the following in your configuration:</p>
 <pre><code class="language-toml">[settings.notifications]
 enabled = true
 </code></pre>
+<p>See <a href="./rooms/management.html#configuring-room-notifications">Configuring Room Notifications</a> for how to adjust the per-room
+notification level.</p>
 <h4 id="notification-fields"><a class="header" href="#notification-fields">Notification fields</a></h4>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>enabled</code></td><td><code>false</code></td><td>Whether to send notifications</td></tr>
@@ -577,6 +589,12 @@ prompt for confirmation by default, but you can override it by appending <code>!
 <h2 id="browsing-rooms-and-dms-together"><a class="header" href="#browsing-rooms-and-dms-together">Browsing Rooms And DMs Together</a></h2>
 <p>You can switch to a list of both joined rooms and direct messages using the
 <code>:chats</code> command.</p>
+<h2 id="browsing-unreads"><a class="header" href="#browsing-unreads">Browsing Unreads</a></h2>
+<p>You can view a list of rooms and direct messages with unread messages
+using the <code>:unreads</code> command. If you don’t want to visit all of them
+to read them each individually, you can mark them all as read with:</p>
+<pre><code>:unreads clear
+</code></pre>
 <h2 id="browsing-spaces"><a class="header" href="#browsing-spaces">Browsing Spaces</a></h2>
 <p>You can switch to a list of joined spaces using the <code>:spaces</code> command.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="members"><a class="header" href="#members">Members</a></h1>
@@ -610,15 +628,16 @@ you can open it up, focus the window and run:</p>
 <li><code>:invite accept</code> to accept the invitation and join the room</li>
 <li><code>:invite reject</code> to reject the invitation</li>
 </ul>
-<h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
-<p>You can set the description of the currently focused room using the <code>:set</code> command:</p>
-<pre><code>:room topic set &quot;This is the new room topic&quot;
+<h2 id="marking-direct-rooms"><a class="header" href="#marking-direct-rooms">Marking Direct Rooms</a></h2>
+<p>Matrix keeps a list of direct message rooms in account data on the server. If
+you have a room that you want to appear under <code>:dms</code> and it’s not currently
+there, you can add the currently focused room to your account’s list of direct
+messages with:</p>
+<pre><code>:room dm set
 </code></pre>
-<p>Similarly, if you need to change the room’s name:</p>
-<pre><code>:room name set &quot;Watercooler Discussion&quot;
+<p>Similarly, if you <em>don’t</em> want it to be a DM:</p>
+<pre><code>:room dm unset
 </code></pre>
-<p>If you want to remove the topic or name, you can use <code>:room topic unset</code> or
-<code>:room name unset</code>.</p>
 <h2 id="setting-room-tags"><a class="header" href="#setting-room-tags">Setting Room Tags</a></h2>
 <p>Matrix rooms can be tagged to help with sorting them. Several special tags that
 Matrix defines are:</p>
@@ -641,6 +660,90 @@ could do:</p>
 </code></pre>
 <p>Note that user tags are not shown by all clients, so while they will appear in
 <strong>iamb</strong>, you won’t necessarily see them elsewhere.</p>
+<h2 id="configuring-room-notifications"><a class="header" href="#configuring-room-notifications">Configuring Room Notifications</a></h2>
+<p>If you’ve <a href="rooms/../configure.html#notifications">enabled notifications</a>, you may want to reconfigure some rooms to
+not notify you as much. The different notification levels are:</p>
+<ul>
+<li><code>mute</code>, which disables notifications for this room.</li>
+<li><code>keywords</code>/<code>mentions</code>, which only shows notifications for mentions of the user and configured keywords.</li>
+<li><code>all</code>, which shows notifications for every message to this room.</li>
+</ul>
+<p>You can update a room with:</p>
+<pre><code>:room notify set [mute|keywords|mentions|all]
+</code></pre>
+<p>You can remove the per-room override with:</p>
+<pre><code>:room notify unset
+</code></pre>
+<p>And see the currently configured value for the room with:</p>
+<pre><code>:room notify show
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="administration"><a class="header" href="#administration">Administration</a></h1>
+<p>If you have the appropriate power level in a room, then you can change room
+settings and membership as described throughout this page. </p>
+<h2 id="managing-room-membership"><a class="header" href="#managing-room-membership">Managing Room Membership</a></h2>
+<p>Both bot spam and aggressive users are an unfortunately reality, and you may
+sometimes find yourself needing to get rid of users in a room. You can ban
+a user with:</p>
+<pre><code>:room ban @user:example.com
+</code></pre>
+<p>If you would like to unban someone, you can do:</p>
+<pre><code>:room unban @user:example.com
+</code></pre>
+<p>And if you just need to kick them out of the room without banning them (for
+example, when dealing with a user from a homeserver that no longer exists and
+is causing perpetual errors in federation), then you can do:</p>
+<pre><code>:room kick @user:example.com
+</code></pre>
+<p>If you find yourself managing a large room and needing to often ban users, you
+may want to look at something like <a href="https://github.com/matrix-org/mjolnir">mjolnir</a> to help you manage a ban list.</p>
+<h2 id="setting-room-aliases"><a class="header" href="#setting-room-aliases">Setting Room Aliases</a></h2>
+<p>You can add a new alias to a room with:</p>
+<pre><code>:room alias set #alias:example.com
+</code></pre>
+<p>And remove an alias with:</p>
+<pre><code>:room alias unset #alias:example.com
+</code></pre>
+<p>If you want to add a canonical alias or promote an existing one to be
+canonical, then you can use:</p>
+<pre><code>:room canon set #alias:example.com
+</code></pre>
+<p>If there was an existing canonical alias, then it will be demoted to a regular
+alternative room alias.</p>
+<p>If you want a room alias to no longer be canonical, then you can make it an
+alternative alias with:</p>
+<pre><code>:room canon unset #alias:example.com
+</code></pre>
+<blockquote>
+<p>If you don’t know what the room’s current canonical or alternative aliases
+are, you can see them with:</p>
+<pre><code>:room canon show
+:room alias show
+</code></pre>
+</blockquote>
+<h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
+<p>You can set the description of the currently focused room using its <code>set</code> command:</p>
+<pre><code>:room topic set &quot;This is the new room topic&quot;
+</code></pre>
+<p>Similarly, if you need to change the room’s name:</p>
+<pre><code>:room name set &quot;Watercooler Discussion&quot;
+</code></pre>
+<p>If you want to remove the topic or name, you can use <code>:room topic unset</code> or
+<code>:room name unset</code>.</p>
+<h2 id="setting-history-visibility"><a class="header" href="#setting-history-visibility">Setting History Visibility</a></h2>
+<p>Depending on what your rooms are used for, you may want to configure different
+visibility settings for the room history. Your options include:</p>
+<ul>
+<li><code>invited</code>, which configures the room to allow people to see history from the point they were invited onwards.</li>
+<li><code>joined</code>, which configures the room to allow people to see history from the point they actually join the room.</li>
+<li><code>shared</code>, which configures the room to allow people to see all history once they are joined, including messages from before they joined.</li>
+<li><code>world</code>/<code>world_readable</code> which configures the room to allow anyone to see the room history regardless of whether they are joined and in it.</li>
+</ul>
+<p>You can then set it with:</p>
+<pre><code>:room history set [invited|joined|shared|world]
+</code></pre>
+<p>You can see the current setting with:</p>
+<pre><code>:room history show
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="messages"><a class="header" href="#messages">Messages</a></h1>
 <h2 id="sending"><a class="header" href="#sending">Sending</a></h2>
 <p>While the message bar of a room is selected, you can type a message that you
@@ -678,6 +781,24 @@ the PRIMARY selection), then you could paste it with <code>&quot;*p</code>.</p>
 text editor, you can use the <code>:editor</code> command to launch your configured
 <code>$EDITOR</code>.</p>
 </blockquote>
+<h2 id="message-slash-commands"><a class="header" href="#message-slash-commands">Message Slash Commands</a></h2>
+<p>You can prefix a message with several different slash commands to change the
+message type or format:</p>
+<ul>
+<li><code>/me</code> to send an emote message</li>
+<li><code>/html</code>/<code>/h</code> to send an HTML body</li>
+<li><code>/plain</code>/<code>/p</code> to send a plaintext body</li>
+</ul>
+<p>These slash commands won’t appear with any special effects in <strong>iamb</strong>, but do
+produce effects in other clients:</p>
+<ul>
+<li><code>/confetti</code> to add confetti effects</li>
+<li><code>/fireworks</code> to add fireworks effects</li>
+<li><code>/hearts</code> to add floating hearts</li>
+<li><code>/snowfall</code> to add snowfall effects</li>
+<li><code>/rainfall</code> to add rainfall effects</li>
+<li><code>/spaceinvaders</code> to add falling <a href="https://en.wikipedia.org/wiki/Space_Invaders">Space Invaders</a></li>
+</ul>
 <h2 id="message-scrollback"><a class="header" href="#message-scrollback">Message Scrollback</a></h2>
 <p>You can scroll through messages from the message bar using the following keys:</p>
 <ul>
@@ -722,6 +843,13 @@ scrollback, and then use the <code>:react</code> command. For example:</p>
 <p>As a convenience, you can use the <a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md">GitHub Emoji shortcodes</a> to refer to them
 instead. For example, we could have also written the above as:</p>
 <pre><code>:react heart
+</code></pre>
+<p>If the argument isn’t the shortcode name of an Emoji, then you will be prompted
+for whether you want to react with the literal text. You can force literal text
+by adding a <code>!</code> to the argument. For example, none of these will appear as Emoji:</p>
+<pre><code>:react! heart
+:react! laughing
+:react! &quot;hello world&quot;
 </code></pre>
 <p>If you want to remove a reaction, you can do so with the <code>:unreact</code> command. By
 default, this will remove all your reactions from the specified message, but
@@ -890,6 +1018,74 @@ arguments, but you can specify a position to close:</p>
 <li><code>:tabclose $</code> will close the last tab</li>
 </ul>
 <p>If you want to close all tabs but the current one, use <code>:tabonly</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="development"><a class="header" href="#development">Development</a></h1>
+<h2 id="setting-up-your-environment"><a class="header" href="#setting-up-your-environment">Setting Up Your Environment</a></h2>
+<p>In order to work on and build <strong>iamb</strong> locally, you will need:</p>
+<ul>
+<li><code>stable</code> Rust toolchain with <code>clippy</code> installed</li>
+<li><code>nightly</code> Rust toolchain with <code>rustfmt</code> installed</li>
+</ul>
+<p>You can install the necessary Rust dependencies using <a href="https://rustup.rs/">rustup</a>:</p>
+<pre><code class="language-shell">rustup toolchain install stable --component clippy
+rustup toolchain install nightly --component rustfmt
+</code></pre>
+<p>You will also likely want to use <a href="https://rust-analyzer.github.io/">rust-analyzer</a> during your development. Refer
+to its documentation for help on setting it up in your preferred editor.</p>
+<h2 id="programming-in-rust"><a class="header" href="#programming-in-rust">Programming in Rust</a></h2>
+<p>If you are new to Rust, some helpful resources to learn or refer to are:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/">The Rust Book</a> (or <a href="https://rust-book.cs.brown.edu/">an alternative version</a> with quizzes and visualizations)</li>
+<li><a href="https://doc.rust-lang.org/std/index.html">The Rust Standard Library</a> documentation</li>
+<li><a href="https://rust-lang.github.io/async-book/">Asynchronous Programming in Rust</a></li>
+<li><a href="https://play.rust-lang.org/">Rust Playground</a> is helpful for trying small examples and learning how things work</li>
+</ul>
+<p>You can find more resources on <a href="https://www.rust-lang.org/learn">the Rust website</a>.</p>
+<p>At some point while working on <strong>iamb</strong>, you will have to touch one of its
+dependencies. Some of the libraries whose docs you may need are:</p>
+<ul>
+<li><a href="https://docs.rs/matrix-sdk/latest/matrix_sdk/">matrix-sdk</a></li>
+<li><a href="https://docs.rs/modalkit/latest/modalkit/">modalkit</a></li>
+<li><a href="https://docs.rs/modalkit-ratatui/latest/modalkit_ratatui/">modalkit-ratatui</a></li>
+<li><a href="https://docs.rs/ratatui/latest/ratatui/">ratatui</a> (see also the <a href="https://ratatui.rs/introduction/">ratatui book</a>, which includes small demos and How-Tos)</li>
+<li><a href="https://docs.rs/tokio/latest/tokio/">tokio</a> (see also the <a href="https://tokio.rs/tokio/tutorial">tokio tutorial</a>)</li>
+</ul>
+<h2 id="finding-an-issue"><a class="header" href="#finding-an-issue">Finding an Issue</a></h2>
+<p>You may already have an idea of a feature you want to add or a bug that’s
+affecting you, but if you’re looking for something to get started learning
+how to contribute to <strong>iamb</strong>, you can search for a <a href="https://github.com/ulyssa/iamb/issues">GitHub issue</a> that
+interests you, and comment on it when you start working on it!</p>
+<p>A couple useful ways to search through the open issues are:</p>
+<ul>
+<li>The <a href="https://github.com/ulyssa/iamb/labels/good%20first%20issue"><code>good first issue</code></a> label</li>
+<li>The <a href="https://github.com/ulyssa/iamb/milestone/5">Future Release</a> milestone
+for things that would be useful in <strong>iamb</strong>, but is currently unplanned/not
+started.</li>
+</ul>
+<h2 id="building-formatting-and-testing"><a class="header" href="#building-formatting-and-testing">Building, Formatting and Testing</a></h2>
+<p>The commands you will want to run the most are:</p>
+<ul>
+<li><code>cargo check</code> to run the type checker and borrow checker</li>
+<li><code>cargo build</code> to build a debug binary (outputs to <code>target/debug/iamb</code>)</li>
+<li><code>cargo test</code> to run the unit tests</li>
+<li><code>cargo clippy</code> to run lints and get suggestions for simplifying code</li>
+<li><code>cargo +nightly fmt</code> to apply the crate’s standard formatting to your changes</li>
+</ul>
+<p>Once you have something you’re happy with, you can run <code>cargo build --release</code>
+to get a release binary. If you have a machine with plenty of RAM, you can use
+<code>cargo build --profile release-lto</code> to build a smaller, optimized binary using
+Link-Time Optimization.</p>
+<h2 id="making-a-pull-request"><a class="header" href="#making-a-pull-request">Making a Pull Request</a></h2>
+<p>If you are unfamiliar with Git or GitHub, refer to the <a href="https://git-scm.com/book/en/v2">Git Book</a> or
+<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Creating a pull request</a> to get started.</p>
+<p>If you want feedback while you’re still working on something, then
+please open a Draft Pull Request, so that someone can take a look.</p>
+<h2 id="getting-help"><a class="header" href="#getting-help">Getting Help</a></h2>
+<p>There are several different places you can reach out for help:</p>
+<ul>
+<li><a href="https://matrix.to/#/#iamb-dev:0x.badd.cafe">#iamb-dev:0x.badd.cafe</a> to discuss in a Matrix room</li>
+<li>File a <a href="https://github.com/ulyssa/iamb/issues">GitHub issue</a> to discuss your change (or comment on an existing one)</li>
+<li>Open a Draft Pull Request to show and discuss code</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="command-reference"><a class="header" href="#command-reference">Command Reference</a></h1>
 <h2 id="iamb-commands"><a class="header" href="#iamb-commands">iamb commands</a></h2>
 <table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
@@ -913,14 +1109,35 @@ arguments, but you can specify a position to close:</p>
 <tr><td><code>:redact</code></td><td></td><td>See <a href="./messages/#redacting-a-message">Redacting A Message</a></td></tr>
 <tr><td><code>:reply</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:rooms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms">Browsing Rooms</a></td></tr>
-<tr><td><code>:room name set</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
-<tr><td><code>:room name unset</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room alias set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room alias show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room alias unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room ban</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
+<tr><td><code>:room canon set</code></td><td><code>:room canonicalalias set</code></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room canon show</code></td><td><code>:room canonicalalias show</code></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room canon unset</code></td><td><code>:room canonicalalias unset</code></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room dm unset</code></td><td></td><td>See <a href="./rooms/management.html#marking-direct-rooms">Marking Direct Rooms</a></td></tr>
+<tr><td><code>:room dm set</code></td><td></td><td>See <a href="./rooms/management.html#marking-direct-rooms">Marking Direct Rooms</a></td></tr>
+<tr><td><code>:room dm unset</code></td><td></td><td>See <a href="./rooms/management.html#marking-direct-rooms">Marking Direct Rooms</a></td></tr>
+<tr><td><code>:room history set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-history-visibility">Setting History Visibility</a></td></tr>
+<tr><td><code>:room history unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-history-visibility">Setting History Visibility</a></td></tr>
+<tr><td><code>:room kick</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
+<tr><td><code>:room name set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room name show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room name unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room notify set</code></td><td></td><td>See <a href="./rooms/management.html#configuring-room-notifications">Configuring Room Notifications</a></td></tr>
+<tr><td><code>:room notify show</code></td><td></td><td>See <a href="./rooms/management.html#configuring-room-notifications">Configuring Room Notifications</a></td></tr>
+<tr><td><code>:room notify unset</code></td><td></td><td>See <a href="./rooms/management.html#configuring-room-notifications">Configuring Room Notifications</a></td></tr>
 <tr><td><code>:room tag set</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-tags">Setting Room Tags</a></td></tr>
 <tr><td><code>:room tag unset</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-tags">Setting Room Tags</a></td></tr>
-<tr><td><code>:room topic set</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
-<tr><td><code>:room topic unset</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room topic set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room topic show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room topic unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room unban</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
 <tr><td><code>:unreact</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
+<tr><td><code>:unreads</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
+<tr><td><code>:unreads clear</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td><code>:verify</code></td><td></td><td>See <a href="./e2ee/verify.html">Verification</a></td></tr>
 <tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
@@ -1035,74 +1252,47 @@ table th:nth-of-type(4) {
     width: 40%;
 }
 </style>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="development"><a class="header" href="#development">Development</a></h1>
-<h2 id="setting-up-your-environment"><a class="header" href="#setting-up-your-environment">Setting Up Your Environment</a></h2>
-<p>In order to work on and build <strong>iamb</strong> locally, you will need:</p>
-<ul>
-<li><code>stable</code> Rust toolchain with <code>clippy</code> installed</li>
-<li><code>nightly</code> Rust toolchain with <code>rustfmt</code> installed</li>
-</ul>
-<p>You can install the necessary Rust dependencies using <a href="https://rustup.rs/">rustup</a>:</p>
-<pre><code class="language-shell">rustup toolchain install stable --component clippy
-rustup toolchain install nightly --component rustfmt
-</code></pre>
-<p>You will also likely want to use <a href="https://rust-analyzer.github.io/">rust-analyzer</a> during your development. Refer
-to its documentation for help on setting it up in your preferred editor.</p>
-<h2 id="programming-in-rust"><a class="header" href="#programming-in-rust">Programming in Rust</a></h2>
-<p>If you are new to Rust, some helpful resources to learn or refer to are:</p>
-<ul>
-<li><a href="https://doc.rust-lang.org/book/">The Rust Book</a> (or <a href="https://rust-book.cs.brown.edu/">an alternative version</a> with quizzes and visualizations)</li>
-<li><a href="https://doc.rust-lang.org/std/index.html">The Rust Standard Library</a> documentation</li>
-<li><a href="https://rust-lang.github.io/async-book/">Asynchronous Programming in Rust</a></li>
-<li><a href="https://play.rust-lang.org/">Rust Playground</a> is helpful for trying small examples and learning how things work</li>
-</ul>
-<p>You can find more resources on <a href="https://www.rust-lang.org/learn">the Rust website</a>.</p>
-<p>At some point while working on <strong>iamb</strong>, you will have to touch one of its
-dependencies. Some of the libraries whose docs you may need are:</p>
-<ul>
-<li><a href="https://docs.rs/matrix-sdk/latest/matrix_sdk/">matrix-sdk</a></li>
-<li><a href="https://docs.rs/modalkit/latest/modalkit/">modalkit</a></li>
-<li><a href="https://docs.rs/modalkit-ratatui/latest/modalkit_ratatui/">modalkit-ratatui</a></li>
-<li><a href="https://docs.rs/ratatui/latest/ratatui/">ratatui</a> (see also the <a href="https://ratatui.rs/introduction/">ratatui book</a>, which includes small demos and How-Tos)</li>
-<li><a href="https://docs.rs/tokio/latest/tokio/">tokio</a> (see also the <a href="https://tokio.rs/tokio/tutorial">tokio tutorial</a>)</li>
-</ul>
-<h2 id="finding-an-issue"><a class="header" href="#finding-an-issue">Finding an Issue</a></h2>
-<p>You may already have an idea of a feature you want to add or a bug that’s
-affecting you, but if you’re looking for something to get started learning
-how to contribute to <strong>iamb</strong>, you can search for a <a href="https://github.com/ulyssa/iamb/issues">GitHub issue</a> that
-interests you, and comment on it when you start working on it!</p>
-<p>A couple useful ways to search through the open issues are:</p>
-<ul>
-<li>The <a href="https://github.com/ulyssa/iamb/labels/good%20first%20issue"><code>good first issue</code></a> label</li>
-<li>The <a href="https://github.com/ulyssa/iamb/milestone/5">Future Release</a> milestone
-for things that would be useful in <strong>iamb</strong>, but is currently unplanned/not
-started.</li>
-</ul>
-<h2 id="building-formatting-and-testing"><a class="header" href="#building-formatting-and-testing">Building, Formatting and Testing</a></h2>
-<p>The commands you will want to run the most are:</p>
-<ul>
-<li><code>cargo check</code> to run the type checker and borrow checker</li>
-<li><code>cargo build</code> to build a debug binary (outputs to <code>target/debug/iamb</code>)</li>
-<li><code>cargo test</code> to run the unit tests</li>
-<li><code>cargo clippy</code> to run lints and get suggestions for simplifying code</li>
-<li><code>cargo +nightly fmt</code> to apply the crate’s standard formatting to your changes</li>
-</ul>
-<p>Once you have something you’re happy with, you can run <code>cargo build --release</code>
-to get a release binary. If you have a machine with plenty of RAM, you can use
-<code>cargo build --profile release-lto</code> to build a smaller, optimized binary using
-Link-Time Optimization.</p>
-<h2 id="making-a-pull-request"><a class="header" href="#making-a-pull-request">Making a Pull Request</a></h2>
-<p>If you are unfamiliar with Git or GitHub, refer to the <a href="https://git-scm.com/book/en/v2">Git Book</a> or
-<a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Creating a pull request</a> to get started.</p>
-<p>If you want feedback while you’re still working on something, then
-please open a Draft Pull Request, so that someone can take a look.</p>
-<h2 id="getting-help"><a class="header" href="#getting-help">Getting Help</a></h2>
-<p>There are several different places you can reach out for help:</p>
-<ul>
-<li><a href="https://matrix.to/#/#iamb-dev:0x.badd.cafe">#iamb-dev:0x.badd.cafe</a> to discuss in a Matrix room</li>
-<li>File a <a href="https://github.com/ulyssa/iamb/issues">GitHub issue</a> to discuss your change (or comment on an existing one)</li>
-<li>Open a Draft Pull Request to show and discuss code</li>
-</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="terminal-comparisons"><a class="header" href="#terminal-comparisons">Terminal Comparisons</a></h1>
+<p>While you should be able to use <strong>iamb</strong> in any terminal with reasonable UTF-8
+support, if you want to be able to see images in room history or use keypresses
+like <code>&lt;S-Enter&gt;</code>, you might find this table useful:</p>
+<table><thead><tr><th>Terminal</th><th>Operating Systems</th><th>Images</th><th>Extended Keypresses</th></tr></thead><tbody>
+<tr><td><a href="https://alacritty.org/">alacritty</a></td><td>FreeBSD, Linux, macOS, NetBSD, OpenBSD, Windows</td><td>N</td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://conemu.github.io/">ConEmu</a></td><td>Windows</td><td>N<sup class="footnote-reference"><a href="#note-conemu">2</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-win-keys">3</a></sup></td></tr>
+<tr><td><a href="https://codeberg.org/dnkl/foot">foot</a></td><td>FreeBSD, Linux, OpenBSD</td><td>Y<sup class="footnote-reference"><a href="#note-sixel">4</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://help.gnome.org/users/gnome-terminal/stable/">gnome-terminal</a></td><td>FreeBSD, Linux, NetBSD, OpenBSD</td><td>N</td><td>N<sup class="footnote-reference"><a href="#note-gnome-term">5</a></sup></td></tr>
+<tr><td><a href="https://iterm2.com/">iTerm2</a></td><td>macOS</td><td>Y<sup class="footnote-reference"><a href="#note-iterm2-img">6</a></sup></td><td>N</td></tr>
+<tr><td><a href="https://sw.kovidgoyal.net/kitty/">kitty</a></td><td>FreeBSD, Linux, macOS, NetBSD, OpenBSD</td><td>Y<sup class="footnote-reference"><a href="#note-kitty-img-new">7</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://konsole.kde.org/">konsole</a></td><td>FreeBSD, Linux, NetBSD, OpenBSD</td><td>Y<sup class="footnote-reference"><a href="#note-sixel">4</a></sup></td><td>N<sup class="footnote-reference"><a href="#note-konsole">8</a></sup></td></tr>
+<tr><td><a href="https://mlterm.sourceforge.net/">mlterm</a></td><td>FreeBSD, Linux, NetBSD, OpenBSD</td><td>Y<sup class="footnote-reference"><a href="#note-sixel">4</a></sup></td><td>N</td></tr>
+<tr><td><a href="https://raphamorim.io/rio/">rio</a></td><td>FreeBSD, Linux, macOS, Windows</td><td>Y<sup class="footnote-reference"><a href="#note-iterm2-img">6</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://wezfurlong.org/wezterm/index.html">wezterm</a></td><td>FreeBSD, Linux, macOS, Windows</td><td>Y<sup class="footnote-reference"><a href="#note-iterm2-img">6</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-kitty-keys">1</a></sup></td></tr>
+<tr><td><a href="https://apps.microsoft.com/detail/9n0dx20hk701">Windows Terminal</a></td><td>Windows</td><td>Y<sup class="footnote-reference"><a href="#note-sixel">4</a></sup></td><td>Y<sup class="footnote-reference"><a href="#note-win-keys">3</a></sup></td></tr>
+</tbody></table>
+<div class="footnote-definition" id="note-kitty-keys"><sup class="footnote-definition-label">1</sup>
+<p>Uses Kitty enhanced keyboard protocol</p>
+</div>
+<div class="footnote-definition" id="note-conemu"><sup class="footnote-definition-label">2</sup>
+<p>See <a href="https://github.com/Maximus5/ConEmu/issues/807">ConEmu tracking issue</a></p>
+</div>
+<div class="footnote-definition" id="note-win-keys"><sup class="footnote-definition-label">3</sup>
+<p>Uses Windows APIs</p>
+</div>
+<div class="footnote-definition" id="note-sixel"><sup class="footnote-definition-label">4</sup>
+<p>Uses <a href="https://www.arewesixelyet.com/">sixel</a> image protocol</p>
+</div>
+<div class="footnote-definition" id="note-gnome-term"><sup class="footnote-definition-label">5</sup>
+<p>See <a href="https://gitlab.gnome.org/GNOME/vte/-/issues/2601">vte tracking issue</a></p>
+</div>
+<div class="footnote-definition" id="note-iterm2-img"><sup class="footnote-definition-label">6</sup>
+<p>Uses iTerm2 inlines images protocol</p>
+</div>
+<div class="footnote-definition" id="note-kitty-img-new"><sup class="footnote-definition-label">7</sup>
+<p>Uses the <a href="https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders">new Kitty image protocol</a></p>
+</div>
+<div class="footnote-definition" id="note-konsole"><sup class="footnote-definition-label">8</sup>
+<p>See <a href="https://bugs.kde.org/show_bug.cgi?id=435975">konsole tracking issue</a></p>
+</div>
 
                     </main>
 

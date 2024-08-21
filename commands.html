@@ -79,7 +79,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html" class="active"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">9.</strong> Development</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li><li class="chapter-item expanded "><a href="rooms/admin.html"><strong aria-hidden="true">4.4.</strong> Admin</a></li></ol></li><li class="chapter-item expanded "><a href="messages/index.html"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="development.html"><strong aria-hidden="true">7.</strong> Development</a></li><li class="chapter-item expanded affix "><a href="commands.html" class="active">Command Reference</a></li><li class="chapter-item expanded affix "><a href="keybindings.html">Keybinding Reference</a></li><li class="chapter-item expanded affix "><a href="terminals.html">Terminal Comparisons</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -164,14 +164,35 @@
 <tr><td><code>:redact</code></td><td></td><td>See <a href="./messages/#redacting-a-message">Redacting A Message</a></td></tr>
 <tr><td><code>:reply</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:rooms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms">Browsing Rooms</a></td></tr>
-<tr><td><code>:room name set</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
-<tr><td><code>:room name unset</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room alias set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room alias show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room alias unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room ban</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
+<tr><td><code>:room canon set</code></td><td><code>:room canonicalalias set</code></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room canon show</code></td><td><code>:room canonicalalias show</code></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room canon unset</code></td><td><code>:room canonicalalias unset</code></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
+<tr><td><code>:room dm unset</code></td><td></td><td>See <a href="./rooms/management.html#marking-direct-rooms">Marking Direct Rooms</a></td></tr>
+<tr><td><code>:room dm set</code></td><td></td><td>See <a href="./rooms/management.html#marking-direct-rooms">Marking Direct Rooms</a></td></tr>
+<tr><td><code>:room dm unset</code></td><td></td><td>See <a href="./rooms/management.html#marking-direct-rooms">Marking Direct Rooms</a></td></tr>
+<tr><td><code>:room history set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-history-visibility">Setting History Visibility</a></td></tr>
+<tr><td><code>:room history unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-history-visibility">Setting History Visibility</a></td></tr>
+<tr><td><code>:room kick</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
+<tr><td><code>:room name set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room name show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room name unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room notify set</code></td><td></td><td>See <a href="./rooms/management.html#configuring-room-notifications">Configuring Room Notifications</a></td></tr>
+<tr><td><code>:room notify show</code></td><td></td><td>See <a href="./rooms/management.html#configuring-room-notifications">Configuring Room Notifications</a></td></tr>
+<tr><td><code>:room notify unset</code></td><td></td><td>See <a href="./rooms/management.html#configuring-room-notifications">Configuring Room Notifications</a></td></tr>
 <tr><td><code>:room tag set</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-tags">Setting Room Tags</a></td></tr>
 <tr><td><code>:room tag unset</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-tags">Setting Room Tags</a></td></tr>
-<tr><td><code>:room topic set</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
-<tr><td><code>:room topic unset</code></td><td></td><td>See <a href="./rooms/management.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room topic set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room topic show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room topic unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
+<tr><td><code>:room unban</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
 <tr><td><code>:unreact</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
+<tr><td><code>:unreads</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
+<tr><td><code>:unreads clear</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td><code>:verify</code></td><td></td><td>See <a href="./e2ee/verify.html">Verification</a></td></tr>
 <tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
@@ -218,7 +239,7 @@ table th:nth-of-type(3) {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="layout/tabs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="development.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                             <a rel="next" href="keybindings.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
@@ -230,7 +251,7 @@ table th:nth-of-type(3) {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="layout/tabs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="development.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                     <a rel="next" href="keybindings.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">

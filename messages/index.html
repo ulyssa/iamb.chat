@@ -79,7 +79,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="../e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="../rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="../rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="../rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li></ol></li><li class="chapter-item expanded "><a href="../messages/index.html" class="active"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="../layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="../layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="../commands.html"><strong aria-hidden="true">7.</strong> Command Reference</a></li><li class="chapter-item expanded "><a href="../keybindings.html"><strong aria-hidden="true">8.</strong> Keybinding Reference</a></li><li class="chapter-item expanded "><a href="../development.html"><strong aria-hidden="true">9.</strong> Development</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Introduction</a></li><li class="chapter-item expanded "><a href="../install.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../configure.html"><strong aria-hidden="true">2.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../e2ee/index.html"><strong aria-hidden="true">3.</strong> E2EE</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../e2ee/verify.html"><strong aria-hidden="true">3.1.</strong> Verification</a></li><li class="chapter-item expanded "><a href="../e2ee/keys.html"><strong aria-hidden="true">3.2.</strong> Room Keys</a></li></ol></li><li class="chapter-item expanded "><a href="../rooms/index.html"><strong aria-hidden="true">4.</strong> Rooms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../rooms/browsing.html"><strong aria-hidden="true">4.1.</strong> Browsing</a></li><li class="chapter-item expanded "><a href="../rooms/members.html"><strong aria-hidden="true">4.2.</strong> Members</a></li><li class="chapter-item expanded "><a href="../rooms/management.html"><strong aria-hidden="true">4.3.</strong> Management</a></li><li class="chapter-item expanded "><a href="../rooms/admin.html"><strong aria-hidden="true">4.4.</strong> Admin</a></li></ol></li><li class="chapter-item expanded "><a href="../messages/index.html" class="active"><strong aria-hidden="true">5.</strong> Messages</a></li><li class="chapter-item expanded "><a href="../layout/index.html"><strong aria-hidden="true">6.</strong> Screen Navigation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../layout/windows.html"><strong aria-hidden="true">6.1.</strong> Window Management</a></li><li class="chapter-item expanded "><a href="../layout/tabs.html"><strong aria-hidden="true">6.2.</strong> Tab Management</a></li></ol></li><li class="chapter-item expanded "><a href="../development.html"><strong aria-hidden="true">7.</strong> Development</a></li><li class="chapter-item expanded affix "><a href="../commands.html">Command Reference</a></li><li class="chapter-item expanded affix "><a href="../keybindings.html">Keybinding Reference</a></li><li class="chapter-item expanded affix "><a href="../terminals.html">Terminal Comparisons</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -178,6 +178,24 @@ the PRIMARY selection), then you could paste it with <code>&quot;*p</code>.</p>
 text editor, you can use the <code>:editor</code> command to launch your configured
 <code>$EDITOR</code>.</p>
 </blockquote>
+<h2 id="message-slash-commands"><a class="header" href="#message-slash-commands">Message Slash Commands</a></h2>
+<p>You can prefix a message with several different slash commands to change the
+message type or format:</p>
+<ul>
+<li><code>/me</code> to send an emote message</li>
+<li><code>/html</code>/<code>/h</code> to send an HTML body</li>
+<li><code>/plain</code>/<code>/p</code> to send a plaintext body</li>
+</ul>
+<p>These slash commands won’t appear with any special effects in <strong>iamb</strong>, but do
+produce effects in other clients:</p>
+<ul>
+<li><code>/confetti</code> to add confetti effects</li>
+<li><code>/fireworks</code> to add fireworks effects</li>
+<li><code>/hearts</code> to add floating hearts</li>
+<li><code>/snowfall</code> to add snowfall effects</li>
+<li><code>/rainfall</code> to add rainfall effects</li>
+<li><code>/spaceinvaders</code> to add falling <a href="https://en.wikipedia.org/wiki/Space_Invaders">Space Invaders</a></li>
+</ul>
 <h2 id="message-scrollback"><a class="header" href="#message-scrollback">Message Scrollback</a></h2>
 <p>You can scroll through messages from the message bar using the following keys:</p>
 <ul>
@@ -223,6 +241,13 @@ scrollback, and then use the <code>:react</code> command. For example:</p>
 instead. For example, we could have also written the above as:</p>
 <pre><code>:react heart
 </code></pre>
+<p>If the argument isn’t the shortcode name of an Emoji, then you will be prompted
+for whether you want to react with the literal text. You can force literal text
+by adding a <code>!</code> to the argument. For example, none of these will appear as Emoji:</p>
+<pre><code>:react! heart
+:react! laughing
+:react! &quot;hello world&quot;
+</code></pre>
 <p>If you want to remove a reaction, you can do so with the <code>:unreact</code> command. By
 default, this will remove all your reactions from the specified message, but
 you can give a name if you’ve made any that you want to keep:</p>
@@ -261,7 +286,7 @@ browser by typing its assigned character.</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../rooms/management.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../rooms/admin.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                             <a rel="next" href="../layout/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
@@ -273,7 +298,7 @@ browser by typing its assigned character.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../rooms/management.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../rooms/admin.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                     <a rel="next" href="../layout/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
