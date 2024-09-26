@@ -3,7 +3,8 @@
 __iamb__ is configurable via a TOML configuration file located in the
 configuration directory. By default, the configuration directory is determined
 by [dirs::config_dir], but you can override it at startup with the `-C`
-command-line flag.
+command-line flag. An example config can be found in the root of the repo 
+[here](https://github.com/ulyssa/iamb/blob/v0.0.10/config.example.toml).
 
 ## Profiles
 
@@ -291,6 +292,14 @@ and `V` to `<C-W>m` in Normal and Visual mode:
 
 [macros."normal|visual"]
 "V" = "<C-W>m"
+```
+
+You can also use this to trigger commands. For example, to list all chats 
+when you press 'gc' in normal mode use:
+
+```toml
+[macros.normal]
+"gc" = ":chats<Enter>"
 ```
 
 The available modes are:
