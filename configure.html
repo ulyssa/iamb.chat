@@ -145,7 +145,8 @@
 <p><strong>iamb</strong> is configurable via a TOML configuration file located in the
 configuration directory. By default, the configuration directory is determined
 by <a href="https://docs.rs/dirs/latest/dirs/fn.config_dir.html">dirs::config_dir</a>, but you can override it at startup with the <code>-C</code>
-command-line flag.</p>
+command-line flag. An example config can be found in the root of the repo 
+<a href="https://github.com/ulyssa/iamb/blob/v0.0.10/config.example.toml">here</a>.</p>
 <h2 id="profiles"><a class="header" href="#profiles">Profiles</a></h2>
 <p>You can configure a Matrix account in your <code>config.toml</code> by creating a
 <code>profiles</code> subsection with a <code>user_id</code> field specifying your account:</p>
@@ -358,6 +359,11 @@ and <code>V</code> to <code>&lt;C-W&gt;m</code> in Normal and Visual mode:</p>
 
 [macros.&quot;normal|visual&quot;]
 &quot;V&quot; = &quot;&lt;C-W&gt;m&quot;
+</code></pre>
+<p>You can also use this to trigger commands. For example, to list all chats 
+when you press ‘gc’ in normal mode use:</p>
+<pre><code class="language-toml">[macros.normal]
+&quot;gc&quot; = &quot;:chats&lt;Enter&gt;&quot;
 </code></pre>
 <p>The available modes are:</p>
 <ul>
