@@ -150,6 +150,7 @@
 <tr><td><code>:download</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
 <tr><td><code>:edit</code></td><td></td><td>See <a href="./messages/#editing-messages">Editing Messages</a></td></tr>
 <tr><td><code>:editor</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td><code>:forget</code></td><td></td><td>See <a href="./rooms/#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:invite accept</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:invite reject</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:invite send</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
@@ -162,6 +163,7 @@
 <tr><td><code>:open</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a> and <a href="./messages/#opening-links">Opening Links</a></td></tr>
 <tr><td><code>:react</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:redact</code></td><td></td><td>See <a href="./messages/#redacting-a-message">Redacting A Message</a></td></tr>
+<tr><td><code>:replied</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:reply</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:rooms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms">Browsing Rooms</a></td></tr>
 <tr><td><code>:room alias set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
@@ -176,6 +178,7 @@
 <tr><td><code>:room dm unset</code></td><td></td><td>See <a href="./rooms/management.html#marking-direct-rooms">Marking Direct Rooms</a></td></tr>
 <tr><td><code>:room history set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-history-visibility">Setting History Visibility</a></td></tr>
 <tr><td><code>:room history unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-history-visibility">Setting History Visibility</a></td></tr>
+<tr><td><code>:room id show</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
 <tr><td><code>:room kick</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
 <tr><td><code>:room name set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room name show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
@@ -190,24 +193,26 @@
 <tr><td><code>:room topic unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room unban</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
+<tr><td><code>:space child remove</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
+<tr><td><code>:space child set</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
 <tr><td><code>:unreact</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:unreads</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:unreads clear</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
-<tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#uploads">Uploads</a></td></tr>
 <tr><td><code>:verify</code></td><td></td><td>See <a href="./e2ee/verify.html">Verification</a></td></tr>
 <tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
 </tbody></table>
 <h2 id="vim-commands"><a class="header" href="#vim-commands">Vim commands</a></h2>
 <table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
 <tr><td><code>:close</code></td><td><code>:clo</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
-<tr><td><code>:horizontal</code></td><td><code>:hor</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td><code>:leftabove</code></td><td><code>:lefta</code>, <code>:aboveleft</code>, <code>:abo</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:horizontal</code></td><td><code>:hor</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:leftabove</code></td><td><code>:lefta</code>, <code>:aboveleft</code>, <code>:abo</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
 <tr><td><code>:only</code></td><td><code>:on</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
 <tr><td><code>:quitall</code></td><td><code>:qa</code>, <code>:qall</code>, <code>:quita</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
 <tr><td><code>:quit</code></td><td><code>:q</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
 <tr><td><code>:resize</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td><code>:rightbelow</code></td><td><code>:rightb</code>, <code>:belowright</code>, <code>:bel</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td><code>:split</code></td><td><code>:sp</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:rightbelow</code></td><td><code>:rightb</code>, <code>:belowright</code>, <code>:bel</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:split</code></td><td><code>:sp</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
 <tr><td><code>:tab</code></td><td></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
 <tr><td><code>:tabclose</code></td><td><code>:tabc</code></td><td>See <a href="./layout/tabs.html#closing-tabs">Closing Tabs</a></td></tr>
 <tr><td><code>:tabedit</code></td><td><code>:tabe</code>, <code>:tabnew</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
@@ -217,8 +222,8 @@
 <tr><td><code>:tabonly</code></td><td><code>:tabo</code></td><td>See <a href="./layout/tabs.html#closing-tabs">Closing Tabs</a></td></tr>
 <tr><td><code>:tabprevious</code></td><td><code>:tabp</code>, <code>:tabNext</code>, <code>:tabN</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
 <tr><td><code>:tabrewind</code></td><td><code>:tabr</code>, <code>:tabfirst</code>, <code>:tabfir</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
-<tr><td><code>:vertical</code></td><td><code>:vert</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td><code>:vsplit</code></td><td><code>:vs</code>, <code>:vsp</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:vertical</code></td><td><code>:vert</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:vsplit</code></td><td><code>:vs</code>, <code>:vsp</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
 </tbody></table>
 <style>
 table {

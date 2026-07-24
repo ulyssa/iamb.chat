@@ -146,8 +146,14 @@
 <p>While the message bar of a room is selected, you can type a message that you
 wish to send. When it’s complete, you can send it by pressing the <code>&lt;Enter&gt;</code>
 key from either Normal or Insert mode.</p>
+<p>By default, the mode you were last in is the one you will be in after sending
+the message. If you would prefer to automatically return to Normal mode after
+sending, you can set <a href="../configure.html#settings">normal_after_send</a> in your configuration file.</p>
+<p>The prompt of the message bar indicates room encryption status with a green
+<code style="color: green">🔒︎</code> for encrypted rooms and a red
+<code style="color: red">🔓︎</code> for unencrypted rooms.</p>
 <blockquote>
-<p>If you need to type a multiline message, you can start a line by typing
+<p>💡 If you need to type a multiline message, you can start a line by typing
 <code>&lt;C-V&gt;&lt;C-J&gt;</code>. You can also use the <code>O</code> and <code>o</code> keys to insert a blank line
 before or after the current line respectively.</p>
 </blockquote>
@@ -155,6 +161,7 @@ before or after the current line respectively.</p>
 and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
 <code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
 completions.</p>
+<h2 id="uploads"><a class="header" href="#uploads">Uploads</a></h2>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>
 <pre><code>:upload &quot;/home/user/Documents/Shared Document.pdf&quot;
@@ -174,7 +181,7 @@ in X11 or Wayland.</li>
 <code>&quot;+p</code>. Or, if you instead selected some text with your cursor (placing it into
 the PRIMARY selection), then you could paste it with <code>&quot;*p</code>.</p>
 <blockquote>
-<p>If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
+<p>💡 If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
 text editor, you can use the <code>:editor</code> command to launch your configured
 <code>$EDITOR</code>.</p>
 </blockquote>
@@ -204,7 +211,13 @@ produce effects in other clients:</p>
 <li><code>&lt;C-F&gt;</code>/<code>&lt;C-B&gt;</code> to scroll downwards and upwards respectively by the window height</li>
 </ul>
 <p>If you want to use movement keys to select individual messages, you can toggle
-focus between the message bar and the scrollback by pressing <code>&lt;C-W&gt;m</code>.</p>
+focus between the message bar and the scrollback by pressing <code>&lt;C-W&gt;m</code>. If you
+are already at the top line of the message bar, you can use <code>k</code>/<code>&lt;Up&gt;</code> to move
+into the scrollback, and <code>j</code>/<code>&lt;Down&gt;</code> from the last message in the scrollback
+to re-enter the message bar.</p>
+<p>By default, state events (such as room member joins/leaves, room name changes,
+and topic updates) are displayed directly within the room timeline. Use the
+<a href="../configure.html#settings">state_event_display</a> setting if you would prefer to hide state events.</p>
 <p>The plaintext content of messages can be copied to registers using yank
 keybindings like <code>yy</code> or <code>Y</code>, and marked with <code>m{a-z}</code>. Marked messages can
 then be returned to via <code>'{a-z}</code>.</p>
@@ -214,7 +227,8 @@ between results.</p>
 <h2 id="threads"><a class="header" href="#threads">Threads</a></h2>
 <p>You can enter or create a thread by selecting the message in the scrollback and
 pressing <code>&lt;Enter&gt;</code>. This will open a thread view that will show you messages
-in that thread. If you send a message in this view, it will be sent in-thread.</p>
+in that thread. If you send a message in this view, it will be sent in-thread.
+Read receipts are tracked per message thread.</p>
 <p>Entering the thread view puts an entry into the jumplist, so when you are ready
 to return to the main room view, you can use <code>^O</code> to move backwards through the
 jumplist.</p>
@@ -225,6 +239,8 @@ your reply. You can then <a href="#sending">send it</a> the same way that you wo
 normal message.</p>
 <p>If you change your mind, or select the wrong message to reply to, you can use
 <code>:cancel</code> to undo your <code>:reply</code>.</p>
+<p>To jump to the original message that a selected message replied to, use the
+<code>:replied</code> command.</p>
 <h2 id="editing-messages"><a class="header" href="#editing-messages">Editing Messages</a></h2>
 <p>Once a message has been sent, you might find that you need to amend it, to fix
 typos or correct information. You can select the message and run the <code>:edit</code>

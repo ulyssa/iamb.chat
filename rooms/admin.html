@@ -175,7 +175,7 @@ alternative alias with:</p>
 <pre><code>:room canon unset #alias:example.com
 </code></pre>
 <blockquote>
-<p>If you don’t know what the room’s current canonical or alternative aliases
+<p>💡 If you don’t know what the room’s current canonical or alternative aliases
 are, you can see them with:</p>
 <pre><code>:room canon show
 :room alias show
@@ -184,6 +184,9 @@ are, you can see them with:</p>
 <h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
 <p>You can set the description of the currently focused room using its <code>set</code> command:</p>
 <pre><code>:room topic set &quot;This is the new room topic&quot;
+</code></pre>
+<p>To view the topic of the currently focused room:</p>
+<pre><code>:room topic show
 </code></pre>
 <p>Similarly, if you need to change the room’s name:</p>
 <pre><code>:room name set &quot;Watercooler Discussion&quot;
@@ -205,6 +208,21 @@ visibility settings for the room history. Your options include:</p>
 <p>You can see the current setting with:</p>
 <pre><code>:room history show
 </code></pre>
+<h2 id="updating-space-hierarchy"><a class="header" href="#updating-space-hierarchy">Updating Space Hierarchy</a></h2>
+<p>You can add or remove rooms to a space using the <code>:space child</code> commands.</p>
+<p>To add or update a room as a child of the currently focused space:</p>
+<pre><code>:space child set [++order=&lt;order&gt;] [++suggested] &lt;room-id&gt;
+</code></pre>
+<p>The optional <code>++order</code> flag sets an ordering string for sorting space children according to the Matrix spec, and <code>++suggested</code> marks the child room as suggested to space members.</p>
+<p>To remove a room child from the currently focused space:</p>
+<pre><code>:space child remove &lt;room-id&gt;
+</code></pre>
+<blockquote>
+<p>💡 If you don’t know what a room’s Matrix ID is, you can focus the room window
+and run:</p>
+<pre><code>:room id show
+</code></pre>
+</blockquote>
 
                     </main>
 

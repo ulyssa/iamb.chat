@@ -198,6 +198,16 @@ using <code>paru</code>:</p>
 simply run:</p>
 <pre><code>pkg install iamb
 </code></pre>
+<h3 id="gentoo"><a class="header" href="#gentoo">Gentoo</a></h3>
+<p>On Gentoo, an ebuild is available from the community-managed
+<a href="https://wiki.gentoo.org/wiki/Project:GURU">GURU overlay</a>.</p>
+<p>You can enable the GURU overlay with:</p>
+<pre><code>eselect repository enable guru
+emerge --sync guru
+</code></pre>
+<p>And then install <code>iamb</code> with:</p>
+<pre><code>emerge --ask iamb
+</code></pre>
 <h3 id="macos"><a class="header" href="#macos">macOS</a></h3>
 <p>On macOS a <a href="https://formulae.brew.sh/formula/iamb#default">package</a> is available in Homebrew’s repository. To
 install it simply run:</p>
@@ -254,9 +264,11 @@ example:</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
 <p><strong>iamb</strong> is configurable via a TOML configuration file located in the
 configuration directory. By default, the configuration directory is determined
-by <a href="https://docs.rs/dirs/latest/dirs/fn.config_dir.html">dirs::config_dir</a>, but you can override it at startup with the <code>-C</code>
-command-line flag. An example config can be found in the root of the repo 
-<a href="https://github.com/ulyssa/iamb/blob/v0.0.10/config.example.toml">here</a>.</p>
+by <a href="https://docs.rs/dirs/latest/dirs/fn.config_dir.html">dirs::config_dir</a> (on macOS, <code>XDG_CONFIG_HOME</code> is prioritized if set,
+defaulting otherwise to <code>~/Library/Application Support</code>), but you can override
+it at startup with the <code>-C</code> command-line flag. To see what changing these
+options away from their defaults can look like, see <a href="https://github.com/ulyssa/iamb/blob/v0.0.11/config.example.toml">config.example.toml</a>
+in the repository.</p>
 <h2 id="profiles"><a class="header" href="#profiles">Profiles</a></h2>
 <p>You can configure a Matrix account in your <code>config.toml</code> by creating a
 <code>profiles</code> subsection with a <code>user_id</code> field specifying your account:</p>
@@ -284,6 +296,9 @@ flag. For example:</p>
 <pre><code>$ iamb -P admin
 Logging in for @user1:example.com...
 </code></pre>
+<p>If no profile is specified on the command line and <code>default_profile</code> is not set
+in your configuration, <strong>iamb</strong> will interactively prompt you at startup to
+select a profile.</p>
 <h3 id="per-profile-configuration"><a class="header" href="#per-profile-configuration">Per-Profile Configuration</a></h3>
 <p>Several of the sections that you can place under the global configuration can
 also be placed within profile configurations to achieve per-profile values:</p>
@@ -316,12 +331,15 @@ url = &quot;https://example.com&quot;
 </code></pre>
 <h2 id="settings"><a class="header" href="#settings">Settings</a></h2>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>auto_focus_message_bar</code></td><td><code>false</code></td><td>Whether to automatically focus the message bar when entering Insert mode in a room window.</td></tr>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
 <tr><td><code>external_edit_file_suffix</code></td><td><code>.md</code></td><td>The file suffix to use when creating temporary files with message contents for <code>:edit</code>. (Usually you want the default <code>.md</code> for syntax highlighting.)</td></tr>
 <tr><td><code>image_preview</code></td><td>(unset)</td><td>Configures displaying image attachments for terminals that support previewing images. See <a href="configure.html#image-previews">Image Previews</a> below.</td></tr>
 <tr><td><code>log_level</code></td><td><code>&quot;info&quot;</code></td><td>Configures the minimum log level. Valid values are <code>&quot;trace&quot;</code>, <code>&quot;debug&quot;</code>, <code>&quot;info&quot;</code>, <code>&quot;warn&quot;</code> or <code>&quot;error&quot;</code>.</td></tr>
 <tr><td><code>message_user_color</code></td><td><code>false</code></td><td>Whether to color entire messages using the same color used for the sender’s username and display name.</td></tr>
 <tr><td><code>message_shortcode_display</code></td><td><code>false</code></td><td>Whether to replace Emojis in message bodies with their shortcodes.</td></tr>
+<tr><td><code>mouse</code></td><td>(unset)</td><td>Configures mouse scroll support in the message scrollback. See <a href="configure.html#mouse-support">Mouse Support</a> below.</td></tr>
+<tr><td><code>normal_after_send</code></td><td><code>false</code></td><td>Whether to automatically reset the Vim mode to Normal mode after sending a message.</td></tr>
 <tr><td><code>notifications</code></td><td>(unset)</td><td>Whether to generate desktop notifications for messages sent to rooms not currently being viewed. See <a href="configure.html#notifications">Notifications</a></td></tr>
 <tr><td><code>open_command</code></td><td></td><td>Configures a command to use for opening downloads instead of the default. (e.g., <code>[&quot;my-open&quot;, &quot;--file&quot;]</code> to run a custom script</td></tr>
 <tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
@@ -330,6 +348,7 @@ url = &quot;https://example.com&quot;
 <tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
 <tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
 <tr><td><code>sort</code></td><td></td><td>Configures how to sort the lists in different windows like <code>:rooms</code> or <code>:members</code>. See <a href="configure.html#sorting-lists">Sorting Lists</a> below.</td></tr>
+<tr><td><code>state_event_display</code></td><td><code>true</code></td><td>Whether to render state events (e.g. room membership changes, name changes, topic updates) in room timelines.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
 <tr><td><code>user_gutter_width</code></td><td><code>30</code></td><td>How much space to reserve for displaying the message sender in room history.</td></tr>
@@ -386,8 +405,19 @@ notification level.</p>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>enabled</code></td><td><code>false</code></td><td>Whether to send notifications</td></tr>
 <tr><td><code>show_message</code></td><td><code>true</code></td><td>Whether to include the message body when showing the notification</td></tr>
-<tr><td><code>via</code></td><td><code>&quot;desktop&quot;</code></td><td>How to deliver the notification: <code>&quot;desktop&quot;</code> for desktop mechanism, or <code>&quot;bell&quot;</code> for terminal bell.</td></tr>
+<tr><td><code>sound_hint</code></td><td>(unset)</td><td>Configures a <a href="https://specifications.freedesktop.org/sound-naming/0.2/#notification">sound hint</a> (e.g. <code>&quot;message-new-instant&quot;</code>) to play when notifications arrive.</td></tr>
+<tr><td><code>via</code></td><td><code>&quot;desktop&quot;</code></td><td>How to deliver notifications: <code>&quot;desktop&quot;</code>, <code>&quot;bell&quot;</code>, or a pipe-separated string/array of both (e.g. <code>&quot;desktop\|bell&quot;</code>).</td></tr>
 </tbody></table>
+<p>Desktop notifications automatically close when a read receipt is sent for the
+target message. Large message bodies will be truncated as needed to avoid
+generating large notifications.</p>
+<h3 id="mouse-support"><a class="header" href="#mouse-support">Mouse Support</a></h3>
+<p>Mouse scroll support can be enabled using the <code>settings.mouse</code> section:</p>
+<pre><code class="language-toml">[settings.mouse]
+enabled = true
+</code></pre>
+<p>When enabled, scrolling with the mouse wheel inside a room is handled as
+if they were <code>&lt;C-E&gt;</code> and <code>&lt;C-Y&gt;</code> scroll movements.</p>
 <h3 id="sorting-lists"><a class="header" href="#sorting-lists">Sorting Lists</a></h3>
 <p>The <code>settings.sort</code> section allows you to customize how lists of rooms or users are
 sorted in the different <strong>iamb</strong> windows by specifying which values you want to
@@ -409,6 +439,7 @@ members = [&quot;server&quot;, &quot;~localpart&quot;]
 <h4 id="room-fields"><a class="header" href="#room-fields">Room Fields</a></h4>
 <table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>&quot;favorite&quot;</code></td><td>Sort rooms with the “Favorite” tag towards the top.</td></tr>
+<tr><td><code>&quot;invite&quot;</code></td><td>Sort pending room invitations towards the top.</td></tr>
 <tr><td><code>&quot;lowpriority&quot;</code></td><td>Sort rooms with the “Low Priority” tag towards the bottom.</td></tr>
 <tr><td><code>&quot;recent&quot;</code></td><td>Sort rooms with recent messages towards the top.</td></tr>
 <tr><td><code>&quot;unread&quot;</code></td><td>Sort rooms with unread messages towards the top.</td></tr>
@@ -499,7 +530,8 @@ do the following to find the value of the left arrow key:</p>
 <h2 id="directories"><a class="header" href="#directories">Directories</a></h2>
 <p><strong>iamb</strong> will use the standard directories for your operating system, but you
 can override them by placing a <code>&quot;dirs&quot;</code> field in your <code>config.toml</code> containing
-any of the following fields:</p>
+any of the following fields. Paths specified in <code>&quot;dirs&quot;</code> support expansion of
+<code>~</code> and shell environment variables (e.g. <code>$HOME</code> or <code>${VAR}</code>):</p>
 <table><thead><tr><th>Name</th><th>Default</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>cache</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.cache_dir.html"><code>${dirs::cache_dir}</code></a><code>/iamb</code></td><td>Directory for <strong>iamb</strong> data and output that can be safely deleted.</td></tr>
 <tr><td><code>data</code></td><td><a href="https://docs.rs/dirs/latest/dirs/fn.data_dir.html"><code>${dirs::data_dir}</code></a><code>/iamb</code></td><td>Directory for <strong>iamb</strong> data persisted between sessions, like E2EE keys.</td></tr>
@@ -553,6 +585,14 @@ table th:nth-of-type(3) {
 }
 </style>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="end-to-end-encryption"><a class="header" href="#end-to-end-encryption">End-To-End Encryption</a></h1>
+<p><strong>iamb</strong> supports End-To-End Encryption (E2EE) for Matrix rooms.</p>
+<h2 id="encryption-status-indicator"><a class="header" href="#encryption-status-indicator">Encryption Status Indicator</a></h2>
+<p>When viewing a room window, the encryption state of the room is indicated in
+the prompt of the message bar:</p>
+<ul>
+<li>Green <code style="color: green">🔒︎</code> indicates that the room is <strong>encrypted</strong>.</li>
+<li>Red <code style="color: red">🔓︎</code> indicates that the room is <strong>unencrypted</strong>.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="verification"><a class="header" href="#verification">Verification</a></h1>
 <h2 id="incoming-verifications"><a class="header" href="#incoming-verifications">Incoming Verifications</a></h2>
 <p>If another user or one of your other devices has sent you a verification
@@ -587,6 +627,9 @@ join the Matrix community space, you can run:</p>
 prompt for confirmation by default, but you can override it by appending <code>!</code>:</p>
 <pre><code>:leave!
 </code></pre>
+<p>To remove all left rooms from local client state and database, use the <code>:forget</code> command:</p>
+<pre><code>:forget
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="browsing"><a class="header" href="#browsing">Browsing</a></h1>
 <h2 id="browsing-rooms"><a class="header" href="#browsing-rooms">Browsing Rooms</a></h2>
 <p>You can switch to a list of joined rooms using the <code>:rooms</code> command.</p>
@@ -602,7 +645,8 @@ to read them each individually, you can mark them all as read with:</p>
 <pre><code>:unreads clear
 </code></pre>
 <h2 id="browsing-spaces"><a class="header" href="#browsing-spaces">Browsing Spaces</a></h2>
-<p>You can switch to a list of joined spaces using the <code>:spaces</code> command.</p>
+<p>You can switch to a list of joined spaces using the <code>:spaces</code> command.
+Use <code>/</code> and <code>?</code> to search by space name or room ID within the list.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="members"><a class="header" href="#members">Members</a></h1>
 <h2 id="viewing-roomspace-members"><a class="header" href="#viewing-roomspace-members">Viewing Room/Space Members</a></h2>
 <p>When viewing a room or a space, you can use the <code>:members</code> command to open a
@@ -720,7 +764,7 @@ alternative alias with:</p>
 <pre><code>:room canon unset #alias:example.com
 </code></pre>
 <blockquote>
-<p>If you don’t know what the room’s current canonical or alternative aliases
+<p>💡 If you don’t know what the room’s current canonical or alternative aliases
 are, you can see them with:</p>
 <pre><code>:room canon show
 :room alias show
@@ -729,6 +773,9 @@ are, you can see them with:</p>
 <h2 id="setting-room-properties"><a class="header" href="#setting-room-properties">Setting Room Properties</a></h2>
 <p>You can set the description of the currently focused room using its <code>set</code> command:</p>
 <pre><code>:room topic set &quot;This is the new room topic&quot;
+</code></pre>
+<p>To view the topic of the currently focused room:</p>
+<pre><code>:room topic show
 </code></pre>
 <p>Similarly, if you need to change the room’s name:</p>
 <pre><code>:room name set &quot;Watercooler Discussion&quot;
@@ -750,13 +797,34 @@ visibility settings for the room history. Your options include:</p>
 <p>You can see the current setting with:</p>
 <pre><code>:room history show
 </code></pre>
+<h2 id="updating-space-hierarchy"><a class="header" href="#updating-space-hierarchy">Updating Space Hierarchy</a></h2>
+<p>You can add or remove rooms to a space using the <code>:space child</code> commands.</p>
+<p>To add or update a room as a child of the currently focused space:</p>
+<pre><code>:space child set [++order=&lt;order&gt;] [++suggested] &lt;room-id&gt;
+</code></pre>
+<p>The optional <code>++order</code> flag sets an ordering string for sorting space children according to the Matrix spec, and <code>++suggested</code> marks the child room as suggested to space members.</p>
+<p>To remove a room child from the currently focused space:</p>
+<pre><code>:space child remove &lt;room-id&gt;
+</code></pre>
+<blockquote>
+<p>💡 If you don’t know what a room’s Matrix ID is, you can focus the room window
+and run:</p>
+<pre><code>:room id show
+</code></pre>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="messages"><a class="header" href="#messages">Messages</a></h1>
 <h2 id="sending"><a class="header" href="#sending">Sending</a></h2>
 <p>While the message bar of a room is selected, you can type a message that you
 wish to send. When it’s complete, you can send it by pressing the <code>&lt;Enter&gt;</code>
 key from either Normal or Insert mode.</p>
+<p>By default, the mode you were last in is the one you will be in after sending
+the message. If you would prefer to automatically return to Normal mode after
+sending, you can set <a href="messages/../configure.html#settings">normal_after_send</a> in your configuration file.</p>
+<p>The prompt of the message bar indicates room encryption status with a green
+<code style="color: green">🔒︎</code> for encrypted rooms and a red
+<code style="color: red">🔓︎</code> for unencrypted rooms.</p>
 <blockquote>
-<p>If you need to type a multiline message, you can start a line by typing
+<p>💡 If you need to type a multiline message, you can start a line by typing
 <code>&lt;C-V&gt;&lt;C-J&gt;</code>. You can also use the <code>O</code> and <code>o</code> keys to insert a blank line
 before or after the current line respectively.</p>
 </blockquote>
@@ -764,6 +832,7 @@ before or after the current line respectively.</p>
 and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
 <code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
 completions.</p>
+<h2 id="uploads"><a class="header" href="#uploads">Uploads</a></h2>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>
 <pre><code>:upload &quot;/home/user/Documents/Shared Document.pdf&quot;
@@ -783,7 +852,7 @@ in X11 or Wayland.</li>
 <code>&quot;+p</code>. Or, if you instead selected some text with your cursor (placing it into
 the PRIMARY selection), then you could paste it with <code>&quot;*p</code>.</p>
 <blockquote>
-<p>If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
+<p>💡 If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
 text editor, you can use the <code>:editor</code> command to launch your configured
 <code>$EDITOR</code>.</p>
 </blockquote>
@@ -813,7 +882,13 @@ produce effects in other clients:</p>
 <li><code>&lt;C-F&gt;</code>/<code>&lt;C-B&gt;</code> to scroll downwards and upwards respectively by the window height</li>
 </ul>
 <p>If you want to use movement keys to select individual messages, you can toggle
-focus between the message bar and the scrollback by pressing <code>&lt;C-W&gt;m</code>.</p>
+focus between the message bar and the scrollback by pressing <code>&lt;C-W&gt;m</code>. If you
+are already at the top line of the message bar, you can use <code>k</code>/<code>&lt;Up&gt;</code> to move
+into the scrollback, and <code>j</code>/<code>&lt;Down&gt;</code> from the last message in the scrollback
+to re-enter the message bar.</p>
+<p>By default, state events (such as room member joins/leaves, room name changes,
+and topic updates) are displayed directly within the room timeline. Use the
+<a href="messages/../configure.html#settings">state_event_display</a> setting if you would prefer to hide state events.</p>
 <p>The plaintext content of messages can be copied to registers using yank
 keybindings like <code>yy</code> or <code>Y</code>, and marked with <code>m{a-z}</code>. Marked messages can
 then be returned to via <code>'{a-z}</code>.</p>
@@ -823,7 +898,8 @@ between results.</p>
 <h2 id="threads"><a class="header" href="#threads">Threads</a></h2>
 <p>You can enter or create a thread by selecting the message in the scrollback and
 pressing <code>&lt;Enter&gt;</code>. This will open a thread view that will show you messages
-in that thread. If you send a message in this view, it will be sent in-thread.</p>
+in that thread. If you send a message in this view, it will be sent in-thread.
+Read receipts are tracked per message thread.</p>
 <p>Entering the thread view puts an entry into the jumplist, so when you are ready
 to return to the main room view, you can use <code>^O</code> to move backwards through the
 jumplist.</p>
@@ -834,6 +910,8 @@ your reply. You can then <a href="messages/index.html#sending">send it</a> the s
 normal message.</p>
 <p>If you change your mind, or select the wrong message to reply to, you can use
 <code>:cancel</code> to undo your <code>:reply</code>.</p>
+<p>To jump to the original message that a selected message replied to, use the
+<code>:replied</code> command.</p>
 <h2 id="editing-messages"><a class="header" href="#editing-messages">Editing Messages</a></h2>
 <p>Once a message has been sent, you might find that you need to amend it, to fix
 typos or correct information. You can select the message and run the <code>:edit</code>
@@ -927,13 +1005,15 @@ commands. For example, to open the list of rooms below the current window:</p>
 <pre><code>:abo hor members
 </code></pre>
 <h2 id="switching-windows"><a class="header" href="#switching-windows">Switching Windows</a></h2>
-<p>You can switch between between neighboring windows using the following keybindings:</p>
+<p>You can switch between neighboring windows using the following keybindings:</p>
 <ul>
 <li><code>&lt;C-W&gt;h</code> will move to the window left of the current one </li>
 <li><code>&lt;C-W&gt;j</code> will move to the window below the current one </li>
 <li><code>&lt;C-W&gt;k</code> will move to the window above the current one </li>
 <li><code>&lt;C-W&gt;l</code> will move to the window right of the current one </li>
 </ul>
+<p>The border of the currently focused window is highlighted, while unfocused
+window borders are dimmed to make the active window clear.</p>
 <p>If you want to move to previous content in the window, you can navigate through
 the jumplist using:</p>
 <ul>
@@ -1101,6 +1181,7 @@ please open a Draft Pull Request, so that someone can take a look.</p>
 <tr><td><code>:download</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
 <tr><td><code>:edit</code></td><td></td><td>See <a href="./messages/#editing-messages">Editing Messages</a></td></tr>
 <tr><td><code>:editor</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td><code>:forget</code></td><td></td><td>See <a href="./rooms/#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:invite accept</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:invite reject</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:invite send</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
@@ -1113,6 +1194,7 @@ please open a Draft Pull Request, so that someone can take a look.</p>
 <tr><td><code>:open</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a> and <a href="./messages/#opening-links">Opening Links</a></td></tr>
 <tr><td><code>:react</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:redact</code></td><td></td><td>See <a href="./messages/#redacting-a-message">Redacting A Message</a></td></tr>
+<tr><td><code>:replied</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:reply</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:rooms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms">Browsing Rooms</a></td></tr>
 <tr><td><code>:room alias set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
@@ -1127,6 +1209,7 @@ please open a Draft Pull Request, so that someone can take a look.</p>
 <tr><td><code>:room dm unset</code></td><td></td><td>See <a href="./rooms/management.html#marking-direct-rooms">Marking Direct Rooms</a></td></tr>
 <tr><td><code>:room history set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-history-visibility">Setting History Visibility</a></td></tr>
 <tr><td><code>:room history unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-history-visibility">Setting History Visibility</a></td></tr>
+<tr><td><code>:room id show</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
 <tr><td><code>:room kick</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
 <tr><td><code>:room name set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room name show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
@@ -1141,24 +1224,26 @@ please open a Draft Pull Request, so that someone can take a look.</p>
 <tr><td><code>:room topic unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room unban</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
+<tr><td><code>:space child remove</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
+<tr><td><code>:space child set</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
 <tr><td><code>:unreact</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:unreads</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:unreads clear</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
-<tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
+<tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#uploads">Uploads</a></td></tr>
 <tr><td><code>:verify</code></td><td></td><td>See <a href="./e2ee/verify.html">Verification</a></td></tr>
 <tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
 </tbody></table>
 <h2 id="vim-commands"><a class="header" href="#vim-commands">Vim commands</a></h2>
 <table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
 <tr><td><code>:close</code></td><td><code>:clo</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
-<tr><td><code>:horizontal</code></td><td><code>:hor</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td><code>:leftabove</code></td><td><code>:lefta</code>, <code>:aboveleft</code>, <code>:abo</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:horizontal</code></td><td><code>:hor</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:leftabove</code></td><td><code>:lefta</code>, <code>:aboveleft</code>, <code>:abo</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
 <tr><td><code>:only</code></td><td><code>:on</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
 <tr><td><code>:quitall</code></td><td><code>:qa</code>, <code>:qall</code>, <code>:quita</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
 <tr><td><code>:quit</code></td><td><code>:q</code></td><td>See <a href="./layout/tabs.html#closing-windows">Closing Windows</a></td></tr>
 <tr><td><code>:resize</code></td><td></td><td>See <a href="./layout/windows.html#resizing-windows">Resizing Windows</a></td></tr>
-<tr><td><code>:rightbelow</code></td><td><code>:rightb</code>, <code>:belowright</code>, <code>:bel</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td><code>:split</code></td><td><code>:sp</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:rightbelow</code></td><td><code>:rightb</code>, <code>:belowright</code>, <code>:bel</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:split</code></td><td><code>:sp</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
 <tr><td><code>:tab</code></td><td></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
 <tr><td><code>:tabclose</code></td><td><code>:tabc</code></td><td>See <a href="./layout/tabs.html#closing-tabs">Closing Tabs</a></td></tr>
 <tr><td><code>:tabedit</code></td><td><code>:tabe</code>, <code>:tabnew</code></td><td>See <a href="./layout/tabs.html#opening-tabs">Opening Tabs</a></td></tr>
@@ -1168,8 +1253,8 @@ please open a Draft Pull Request, so that someone can take a look.</p>
 <tr><td><code>:tabonly</code></td><td><code>:tabo</code></td><td>See <a href="./layout/tabs.html#closing-tabs">Closing Tabs</a></td></tr>
 <tr><td><code>:tabprevious</code></td><td><code>:tabp</code>, <code>:tabNext</code>, <code>:tabN</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
 <tr><td><code>:tabrewind</code></td><td><code>:tabr</code>, <code>:tabfirst</code>, <code>:tabfir</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
-<tr><td><code>:vertical</code></td><td><code>:vert</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
-<tr><td><code>:vsplit</code></td><td><code>:vs</code>, <code>:vsp</code></td><td>See <a href="./layout/tabs.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:vertical</code></td><td><code>:vert</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
+<tr><td><code>:vsplit</code></td><td><code>:vs</code>, <code>:vsp</code></td><td>See <a href="./layout/windows.html#opening-windows">Opening Windows</a></td></tr>
 </tbody></table>
 <style>
 table {
@@ -1199,6 +1284,8 @@ documentation.</p>
 <tr><td>Normal, Visual</td><td><code>gf</code></td><td></td><td>See <a href="./layout/index.html#following-matrix-ids">Following Matrix IDs</a></td></tr>
 <tr><td>Normal</td><td><code>gt</code></td><td><code>&lt;C-PageDown&gt;</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
 <tr><td>Normal</td><td><code>gT</code></td><td><code>&lt;C-PageUp&gt;</code></td><td>See <a href="./layout/tabs.html#switching-tabs">Switching Tabs</a></td></tr>
+<tr><td>Normal</td><td><code>j</code></td><td><code>&lt;Down&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
+<tr><td>Normal</td><td><code>k</code></td><td><code>&lt;Up&gt;</code></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>m{a-z}</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>n</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>N</code></td><td></td><td>See <a href="./messages/#message-scrollback">Message Scrollback</a></td></tr>
