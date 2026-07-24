@@ -10,6 +10,7 @@
 | `:download`             |                                       | See [Downloading Attachments]                       |
 | `:edit`                 |                                       | See [Editing Messages]                              |
 | `:editor`               |                                       | See [Sending]                                       |
+| `:forget`               |                                       | See [Joining And Leaving Rooms]                     |
 | `:invite accept`        |                                       | See [Room Invitations]                              |
 | `:invite reject`        |                                       | See [Room Invitations]                              |
 | `:invite send`          |                                       | See [Room Invitations]                              |
@@ -22,6 +23,7 @@
 | `:open`                 |                                       | See [Downloading Attachments] and [Opening Links]   |
 | `:react`                |                                       | See [Reacting To A Message]                         |
 | `:redact`               |                                       | See [Redacting A Message]                           |
+| `:replied`              |                                       | See [Replying To A Message]                         |
 | `:reply`                |                                       | See [Replying To A Message]                         |
 | `:rooms`                |                                       | See [Browsing Rooms]                                |
 | `:room alias set`       |                                       | See [Setting Room Aliases]                          |
@@ -36,6 +38,7 @@
 | `:room dm unset`        |                                       | See [Marking Direct Rooms]                          |
 | `:room history set`     |                                       | See [Setting History Visibility]                    |
 | `:room history unset`   |                                       | See [Setting History Visibility]                    |
+| `:room id show`         |                                       | See [Updating Space Hierarchy]                      |
 | `:room kick`            |                                       | See [Managing Room Membership]                      |
 | `:room name set`        |                                       | See [Setting Room Properties]                       |
 | `:room name show`       |                                       | See [Setting Room Properties]                       |
@@ -50,10 +53,12 @@
 | `:room topic unset`     |                                       | See [Setting Room Properties]                       |
 | `:room unban`           |                                       | See [Managing Room Membership]                      |
 | `:spaces`               |                                       | See [Browsing Spaces]                               |
+| `:space child remove`   |                                       | See [Updating Space Hierarchy]                      |
+| `:space child set`      |                                       | See [Updating Space Hierarchy]                      |
 | `:unreact`              |                                       | See [Reacting To A Message]                         |
 | `:unreads`              |                                       | See [Browsing Unreads]                              |
 | `:unreads clear`        |                                       | See [Browsing Unreads]                              |
-| `:upload`               |                                       | See [Sending]                                       |
+| `:upload`               |                                       | See [Uploads]                                       |
 | `:verify`               |                                       | See [Verification]                                  |
 | `:welcome`              |                                       | Shows the startup Welcome window                    |
 
@@ -112,7 +117,7 @@ table th:nth-of-type(3) {
 [Marking Direct Rooms]: ./rooms/management.md#marking-direct-rooms
 [Opening Links]: ./messages/#opening-links
 [Opening Tabs]: ./layout/tabs.md#opening-tabs
-[Opening Windows]: ./layout/tabs.md#opening-windows
+[Opening Windows]: ./layout/windows.md#opening-windows
 [Organizing Tabs]: ./layout/tabs.md#organizing-tabs
 [Reacting To A Message]: ./messages/#reacting-to-a-message
 [Redacting A Message]: ./messages/#redacting-a-message
@@ -120,6 +125,7 @@ table th:nth-of-type(3) {
 [Resizing Windows]: ./layout/windows.md#resizing-windows
 [Room Creation]: ./rooms/management.md#room-creation
 [Room Invitations]: ./rooms/management.md#room-invitations
+[Updating Space Hierarchy]: ../rooms/admin.md#updating-space-hierarchy
 [Joining And Leaving Rooms]: ./rooms/#joining-and-leaving-rooms
 [Sending]: ./messages/#sending
 [Setting History Visibility]: ./rooms/admin.md#setting-history-visibility
@@ -127,5 +133,6 @@ table th:nth-of-type(3) {
 [Setting Room Properties]: ./rooms/admin.md#setting-room-properties
 [Setting Room Tags]: ./rooms/management.md#setting-room-tags
 [Switching Tabs]: ./layout/tabs.md#switching-tabs
+[Uploads]: ./messages/#uploads
 [Verification]: ./e2ee/verify.md
 [Viewing Room/Space Members]: ./rooms/members.md#viewing-roomspace-members

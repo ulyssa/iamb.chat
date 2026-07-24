@@ -26,3 +26,4 @@ to read them each individually, you can mark them all as read with:
 ## Browsing Spaces
 
 You can switch to a list of joined spaces using the `:spaces` command.
+Use `/` and `?` to search by space name or room ID within the list.

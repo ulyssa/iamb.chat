@@ -61,7 +61,7 @@ alternative alias with:
 :room canon unset #alias:example.com
 ```
 
-> If you don't know what the room's current canonical or alternative aliases
+> 💡 If you don't know what the room's current canonical or alternative aliases
 > are, you can see them with:
 >
 > ```
@@ -75,6 +75,12 @@ You can set the description of the currently focused room using its `set` comman
 
 ```
 :room topic set "This is the new room topic"
+```
+
+To view the topic of the currently focused room:
+
+```
+:room topic show
 ```
 
 Similarly, if you need to change the room's name:
@@ -107,5 +113,32 @@ You can see the current setting with:
 ```
 :room history show
 ```
+
+
+## Updating Space Hierarchy
+
+You can add or remove rooms to a space using the `:space child` commands.
+
+To add or update a room as a child of the currently focused space:
+
+```
+:space child set [++order=<order>] [++suggested] <room-id>
+```
+
+The optional `++order` flag sets an ordering string for sorting space children according to the Matrix spec, and `++suggested` marks the child room as suggested to space members.
+
+To remove a room child from the currently focused space:
+
+```
+:space child remove <room-id>
+```
+
+> 💡 If you don't know what a room's Matrix ID is, you can focus the room window
+> and run:
+>
+> ```
+> :room id show
+> ```
+
 
 [mjolnir]: https://github.com/matrix-org/mjolnir

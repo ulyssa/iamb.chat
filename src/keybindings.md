@@ -18,6 +18,8 @@ documentation.
 | Normal, Visual  | `gf`              |                | See [Following Matrix IDs]                    |
 | Normal          | `gt`              | `<C-PageDown>` | See [Switching Tabs]                          |
 | Normal          | `gT`              | `<C-PageUp>`   | See [Switching Tabs]                          |
+| Normal          | `j`               | `<Down>`       | See [Message Scrollback]                      |
+| Normal          | `k`               | `<Up>`         | See [Message Scrollback]                      |
 | Normal          | `m{a-z}`          |                | See [Message Scrollback]                      |
 | Normal          | `n`               |                | See [Message Scrollback]                      |
 | Normal          | `N`               |                | See [Message Scrollback]                      |

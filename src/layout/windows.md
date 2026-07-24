@@ -38,12 +38,15 @@ Or, to show a room's members to the left side of the room instead of the right:
 
 ## Switching Windows
 
-You can switch between between neighboring windows using the following keybindings:
+You can switch between neighboring windows using the following keybindings:
 
 - `<C-W>h` will move to the window left of the current one 
 - `<C-W>j` will move to the window below the current one 
 - `<C-W>k` will move to the window above the current one 
 - `<C-W>l` will move to the window right of the current one 
+
+The border of the currently focused window is highlighted, while unfocused
+window borders are dimmed to make the active window clear.
 
 If you want to move to previous content in the window, you can navigate through
 the jumplist using:

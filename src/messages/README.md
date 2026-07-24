@@ -6,7 +6,15 @@ While the message bar of a room is selected, you can type a message that you
 wish to send. When it's complete, you can send it by pressing the `<Enter>`
 key from either Normal or Insert mode.
 
-> If you need to type a multiline message, you can start a line by typing
+By default, the mode you were last in is the one you will be in after sending
+the message. If you would prefer to automatically return to Normal mode after
+sending, you can set [normal_after_send] in your configuration file.
+
+The prompt of the message bar indicates room encryption status with a green
+<code style="color: green">🔒︎</code> for encrypted rooms and a red
+<code style="color: red">🔓︎</code> for unencrypted rooms.
+
+> 💡 If you need to type a multiline message, you can start a line by typing
 > `<C-V><C-J>`. You can also use the `O` and `o` keys to insert a blank line
 > before or after the current line respectively.
 
@@ -14,6 +22,8 @@ From within the message bar, you can complete Matrix usernames, room aliases
 and identifiers, and Emoji shortcodes (e.g., `:heart:`) by using `<C-N>` and
 `<C-P>` to start cycling forwards or backwards through the list of possible
 completions.
+
+## Uploads
 
 The `:upload` command allows you to specify a file to send to the currently
 focused room:
@@ -37,7 +47,7 @@ So, for example, if you had copied an image from a web browser on Linux
 `"+p`. Or, if you instead selected some text with your cursor (placing it into
 the PRIMARY selection), then you could paste it with `"*p`.
 
-> If you want to compose a longer message outside of __iamb__ in your preferred
+> 💡 If you want to compose a longer message outside of __iamb__ in your preferred
 > text editor, you can use the `:editor` command to launch your configured
 > `$EDITOR`.
 
@@ -69,7 +79,14 @@ You can scroll through messages from the message bar using the following keys:
 - `<C-F>`/`<C-B>` to scroll downwards and upwards respectively by the window height
 
 If you want to use movement keys to select individual messages, you can toggle
-focus between the message bar and the scrollback by pressing `<C-W>m`.
+focus between the message bar and the scrollback by pressing `<C-W>m`. If you
+are already at the top line of the message bar, you can use `k`/`<Up>` to move
+into the scrollback, and `j`/`<Down>` from the last message in the scrollback
+to re-enter the message bar.
+
+By default, state events (such as room member joins/leaves, room name changes,
+and topic updates) are displayed directly within the room timeline. Use the
+[state_event_display] setting if you would prefer to hide state events.
 
 The plaintext content of messages can be copied to registers using yank
 keybindings like `yy` or `Y`, and marked with `m{a-z}`. Marked messages can
@@ -84,6 +101,7 @@ between results.
 You can enter or create a thread by selecting the message in the scrollback and
 pressing `<Enter>`. This will open a thread view that will show you messages
 in that thread. If you send a message in this view, it will be sent in-thread.
+Read receipts are tracked per message thread.
 
 Entering the thread view puts an entry into the jumplist, so when you are ready
 to return to the main room view, you can use `^O` to move backwards through the
@@ -98,6 +116,9 @@ normal message.
 
 If you change your mind, or select the wrong message to reply to, you can use
 `:cancel` to undo your `:reply`.
+
+To jump to the original message that a selected message replied to, use the
+`:replied` command.
 
 ## Editing Messages
 
@@ -182,5 +203,7 @@ than 10 links), which is shown within brackets (like `[0]`). You can use
 browser by typing its assigned character.
 
 [GitHub Emoji shortcodes]: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
-[open_command]: ./configure.md#Settings
+[open_command]: ./configure.md#settings
+[normal_after_send]: ../configure.md#settings
+[state_event_display]: ../configure.md#settings
 [Space Invaders]: https://en.wikipedia.org/wiki/Space_Invaders

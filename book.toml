@@ -1,7 +1,6 @@
 [book]
 authors = ["Ulyssa"]
 language = "en"
-multilingual = false
 src = "src"
 title = "iamb documentation"
 description = "Documentation for the iamb Matrix client"

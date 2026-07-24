@@ -2,9 +2,11 @@
 
 __iamb__ is configurable via a TOML configuration file located in the
 configuration directory. By default, the configuration directory is determined
-by [dirs::config_dir], but you can override it at startup with the `-C`
-command-line flag. An example config can be found in the root of the repo 
-[here](https://github.com/ulyssa/iamb/blob/v0.0.10/config.example.toml).
+by [dirs::config_dir] (on macOS, `XDG_CONFIG_HOME` is prioritized if set,
+defaulting otherwise to `~/Library/Application Support`), but you can override
+it at startup with the `-C` command-line flag. To see what changing these
+options away from their defaults can look like, see [config.example.toml]
+in the repository.
 
 ## Profiles
 
@@ -44,6 +46,10 @@ flag. For example:
 $ iamb -P admin
 Logging in for @user1:example.com...
 ```
+
+If no profile is specified on the command line and `default_profile` is not set
+in your configuration, __iamb__ will interactively prompt you at startup to
+select a profile.
 
 ### Per-Profile Configuration
 
@@ -87,12 +93,15 @@ url = "https://example.com"
 
 | Name                         | Default              | Description                                                                                                                          |
 | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `auto_focus_message_bar`     | `false`              | Whether to automatically focus the message bar when entering Insert mode in a room window.                                           |
 | `default_room`               |                      | A default room name or username to open at startup, in place of showing the welcome screen.                                          |
 | `external_edit_file_suffix`  | `.md`                | The file suffix to use when creating temporary files with message contents for `:edit`. (Usually you want the default `.md` for syntax highlighting.) |
 | `image_preview`              | (unset)              | Configures displaying image attachments for terminals that support previewing images. See [Image Previews](#image-previews) below.   |
 | `log_level`                  | `"info"`             | Configures the minimum log level. Valid values are `"trace"`, `"debug"`, `"info"`, `"warn"` or `"error"`.                            |
 | `message_user_color`         | `false`              | Whether to color entire messages using the same color used for the sender's username and display name.                               |
 | `message_shortcode_display`  | `false`              | Whether to replace Emojis in message bodies with their shortcodes.                                                                   |
+| `mouse`                      | (unset)              | Configures mouse scroll support in the message scrollback. See [Mouse Support](#mouse-support) below.                                |
+| `normal_after_send`          | `false`              | Whether to automatically reset the Vim mode to Normal mode after sending a message.                                                  |
 | `notifications`              | (unset)              | Whether to generate desktop notifications for messages sent to rooms not currently being viewed. See [Notifications](#notifications) |
 | `open_command`               |                      | Configures a command to use for opening downloads instead of the default. (e.g., `["my-open", "--file"]` to run a custom script      |
 | `reaction_display`           | `true`               | Whether to display message reactions. You can use this or `reaction_shortcode_display` if your terminal doesn't show Emojis well.    |
@@ -101,6 +110,7 @@ url = "https://example.com"
 | `read_receipt_send`          | `true`               | Whether to send read receipts for viewed rooms.                                                                                      |
 | `request_timeout`            | 120                  | How long to wait in seconds before timing out requests to the homeserver.                                                            |
 | `sort`                       |                      | Configures how to sort the lists in different windows like `:rooms` or `:members`. See [Sorting Lists](#sorting-lists) below.        |
+| `state_event_display`        | `true`               | Whether to render state events (e.g. room membership changes, name changes, topic updates) in room timelines.                        |
 | `typing_notice_display`      | `true`               | Whether to display the typing notifications bar.                                                                                     |
 | `typing_notice_send`         | `true`               | Whether to send notifications to other room members when typing.                                                                     |
 | `user_gutter_width`          | `30`                 | How much space to reserve for displaying the message sender in room history.                                                         |
@@ -178,8 +188,24 @@ notification level.
 | -------------- | ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `enabled`      | `false`                                         | Whether to send notifications                                                                      |
 | `show_message` | `true`                                          | Whether to include the message body when showing the notification                                  |
-| `via`          | `"desktop"`                                     | How to deliver the notification: `"desktop"` for desktop mechanism, or `"bell"` for terminal bell. |
+| `sound_hint`   | (unset)                                         | Configures a [sound hint] (e.g. `"message-new-instant"`) to play when notifications arrive.        |
+| `via`          | `"desktop"`                                     | How to deliver notifications: `"desktop"`, `"bell"`, or a pipe-separated string/array of both (e.g. `"desktop\|bell"`). |
 
+Desktop notifications automatically close when a read receipt is sent for the
+target message. Large message bodies will be truncated as needed to avoid
+generating large notifications.
+
+### Mouse Support
+
+Mouse scroll support can be enabled using the `settings.mouse` section:
+
+```toml
+[settings.mouse]
+enabled = true
+```
+
+When enabled, scrolling with the mouse wheel inside a room is handled as
+if they were `<C-E>` and `<C-Y>` scroll movements.
 
 ### Sorting Lists
 
@@ -211,6 +237,7 @@ members = ["server", "~localpart"]
 | Name            | Description                                                                                                       |
 | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `"favorite"`    | Sort rooms with the "Favorite" tag towards the top.                                                               |
+| `"invite"`      | Sort pending room invitations towards the top.                                                                    |
 | `"lowpriority"` | Sort rooms with the "Low Priority" tag towards the bottom.                                                        |
 | `"recent"`      | Sort rooms with recent messages towards the top.                                                                  |
 | `"unread"`      | Sort rooms with unread messages towards the top.                                                                  |
@@ -326,7 +353,8 @@ Use `|` to specify that something should be mapped in several modes.
 
 __iamb__ will use the standard directories for your operating system, but you
 can override them by placing a `"dirs"` field in your `config.toml` containing
-any of the following fields:
+any of the following fields. Paths specified in `"dirs"` support expansion of
+`~` and shell environment variables (e.g. `$HOME` or `${VAR}`):
 
 | Name                    | Default                            | Description                                                             |
 | ----------------------- | ---------------------------------- | ----------------------------------------------------------------------- |
@@ -389,6 +417,7 @@ table th:nth-of-type(3) {
 </style>
 
 [arewesixelyet.com]: https://www.arewesixelyet.com/
+[config.example.toml]: https://github.com/ulyssa/iamb/blob/v0.0.11/config.example.toml
 [`${dirs::cache_dir}`]: https://docs.rs/dirs/latest/dirs/fn.cache_dir.html
 [dirs::config_dir]: https://docs.rs/dirs/latest/dirs/fn.config_dir.html
 [`${dirs::data_dir}`]: https://docs.rs/dirs/latest/dirs/fn.data_dir.html
@@ -396,4 +425,5 @@ table th:nth-of-type(3) {
 [Configuring Room Notifications]: ./rooms/management.md#configuring-room-notifications
 [iTerm2]: https://iterm2.com/
 [Kitty]: https://sw.kovidgoyal.net/kitty/
+[sound hint]: https://specifications.freedesktop.org/sound-naming/0.2/#notification
 [well_known_entry]: https://spec.matrix.org/latest/client-server-api/#getwell-knownmatrixclient

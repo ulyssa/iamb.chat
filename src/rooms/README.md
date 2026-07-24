@@ -21,3 +21,9 @@ prompt for confirmation by default, but you can override it by appending `!`:
 ```
 :leave!
 ```
+
+To remove all left rooms from local client state and database, use the `:forget` command:
+
+```
+:forget
+```
