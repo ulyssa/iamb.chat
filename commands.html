@@ -143,29 +143,47 @@
                     <main>
                         <h1 id="command-reference"><a class="header" href="#command-reference">Command Reference</a></h1>
 <h2 id="iamb-commands"><a class="header" href="#iamb-commands">iamb commands</a></h2>
+<h3 id="general-commands"><a class="header" href="#general-commands">General Commands</a></h3>
 <table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
 <tr><td><code>:chats</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms-and-dms-together">Browsing Rooms And DMs Together</a></td></tr>
 <tr><td><code>:create</code></td><td></td><td>See <a href="./rooms/management.html#room-creation">Room Creation</a></td></tr>
 <tr><td><code>:dms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-direct-messages">Browsing Direct Messages</a></td></tr>
-<tr><td><code>:download</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
-<tr><td><code>:edit</code></td><td></td><td>See <a href="./messages/#editing-messages">Editing Messages</a></td></tr>
-<tr><td><code>:editor</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td><code>:forget</code></td><td></td><td>See <a href="./rooms/#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
-<tr><td><code>:invite accept</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
-<tr><td><code>:invite reject</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
-<tr><td><code>:invite send</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:join</code></td><td></td><td>See <a href="./rooms/#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:keys export</code></td><td></td><td>See <a href="./e2ee/keys.html#exporting-importing-keys">Exporting / Importing Keys</a></td></tr>
 <tr><td><code>:keys import</code></td><td></td><td>See <a href="./e2ee/keys.html#exporting-importing-keys">Exporting / Importing Keys</a></td></tr>
-<tr><td><code>:leave</code></td><td></td><td>See <a href="./rooms/#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:logout</code></td><td></td><td>Log out of the client.</td></tr>
 <tr><td><code>:members</code></td><td></td><td>See <a href="./rooms/members.html#viewing-roomspace-members">Viewing Room/Space Members</a></td></tr>
+<tr><td><code>:rooms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms">Browsing Rooms</a></td></tr>
+<tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
+<tr><td><code>:unreads</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
+<tr><td><code>:unreads clear</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
+<tr><td><code>:verify</code></td><td></td><td>See <a href="./e2ee/verify.html">Verification</a></td></tr>
+<tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
+</tbody></table>
+<h3 id="message-commands"><a class="header" href="#message-commands">Message Commands</a></h3>
+<p>The following commands target the currently selected message, or allow
+sending new ones:</p>
+<table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
+<tr><td><code>:download</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a></td></tr>
+<tr><td><code>:edit</code></td><td></td><td>See <a href="./messages/#editing-messages">Editing Messages</a></td></tr>
+<tr><td><code>:editor</code></td><td></td><td>See <a href="./messages/#sending">Sending</a></td></tr>
 <tr><td><code>:open</code></td><td></td><td>See <a href="./messages/#downloading-attachments">Downloading Attachments</a> and <a href="./messages/#opening-links">Opening Links</a></td></tr>
 <tr><td><code>:react</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:redact</code></td><td></td><td>See <a href="./messages/#redacting-a-message">Redacting A Message</a></td></tr>
 <tr><td><code>:replied</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:reply</code></td><td></td><td>See <a href="./messages/#replying-to-a-message">Replying To A Message</a></td></tr>
-<tr><td><code>:rooms</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-rooms">Browsing Rooms</a></td></tr>
+<tr><td><code>:unreact</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
+<tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#uploads">Uploads</a></td></tr>
+</tbody></table>
+<h3 id="room-commands"><a class="header" href="#room-commands">Room Commands</a></h3>
+<p>The following commands target the currently selected room
+(including spaces, which are just a special kind of room):</p>
+<table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
+<tr><td><code>:invite accept</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
+<tr><td><code>:invite reject</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
+<tr><td><code>:invite send</code></td><td></td><td>See <a href="./rooms/management.html#room-invitations">Room Invitations</a></td></tr>
+<tr><td><code>:leave</code></td><td></td><td>See <a href="./rooms/#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:room alias set</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
 <tr><td><code>:room alias show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
 <tr><td><code>:room alias unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-aliases">Setting Room Aliases</a></td></tr>
@@ -192,15 +210,8 @@
 <tr><td><code>:room topic show</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room topic unset</code></td><td></td><td>See <a href="./rooms/admin.html#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room unban</code></td><td></td><td>See <a href="./rooms/admin.html#managing-room-membership">Managing Room Membership</a></td></tr>
-<tr><td><code>:spaces</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-spaces">Browsing Spaces</a></td></tr>
 <tr><td><code>:space child remove</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
 <tr><td><code>:space child set</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
-<tr><td><code>:unreact</code></td><td></td><td>See <a href="./messages/#reacting-to-a-message">Reacting To A Message</a></td></tr>
-<tr><td><code>:unreads</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
-<tr><td><code>:unreads clear</code></td><td></td><td>See <a href="./rooms/browsing.html#browsing-unreads">Browsing Unreads</a></td></tr>
-<tr><td><code>:upload</code></td><td></td><td>See <a href="./messages/#uploads">Uploads</a></td></tr>
-<tr><td><code>:verify</code></td><td></td><td>See <a href="./e2ee/verify.html">Verification</a></td></tr>
-<tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
 </tbody></table>
 <h2 id="vim-commands"><a class="header" href="#vim-commands">Vim commands</a></h2>
 <table><thead><tr><th>Command</th><th>Aliases</th><th>Help</th></tr></thead><tbody>
