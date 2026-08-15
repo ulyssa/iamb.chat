@@ -2,30 +2,55 @@
 
 ## iamb commands
 
+### General Commands
+
 | Command                 | Aliases                               | Help                                                |
 | -------------------     | ------------------------------------- | -----------------------------------------           |
 | `:chats`                |                                       | See [Browsing Rooms And DMs Together]               |
 | `:create`               |                                       | See [Room Creation]                                 |
 | `:dms`                  |                                       | See [Browsing Direct Messages]                      |
-| `:download`             |                                       | See [Downloading Attachments]                       |
-| `:edit`                 |                                       | See [Editing Messages]                              |
-| `:editor`               |                                       | See [Sending]                                       |
 | `:forget`               |                                       | See [Joining And Leaving Rooms]                     |
-| `:invite accept`        |                                       | See [Room Invitations]                              |
-| `:invite reject`        |                                       | See [Room Invitations]                              |
-| `:invite send`          |                                       | See [Room Invitations]                              |
 | `:join`                 |                                       | See [Joining And Leaving Rooms]                     |
 | `:keys export`          |                                       | See [Exporting / Importing Keys]                    |
 | `:keys import`          |                                       | See [Exporting / Importing Keys]                    |
-| `:leave`                |                                       | See [Joining And Leaving Rooms]                     |
 | `:logout`               |                                       | Log out of the client.                              |
 | `:members`              |                                       | See [Viewing Room/Space Members]                    |
+| `:rooms`                |                                       | See [Browsing Rooms]                                |
+| `:spaces`               |                                       | See [Browsing Spaces]                               |
+| `:unreads`              |                                       | See [Browsing Unreads]                              |
+| `:unreads clear`        |                                       | See [Browsing Unreads]                              |
+| `:verify`               |                                       | See [Verification]                                  |
+| `:welcome`              |                                       | Shows the startup Welcome window                    |
+
+### Message Commands
+
+The following commands target the currently selected message, or allow
+sending new ones:
+
+| Command                 | Aliases                               | Help                                                |
+| -------------------     | ------------------------------------- | -----------------------------------------           |
+| `:download`             |                                       | See [Downloading Attachments]                       |
+| `:edit`                 |                                       | See [Editing Messages]                              |
+| `:editor`               |                                       | See [Sending]                                       |
 | `:open`                 |                                       | See [Downloading Attachments] and [Opening Links]   |
 | `:react`                |                                       | See [Reacting To A Message]                         |
 | `:redact`               |                                       | See [Redacting A Message]                           |
 | `:replied`              |                                       | See [Replying To A Message]                         |
 | `:reply`                |                                       | See [Replying To A Message]                         |
-| `:rooms`                |                                       | See [Browsing Rooms]                                |
+| `:unreact`              |                                       | See [Reacting To A Message]                         |
+| `:upload`               |                                       | See [Uploads]                                       |
+
+### Room Commands
+
+The following commands target the currently selected room
+(including spaces, which are just a special kind of room):
+
+| Command                 | Aliases                               | Help                                                |
+| -------------------     | ------------------------------------- | -----------------------------------------           |
+| `:invite accept`        |                                       | See [Room Invitations]                              |
+| `:invite reject`        |                                       | See [Room Invitations]                              |
+| `:invite send`          |                                       | See [Room Invitations]                              |
+| `:leave`                |                                       | See [Joining And Leaving Rooms]                     |
 | `:room alias set`       |                                       | See [Setting Room Aliases]                          |
 | `:room alias show`      |                                       | See [Setting Room Aliases]                          |
 | `:room alias unset`     |                                       | See [Setting Room Aliases]                          |
@@ -52,15 +77,8 @@
 | `:room topic show`      |                                       | See [Setting Room Properties]                       |
 | `:room topic unset`     |                                       | See [Setting Room Properties]                       |
 | `:room unban`           |                                       | See [Managing Room Membership]                      |
-| `:spaces`               |                                       | See [Browsing Spaces]                               |
 | `:space child remove`   |                                       | See [Updating Space Hierarchy]                      |
 | `:space child set`      |                                       | See [Updating Space Hierarchy]                      |
-| `:unreact`              |                                       | See [Reacting To A Message]                         |
-| `:unreads`              |                                       | See [Browsing Unreads]                              |
-| `:unreads clear`        |                                       | See [Browsing Unreads]                              |
-| `:upload`               |                                       | See [Uploads]                                       |
-| `:verify`               |                                       | See [Verification]                                  |
-| `:welcome`              |                                       | Shows the startup Welcome window                    |
 
 ## Vim commands
 
