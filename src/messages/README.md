@@ -59,6 +59,7 @@ message type or format:
 - `/me` to send an emote message
 - `/html`/`/h` to send an HTML body
 - `/plain`/`/p` to send a plaintext body
+- `/markdown` to send a Markdown message (the default behaviour)
 
 These slash commands won't appear with any special effects in __iamb__, but do
 produce effects in other clients:
