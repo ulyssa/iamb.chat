@@ -23,6 +23,10 @@ and identifiers, and Emoji shortcodes (e.g., `:heart:`) by using `<C-N>` and
 `<C-P>` to start cycling forwards or backwards through the list of possible
 completions.
 
+> 💡 If you want to compose a longer message outside of __iamb__ in your preferred
+> text editor, you can use the `:editor` command to launch your configured
+> `$EDITOR`.
+
 ## Uploads
 
 The `:upload` command allows you to specify a file to send to the currently
@@ -46,10 +50,6 @@ So, for example, if you had copied an image from a web browser on Linux
 (placing it into the CLIPBOARD selection), you could paste it into `iamb` with
 `"+p`. Or, if you instead selected some text with your cursor (placing it into
 the PRIMARY selection), then you could paste it with `"*p`.
-
-> 💡 If you want to compose a longer message outside of __iamb__ in your preferred
-> text editor, you can use the `:editor` command to launch your configured
-> `$EDITOR`.
 
 ## Message Slash Commands
 
