@@ -169,7 +169,7 @@ example, <code>&lt;C-W&gt;gf</code> indicates that you should type Ctrl-W, then 
 <p><strong>iamb</strong> is free and open source. You can find the source code, report bugs and
 request features on <a href="https://github.com/ulyssa/iamb/">GitHub</a>.</p>
 <p>If you find a mistake in this documentation, you can report it or submit a pull
-request at the <a href="https://github.com/ulyssa/iamb.chat/">iamb.chat</a> GitHub repository. </p>
+request at the <a href="https://github.com/ulyssa/iamb.chat/">iamb.chat</a> GitHub repository.</p>
 <p>Most of the Vim emulation in <strong>iamb</strong> comes from the <a href="https://github.com/ulyssa/modalkit">modalkit</a> crate. If you
 find a bug in text editing, window management, or need a Vim keybinding added,
 you can file an issue there.</p>
@@ -180,8 +180,60 @@ you can file an issue there.</p>
 <li><a href="https://matrix.to/#/#iamb-dev:0x.badd.cafe">#iamb-dev:0x.badd.cafe</a> for discussing developing <strong>iamb</strong></li>
 </ul>
 <p>Both of these are in the <a href="https://matrix.to/#/#iamb:0x.badd.cafe">#iamb:0x.badd.cafe</a> space.</p>
+<h2 id="release-history"><a class="header" href="#release-history">Release History</a></h2>
+<h3 id="v0011-2026-01-19"><a class="header" href="#v0011-2026-01-19">v0.0.11 (2026-01-19)</a></h3>
+<p>Highlights:</p>
+<ul>
+<li>Add an <code>&quot;invite&quot;</code> field to the room sorting settings (<a href="./configure.html#sorting-lists">docs</a>)</li>
+<li>Add <code>:space</code> commands for updating space hierarchy (<a href="../rooms/admin.html#updating-space-hierarchy">docs</a>)</li>
+<li>New <code>mouse</code> configuration options to enable mouse scrolling (<a href="./configure.html#mouse-support">docs</a>)</li>
+<li>Add <code>:replied</code> to go to the message the selected message replied to (<a href="./messages/#replying-to-a-message">docs</a>)</li>
+<li>Add <code>:forget</code> to forget all left rooms (<a href="./rooms/#joining-and-leaving-rooms">docs</a>)</li>
+<li>Indicate encryption state of room in messagebar (<a href="./e2ee/#encryption-status-indicator">docs</a>)</li>
+<li>Show state events in the timeline (<a href="./messages/#message-scrollback">docs</a>)</li>
+<li>Support per-thread receipts (<a href="./messages/#threads">docs</a>)</li>
+<li>Update to Rust Matrix SDK v0.14.0</li>
+<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.11">Release Notes</a> for the full list of changes!</li>
+</ul>
+<h3 id="v0010-2024-08-21"><a class="header" href="#v0010-2024-08-21">v0.0.10 (2024-08-21)</a></h3>
+<p>Highlights:</p>
+<ul>
+<li>Add a <code>:room dm set</code> command to mark rooms as DMs (<a href="./rooms/management.html#marking-direct-rooms">docs</a>)</li>
+<li>Set per-room notification levels (<a href="./rooms/management.html#configuring-room-notifications">docs</a>)</li>
+<li>Command to mark all rooms read (<a href="./rooms/browsing.html#browsing-unreads">docs</a>)</li>
+<li>Message slash commands (<a href="./messages/#message-slash-commands">docs</a>)</li>
+<li>Support for managing room aliases (<a href="./rooms/admin.html#setting-room-aliases">docs</a>)</li>
+<li>Support for kicking users from rooms (<a href="./rooms/admin.html#managing-room-membership">docs</a>)</li>
+<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.10">Release Notes</a> for the full list of changes!</li>
+</ul>
+<h3 id="v009-2024-03-29"><a class="header" href="#v009-2024-03-29">v0.0.9 (2024-03-29)</a></h3>
+<p>Highlights:</p>
+<ul>
+<li>Image previews for terminals w/ support (<a href="./configure.html#image-previews">docs</a>)</li>
+<li>Support for threads (<a href="./messages/#threads">docs</a>)</li>
+<li>Unread indicators (<a href="./rooms/browsing.html#browsing-unreads">docs</a>)</li>
+<li>Support for notifications via terminal bell or desktop environment (<a href="./configure.html#notifications">docs</a>)</li>
+<li>Added a <code>:editor</code> command for editing messages using <code>$EDITOR</code> (<a href="./messages/#sending">docs</a>)</li>
+<li>Mapping custom keybindings to macros (<a href="./configure.html#custom-keybindings">docs</a>)</li>
+<li>Custom sorting for room and member lists (<a href="./configure.html#sorting-lists">docs</a>)</li>
+<li>Import and exporting room keys (<a href="./e2ee/keys.html#exporting-importing-keys">docs</a>)</li>
+<li>Switch to using TOML for configuration</li>
+<li>Update to Rust Matrix SDK v0.7.1</li>
+<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.9">Release Notes</a> for the full list of changes!</li>
+</ul>
+<h3 id="v008-2023-07-08"><a class="header" href="#v008-2023-07-08">v0.0.8 (2023-07-08)</a></h3>
+<p>Highlights:</p>
+<ul>
+<li>Add a <code>:leave</code> command to leave rooms (<a href="./rooms/#joining-and-leaving-rooms">docs</a>)</li>
+<li>New <code>username_display</code> configuration option for specifying how usernames are displayed (<a href="./settings.html#settings">docs</a>)</li>
+<li>New <code>open_command</code> configuration option for specifying an external program for opening downloads (<a href="./settings.html#settings">docs</a>)</li>
+<li>Restore layout on restart (<a href="./configure.html#startup-layout">docs</a>)</li>
+<li>Update to Rust Matrix SDK v0.6.0</li>
+<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.8">Release Notes</a> for the full list of changes!</li>
+</ul>
 <h2 id="license"><a class="header" href="#license">License</a></h2>
 <p>iamb and its documentation are released under the <a href="https://github.com/ulyssa/iamb/blob/master/LICENSE">Apache License, Version 2.0</a>.</p>
+<!-- Documentation cross-references: -->
 <div style="break-before: page; page-break-before: always;"></div><h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
 <h2 id="from-a-package-manager"><a class="header" href="#from-a-package-manager">From a package manager</a></h2>
 <p>Several community members have taken care of setting up packages for their
@@ -832,6 +884,11 @@ before or after the current line respectively.</p>
 and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
 <code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
 completions.</p>
+<blockquote>
+<p>💡 If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
+text editor, you can use the <code>:editor</code> command to launch your configured
+<code>$EDITOR</code>.</p>
+</blockquote>
 <h2 id="uploads"><a class="header" href="#uploads">Uploads</a></h2>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>
@@ -851,11 +908,6 @@ in X11 or Wayland.</li>
 (placing it into the CLIPBOARD selection), you could paste it into <code>iamb</code> with
 <code>&quot;+p</code>. Or, if you instead selected some text with your cursor (placing it into
 the PRIMARY selection), then you could paste it with <code>&quot;*p</code>.</p>
-<blockquote>
-<p>💡 If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
-text editor, you can use the <code>:editor</code> command to launch your configured
-<code>$EDITOR</code>.</p>
-</blockquote>
 <h2 id="message-slash-commands"><a class="header" href="#message-slash-commands">Message Slash Commands</a></h2>
 <p>You can prefix a message with several different slash commands to change the
 message type or format:</p>
