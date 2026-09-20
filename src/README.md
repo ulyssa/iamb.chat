@@ -51,6 +51,23 @@ Both of these are in the [#iamb:0x.badd.cafe] space.
 
 ## Release History
 
+### v0.0.12 (2026-09-19)
+
+Highlights:
+
+- Add `:invites` for viewing room invitations ([docs][Room Invitations])
+- Add `:mentions` for viewing rooms with unread mentions ([docs][Browsing Unreads])
+- Add `:knock` for managing room knocking ([docs][Room Knocking])
+- Add `:self` for updating user information
+- Custom command aliases ([docs][Custom Command Aliases])
+- SOCKS5 and HTTPS proxying ([docs][Proxying])
+- Opening `matrix.to` links ([docs][Mentioning Users And Rooms])
+- Room upgrades ([docs][Upgraded Rooms])
+- Configuring cursor shape ([docs][Terminal])
+- Stickers and images reactions ([docs][Image Previews])
+- Update to Rust Matrix SDK v0.18.0
+- See [Release Notes][release-0.0.12] for the full list of changes!
+
 ### v0.0.11 (2026-01-19)
 
 Highlights:
@@ -121,10 +138,12 @@ iamb and its documentation are released under the [Apache License, Version 2.0].
 [release-0.0.9]: https://github.com/ulyssa/iamb/releases/tag/v0.0.9
 [release-0.0.10]: https://github.com/ulyssa/iamb/releases/tag/v0.0.10
 [release-0.0.11]: https://github.com/ulyssa/iamb/releases/tag/v0.0.11
+[release-0.0.12]: https://github.com/ulyssa/iamb/releases/tag/v0.0.12
 
 <!-- Documentation cross-references: -->
 [Browsing Unreads]: ./rooms/browsing.md#browsing-unreads
 [Configuring Room Notifications]: ./rooms/management.md#configuring-room-notifications
+[Custom Command Aliases]: ./configure.md#custom-command-aliases
 [Custom Keybindings]: ./configure.md#custom-keybindings
 [Encryption Status Indicator]: ./e2ee/#encryption-status-indicator
 [Exporting / Importing Keys]: ./e2ee/keys.md#exporting-importing-keys
@@ -132,15 +151,21 @@ iamb and its documentation are released under the [Apache License, Version 2.0].
 [Joining And Leaving Rooms]: ./rooms/#joining-and-leaving-rooms
 [Managing Room Membership]: ./rooms/admin.md#managing-room-membership
 [Marking Direct Rooms]: ./rooms/management.md#marking-direct-rooms
+[Mentioning Users And Rooms]: ./messages/#mentioning-users-and-rooms
 [Message Scrollback]: ./messages/#message-scrollback
 [Message Slash Commands]: ./messages/#message-slash-commands
 [Mouse Support]: ./configure.md#mouse-support
 [Notifications]: ./configure.md#notifications
+[Proxying]: ./configure.md#proxying
 [Replying To A Message]: ./messages/#replying-to-a-message
+[Room Invitations]: ./rooms/management.md#room-invitations
+[Room Knocking]: ./rooms/management.md#room-knocking
 [Sending]: ./messages/#sending
 [Setting Room Aliases]: ./rooms/admin.md#setting-room-aliases
 [Settings]: ./settings.md#settings
 [Sorting Lists]: ./configure.md#sorting-lists
 [Startup Layout]: ./configure.md#startup-layout
+[Terminal]: ./configure.md#terminal
 [Threads]: ./messages/#threads
 [Updating Space Hierarchy]: ../rooms/admin.md#updating-space-hierarchy
+[Upgraded Rooms]: ./rooms/management.md#upgraded-rooms

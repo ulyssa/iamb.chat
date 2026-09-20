@@ -30,6 +30,36 @@ is causing perpetual errors in federation), then you can do:
 If you find yourself managing a large room and needing to often ban users, you
 may want to look at something like [mjolnir] to help you manage a ban list.
 
+## Setting Room Access
+
+You can configure just how public your room is by setting the room's [join rules],
+which specify who is allowed to join and through what means. To see what a room
+currently permits, you can run:
+
+```
+:room access show
+```
+
+If you then wanted to make the room public to anyone who wants to join:
+
+```
+:room access set public
+```
+
+Potential values are:
+
+- `public`, which allows anyone to join the room.
+- `invite`, to require that users receive an invitation to join first.
+- `knock`, which allows users to send a knock request to ask to join.
+- `restricted`, which allows users that have either received an invitation or are a member of an associated room to join.
+- `knock-restricted`, which allows users to send a knock request to join, join via invitation, or join if they are a member of an associated room.
+
+For `restricted` and `knock-restricted`, you can specify an associated room with `++members`:
+
+```
+:room access set restricted ++members=#room:example.com ++members=#space:example.com ++members=!id:example.com
+```
+
 ## Setting Room Aliases
 
 You can add a new alias to a room with:
@@ -142,3 +172,4 @@ To remove a room child from the currently focused space:
 
 
 [mjolnir]: https://github.com/matrix-org/mjolnir
+[join rules]: https://spec.matrix.org/v1.19/client-server-api/#mroomjoin_rules

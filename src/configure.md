@@ -23,7 +23,7 @@ log in with a password (enter `p` to select), or SSO (enter `s` to select). If
 you choose SSO, then a page will open in your browser to go through the SSO
 authentication flow.
 
-### Multiple Profiles 
+### Multiple Profiles
 
 You can create multiple profiles for different accounts or settings by adding
 additional subsections to the `profiles` section:
@@ -56,6 +56,7 @@ select a profile.
 Several of the sections that you can place under the global configuration can
 also be placed within profile configurations to achieve per-profile values:
 
+- `aliases`
 - `dirs`
 - `layout`
 - `macros`
@@ -94,23 +95,36 @@ url = "https://example.com"
 | Name                         | Default              | Description                                                                                                                          |
 | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `auto_focus_message_bar`     | `false`              | Whether to automatically focus the message bar when entering Insert mode in a room window.                                           |
+| `cache_policy`               |                      |                                                                                                                                      |
 | `default_room`               |                      | A default room name or username to open at startup, in place of showing the welcome screen.                                          |
+| `default_markup`             | `"markdown"`         | The default markup format for interpreting text in the message bar. Valid values are `"markdown"`, `"html"`, and `"plaintext"`.      |
+| `default_register`           | `"`                  | The default register to use for yanking, deleting and pasting.                                                                       |
+| `default_split`              | `"horizontal"`       | The default direction in which to split windows. Valid values are `"horizontal"` and `"vertical"`.                                   |
+| `default_via"`               | `["matrix.org"]`     | The default servers to use when attempting to join a new room if your homeserver is unaware of the room and cannot resolve the alias.|
+| `encryption`                 |                      | Configures how information related to room encryption is displayed in the UI. See [Encryption](#encryption) below.                   |
 | `external_edit_file_suffix`  | `.md`                | The file suffix to use when creating temporary files with message contents for `:edit`. (Usually you want the default `.md` for syntax highlighting.) |
+| `ignorecase`                 | `false`              | Configures whether to disable case sensitivity for the regular expressions entered in the search bar.                                |
 | `image_preview`              | (unset)              | Configures displaying image attachments for terminals that support previewing images. See [Image Previews](#image-previews) below.   |
+| `input_prompt`               | (unset)              | Configures a value to display as the prompt in the message bar.                                                                      |
 | `log_level`                  | `"info"`             | Configures the minimum log level. Valid values are `"trace"`, `"debug"`, `"info"`, `"warn"` or `"error"`.                            |
+| `max_log_files`              | `7`                  | Configures how many days worth of logs to keep. Setting this to `0` disables automatically deleting the files.                       |
 | `message_user_color`         | `false`              | Whether to color entire messages using the same color used for the sender's username and display name.                               |
 | `message_shortcode_display`  | `false`              | Whether to replace Emojis in message bodies with their shortcodes.                                                                   |
 | `mouse`                      | (unset)              | Configures mouse scroll support in the message scrollback. See [Mouse Support](#mouse-support) below.                                |
 | `normal_after_send`          | `false`              | Whether to automatically reset the Vim mode to Normal mode after sending a message.                                                  |
 | `notifications`              | (unset)              | Whether to generate desktop notifications for messages sent to rooms not currently being viewed. See [Notifications](#notifications) |
-| `open_command`               |                      | Configures a command to use for opening downloads instead of the default. (e.g., `["my-open", "--file"]` to run a custom script      |
+| `open_command`               | (unset)              | Configures a command to use for opening downloads instead of the default. (e.g., `["my-open", "--file"]` to run a custom script      |
+| `proxy`                      | (unset)              | Configures proxying requests to the homeserver through SOCKS5 or an HTTPS proxy. See [Proxying](#proxying) below.                    |
 | `reaction_display`           | `true`               | Whether to display message reactions. You can use this or `reaction_shortcode_display` if your terminal doesn't show Emojis well.    |
 | `reaction_shortcode_display` | `false`              | Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won't be displayed.    |
 | `read_receipt_display`       | `true`               | Whether to display read receipts next to messages in the room scrollback.                                                            |
 | `read_receipt_send`          | `true`               | Whether to send read receipts for viewed rooms.                                                                                      |
+| `read_receipt_trigger`       | `"focused"`          | When to send read receipts for viewed rooms. Valid values are `"focused"`, `"visible"`, `"scrollback"`, and `"message"`.             |
 | `request_timeout`            | 120                  | How long to wait in seconds before timing out requests to the homeserver.                                                            |
 | `sort`                       |                      | Configures how to sort the lists in different windows like `:rooms` or `:members`. See [Sorting Lists](#sorting-lists) below.        |
+| `ssl_verify`                 | `true`               | Configures whether the homeserver's certificate should be rejected when invalid, to protect against insecure connections.            |
 | `state_event_display`        | `true`               | Whether to render state events (e.g. room membership changes, name changes, topic updates) in room timelines.                        |
+| `terminal`                   |                      | Configures how __iamb__ should interact with your terminal. See [Terminal](#terminal) below.                                         |
 | `typing_notice_display`      | `true`               | Whether to display the typing notifications bar.                                                                                     |
 | `typing_notice_send`         | `true`               | Whether to send notifications to other room members when typing.                                                                     |
 | `user_gutter_width`          | `30`                 | How much space to reserve for displaying the message sender in room history.                                                         |
@@ -127,14 +141,39 @@ log_level = "debug"
 request_timeout = 180
 ```
 
-### Image Previews
+### Encryption
 
-When the `settings.image_preview` subsection is present, __iamb__ will
-try to detect an appropriate way to show previews of image attachments:
+The `settings.encryption` subsection allows configuring how encryption information
+is displayed in the user interface.
 
 ```toml
-[settings]
-image_preview = {}
+[settings.encryption]
+icon_encrypted = "\U0001F512\uFE0E"
+icon_unencrypted = "\U0001F513\uFE0E"
+indicator_location = "title|prompt"
+```
+
+#### Encryption fields
+
+| Name                 | Default                                         | Description                                                                                        |
+| ------------------   | ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `icon_encrypted`     | `"[E]"`                                         | The icon or text to show when the room is encrypted.                                               |
+| `icon_unencrypted`   | `"[U]"`                                         | The icon or text to show when the room is unencrypted.                                             |
+| `icon_unknown`       | `"[?]"`                                         | The icon or text to show when the room's encryption status cannot be determined.                   |
+| `indicator`          | `"enabled"`                                     | Under what conditions to show the encryption state. Valid values are `"enabled"` (always show), `"disabled"` (never show), `"only-unencrypted"` and `"only-encrypted"`. |
+| `indicator_location` | `"prompt"`                                      | Where to show the encryption indicator. Valid values are `"prompt"` for the message bar, `"title"` for the window title, or `"prompt|title"` for both.                  |
+
+### Image Previews
+
+The `settings.image_preview` subsection allows configuring whether and how __iamb__
+will display image previews for uploaded images, stickers, and image reactions.
+
+By default, __iamb__ will try to detect an appropriate way to show previews in
+your terminal, but you can set `enabled` to `false` to turn it off:
+
+```toml
+[settings.image_preview]
+enabled = false
 ```
 
 There are several different supported ways of showing images:
@@ -151,6 +190,7 @@ field:
 
 ```toml
 [settings.image_preview]
+enabled = true
 protocol.type = "halfblocks"
 protocol.font_size = [ 11, 26 ]
 ```
@@ -158,7 +198,7 @@ protocol.font_size = [ 11, 26 ]
 The `"type"` field is one of the three methods from above, and `"font_size"`
 can be used to specify the width and height of each character cell in pixels.
 (Like specifying the `"type"`, this is only necessary if the size in pixels
-can't be detected normally using the standard terminal `ioctl` calls.)  
+can't be detected normally using the standard terminal `ioctl` calls.)
 
 You can control the maximum amount of columns/rows that the images take up in
 the scrollback using the `"size"` field:
@@ -167,6 +207,15 @@ the scrollback using the `"size"` field:
 [settings.image_preview]
 size = { height = 10, width = 66 }
 ```
+
+If the images are not being rescaled as you expect, you can change the filter
+algorithm used during resizing with the `filter` field. Possible values are:
+
+- `"CatmullRom"`
+- `"Gaussian"`
+- `"Lanczos3"`
+- `"Nearest"`
+- `"Triangle"` (the default)
 
 ### Notifications
 
@@ -230,7 +279,7 @@ members = ["server", "~localpart"]
 | `chats`   | (defaults to `rooms` value)                     | How to sort the `:chats` window   |
 | `dms`     | (defaults to `rooms` value)                     | How to sort the `:dms` window     |
 | `spaces`  | (defaults to `rooms` value)                     | How to sort the `:spaces` window  |
-| `members` | `["power", "id"]`                               | How to sort the `:members` window |
+| `members` | `["power", "knock", "~invite", "id"]`           | How to sort the `:members` window |
 
 #### Room Fields
 
@@ -242,17 +291,71 @@ members = ["server", "~localpart"]
 | `"recent"`      | Sort rooms with recent messages towards the top.                                                                  |
 | `"unread"`      | Sort rooms with unread messages towards the top.                                                                  |
 | `"name"`        | Sort rooms alphabetically by their room name.                                                                     |
-| `"alias"`       | Sort rooms alphabetically by their canonical alias (e.g., `#iamb-users:0x.badd.cafe`)                              |
+| `"alias"`       | Sort rooms alphabetically by their canonical alias (e.g., `#iamb-users:0x.badd.cafe`)                             |
 | `"id"`          | Sort rooms alphabetically by their unique room identifier (e.g., `!nQTgloqKBScxNjsQzR:0x.badd.cafe`).             |
+| `"server"`      | Sort rooms alphabetically by the server in their room alias, falling back to the room identifier if there isn't one. |
 
-#### User Fields 
+#### User Fields
 
 | Name            | Description                                                                                                       |
 | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `"power"`       | Sort users by decreasing power level.                                                                             |
 | `"id"`          | Sort users alphabetically by their username (e.g. `@user:example.com`)                                            |
+| `"invite"`      | Sort users who have been invited to join the room but aren't actually a member yet towards the top.               |
+| `"knock"`       | Sort users who have requested to join the room but aren't actually a member yet towards the top.                  |
 | `"localpart"`   | Sort users alphabetically by the localpart of their username (e.g. the `@user` portion of `@user:example.com`     |
 | `"server"`      | Sort users alphabetically by the server in their username (e.g. the `example.com` portion of `@user:example.com`) |
+
+### Proxying
+
+The `settings.proxy` subsection allows configuring __iamb__ to use a SOCKS5 or HTTPS proxy.
+For example, you can run an SSH command like the following to set up a local SOCKS listener:
+
+```shell
+ssh -qCND 9050 user@example.com
+```
+
+And then use it in your configuration with:
+
+```toml
+[settings.proxy]
+url = "socks5://localhost:9050
+```
+
+Alternatively, if you don't want it to be a permanent part of your configuration, you can use
+the usual `ALL_PROXY`, `HTTPS_PROXY`, or `HTTP_PROXY` environment variables to tell __iamb__
+to use those:
+
+```shell
+ALL_PROXY="socks5://localhost:9050" iamb
+```
+
+#### Proxying Fields
+
+| Name                  | Default                                         | Description                                                                                        |
+| ------------------    | ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `url`                 | (unset)                                         | What URL to proxy requests through.                                                                |
+| `auth`                | (unset)                                         | When using an HTTPS proxy, the value to send in the `Proxy-Authorization` header.                  |
+| `headers`             | (unset)                                         | When using an HTTPS proxy, this subsection allows specifying additional HTTP headers to include.   |
+
+### Terminal
+
+Terminal-related settings can be configured with the `settings.terminal` subsection.
+
+```toml
+[settings.terminal]
+cursor_shape = "block"
+enable_extended_keys = true
+enable_title = false
+```
+
+#### Terminal Fields
+
+| Name                  | Default                                         | Description                                                                                        |
+| ------------------    | ----------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `cursor_shape`        | `"auto"`                                        | What shape to set the terminal cursor to. Valid values are `"auto"`, `"default"`, `"block"`, `"line"`, and `"underline"`.
+| `enable_extended_keys`| `true`                                          | Whether to try to enable extended keypresses if support is detected for the terminal.              |
+| `enable_title`        | `true`                                          | Whether to set the terminal window title to `iamb (<user id>)` at startup.                         |
 
 ## Startup Layout
 
@@ -303,6 +406,21 @@ split = [
 ]
 ```
 
+## Custom Command Aliases
+
+You can map custom aliases to other commands for use in the command bar using
+the `aliases` section. For example, if you wanted single-letter variants for
+some of the more common commands:
+
+```toml
+[aliases]
+"c" = "chats"
+"d" = "download"
+"e" = "edit"
+"o" = "open"
+"r" = "rooms"
+```
+
 ## Custom Keybindings
 
 You can add custom keybindings in `macros` subsections, which describes the Vim
@@ -321,7 +439,7 @@ and `V` to `<C-W>m` in Normal and Visual mode:
 "V" = "<C-W>m"
 ```
 
-You can also use this to trigger commands. For example, to list all chats 
+You can also use this to trigger commands. For example, to list all chats
 when you press 'gc' in normal mode use:
 
 ```toml
@@ -343,7 +461,7 @@ Use `|` to specify that something should be mapped in several modes.
 > If you are unsure how to represent a key, you can you record a macro that use
 > it and then look at its representation in the register. For example, you could
 > do the following to find the value of the left arrow key:
-> 
+>
 > - Type `qa` to start recording to the `a` register
 > - Press the left arrow key
 > - Press `q` to stop recording

@@ -11,21 +11,58 @@ the message. If you would prefer to automatically return to Normal mode after
 sending, you can set [normal_after_send] in your configuration file.
 
 The prompt of the message bar indicates room encryption status with a green
-<code style="color: green">🔒︎</code> for encrypted rooms and a red
-<code style="color: red">🔓︎</code> for unencrypted rooms.
+<code style="color: green">[E]</code> for encrypted rooms and a red
+<code style="color: red">[U]</code> for unencrypted rooms. You can configure
+alternate indicator values in the [settings.encryption] subsection in your
+configuration file.
 
 > 💡 If you need to type a multiline message, you can start a line by typing
 > `<C-V><C-J>`. You can also use the `O` and `o` keys to insert a blank line
 > before or after the current line respectively.
 
-From within the message bar, you can complete Matrix usernames, room aliases
-and identifiers, and Emoji shortcodes (e.g., `:heart:`) by using `<C-N>` and
-`<C-P>` to start cycling forwards or backwards through the list of possible
-completions.
-
 > 💡 If you want to compose a longer message outside of __iamb__ in your preferred
 > text editor, you can use the `:editor` command to launch your configured
 > `$EDITOR`.
+
+## Mentioning Users And Rooms
+
+From within the message bar, you can complete Matrix usernames, room aliases
+and identifiers, and Emoji shortcodes (e.g., `:heart:`) by using `<C-N>` and
+`<C-P>` to start cycling forwards or backwards through the list of possible
+completions. This will insert something like:
+
+```
+Hello [Alice][@alice:example.com]
+```
+
+When the Markdown is parsed, this will be turned into a link similar to:
+
+```
+Hello [Alice](https://matrix.to/#/@alice:example.com)
+```
+
+The same is true for room aliases (`#alias:example.com`) and room identifiers
+(`!id:example.com`). For example:
+
+```
+Please join us in [#room:example.com]
+```
+
+Becomes:
+
+```
+Please join us in [#room:example.com](https://matrix.to/#/%23room:example.com)
+```
+
+You can then use `:open` on messages containing room and user links to go to
+that room or open a Direct Message with the user.
+
+If you find one of these links posted online, you can use __iamb__ to open
+them, like:
+
+```shell
+iamb -P myprofile 'https://matrix.to/#/%23room:example.com'
+```
 
 ## Uploads
 
@@ -206,5 +243,6 @@ browser by typing its assigned character.
 [GitHub Emoji shortcodes]: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
 [open_command]: ./configure.md#settings
 [normal_after_send]: ../configure.md#settings
+[settings.encryption]: ../configure.md#encryption
 [state_event_display]: ../configure.md#settings
 [Space Invaders]: https://en.wikipedia.org/wiki/Space_Invaders

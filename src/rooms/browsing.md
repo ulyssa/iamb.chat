@@ -23,6 +23,26 @@ to read them each individually, you can mark them all as read with:
 :unreads clear
 ``` 
 
+If you just want to see a list of rooms that have unread mentions
+instead of every room with unread conversation, then you can use:
+
+```
+:mentions
+```
+
+If you read a room, but then want to expicitly mark it unread to
+come back to later, you can run:
+
+```
+:room unread set
+```
+
+Or to remote the explicit unread marker:
+
+```
+:room unread unset
+```
+
 ## Browsing Spaces
 
 You can switch to a list of joined spaces using the `:spaces` command.
