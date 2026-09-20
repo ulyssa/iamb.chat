@@ -34,6 +34,30 @@ you can open it up, focus the window and run:
 - `:invite accept` to accept the invitation and join the room
 - `:invite reject` to reject the invitation
 
+You can see a list of rooms you have been invited to using `:invites`.
+
+## Room Knocking
+
+Room knocking is the reverse of room invitations: a user who is not yet a
+member of a room but wants to join it can send a room knock to let someone
+inside the room choose whether to invite them in.
+
+You can send a knock through the `:knock send` command:
+
+```
+:knock send #room:example.com
+```
+
+If you are inside a room and someone has sent a knock request, you can
+choose how to handle it:
+
+- `:knock accept @user:example.com` to invite the knocking user to join the room.
+- `:knock reject @user:example.com` to reject the room knock from a user.
+- `:knock ban @user:example.com` to reject the room knock from a user and prevent them from knocking again.
+
+Knocks will appear in the room's timeline, but you can also look at the
+`:members` window for the room to see who has sent a knock.
+
 ## Marking Direct Rooms
 
 Matrix keeps a list of direct message rooms in account data on the server. If
@@ -113,4 +137,47 @@ And see the currently configured value for the room with:
 :room notify show
 ```
 
+## Upgraded Rooms
+
+When a Matrix room is created, it declared which room version it is using from
+the Matrix protocol, which determines the set of features usable within the room
+by clients. (See [Feature Matrix], for example.) In order to leverage newer features,
+room administrators will "upgrade" the room by creating a successor room that uses
+a newer room version, and updating the old room's state to point at the new room.
+
+When this happens, __iamb__ will show you a message and let you know that you can
+join the new room by running:
+
+```
+:follow next
+```
+
+Alternatively, if you are in the upgraded version of a room and want to go to
+the older one to read through older discussions, you can do:
+
+```
+:follow prev
+```
+
+To see what version a room is using, you can run:
+
+```
+:room version show
+```
+
+If you are a room administrator and you want to make a new room, then you can run:
+
+```
+:room version upgrade [VERSION]
+```
+
+Starting with room version 12, Matrix supports declaring additional room members
+who should also be considered creators of the room, which effectively grants them
+an infinite power level. You can specify this when upgrading with:
+
+```
+:room version upgrade 12 ++creator=@user:example.com
+```
+
 [enabled notifications]: ../configure.md#notifications
+[Feautre Matrix]: https://spec.matrix.org/v1.19/rooms/#feature-matrix

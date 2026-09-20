@@ -16,6 +16,7 @@
 - [Screen Navigation](./layout/README.md)
     - [Window Management](./layout/windows.md)
     - [Tab Management](./layout/tabs.md)
+- [User Profile](./profile/README.md)
 - [Development](./development.md)
 
 [Command Reference](./commands.md)

@@ -36,9 +36,9 @@ documentation.
 | Normal, Visual  | `<C-D>`           |                | See [Message Scrollback]                      |
 | Normal          | `<C-I>`           | `<Tab>`        | See [Switching Windows]                       |
 | Normal          | `<C-L>`           |                | Force the window to redraw                    |
-| Insert          | `<C-N>`           |                | See [Sending]                                 |
+| Insert          | `<C-N>`           |                | See [Mentioning Users And Rooms]              |
 | Normal          | `<C-O>`           |                | See [Switching Windows]                       |
-| Insert          | `<C-P>`           |                | See [Sending]                                 |
+| Insert          | `<C-P>`           |                | See [Mentioning Users And Rooms]              |
 | Normal, Visual  | `<C-U>`           |                | See [Message Scrollback]                      |
 | Normal, Visual  | `<C-W>f`          | `<C-W><C-F>`   | See [Following Matrix IDs]                    |
 | Normal, Visual  | `<C-W>gf`         |                | See [Following Matrix IDs] and [Opening Tabs] |
@@ -88,5 +88,6 @@ table th:nth-of-type(4) {
 [Organizing Windows]: ./layout/windows.md#organizing-windows
 [Resizing Windows]: ./layout/windows.md#resizing-windows
 [Sending]: ./messages/#sending
+[Mentioning Users And Rooms]: ./messages/#mentioning-users-and-rooms
 [Switching Tabs]: ./layout/tabs.md#switching-tabs
 [Switching Windows]: ./layout/windows.md#switching-windows

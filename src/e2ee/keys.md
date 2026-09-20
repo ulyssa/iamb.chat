@@ -1,5 +1,13 @@
 # Room Keys
 
+## Restoring From Key Backup
+
+You can restore your keys from the homeserver's key backup on a new session with:
+
+```
+:verify recover "[recovery key]"
+```
+
 ## Exporting / Importing Keys
 
 If you want to export your room keys, either to save them as a backup or
