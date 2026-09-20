@@ -3,49 +3,45 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - iamb documentation</title>
+        <title>User Profile - iamb documentation</title>
 
 
         <!-- Custom HTML head -->
 
-
-        <link rel="canonical" href="https://iamb.chat/" />
-        <meta name="keywords" content="iamb, matrix client, tui, terminal" />
-        
 
 
         <meta name="description" content="Documentation for the iamb Matrix client">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-e96d0476.css">
-        <link rel="stylesheet" href="css/chrome-d279d366.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="theme/css/custom-02e45c65.css">
+        <link rel="stylesheet" href="../theme/css/custom-02e45c65.css">
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a9401921.js";
+            window.path_to_searchindex_js = "../searchindex-a9401921.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-59fc035f.js"></script>
+        <script src="../toc-59fc035f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -112,7 +108,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -147,7 +143,7 @@
                     <h1 class="menu-title">iamb documentation</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
                         <a href="https://github.com/ulyssa/iamb" title="Git repository" aria-label="Git repository">
@@ -184,124 +180,17 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p><strong>iamb</strong> is a terminal-based client for <a href="https://matrix.org/">Matrix</a> for the Vim addict. You can
-edit messages, navigate windows and manage tabs in the same ways that your
-fingers are used to from your favorite text editor!</p>
-<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/images/iamb-demo.gif" alt="Example Usage"><span class="img-wrapper"><img src="/static/images/iamb-demo.gif" alt="Example Usage"></span></label></p>
-<h2 id="features"><a class="header" href="#features">Features</a></h2>
-<ul>
-<li>Threads, spaces, E2EE, and read receipts</li>
-<li>Image previews in terminals that support it (sixels, Kitty, and iTerm2), or using pixelated blocks for those that don’t</li>
-<li>Notifications via terminal bell or desktop environment</li>
-<li>Creating, joining, and leaving rooms</li>
-<li>Sending and accepting room invitations</li>
-<li>Editing, redacting, and reacting to messages</li>
-<li>Custom keybindings</li>
-<li>Multiple profiles</li>
-</ul>
-<h2 id="reading-this-documentation"><a class="header" href="#reading-this-documentation">Reading This Documentation</a></h2>
-<p>This documentation indicates keybindings using the following conventions:</p>
-<ul>
-<li>Named keys are shown between angle brackets; for example, <code>&lt;Space&gt;</code> is the
-space bar.</li>
-<li>Modifiers like the control key or shift are shown with their combining key
-between brackets; for example, <code>&lt;C-W&gt;</code> is Ctrl-W and <code>&lt;S-Tab&gt;</code> is Shift+Tab.</li>
-<li>Sequences of keys to be pressed are shown in the order to press them; for
-example, <code>&lt;C-W&gt;gf</code> indicates that you should type Ctrl-W, then g, and finally f.</li>
-</ul>
-<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
-<p><strong>iamb</strong> is free and open source. You can find the source code, report bugs and
-request features on <a href="https://github.com/ulyssa/iamb/">GitHub</a>.</p>
-<p>If you find a mistake in this documentation, you can report it or submit a pull
-request at the <a href="https://github.com/ulyssa/iamb.chat/">iamb.chat</a> GitHub repository.</p>
-<p>Most of the Vim emulation in <strong>iamb</strong> comes from the <a href="https://github.com/ulyssa/modalkit">modalkit</a> crate. If you
-find a bug in text editing, window management, or need a Vim keybinding added,
-you can file an issue there.</p>
-<h2 id="join-us-on-matrix"><a class="header" href="#join-us-on-matrix">Join us on Matrix!</a></h2>
-<p>Please feel free to join us in:</p>
-<ul>
-<li><a href="https://matrix.to/#/#iamb-users:0x.badd.cafe">#iamb-users:0x.badd.cafe</a> for discussing using <strong>iamb</strong></li>
-<li><a href="https://matrix.to/#/#iamb-dev:0x.badd.cafe">#iamb-dev:0x.badd.cafe</a> for discussing developing <strong>iamb</strong></li>
-</ul>
-<p>Both of these are in the <a href="https://matrix.to/#/#iamb:0x.badd.cafe">#iamb:0x.badd.cafe</a> space.</p>
-<h2 id="release-history"><a class="header" href="#release-history">Release History</a></h2>
-<h3 id="v0012-2026-09-19"><a class="header" href="#v0012-2026-09-19">v0.0.12 (2026-09-19)</a></h3>
-<p>Highlights:</p>
-<ul>
-<li>Add <code>:invites</code> for viewing room invitations (<a href="./rooms/management.html#room-invitations">docs</a>)</li>
-<li>Add <code>:mentions</code> for viewing rooms with unread mentions (<a href="./rooms/browsing.html#browsing-unreads">docs</a>)</li>
-<li>Add <code>:knock</code> for managing room knocking (<a href="./rooms/management.html#room-knocking">docs</a>)</li>
-<li>Add <code>:self</code> for updating user information</li>
-<li>Custom command aliases (<a href="./configure.html#custom-command-aliases">docs</a>)</li>
-<li>SOCKS5 and HTTPS proxying (<a href="./configure.html#proxying">docs</a>)</li>
-<li>Opening <code>matrix.to</code> links (<a href="./messages/#mentioning-users-and-rooms">docs</a>)</li>
-<li>Room upgrades (<a href="./rooms/management.html#upgraded-rooms">docs</a>)</li>
-<li>Configuring cursor shape (<a href="./configure.html#terminal">docs</a>)</li>
-<li>Stickers and images reactions (<a href="./configure.html#image-previews">docs</a>)</li>
-<li>Update to Rust Matrix SDK v0.18.0</li>
-<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.12">Release Notes</a> for the full list of changes!</li>
-</ul>
-<h3 id="v0011-2026-01-19"><a class="header" href="#v0011-2026-01-19">v0.0.11 (2026-01-19)</a></h3>
-<p>Highlights:</p>
-<ul>
-<li>Add an <code>"invite"</code> field to the room sorting settings (<a href="./configure.html#sorting-lists">docs</a>)</li>
-<li>Add <code>:space</code> commands for updating space hierarchy (<a href="../rooms/admin.html#updating-space-hierarchy">docs</a>)</li>
-<li>New <code>mouse</code> configuration options to enable mouse scrolling (<a href="./configure.html#mouse-support">docs</a>)</li>
-<li>Add <code>:replied</code> to go to the message the selected message replied to (<a href="./messages/#replying-to-a-message">docs</a>)</li>
-<li>Add <code>:forget</code> to forget all left rooms (<a href="./rooms/#joining-and-leaving-rooms">docs</a>)</li>
-<li>Indicate encryption state of room in messagebar (<a href="./e2ee/#encryption-status-indicator">docs</a>)</li>
-<li>Show state events in the timeline (<a href="./messages/#message-scrollback">docs</a>)</li>
-<li>Support per-thread receipts (<a href="./messages/#threads">docs</a>)</li>
-<li>Update to Rust Matrix SDK v0.14.0</li>
-<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.11">Release Notes</a> for the full list of changes!</li>
-</ul>
-<h3 id="v0010-2024-08-21"><a class="header" href="#v0010-2024-08-21">v0.0.10 (2024-08-21)</a></h3>
-<p>Highlights:</p>
-<ul>
-<li>Add a <code>:room dm set</code> command to mark rooms as DMs (<a href="./rooms/management.html#marking-direct-rooms">docs</a>)</li>
-<li>Set per-room notification levels (<a href="./rooms/management.html#configuring-room-notifications">docs</a>)</li>
-<li>Command to mark all rooms read (<a href="./rooms/browsing.html#browsing-unreads">docs</a>)</li>
-<li>Message slash commands (<a href="./messages/#message-slash-commands">docs</a>)</li>
-<li>Support for managing room aliases (<a href="./rooms/admin.html#setting-room-aliases">docs</a>)</li>
-<li>Support for kicking users from rooms (<a href="./rooms/admin.html#managing-room-membership">docs</a>)</li>
-<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.10">Release Notes</a> for the full list of changes!</li>
-</ul>
-<h3 id="v009-2024-03-29"><a class="header" href="#v009-2024-03-29">v0.0.9 (2024-03-29)</a></h3>
-<p>Highlights:</p>
-<ul>
-<li>Image previews for terminals w/ support (<a href="./configure.html#image-previews">docs</a>)</li>
-<li>Support for threads (<a href="./messages/#threads">docs</a>)</li>
-<li>Unread indicators (<a href="./rooms/browsing.html#browsing-unreads">docs</a>)</li>
-<li>Support for notifications via terminal bell or desktop environment (<a href="./configure.html#notifications">docs</a>)</li>
-<li>Added a <code>:editor</code> command for editing messages using <code>$EDITOR</code> (<a href="./messages/#sending">docs</a>)</li>
-<li>Mapping custom keybindings to macros (<a href="./configure.html#custom-keybindings">docs</a>)</li>
-<li>Custom sorting for room and member lists (<a href="./configure.html#sorting-lists">docs</a>)</li>
-<li>Import and exporting room keys (<a href="./e2ee/keys.html#exporting-importing-keys">docs</a>)</li>
-<li>Switch to using TOML for configuration</li>
-<li>Update to Rust Matrix SDK v0.7.1</li>
-<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.9">Release Notes</a> for the full list of changes!</li>
-</ul>
-<h3 id="v008-2023-07-08"><a class="header" href="#v008-2023-07-08">v0.0.8 (2023-07-08)</a></h3>
-<p>Highlights:</p>
-<ul>
-<li>Add a <code>:leave</code> command to leave rooms (<a href="./rooms/#joining-and-leaving-rooms">docs</a>)</li>
-<li>New <code>username_display</code> configuration option for specifying how usernames are displayed (<a href="./settings.html#settings">docs</a>)</li>
-<li>New <code>open_command</code> configuration option for specifying an external program for opening downloads (<a href="./settings.html#settings">docs</a>)</li>
-<li>Restore layout on restart (<a href="./configure.html#startup-layout">docs</a>)</li>
-<li>Update to Rust Matrix SDK v0.6.0</li>
-<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.8">Release Notes</a> for the full list of changes!</li>
-</ul>
-<h2 id="license"><a class="header" href="#license">License</a></h2>
-<p>iamb and its documentation are released under the <a href="https://github.com/ulyssa/iamb/blob/master/LICENSE">Apache License, Version 2.0</a>.</p>
-<!-- Documentation cross-references: -->
+                        <h1 id="user-profile"><a class="header" href="#user-profile">User Profile</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../layout/tabs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
 
-                            <a rel="next prefetch" href="install.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../development.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -311,8 +200,11 @@ you can file an issue there.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../layout/tabs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
 
-                    <a rel="next prefetch" href="install.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../development.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -332,13 +224,13 @@ you can file an issue there.</p>
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-09f2665d.js"></script>
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-609e4cb8.js"></script>
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
 
         <!-- Custom JS scripts -->
 

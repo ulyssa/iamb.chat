@@ -12,6 +12,7 @@ https://iamb.chat/layout/index.html
 https://iamb.chat/layout/tabs.html
 https://iamb.chat/layout/windows.html
 https://iamb.chat/messages/index.html
+https://iamb.chat/profile/index.html
 https://iamb.chat/rooms/admin.html
 https://iamb.chat/rooms/browsing.html
 https://iamb.chat/rooms/index.html

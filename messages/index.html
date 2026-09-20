@@ -42,10 +42,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-2a1b95fa.js";
+            window.path_to_searchindex_js = "../searchindex-a9401921.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-431c3718.js"></script>
+        <script src="../toc-59fc035f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -193,22 +193,43 @@ key from either Normal or Insert mode.</p>
 the message. If you would prefer to automatically return to Normal mode after
 sending, you can set <a href="../configure.html#settings">normal_after_send</a> in your configuration file.</p>
 <p>The prompt of the message bar indicates room encryption status with a green
-<code style="color: green">🔒︎</code> for encrypted rooms and a red
-<code style="color: red">🔓︎</code> for unencrypted rooms.</p>
+<code style="color: green">[E]</code> for encrypted rooms and a red
+<code style="color: red">[U]</code> for unencrypted rooms. You can configure
+alternate indicator values in the <a href="../configure.html#encryption">settings.encryption</a> subsection in your
+configuration file.</p>
 <blockquote>
 <p>💡 If you need to type a multiline message, you can start a line by typing
 <code>&lt;C-V&gt;&lt;C-J&gt;</code>. You can also use the <code>O</code> and <code>o</code> keys to insert a blank line
 before or after the current line respectively.</p>
 </blockquote>
-<p>From within the message bar, you can complete Matrix usernames, room aliases
-and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
-<code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
-completions.</p>
 <blockquote>
 <p>💡 If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
 text editor, you can use the <code>:editor</code> command to launch your configured
 <code>$EDITOR</code>.</p>
 </blockquote>
+<h2 id="mentioning-users-and-rooms"><a class="header" href="#mentioning-users-and-rooms">Mentioning Users And Rooms</a></h2>
+<p>From within the message bar, you can complete Matrix usernames, room aliases
+and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
+<code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
+completions. This will insert something like:</p>
+<pre><code>Hello [Alice][@alice:example.com]
+</code></pre>
+<p>When the Markdown is parsed, this will be turned into a link similar to:</p>
+<pre><code>Hello [Alice](https://matrix.to/#/@alice:example.com)
+</code></pre>
+<p>The same is true for room aliases (<code>#alias:example.com</code>) and room identifiers
+(<code>!id:example.com</code>). For example:</p>
+<pre><code>Please join us in [#room:example.com]
+</code></pre>
+<p>Becomes:</p>
+<pre><code>Please join us in [#room:example.com](https://matrix.to/#/%23room:example.com)
+</code></pre>
+<p>You can then use <code>:open</code> on messages containing room and user links to go to
+that room or open a Direct Message with the user.</p>
+<p>If you find one of these links posted online, you can use <strong>iamb</strong> to open
+them, like:</p>
+<pre><code class="language-shell">iamb -P myprofile 'https://matrix.to/#/%23room:example.com'
+</code></pre>
 <h2 id="uploads"><a class="header" href="#uploads">Uploads</a></h2>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>

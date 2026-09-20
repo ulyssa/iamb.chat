@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-2a1b95fa.js";
+            window.path_to_searchindex_js = "../searchindex-a9401921.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-431c3718.js"></script>
+        <script src="../toc-59fc035f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -199,6 +199,26 @@ is causing perpetual errors in federation), then you can do:</p>
 </code></pre>
 <p>If you find yourself managing a large room and needing to often ban users, you
 may want to look at something like <a href="https://github.com/matrix-org/mjolnir">mjolnir</a> to help you manage a ban list.</p>
+<h2 id="setting-room-access"><a class="header" href="#setting-room-access">Setting Room Access</a></h2>
+<p>You can configure just how public your room is by setting the room’s <a href="https://spec.matrix.org/v1.19/client-server-api/#mroomjoin_rules">join rules</a>,
+which specify who is allowed to join and through what means. To see what a room
+currently permits, you can run:</p>
+<pre><code>:room access show
+</code></pre>
+<p>If you then wanted to make the room public to anyone who wants to join:</p>
+<pre><code>:room access set public
+</code></pre>
+<p>Potential values are:</p>
+<ul>
+<li><code>public</code>, which allows anyone to join the room.</li>
+<li><code>invite</code>, to require that users receive an invitation to join first.</li>
+<li><code>knock</code>, which allows users to send a knock request to ask to join.</li>
+<li><code>restricted</code>, which allows users that have either received an invitation or are a member of an associated room to join.</li>
+<li><code>knock-restricted</code>, which allows users to send a knock request to join, join via invitation, or join if they are a member of an associated room.</li>
+</ul>
+<p>For <code>restricted</code> and <code>knock-restricted</code>, you can specify an associated room with <code>++members</code>:</p>
+<pre><code>:room access set restricted ++members=#room:example.com ++members=#space:example.com ++members=!id:example.com
+</code></pre>
 <h2 id="setting-room-aliases"><a class="header" href="#setting-room-aliases">Setting Room Aliases</a></h2>
 <p>You can add a new alias to a room with:</p>
 <pre><code>:room alias set #alias:example.com

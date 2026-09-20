@@ -42,10 +42,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-2a1b95fa.js";
+            window.path_to_searchindex_js = "../searchindex-a9401921.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-431c3718.js"></script>
+        <script src="../toc-59fc035f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -197,6 +197,17 @@
 using the <code>:unreads</code> command. If you don’t want to visit all of them
 to read them each individually, you can mark them all as read with:</p>
 <pre><code>:unreads clear
+</code></pre>
+<p>If you just want to see a list of rooms that have unread mentions
+instead of every room with unread conversation, then you can use:</p>
+<pre><code>:mentions
+</code></pre>
+<p>If you read a room, but then want to expicitly mark it unread to
+come back to later, you can run:</p>
+<pre><code>:room unread set
+</code></pre>
+<p>Or to remote the explicit unread marker:</p>
+<pre><code>:room unread unset
 </code></pre>
 <h2 id="browsing-spaces"><a class="header" href="#browsing-spaces">Browsing Spaces</a></h2>
 <p>You can switch to a list of joined spaces using the <code>:spaces</code> command.

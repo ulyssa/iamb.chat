@@ -42,10 +42,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-2a1b95fa.js";
+            window.path_to_searchindex_js = "searchindex-a9401921.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-431c3718.js"></script>
+        <script src="toc-59fc035f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -226,6 +226,7 @@ select a profile.</p>
 <p>Several of the sections that you can place under the global configuration can
 also be placed within profile configurations to achieve per-profile values:</p>
 <ul>
+<li><code>aliases</code></li>
 <li><code>dirs</code></li>
 <li><code>layout</code></li>
 <li><code>macros</code></li>
@@ -260,23 +261,36 @@ url = "https://example.com"
 </thead>
 <tbody>
 <tr><td><code>auto_focus_message_bar</code></td><td><code>false</code></td><td>Whether to automatically focus the message bar when entering Insert mode in a room window.</td></tr>
+<tr><td><code>cache_policy</code></td><td></td><td></td></tr>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
+<tr><td><code>default_markup</code></td><td><code>"markdown"</code></td><td>The default markup format for interpreting text in the message bar. Valid values are <code>"markdown"</code>, <code>"html"</code>, and <code>"plaintext"</code>.</td></tr>
+<tr><td><code>default_register</code></td><td><code>"</code></td><td>The default register to use for yanking, deleting and pasting.</td></tr>
+<tr><td><code>default_split</code></td><td><code>"horizontal"</code></td><td>The default direction in which to split windows. Valid values are <code>"horizontal"</code> and <code>"vertical"</code>.</td></tr>
+<tr><td><code>default_via"</code></td><td><code>["matrix.org"]</code></td><td>The default servers to use when attempting to join a new room if your homeserver is unaware of the room and cannot resolve the alias.</td></tr>
+<tr><td><code>encryption</code></td><td></td><td>Configures how information related to room encryption is displayed in the UI. See <a href="#encryption">Encryption</a> below.</td></tr>
 <tr><td><code>external_edit_file_suffix</code></td><td><code>.md</code></td><td>The file suffix to use when creating temporary files with message contents for <code>:edit</code>. (Usually you want the default <code>.md</code> for syntax highlighting.)</td></tr>
+<tr><td><code>ignorecase</code></td><td><code>false</code></td><td>Configures whether to disable case sensitivity for the regular expressions entered in the search bar.</td></tr>
 <tr><td><code>image_preview</code></td><td>(unset)</td><td>Configures displaying image attachments for terminals that support previewing images. See <a href="#image-previews">Image Previews</a> below.</td></tr>
+<tr><td><code>input_prompt</code></td><td>(unset)</td><td>Configures a value to display as the prompt in the message bar.</td></tr>
 <tr><td><code>log_level</code></td><td><code>"info"</code></td><td>Configures the minimum log level. Valid values are <code>"trace"</code>, <code>"debug"</code>, <code>"info"</code>, <code>"warn"</code> or <code>"error"</code>.</td></tr>
+<tr><td><code>max_log_files</code></td><td><code>7</code></td><td>Configures how many days worth of logs to keep. Setting this to <code>0</code> disables automatically deleting the files.</td></tr>
 <tr><td><code>message_user_color</code></td><td><code>false</code></td><td>Whether to color entire messages using the same color used for the sender’s username and display name.</td></tr>
 <tr><td><code>message_shortcode_display</code></td><td><code>false</code></td><td>Whether to replace Emojis in message bodies with their shortcodes.</td></tr>
 <tr><td><code>mouse</code></td><td>(unset)</td><td>Configures mouse scroll support in the message scrollback. See <a href="#mouse-support">Mouse Support</a> below.</td></tr>
 <tr><td><code>normal_after_send</code></td><td><code>false</code></td><td>Whether to automatically reset the Vim mode to Normal mode after sending a message.</td></tr>
 <tr><td><code>notifications</code></td><td>(unset)</td><td>Whether to generate desktop notifications for messages sent to rooms not currently being viewed. See <a href="#notifications">Notifications</a></td></tr>
-<tr><td><code>open_command</code></td><td></td><td>Configures a command to use for opening downloads instead of the default. (e.g., <code>["my-open", "--file"]</code> to run a custom script</td></tr>
+<tr><td><code>open_command</code></td><td>(unset)</td><td>Configures a command to use for opening downloads instead of the default. (e.g., <code>["my-open", "--file"]</code> to run a custom script</td></tr>
+<tr><td><code>proxy</code></td><td>(unset)</td><td>Configures proxying requests to the homeserver through SOCKS5 or an HTTPS proxy. See <a href="#proxying">Proxying</a> below.</td></tr>
 <tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
 <tr><td><code>reaction_shortcode_display</code></td><td><code>false</code></td><td>Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won’t be displayed.</td></tr>
 <tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to display read receipts next to messages in the room scrollback.</td></tr>
 <tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
+<tr><td><code>read_receipt_trigger</code></td><td><code>"focused"</code></td><td>When to send read receipts for viewed rooms. Valid values are <code>"focused"</code>, <code>"visible"</code>, <code>"scrollback"</code>, and <code>"message"</code>.</td></tr>
 <tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
 <tr><td><code>sort</code></td><td></td><td>Configures how to sort the lists in different windows like <code>:rooms</code> or <code>:members</code>. See <a href="#sorting-lists">Sorting Lists</a> below.</td></tr>
+<tr><td><code>ssl_verify</code></td><td><code>true</code></td><td>Configures whether the homeserver’s certificate should be rejected when invalid, to protect against insecure connections.</td></tr>
 <tr><td><code>state_event_display</code></td><td><code>true</code></td><td>Whether to render state events (e.g. room membership changes, name changes, topic updates) in room timelines.</td></tr>
+<tr><td><code>terminal</code></td><td></td><td>Configures how <strong>iamb</strong> should interact with your terminal. See <a href="#terminal">Terminal</a> below.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
 <tr><td><code>user_gutter_width</code></td><td><code>30</code></td><td>How much space to reserve for displaying the message sender in room history.</td></tr>
@@ -292,11 +306,36 @@ sync, and show more log messages, you could put the following into your
 log_level = "debug"
 request_timeout = 180
 </code></pre>
+<h3 id="encryption"><a class="header" href="#encryption">Encryption</a></h3>
+<p>The <code>settings.encryption</code> subsection allows configuring how encryption information
+is displayed in the user interface.</p>
+<pre><code class="language-toml">[settings.encryption]
+icon_encrypted = "\U0001F512\uFE0E"
+icon_unencrypted = "\U0001F513\uFE0E"
+indicator_location = "title|prompt"
+</code></pre>
+<h4 id="encryption-fields"><a class="header" href="#encryption-fields">Encryption fields</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>icon_encrypted</code></td><td><code>"[E]"</code></td><td>The icon or text to show when the room is encrypted.</td></tr>
+<tr><td><code>icon_unencrypted</code></td><td><code>"[U]"</code></td><td>The icon or text to show when the room is unencrypted.</td></tr>
+<tr><td><code>icon_unknown</code></td><td><code>"[?]"</code></td><td>The icon or text to show when the room’s encryption status cannot be determined.</td></tr>
+<tr><td><code>indicator</code></td><td><code>"enabled"</code></td><td>Under what conditions to show the encryption state. Valid values are <code>"enabled"</code> (always show), <code>"disabled"</code> (never show), <code>"only-unencrypted"</code> and <code>"only-encrypted"</code>.</td></tr>
+<tr><td><code>indicator_location</code></td><td><code>"prompt"</code></td><td>Where to show the encryption indicator. Valid values are <code>"prompt"</code> for the message bar, <code>"title"</code> for the window title, or `“prompt</td></tr>
+</tbody>
+</table>
+</div>
 <h3 id="image-previews"><a class="header" href="#image-previews">Image Previews</a></h3>
-<p>When the <code>settings.image_preview</code> subsection is present, <strong>iamb</strong> will
-try to detect an appropriate way to show previews of image attachments:</p>
-<pre><code class="language-toml">[settings]
-image_preview = {}
+<p>The <code>settings.image_preview</code> subsection allows configuring whether and how <strong>iamb</strong>
+will display image previews for uploaded images, stickers, and image reactions.</p>
+<p>By default, <strong>iamb</strong> will try to detect an appropriate way to show previews in
+your terminal, but you can set <code>enabled</code> to <code>false</code> to turn it off:</p>
+<pre><code class="language-toml">[settings.image_preview]
+enabled = false
 </code></pre>
 <p>There are several different supported ways of showing images:</p>
 <ul>
@@ -310,6 +349,7 @@ running on Windows or in a terminal that doesn’t provide pixel information),
 you can manually specify how image previews are done using the <code>"protocol"</code>
 field:</p>
 <pre><code class="language-toml">[settings.image_preview]
+enabled = true
 protocol.type = "halfblocks"
 protocol.font_size = [ 11, 26 ]
 </code></pre>
@@ -322,6 +362,15 @@ the scrollback using the <code>"size"</code> field:</p>
 <pre><code class="language-toml">[settings.image_preview]
 size = { height = 10, width = 66 }
 </code></pre>
+<p>If the images are not being rescaled as you expect, you can change the filter
+algorithm used during resizing with the <code>filter</code> field. Possible values are:</p>
+<ul>
+<li><code>"CatmullRom"</code></li>
+<li><code>"Gaussian"</code></li>
+<li><code>"Lanczos3"</code></li>
+<li><code>"Nearest"</code></li>
+<li><code>"Triangle"</code> (the default)</li>
+</ul>
 <h3 id="notifications"><a class="header" href="#notifications">Notifications</a></h3>
 <p>The <code>settings.notifications</code> section allows enabling notifications for messages
 sent to rooms not currently open. For example, to enable desktop notifications,
@@ -376,7 +425,7 @@ members = ["server", "~localpart"]
 <tr><td><code>chats</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:chats</code> window</td></tr>
 <tr><td><code>dms</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:dms</code> window</td></tr>
 <tr><td><code>spaces</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:spaces</code> window</td></tr>
-<tr><td><code>members</code></td><td><code>["power", "id"]</code></td><td>How to sort the <code>:members</code> window</td></tr>
+<tr><td><code>members</code></td><td><code>["power", "knock", "~invite", "id"]</code></td><td>How to sort the <code>:members</code> window</td></tr>
 </tbody>
 </table>
 </div>
@@ -395,6 +444,7 @@ members = ["server", "~localpart"]
 <tr><td><code>"name"</code></td><td>Sort rooms alphabetically by their room name.</td></tr>
 <tr><td><code>"alias"</code></td><td>Sort rooms alphabetically by their canonical alias (e.g., <code>#iamb-users:0x.badd.cafe</code>)</td></tr>
 <tr><td><code>"id"</code></td><td>Sort rooms alphabetically by their unique room identifier (e.g., <code>!nQTgloqKBScxNjsQzR:0x.badd.cafe</code>).</td></tr>
+<tr><td><code>"server"</code></td><td>Sort rooms alphabetically by the server in their room alias, falling back to the room identifier if there isn’t one.</td></tr>
 </tbody>
 </table>
 </div>
@@ -407,8 +457,57 @@ members = ["server", "~localpart"]
 <tbody>
 <tr><td><code>"power"</code></td><td>Sort users by decreasing power level.</td></tr>
 <tr><td><code>"id"</code></td><td>Sort users alphabetically by their username (e.g. <code>@user:example.com</code>)</td></tr>
+<tr><td><code>"invite"</code></td><td>Sort users who have been invited to join the room but aren’t actually a member yet towards the top.</td></tr>
+<tr><td><code>"knock"</code></td><td>Sort users who have requested to join the room but aren’t actually a member yet towards the top.</td></tr>
 <tr><td><code>"localpart"</code></td><td>Sort users alphabetically by the localpart of their username (e.g. the <code>@user</code> portion of <code>@user:example.com</code></td></tr>
 <tr><td><code>"server"</code></td><td>Sort users alphabetically by the server in their username (e.g. the <code>example.com</code> portion of <code>@user:example.com</code>)</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="proxying"><a class="header" href="#proxying">Proxying</a></h3>
+<p>The <code>settings.proxy</code> subsection allows configuring <strong>iamb</strong> to use a SOCKS5 or HTTPS proxy.
+For example, you can run an SSH command like the following to set up a local SOCKS listener:</p>
+<pre><code class="language-shell">ssh -qCND 9050 user@example.com
+</code></pre>
+<p>And then use it in your configuration with:</p>
+<pre><code class="language-toml">[settings.proxy]
+url = "socks5://localhost:9050
+</code></pre>
+<p>Alternatively, if you don’t want it to be a permanent part of your configuration, you can use
+the usual <code>ALL_PROXY</code>, <code>HTTPS_PROXY</code>, or <code>HTTP_PROXY</code> environment variables to tell <strong>iamb</strong>
+to use those:</p>
+<pre><code class="language-shell">ALL_PROXY="socks5://localhost:9050" iamb
+</code></pre>
+<h4 id="proxying-fields"><a class="header" href="#proxying-fields">Proxying Fields</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>url</code></td><td>(unset)</td><td>What URL to proxy requests through.</td></tr>
+<tr><td><code>auth</code></td><td>(unset)</td><td>When using an HTTPS proxy, the value to send in the <code>Proxy-Authorization</code> header.</td></tr>
+<tr><td><code>headers</code></td><td>(unset)</td><td>When using an HTTPS proxy, this subsection allows specifying additional HTTP headers to include.</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="terminal"><a class="header" href="#terminal">Terminal</a></h3>
+<p>Terminal-related settings can be configured with the <code>settings.terminal</code> subsection.</p>
+<pre><code class="language-toml">[settings.terminal]
+cursor_shape = "block"
+enable_extended_keys = true
+enable_title = false
+</code></pre>
+<h4 id="terminal-fields"><a class="header" href="#terminal-fields">Terminal Fields</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>cursor_shape</code></td><td><code>"auto"</code></td><td>What shape to set the terminal cursor to. Valid values are <code>"auto"</code>, <code>"default"</code>, <code>"block"</code>, <code>"line"</code>, and <code>"underline"</code>.</td></tr>
+<tr><td><code>enable_extended_keys</code></td><td><code>true</code></td><td>Whether to try to enable extended keypresses if support is detected for the terminal.</td></tr>
+<tr><td><code>enable_title</code></td><td><code>true</code></td><td>Whether to set the terminal window title to <code>iamb (&lt;user id&gt;)</code> at startup.</td></tr>
 </tbody>
 </table>
 </div>
@@ -445,6 +544,17 @@ split = [
     { split = [ { window = "#room3:example.org" }, { window = "#room4:example.org" } ] },
     { window = "@user:example.org" }
 ]
+</code></pre>
+<h2 id="custom-command-aliases"><a class="header" href="#custom-command-aliases">Custom Command Aliases</a></h2>
+<p>You can map custom aliases to other commands for use in the command bar using
+the <code>aliases</code> section. For example, if you wanted single-letter variants for
+some of the more common commands:</p>
+<pre><code class="language-toml">[aliases]
+"c" = "chats"
+"d" = "download"
+"e" = "edit"
+"o" = "open"
+"r" = "rooms"
 </code></pre>
 <h2 id="custom-keybindings"><a class="header" href="#custom-keybindings">Custom Keybindings</a></h2>
 <p>You can add custom keybindings in <code>macros</code> subsections, which describes the Vim

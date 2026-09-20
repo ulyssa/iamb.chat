@@ -39,10 +39,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-2a1b95fa.js";
+            window.path_to_searchindex_js = "searchindex-a9401921.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-431c3718.js"></script>
+        <script src="toc-59fc035f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -223,6 +223,22 @@ you can file an issue there.</p>
 </ul>
 <p>Both of these are in the <a href="https://matrix.to/#/#iamb:0x.badd.cafe">#iamb:0x.badd.cafe</a> space.</p>
 <h2 id="release-history"><a class="header" href="#release-history">Release History</a></h2>
+<h3 id="v0012-2026-09-19"><a class="header" href="#v0012-2026-09-19">v0.0.12 (2026-09-19)</a></h3>
+<p>Highlights:</p>
+<ul>
+<li>Add <code>:invites</code> for viewing room invitations (<a href="#room-invitations">docs</a>)</li>
+<li>Add <code>:mentions</code> for viewing rooms with unread mentions (<a href="#browsing-unreads">docs</a>)</li>
+<li>Add <code>:knock</code> for managing room knocking (<a href="#room-knocking">docs</a>)</li>
+<li>Add <code>:self</code> for updating user information</li>
+<li>Custom command aliases (<a href="#custom-command-aliases">docs</a>)</li>
+<li>SOCKS5 and HTTPS proxying (<a href="#proxying">docs</a>)</li>
+<li>Opening <code>matrix.to</code> links (<a href="messages#mentioning-users-and-rooms">docs</a>)</li>
+<li>Room upgrades (<a href="#upgraded-rooms">docs</a>)</li>
+<li>Configuring cursor shape (<a href="#terminal">docs</a>)</li>
+<li>Stickers and images reactions (<a href="#image-previews">docs</a>)</li>
+<li>Update to Rust Matrix SDK v0.18.0</li>
+<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.12">Release Notes</a> for the full list of changes!</li>
+</ul>
 <h3 id="v0011-2026-01-19"><a class="header" href="#v0011-2026-01-19">v0.0.11 (2026-01-19)</a></h3>
 <p>Highlights:</p>
 <ul>
@@ -399,6 +415,7 @@ select a profile.</p>
 <p>Several of the sections that you can place under the global configuration can
 also be placed within profile configurations to achieve per-profile values:</p>
 <ul>
+<li><code>aliases</code></li>
 <li><code>dirs</code></li>
 <li><code>layout</code></li>
 <li><code>macros</code></li>
@@ -433,23 +450,36 @@ url = "https://example.com"
 </thead>
 <tbody>
 <tr><td><code>auto_focus_message_bar</code></td><td><code>false</code></td><td>Whether to automatically focus the message bar when entering Insert mode in a room window.</td></tr>
+<tr><td><code>cache_policy</code></td><td></td><td></td></tr>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
+<tr><td><code>default_markup</code></td><td><code>"markdown"</code></td><td>The default markup format for interpreting text in the message bar. Valid values are <code>"markdown"</code>, <code>"html"</code>, and <code>"plaintext"</code>.</td></tr>
+<tr><td><code>default_register</code></td><td><code>"</code></td><td>The default register to use for yanking, deleting and pasting.</td></tr>
+<tr><td><code>default_split</code></td><td><code>"horizontal"</code></td><td>The default direction in which to split windows. Valid values are <code>"horizontal"</code> and <code>"vertical"</code>.</td></tr>
+<tr><td><code>default_via"</code></td><td><code>["matrix.org"]</code></td><td>The default servers to use when attempting to join a new room if your homeserver is unaware of the room and cannot resolve the alias.</td></tr>
+<tr><td><code>encryption</code></td><td></td><td>Configures how information related to room encryption is displayed in the UI. See <a href="#encryption">Encryption</a> below.</td></tr>
 <tr><td><code>external_edit_file_suffix</code></td><td><code>.md</code></td><td>The file suffix to use when creating temporary files with message contents for <code>:edit</code>. (Usually you want the default <code>.md</code> for syntax highlighting.)</td></tr>
+<tr><td><code>ignorecase</code></td><td><code>false</code></td><td>Configures whether to disable case sensitivity for the regular expressions entered in the search bar.</td></tr>
 <tr><td><code>image_preview</code></td><td>(unset)</td><td>Configures displaying image attachments for terminals that support previewing images. See <a href="#image-previews">Image Previews</a> below.</td></tr>
+<tr><td><code>input_prompt</code></td><td>(unset)</td><td>Configures a value to display as the prompt in the message bar.</td></tr>
 <tr><td><code>log_level</code></td><td><code>"info"</code></td><td>Configures the minimum log level. Valid values are <code>"trace"</code>, <code>"debug"</code>, <code>"info"</code>, <code>"warn"</code> or <code>"error"</code>.</td></tr>
+<tr><td><code>max_log_files</code></td><td><code>7</code></td><td>Configures how many days worth of logs to keep. Setting this to <code>0</code> disables automatically deleting the files.</td></tr>
 <tr><td><code>message_user_color</code></td><td><code>false</code></td><td>Whether to color entire messages using the same color used for the sender’s username and display name.</td></tr>
 <tr><td><code>message_shortcode_display</code></td><td><code>false</code></td><td>Whether to replace Emojis in message bodies with their shortcodes.</td></tr>
 <tr><td><code>mouse</code></td><td>(unset)</td><td>Configures mouse scroll support in the message scrollback. See <a href="#mouse-support">Mouse Support</a> below.</td></tr>
 <tr><td><code>normal_after_send</code></td><td><code>false</code></td><td>Whether to automatically reset the Vim mode to Normal mode after sending a message.</td></tr>
 <tr><td><code>notifications</code></td><td>(unset)</td><td>Whether to generate desktop notifications for messages sent to rooms not currently being viewed. See <a href="#notifications">Notifications</a></td></tr>
-<tr><td><code>open_command</code></td><td></td><td>Configures a command to use for opening downloads instead of the default. (e.g., <code>["my-open", "--file"]</code> to run a custom script</td></tr>
+<tr><td><code>open_command</code></td><td>(unset)</td><td>Configures a command to use for opening downloads instead of the default. (e.g., <code>["my-open", "--file"]</code> to run a custom script</td></tr>
+<tr><td><code>proxy</code></td><td>(unset)</td><td>Configures proxying requests to the homeserver through SOCKS5 or an HTTPS proxy. See <a href="#proxying">Proxying</a> below.</td></tr>
 <tr><td><code>reaction_display</code></td><td><code>true</code></td><td>Whether to display message reactions. You can use this or <code>reaction_shortcode_display</code> if your terminal doesn’t show Emojis well.</td></tr>
 <tr><td><code>reaction_shortcode_display</code></td><td><code>false</code></td><td>Whether to show the shortcode value instead of the Emoji for reactions. If no shortcode is available, then it won’t be displayed.</td></tr>
 <tr><td><code>read_receipt_display</code></td><td><code>true</code></td><td>Whether to display read receipts next to messages in the room scrollback.</td></tr>
 <tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
+<tr><td><code>read_receipt_trigger</code></td><td><code>"focused"</code></td><td>When to send read receipts for viewed rooms. Valid values are <code>"focused"</code>, <code>"visible"</code>, <code>"scrollback"</code>, and <code>"message"</code>.</td></tr>
 <tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
 <tr><td><code>sort</code></td><td></td><td>Configures how to sort the lists in different windows like <code>:rooms</code> or <code>:members</code>. See <a href="#sorting-lists">Sorting Lists</a> below.</td></tr>
+<tr><td><code>ssl_verify</code></td><td><code>true</code></td><td>Configures whether the homeserver’s certificate should be rejected when invalid, to protect against insecure connections.</td></tr>
 <tr><td><code>state_event_display</code></td><td><code>true</code></td><td>Whether to render state events (e.g. room membership changes, name changes, topic updates) in room timelines.</td></tr>
+<tr><td><code>terminal</code></td><td></td><td>Configures how <strong>iamb</strong> should interact with your terminal. See <a href="#terminal">Terminal</a> below.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
 <tr><td><code>user_gutter_width</code></td><td><code>30</code></td><td>How much space to reserve for displaying the message sender in room history.</td></tr>
@@ -465,11 +495,36 @@ sync, and show more log messages, you could put the following into your
 log_level = "debug"
 request_timeout = 180
 </code></pre>
+<h3 id="encryption"><a class="header" href="#encryption">Encryption</a></h3>
+<p>The <code>settings.encryption</code> subsection allows configuring how encryption information
+is displayed in the user interface.</p>
+<pre><code class="language-toml">[settings.encryption]
+icon_encrypted = "\U0001F512\uFE0E"
+icon_unencrypted = "\U0001F513\uFE0E"
+indicator_location = "title|prompt"
+</code></pre>
+<h4 id="encryption-fields"><a class="header" href="#encryption-fields">Encryption fields</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>icon_encrypted</code></td><td><code>"[E]"</code></td><td>The icon or text to show when the room is encrypted.</td></tr>
+<tr><td><code>icon_unencrypted</code></td><td><code>"[U]"</code></td><td>The icon or text to show when the room is unencrypted.</td></tr>
+<tr><td><code>icon_unknown</code></td><td><code>"[?]"</code></td><td>The icon or text to show when the room’s encryption status cannot be determined.</td></tr>
+<tr><td><code>indicator</code></td><td><code>"enabled"</code></td><td>Under what conditions to show the encryption state. Valid values are <code>"enabled"</code> (always show), <code>"disabled"</code> (never show), <code>"only-unencrypted"</code> and <code>"only-encrypted"</code>.</td></tr>
+<tr><td><code>indicator_location</code></td><td><code>"prompt"</code></td><td>Where to show the encryption indicator. Valid values are <code>"prompt"</code> for the message bar, <code>"title"</code> for the window title, or `“prompt</td></tr>
+</tbody>
+</table>
+</div>
 <h3 id="image-previews"><a class="header" href="#image-previews">Image Previews</a></h3>
-<p>When the <code>settings.image_preview</code> subsection is present, <strong>iamb</strong> will
-try to detect an appropriate way to show previews of image attachments:</p>
-<pre><code class="language-toml">[settings]
-image_preview = {}
+<p>The <code>settings.image_preview</code> subsection allows configuring whether and how <strong>iamb</strong>
+will display image previews for uploaded images, stickers, and image reactions.</p>
+<p>By default, <strong>iamb</strong> will try to detect an appropriate way to show previews in
+your terminal, but you can set <code>enabled</code> to <code>false</code> to turn it off:</p>
+<pre><code class="language-toml">[settings.image_preview]
+enabled = false
 </code></pre>
 <p>There are several different supported ways of showing images:</p>
 <ul>
@@ -483,6 +538,7 @@ running on Windows or in a terminal that doesn’t provide pixel information),
 you can manually specify how image previews are done using the <code>"protocol"</code>
 field:</p>
 <pre><code class="language-toml">[settings.image_preview]
+enabled = true
 protocol.type = "halfblocks"
 protocol.font_size = [ 11, 26 ]
 </code></pre>
@@ -495,6 +551,15 @@ the scrollback using the <code>"size"</code> field:</p>
 <pre><code class="language-toml">[settings.image_preview]
 size = { height = 10, width = 66 }
 </code></pre>
+<p>If the images are not being rescaled as you expect, you can change the filter
+algorithm used during resizing with the <code>filter</code> field. Possible values are:</p>
+<ul>
+<li><code>"CatmullRom"</code></li>
+<li><code>"Gaussian"</code></li>
+<li><code>"Lanczos3"</code></li>
+<li><code>"Nearest"</code></li>
+<li><code>"Triangle"</code> (the default)</li>
+</ul>
 <h3 id="notifications"><a class="header" href="#notifications">Notifications</a></h3>
 <p>The <code>settings.notifications</code> section allows enabling notifications for messages
 sent to rooms not currently open. For example, to enable desktop notifications,
@@ -549,7 +614,7 @@ members = ["server", "~localpart"]
 <tr><td><code>chats</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:chats</code> window</td></tr>
 <tr><td><code>dms</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:dms</code> window</td></tr>
 <tr><td><code>spaces</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:spaces</code> window</td></tr>
-<tr><td><code>members</code></td><td><code>["power", "id"]</code></td><td>How to sort the <code>:members</code> window</td></tr>
+<tr><td><code>members</code></td><td><code>["power", "knock", "~invite", "id"]</code></td><td>How to sort the <code>:members</code> window</td></tr>
 </tbody>
 </table>
 </div>
@@ -568,6 +633,7 @@ members = ["server", "~localpart"]
 <tr><td><code>"name"</code></td><td>Sort rooms alphabetically by their room name.</td></tr>
 <tr><td><code>"alias"</code></td><td>Sort rooms alphabetically by their canonical alias (e.g., <code>#iamb-users:0x.badd.cafe</code>)</td></tr>
 <tr><td><code>"id"</code></td><td>Sort rooms alphabetically by their unique room identifier (e.g., <code>!nQTgloqKBScxNjsQzR:0x.badd.cafe</code>).</td></tr>
+<tr><td><code>"server"</code></td><td>Sort rooms alphabetically by the server in their room alias, falling back to the room identifier if there isn’t one.</td></tr>
 </tbody>
 </table>
 </div>
@@ -580,8 +646,57 @@ members = ["server", "~localpart"]
 <tbody>
 <tr><td><code>"power"</code></td><td>Sort users by decreasing power level.</td></tr>
 <tr><td><code>"id"</code></td><td>Sort users alphabetically by their username (e.g. <code>@user:example.com</code>)</td></tr>
+<tr><td><code>"invite"</code></td><td>Sort users who have been invited to join the room but aren’t actually a member yet towards the top.</td></tr>
+<tr><td><code>"knock"</code></td><td>Sort users who have requested to join the room but aren’t actually a member yet towards the top.</td></tr>
 <tr><td><code>"localpart"</code></td><td>Sort users alphabetically by the localpart of their username (e.g. the <code>@user</code> portion of <code>@user:example.com</code></td></tr>
 <tr><td><code>"server"</code></td><td>Sort users alphabetically by the server in their username (e.g. the <code>example.com</code> portion of <code>@user:example.com</code>)</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="proxying"><a class="header" href="#proxying">Proxying</a></h3>
+<p>The <code>settings.proxy</code> subsection allows configuring <strong>iamb</strong> to use a SOCKS5 or HTTPS proxy.
+For example, you can run an SSH command like the following to set up a local SOCKS listener:</p>
+<pre><code class="language-shell">ssh -qCND 9050 user@example.com
+</code></pre>
+<p>And then use it in your configuration with:</p>
+<pre><code class="language-toml">[settings.proxy]
+url = "socks5://localhost:9050
+</code></pre>
+<p>Alternatively, if you don’t want it to be a permanent part of your configuration, you can use
+the usual <code>ALL_PROXY</code>, <code>HTTPS_PROXY</code>, or <code>HTTP_PROXY</code> environment variables to tell <strong>iamb</strong>
+to use those:</p>
+<pre><code class="language-shell">ALL_PROXY="socks5://localhost:9050" iamb
+</code></pre>
+<h4 id="proxying-fields"><a class="header" href="#proxying-fields">Proxying Fields</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>url</code></td><td>(unset)</td><td>What URL to proxy requests through.</td></tr>
+<tr><td><code>auth</code></td><td>(unset)</td><td>When using an HTTPS proxy, the value to send in the <code>Proxy-Authorization</code> header.</td></tr>
+<tr><td><code>headers</code></td><td>(unset)</td><td>When using an HTTPS proxy, this subsection allows specifying additional HTTP headers to include.</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="terminal"><a class="header" href="#terminal">Terminal</a></h3>
+<p>Terminal-related settings can be configured with the <code>settings.terminal</code> subsection.</p>
+<pre><code class="language-toml">[settings.terminal]
+cursor_shape = "block"
+enable_extended_keys = true
+enable_title = false
+</code></pre>
+<h4 id="terminal-fields"><a class="header" href="#terminal-fields">Terminal Fields</a></h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Default</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>cursor_shape</code></td><td><code>"auto"</code></td><td>What shape to set the terminal cursor to. Valid values are <code>"auto"</code>, <code>"default"</code>, <code>"block"</code>, <code>"line"</code>, and <code>"underline"</code>.</td></tr>
+<tr><td><code>enable_extended_keys</code></td><td><code>true</code></td><td>Whether to try to enable extended keypresses if support is detected for the terminal.</td></tr>
+<tr><td><code>enable_title</code></td><td><code>true</code></td><td>Whether to set the terminal window title to <code>iamb (&lt;user id&gt;)</code> at startup.</td></tr>
 </tbody>
 </table>
 </div>
@@ -618,6 +733,17 @@ split = [
     { split = [ { window = "#room3:example.org" }, { window = "#room4:example.org" } ] },
     { window = "@user:example.org" }
 ]
+</code></pre>
+<h2 id="custom-command-aliases"><a class="header" href="#custom-command-aliases">Custom Command Aliases</a></h2>
+<p>You can map custom aliases to other commands for use in the command bar using
+the <code>aliases</code> section. For example, if you wanted single-letter variants for
+some of the more common commands:</p>
+<pre><code class="language-toml">[aliases]
+"c" = "chats"
+"d" = "download"
+"e" = "edit"
+"o" = "open"
+"r" = "rooms"
 </code></pre>
 <h2 id="custom-keybindings"><a class="header" href="#custom-keybindings">Custom Keybindings</a></h2>
 <p>You can add custom keybindings in <code>macros</code> subsections, which describes the Vim
@@ -736,8 +862,9 @@ table th:nth-of-type(3) {
 <p>When viewing a room window, the encryption state of the room is indicated in
 the prompt of the message bar:</p>
 <ul>
-<li>Green <code style="color: green">🔒︎</code> indicates that the room is <strong>encrypted</strong>.</li>
-<li>Red <code style="color: red">🔓︎</code> indicates that the room is <strong>unencrypted</strong>.</li>
+<li>Green <code style="color: green">[E]</code> indicates that the room is <strong>encrypted</strong>.</li>
+<li>Red <code style="color: red">[U]</code> indicates that the room is <strong>unencrypted</strong>.</li>
+<li>Yellow <code style="color: red">[?]</code> indicates that the room’s encryption state is <strong>unknown</strong>.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="verification"><a class="header" href="#verification">Verification</a></h1>
@@ -752,6 +879,10 @@ confirm that they match in the same way as shown above for incoming
 verifications.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="room-keys"><a class="header" href="#room-keys">Room Keys</a></h1>
+<h2 id="restoring-from-key-backup"><a class="header" href="#restoring-from-key-backup">Restoring From Key Backup</a></h2>
+<p>You can restore your keys from the homeserver’s key backup on a new session with:</p>
+<pre><code>:verify recover "[recovery key]"
+</code></pre>
 <h2 id="exporting--importing-keys"><a class="header" href="#exporting--importing-keys">Exporting / Importing Keys</a></h2>
 <p>If you want to export your room keys, either to save them as a backup or
 to import them into another session, you can use:</p>
@@ -794,6 +925,17 @@ using the <code>:unreads</code> command. If you don’t want to visit all of the
 to read them each individually, you can mark them all as read with:</p>
 <pre><code>:unreads clear
 </code></pre>
+<p>If you just want to see a list of rooms that have unread mentions
+instead of every room with unread conversation, then you can use:</p>
+<pre><code>:mentions
+</code></pre>
+<p>If you read a room, but then want to expicitly mark it unread to
+come back to later, you can run:</p>
+<pre><code>:room unread set
+</code></pre>
+<p>Or to remote the explicit unread marker:</p>
+<pre><code>:room unread unset
+</code></pre>
 <h2 id="browsing-spaces"><a class="header" href="#browsing-spaces">Browsing Spaces</a></h2>
 <p>You can switch to a list of joined spaces using the <code>:spaces</code> command.
 Use <code>/</code> and <code>?</code> to search by space name or room ID within the list.</p>
@@ -830,6 +972,23 @@ you can open it up, focus the window and run:</p>
 <li><code>:invite accept</code> to accept the invitation and join the room</li>
 <li><code>:invite reject</code> to reject the invitation</li>
 </ul>
+<p>You can see a list of rooms you have been invited to using <code>:invites</code>.</p>
+<h2 id="room-knocking"><a class="header" href="#room-knocking">Room Knocking</a></h2>
+<p>Room knocking is the reverse of room invitations: a user who is not yet a
+member of a room but wants to join it can send a room knock to let someone
+inside the room choose whether to invite them in.</p>
+<p>You can send a knock through the <code>:knock send</code> command:</p>
+<pre><code>:knock send #room:example.com
+</code></pre>
+<p>If you are inside a room and someone has sent a knock request, you can
+choose how to handle it:</p>
+<ul>
+<li><code>:knock accept @user:example.com</code> to invite the knocking user to join the room.</li>
+<li><code>:knock reject @user:example.com</code> to reject the room knock from a user.</li>
+<li><code>:knock ban @user:example.com</code> to reject the room knock from a user and prevent them from knocking again.</li>
+</ul>
+<p>Knocks will appear in the room’s timeline, but you can also look at the
+<code>:members</code> window for the room to see who has sent a knock.</p>
 <h2 id="marking-direct-rooms"><a class="header" href="#marking-direct-rooms">Marking Direct Rooms</a></h2>
 <p>Matrix keeps a list of direct message rooms in account data on the server. If
 you have a room that you want to appear under <code>:dms</code> and it’s not currently
@@ -879,6 +1038,31 @@ not notify you as much. The different notification levels are:</p>
 <p>And see the currently configured value for the room with:</p>
 <pre><code>:room notify show
 </code></pre>
+<h2 id="upgraded-rooms"><a class="header" href="#upgraded-rooms">Upgraded Rooms</a></h2>
+<p>When a Matrix room is created, it declared which room version it is using from
+the Matrix protocol, which determines the set of features usable within the room
+by clients. (See [Feature Matrix], for example.) In order to leverage newer features,
+room administrators will “upgrade” the room by creating a successor room that uses
+a newer room version, and updating the old room’s state to point at the new room.</p>
+<p>When this happens, <strong>iamb</strong> will show you a message and let you know that you can
+join the new room by running:</p>
+<pre><code>:follow next
+</code></pre>
+<p>Alternatively, if you are in the upgraded version of a room and want to go to
+the older one to read through older discussions, you can do:</p>
+<pre><code>:follow prev
+</code></pre>
+<p>To see what version a room is using, you can run:</p>
+<pre><code>:room version show
+</code></pre>
+<p>If you are a room administrator and you want to make a new room, then you can run:</p>
+<pre><code>:room version upgrade [VERSION]
+</code></pre>
+<p>Starting with room version 12, Matrix supports declaring additional room members
+who should also be considered creators of the room, which effectively grants them
+an infinite power level. You can specify this when upgrading with:</p>
+<pre><code>:room version upgrade 12 ++creator=@user:example.com
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="administration"><a class="header" href="#administration">Administration</a></h1>
 <p>If you have the appropriate power level in a room, then you can change room
@@ -899,6 +1083,26 @@ is causing perpetual errors in federation), then you can do:</p>
 </code></pre>
 <p>If you find yourself managing a large room and needing to often ban users, you
 may want to look at something like <a href="https://github.com/matrix-org/mjolnir">mjolnir</a> to help you manage a ban list.</p>
+<h2 id="setting-room-access"><a class="header" href="#setting-room-access">Setting Room Access</a></h2>
+<p>You can configure just how public your room is by setting the room’s <a href="https://spec.matrix.org/v1.19/client-server-api/#mroomjoin_rules">join rules</a>,
+which specify who is allowed to join and through what means. To see what a room
+currently permits, you can run:</p>
+<pre><code>:room access show
+</code></pre>
+<p>If you then wanted to make the room public to anyone who wants to join:</p>
+<pre><code>:room access set public
+</code></pre>
+<p>Potential values are:</p>
+<ul>
+<li><code>public</code>, which allows anyone to join the room.</li>
+<li><code>invite</code>, to require that users receive an invitation to join first.</li>
+<li><code>knock</code>, which allows users to send a knock request to ask to join.</li>
+<li><code>restricted</code>, which allows users that have either received an invitation or are a member of an associated room to join.</li>
+<li><code>knock-restricted</code>, which allows users to send a knock request to join, join via invitation, or join if they are a member of an associated room.</li>
+</ul>
+<p>For <code>restricted</code> and <code>knock-restricted</code>, you can specify an associated room with <code>++members</code>:</p>
+<pre><code>:room access set restricted ++members=#room:example.com ++members=#space:example.com ++members=!id:example.com
+</code></pre>
 <h2 id="setting-room-aliases"><a class="header" href="#setting-room-aliases">Setting Room Aliases</a></h2>
 <p>You can add a new alias to a room with:</p>
 <pre><code>:room alias set #alias:example.com
@@ -975,22 +1179,43 @@ key from either Normal or Insert mode.</p>
 the message. If you would prefer to automatically return to Normal mode after
 sending, you can set <a href="#settings">normal_after_send</a> in your configuration file.</p>
 <p>The prompt of the message bar indicates room encryption status with a green
-<code style="color: green">🔒︎</code> for encrypted rooms and a red
-<code style="color: red">🔓︎</code> for unencrypted rooms.</p>
+<code style="color: green">[E]</code> for encrypted rooms and a red
+<code style="color: red">[U]</code> for unencrypted rooms. You can configure
+alternate indicator values in the <a href="#encryption">settings.encryption</a> subsection in your
+configuration file.</p>
 <blockquote>
 <p>💡 If you need to type a multiline message, you can start a line by typing
 <code>&lt;C-V&gt;&lt;C-J&gt;</code>. You can also use the <code>O</code> and <code>o</code> keys to insert a blank line
 before or after the current line respectively.</p>
 </blockquote>
-<p>From within the message bar, you can complete Matrix usernames, room aliases
-and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
-<code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
-completions.</p>
 <blockquote>
 <p>💡 If you want to compose a longer message outside of <strong>iamb</strong> in your preferred
 text editor, you can use the <code>:editor</code> command to launch your configured
 <code>$EDITOR</code>.</p>
 </blockquote>
+<h2 id="mentioning-users-and-rooms"><a class="header" href="#mentioning-users-and-rooms">Mentioning Users And Rooms</a></h2>
+<p>From within the message bar, you can complete Matrix usernames, room aliases
+and identifiers, and Emoji shortcodes (e.g., <code>:heart:</code>) by using <code>&lt;C-N&gt;</code> and
+<code>&lt;C-P&gt;</code> to start cycling forwards or backwards through the list of possible
+completions. This will insert something like:</p>
+<pre><code>Hello [Alice][@alice:example.com]
+</code></pre>
+<p>When the Markdown is parsed, this will be turned into a link similar to:</p>
+<pre><code>Hello [Alice](https://matrix.to/#/@alice:example.com)
+</code></pre>
+<p>The same is true for room aliases (<code>#alias:example.com</code>) and room identifiers
+(<code>!id:example.com</code>). For example:</p>
+<pre><code>Please join us in [#room:example.com]
+</code></pre>
+<p>Becomes:</p>
+<pre><code>Please join us in [#room:example.com](https://matrix.to/#/%23room:example.com)
+</code></pre>
+<p>You can then use <code>:open</code> on messages containing room and user links to go to
+that room or open a Direct Message with the user.</p>
+<p>If you find one of these links posted online, you can use <strong>iamb</strong> to open
+them, like:</p>
+<pre><code class="language-shell">iamb -P myprofile 'https://matrix.to/#/%23room:example.com'
+</code></pre>
 <h2 id="uploads"><a class="header" href="#uploads">Uploads</a></h2>
 <p>The <code>:upload</code> command allows you to specify a file to send to the currently
 focused room:</p>
@@ -1263,6 +1488,8 @@ arguments, but you can specify a position to close:</p>
 </ul>
 <p>If you want to close all tabs but the current one, use <code>:tabonly</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="user-profile"><a class="header" href="#user-profile">User Profile</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="development"><a class="header" href="#development">Development</a></h1>
 <h2 id="setting-up-your-environment"><a class="header" href="#setting-up-your-environment">Setting Up Your Environment</a></h2>
 <p>In order to work on and build <strong>iamb</strong> locally, you will need:</p>
@@ -1345,16 +1572,20 @@ please open a Draft Pull Request, so that someone can take a look.</p>
 <tr><td><code>:create</code></td><td></td><td>See <a href="#room-creation">Room Creation</a></td></tr>
 <tr><td><code>:dms</code></td><td></td><td>See <a href="#browsing-direct-messages">Browsing Direct Messages</a></td></tr>
 <tr><td><code>:forget</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
+<tr><td><code>:invites</code></td><td></td><td>See <a href="#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:join</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:keys export</code></td><td></td><td>See <a href="#exporting-importing-keys">Exporting / Importing Keys</a></td></tr>
 <tr><td><code>:keys import</code></td><td></td><td>See <a href="#exporting-importing-keys">Exporting / Importing Keys</a></td></tr>
+<tr><td><code>:knock send</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
 <tr><td><code>:logout</code></td><td></td><td>Log out of the client.</td></tr>
 <tr><td><code>:members</code></td><td></td><td>See <a href="#viewing-roomspace-members">Viewing Room/Space Members</a></td></tr>
+<tr><td><code>:mentions</code></td><td></td><td>See <a href="#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:rooms</code></td><td></td><td>See <a href="#browsing-rooms">Browsing Rooms</a></td></tr>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="#browsing-spaces">Browsing Spaces</a></td></tr>
 <tr><td><code>:unreads</code></td><td></td><td>See <a href="#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:unreads clear</code></td><td></td><td>See <a href="#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:verify</code></td><td></td><td>See <a href="#verification">Verification</a></td></tr>
+<tr><td><code>:verify recover</code></td><td></td><td>See <a href="#restoring-from-key-backup">Restoring From Key Backup</a></td></tr>
 <tr><td><code>:welcome</code></td><td></td><td>Shows the startup Welcome window</td></tr>
 </tbody>
 </table>
@@ -1381,6 +1612,27 @@ sending new ones:</p>
 </tbody>
 </table>
 </div>
+<h3 id="profile-commands"><a class="header" href="#profile-commands">Profile Commands</a></h3>
+<p>The following commands update the information associated with your account on
+the homeserver:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Command</th><th>Aliases</th><th>Help</th></tr>
+</thead>
+<tbody>
+<tr><td><code>:self avatar set</code></td><td></td><td>See <a href="profile#user-avatar">User Avatar</a></td></tr>
+<tr><td><code>:self avatar show</code></td><td></td><td>See <a href="profile#user-avatar">User Avatar</a></td></tr>
+<tr><td><code>:self avatar unset</code></td><td></td><td>See <a href="profile#user-avatar">User Avatar</a></td></tr>
+<tr><td><code>:self name set</code></td><td><code>:self nick set</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
+<tr><td><code>:self name show</code></td><td><code>:self nick show</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
+<tr><td><code>:self name unset</code></td><td><code>:self nick unset</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
+<tr><td><code>:self timezone set</code></td><td><code>:self tz set</code></td><td>See <a href="profile#timezone">Timezone</a></td></tr>
+<tr><td><code>:self timezone show</code></td><td><code>:self tz show</code></td><td>See <a href="profile#timezone">Timezone</a></td></tr>
+<tr><td><code>:self timezone unset</code></td><td><code>:self tz unset</code></td><td>See <a href="profile#timezone">Timezone</a></td></tr>
+</tbody>
+</table>
+</div>
 <h3 id="room-commands"><a class="header" href="#room-commands">Room Commands</a></h3>
 <p>The following commands target the currently selected room
 (including spaces, which are just a special kind of room):</p>
@@ -1390,10 +1642,18 @@ sending new ones:</p>
 <tr><th>Command</th><th>Aliases</th><th>Help</th></tr>
 </thead>
 <tbody>
+<tr><td><code>:follow next</code></td><td></td><td>See <a href="#upgraded-rooms">Upgraded Rooms</a></td></tr>
+<tr><td><code>:follow prev</code></td><td></td><td>See <a href="#upgraded-rooms">Upgraded Rooms</a></td></tr>
 <tr><td><code>:invite accept</code></td><td></td><td>See <a href="#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:invite reject</code></td><td></td><td>See <a href="#room-invitations">Room Invitations</a></td></tr>
 <tr><td><code>:invite send</code></td><td></td><td>See <a href="#room-invitations">Room Invitations</a></td></tr>
+<tr><td><code>:knock accept</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
+<tr><td><code>:knock ban</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
+<tr><td><code>:knock reject</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
 <tr><td><code>:leave</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
+<tr><td><code>:room access set</code></td><td></td><td>See <a href="#setting-room-access">Setting Room Access</a></td></tr>
+<tr><td><code>:room access show</code></td><td></td><td>See <a href="#setting-room-access">Setting Room Access</a></td></tr>
+<tr><td><code>:room access unset</code></td><td></td><td>See <a href="#setting-room-access">Setting Room Access</a></td></tr>
 <tr><td><code>:room alias set</code></td><td></td><td>See <a href="#setting-room-aliases">Setting Room Aliases</a></td></tr>
 <tr><td><code>:room alias show</code></td><td></td><td>See <a href="#setting-room-aliases">Setting Room Aliases</a></td></tr>
 <tr><td><code>:room alias unset</code></td><td></td><td>See <a href="#setting-room-aliases">Setting Room Aliases</a></td></tr>
@@ -1420,6 +1680,13 @@ sending new ones:</p>
 <tr><td><code>:room topic show</code></td><td></td><td>See <a href="#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room topic unset</code></td><td></td><td>See <a href="#setting-room-properties">Setting Room Properties</a></td></tr>
 <tr><td><code>:room unban</code></td><td></td><td>See <a href="#managing-room-membership">Managing Room Membership</a></td></tr>
+<tr><td><code>:room unread set</code></td><td></td><td>See <a href="#browsing-unreads">Browsing Unreads</a></td></tr>
+<tr><td><code>:room unread unset</code></td><td><code>:room unread clear</code></td><td>See <a href="#browsing-unreads">Browsing Unreads</a></td></tr>
+<tr><td><code>:room user name set</code></td><td><code>:room user nick set</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
+<tr><td><code>:room user name show</code></td><td><code>:room user nick show</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
+<tr><td><code>:room user name unset</code></td><td><code>:room user nick unset</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
+<tr><td><code>:room version show</code></td><td></td><td>See <a href="#upgraded-rooms">Upgraded Rooms</a></td></tr>
+<tr><td><code>:room version upgrade</code></td><td></td><td>See <a href="#upgraded-rooms">Upgraded Rooms</a></td></tr>
 <tr><td><code>:space child remove</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
 <tr><td><code>:space child set</code></td><td></td><td>See <a href="../rooms/admin.html#updating-space-hierarchy">Updating Space Hierarchy</a></td></tr>
 </tbody>
@@ -1514,9 +1781,9 @@ documentation.</p>
 <tr><td>Normal, Visual</td><td><code>&lt;C-D&gt;</code></td><td></td><td>See <a href="messages#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal</td><td><code>&lt;C-I&gt;</code></td><td><code>&lt;Tab&gt;</code></td><td>See <a href="#switching-windows">Switching Windows</a></td></tr>
 <tr><td>Normal</td><td><code>&lt;C-L&gt;</code></td><td></td><td>Force the window to redraw</td></tr>
-<tr><td>Insert</td><td><code>&lt;C-N&gt;</code></td><td></td><td>See <a href="messages#sending">Sending</a></td></tr>
+<tr><td>Insert</td><td><code>&lt;C-N&gt;</code></td><td></td><td>See <a href="messages#mentioning-users-and-rooms">Mentioning Users And Rooms</a></td></tr>
 <tr><td>Normal</td><td><code>&lt;C-O&gt;</code></td><td></td><td>See <a href="#switching-windows">Switching Windows</a></td></tr>
-<tr><td>Insert</td><td><code>&lt;C-P&gt;</code></td><td></td><td>See <a href="messages#sending">Sending</a></td></tr>
+<tr><td>Insert</td><td><code>&lt;C-P&gt;</code></td><td></td><td>See <a href="messages#mentioning-users-and-rooms">Mentioning Users And Rooms</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>&lt;C-U&gt;</code></td><td></td><td>See <a href="messages#message-scrollback">Message Scrollback</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;f</code></td><td><code>&lt;C-W&gt;&lt;C-F&gt;</code></td><td>See <a href="#following-matrix-ids">Following Matrix IDs</a></td></tr>
 <tr><td>Normal, Visual</td><td><code>&lt;C-W&gt;gf</code></td><td></td><td>See <a href="#following-matrix-ids">Following Matrix IDs</a> and <a href="#opening-tabs">Opening Tabs</a></td></tr>
