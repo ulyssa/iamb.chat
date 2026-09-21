@@ -319,7 +319,7 @@ And then use it in your configuration with:
 
 ```toml
 [settings.proxy]
-url = "socks5://localhost:9050
+url = "socks5://localhost:9050"
 ```
 
 Alternatively, if you don't want it to be a permanent part of your configuration, you can use
