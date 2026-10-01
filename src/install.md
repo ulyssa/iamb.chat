@@ -9,10 +9,11 @@ system.
 
 ### Arch Linux
 
-Using your preferred [AUR helper], you can install `iamb-git`. For example,
-using `paru`:
+Using your preferred [AUR helper], you can install `iamb` or `iamb-git`. For example,
+using `paru`, you can run one of:
 
 ```
+paru iamb
 paru iamb-git
 ```
 
@@ -67,11 +68,24 @@ There is an `iamb` package available in the 23.11 channel, or, if you have
 [enabled flakes] in Nix, you can install __iamb__ from the Git repository via:
 
 ```
-nix profile install "github:ulyssa/iamb/latest"
+nix profile add "github:ulyssa/iamb/latest"
 ```
 
 You can replace `latest` with a branch or specific version tag name if you want
 to install something besides the most recent release (e.g. `main` or `v0.0.8`).
+
+If you are using [cachix](https://docs.cachix.org/), then you can point your
+system at it to reuse cached builds from the Github CI:
+
+```
+cachix use iamb-prs
+```
+
+The public key you should see is:
+
+```
+iamb-prs.cachix.org-1:Mq0/UwXw1jm9hRDxKNgkxeTOmTck8L0rjcauh+ehjwU=
+```
 
 ### openSUSE Tumbleweed
 
