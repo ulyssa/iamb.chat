@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-49f74f72.js";
+            window.path_to_searchindex_js = "searchindex-6f5c9819.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-59fc035f.js"></script>
@@ -300,9 +300,10 @@ preferred operating systems and distributions. If you don’t see your system
 on this page, try checking <a href="https://repology.org/project/iamb/versions">repology</a> to see whether one exists for your
 system.</p>
 <h3 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h3>
-<p>Using your preferred <a href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>, you can install <code>iamb-git</code>. For example,
-using <code>paru</code>:</p>
-<pre><code>paru iamb-git
+<p>Using your preferred <a href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>, you can install <code>iamb</code> or <code>iamb-git</code>. For example,
+using <code>paru</code>, you can run one of:</p>
+<pre><code>paru iamb
+paru iamb-git
 </code></pre>
 <h3 id="freebsd"><a class="header" href="#freebsd">FreeBSD</a></h3>
 <p>On FreeBSD a package is available from the official repositories. To install it
@@ -332,10 +333,17 @@ install the <code>iamb</code> package:</p>
 <h3 id="nixos"><a class="header" href="#nixos">NixOS</a></h3>
 <p>There is an <code>iamb</code> package available in the 23.11 channel, or, if you have
 <a href="https://nixos.wiki/wiki/Flakes#Enable_flakes">enabled flakes</a> in Nix, you can install <strong>iamb</strong> from the Git repository via:</p>
-<pre><code>nix profile install "github:ulyssa/iamb/latest"
+<pre><code>nix profile add "github:ulyssa/iamb/latest"
 </code></pre>
 <p>You can replace <code>latest</code> with a branch or specific version tag name if you want
 to install something besides the most recent release (e.g. <code>main</code> or <code>v0.0.8</code>).</p>
+<p>If you are using <a href="https://docs.cachix.org/">cachix</a>, then you can point your
+system at it to reuse cached builds from the Github CI:</p>
+<pre><code>cachix use iamb-prs
+</code></pre>
+<p>The public key you should see is:</p>
+<pre><code>iamb-prs.cachix.org-1:Mq0/UwXw1jm9hRDxKNgkxeTOmTck8L0rjcauh+ehjwU=
+</code></pre>
 <h3 id="opensuse-tumbleweed"><a class="header" href="#opensuse-tumbleweed">openSUSE Tumbleweed</a></h3>
 <p>On openSUSE Tumbleweed a <a href="https://build.opensuse.org/package/show/openSUSE:Factory/iamb">package</a> is available from the official
 repositories. To install it simply run:</p>
@@ -1489,6 +1497,42 @@ arguments, but you can specify a position to close:</p>
 <p>If you want to close all tabs but the current one, use <code>:tabonly</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="user-profile"><a class="header" href="#user-profile">User Profile</a></h1>
+<h2 id="display-name"><a class="header" href="#display-name">Display Name</a></h2>
+<p>You can set your display name with:</p>
+<pre><code>:self name set "John Doe"
+</code></pre>
+<blockquote>
+<p>💡 You can set a per-room display name using <code>:room user name set</code>, which
+will update your membership state event in just that room. Note that future
+calls to <code>:self name set</code> will update your name in <em>all</em> rooms, overwriting
+any previously set values.</p>
+</blockquote>
+<p>To see your current display name:</p>
+<pre><code>:self name show
+</code></pre>
+<p>If you then want to clear your display name:</p>
+<pre><code>:self name unset
+</code></pre>
+<h2 id="user-avatar"><a class="header" href="#user-avatar">User Avatar</a></h2>
+<p>You can set the <code>mxc://</code> URL for your avatar with:</p>
+<pre><code>:self avatar set
+</code></pre>
+<p>To see your current avatar URL:</p>
+<pre><code>:self avatar show
+</code></pre>
+<p>If you then want to clear the value:</p>
+<pre><code>:self avatar unset
+</code></pre>
+<h2 id="timezone"><a class="header" href="#timezone">Timezone</a></h2>
+<p>On homeservers that support it, you can indicate your timezone with:</p>
+<pre><code>:self timezone set "Europe/Paris"
+</code></pre>
+<p>To see your current timezone:</p>
+<pre><code>:self timezone show
+</code></pre>
+<p>If you then want to clear the value:</p>
+<pre><code>:self timezone unset
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="development"><a class="header" href="#development">Development</a></h1>
 <h2 id="setting-up-your-environment"><a class="header" href="#setting-up-your-environment">Setting Up Your Environment</a></h2>

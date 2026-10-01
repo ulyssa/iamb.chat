@@ -42,7 +42,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-49f74f72.js";
+            window.path_to_searchindex_js = "searchindex-6f5c9819.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-59fc035f.js"></script>
@@ -191,9 +191,10 @@ preferred operating systems and distributions. If you don’t see your system
 on this page, try checking <a href="https://repology.org/project/iamb/versions">repology</a> to see whether one exists for your
 system.</p>
 <h3 id="arch-linux"><a class="header" href="#arch-linux">Arch Linux</a></h3>
-<p>Using your preferred <a href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>, you can install <code>iamb-git</code>. For example,
-using <code>paru</code>:</p>
-<pre><code>paru iamb-git
+<p>Using your preferred <a href="https://wiki.archlinux.org/title/AUR_helpers">AUR helper</a>, you can install <code>iamb</code> or <code>iamb-git</code>. For example,
+using <code>paru</code>, you can run one of:</p>
+<pre><code>paru iamb
+paru iamb-git
 </code></pre>
 <h3 id="freebsd"><a class="header" href="#freebsd">FreeBSD</a></h3>
 <p>On FreeBSD a package is available from the official repositories. To install it
@@ -223,10 +224,17 @@ install the <code>iamb</code> package:</p>
 <h3 id="nixos"><a class="header" href="#nixos">NixOS</a></h3>
 <p>There is an <code>iamb</code> package available in the 23.11 channel, or, if you have
 <a href="https://nixos.wiki/wiki/Flakes#Enable_flakes">enabled flakes</a> in Nix, you can install <strong>iamb</strong> from the Git repository via:</p>
-<pre><code>nix profile install "github:ulyssa/iamb/latest"
+<pre><code>nix profile add "github:ulyssa/iamb/latest"
 </code></pre>
 <p>You can replace <code>latest</code> with a branch or specific version tag name if you want
 to install something besides the most recent release (e.g. <code>main</code> or <code>v0.0.8</code>).</p>
+<p>If you are using <a href="https://docs.cachix.org/">cachix</a>, then you can point your
+system at it to reuse cached builds from the Github CI:</p>
+<pre><code>cachix use iamb-prs
+</code></pre>
+<p>The public key you should see is:</p>
+<pre><code>iamb-prs.cachix.org-1:Mq0/UwXw1jm9hRDxKNgkxeTOmTck8L0rjcauh+ehjwU=
+</code></pre>
 <h3 id="opensuse-tumbleweed"><a class="header" href="#opensuse-tumbleweed">openSUSE Tumbleweed</a></h3>
 <p>On openSUSE Tumbleweed a <a href="https://build.opensuse.org/package/show/openSUSE:Factory/iamb">package</a> is available from the official
 repositories. To install it simply run:</p>

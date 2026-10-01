@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-49f74f72.js";
+            window.path_to_searchindex_js = "../searchindex-6f5c9819.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-59fc035f.js"></script>
@@ -181,6 +181,42 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="user-profile"><a class="header" href="#user-profile">User Profile</a></h1>
+<h2 id="display-name"><a class="header" href="#display-name">Display Name</a></h2>
+<p>You can set your display name with:</p>
+<pre><code>:self name set "John Doe"
+</code></pre>
+<blockquote>
+<p>💡 You can set a per-room display name using <code>:room user name set</code>, which
+will update your membership state event in just that room. Note that future
+calls to <code>:self name set</code> will update your name in <em>all</em> rooms, overwriting
+any previously set values.</p>
+</blockquote>
+<p>To see your current display name:</p>
+<pre><code>:self name show
+</code></pre>
+<p>If you then want to clear your display name:</p>
+<pre><code>:self name unset
+</code></pre>
+<h2 id="user-avatar"><a class="header" href="#user-avatar">User Avatar</a></h2>
+<p>You can set the <code>mxc://</code> URL for your avatar with:</p>
+<pre><code>:self avatar set
+</code></pre>
+<p>To see your current avatar URL:</p>
+<pre><code>:self avatar show
+</code></pre>
+<p>If you then want to clear the value:</p>
+<pre><code>:self avatar unset
+</code></pre>
+<h2 id="timezone"><a class="header" href="#timezone">Timezone</a></h2>
+<p>On homeservers that support it, you can indicate your timezone with:</p>
+<pre><code>:self timezone set "Europe/Paris"
+</code></pre>
+<p>To see your current timezone:</p>
+<pre><code>:self timezone show
+</code></pre>
+<p>If you then want to clear the value:</p>
+<pre><code>:self timezone unset
+</code></pre>
 
                     </main>
 
