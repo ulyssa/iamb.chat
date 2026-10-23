@@ -20,6 +20,8 @@
 | `:mentions`             |                                       | See [Browsing Unreads]                              |
 | `:rooms`                |                                       | See [Browsing Rooms]                                |
 | `:spaces`               |                                       | See [Browsing Spaces]                               |
+| `:spaces toplevel`      |                                       | See [Browsing Spaces]                               |
+| `:theme`                |                                       | See [Themes]                                        |
 | `:unreads`              |                                       | See [Browsing Unreads]                              |
 | `:unreads clear`        |                                       | See [Browsing Unreads]                              |
 | `:verify`               |                                       | See [Verification]                                  |
@@ -36,11 +38,14 @@ sending new ones:
 | `:download`             |                                       | See [Downloading Attachments]                       |
 | `:edit`                 |                                       | See [Editing Messages]                              |
 | `:editor`               |                                       | See [Sending]                                       |
+| `:message`              |                                       | See [Message Details]                               |
 | `:open`                 |                                       | See [Downloading Attachments] and [Opening Links]   |
+| `:pin`                  |                                       | See [Pinned Messages]                               |
 | `:react`                |                                       | See [Reacting To A Message]                         |
 | `:redact`               |                                       | See [Redacting A Message]                           |
 | `:replied`              |                                       | See [Replying To A Message]                         |
 | `:reply`                |                                       | See [Replying To A Message]                         |
+| `:unpin`                |                                       | See [Pinned Messages]                               |
 | `:unreact`              |                                       | See [Reacting To A Message]                         |
 | `:upload`               |                                       | See [Uploads]                                       |
 
@@ -51,9 +56,15 @@ the homeserver:
 
 | Command                 | Aliases                               | Help                                                |
 | -------------------     | ------------------------------------- | -----------------------------------------           |
+| `:ignore set`           |                                       | See [Ignoring Users]                                |
+| `:ignore show`          |                                       | See [Ignoring Users]                                |
+| `:ignore unset`         |                                       | See [Ignoring Users]                                |
 | `:self avatar set`      |                                       | See [User Avatar]                                   |
 | `:self avatar show`     |                                       | See [User Avatar]                                   |
 | `:self avatar unset`    |                                       | See [User Avatar]                                   |
+| `:self invites set`     |                                       | See [Auto-Rejecting Invites]                        |
+| `:self invites show`    |                                       | See [Auto-Rejecting Invites]                        |
+| `:self invites unset`   |                                       | See [Auto-Rejecting Invites]                        |
 | `:self name set`        | `:self nick set`                      | See [Display Name]                                  |
 | `:self name show`       | `:self nick show`                     | See [Display Name]                                  |
 | `:self name unset`      | `:self nick unset`                    | See [Display Name]                                  |
@@ -77,6 +88,7 @@ The following commands target the currently selected room
 | `:knock ban`            |                                       | See [Room Knocking]                                 |
 | `:knock reject`         |                                       | See [Room Knocking]                                 |
 | `:leave`                |                                       | See [Joining And Leaving Rooms]                     |
+| `:pinned`               |                                       | See [Pinned Messages]                               |
 | `:room access set`      |                                       | See [Setting Room Access]                           |
 | `:room access show`     |                                       | See [Setting Room Access]                           |
 | `:room access unset`    |                                       | See [Setting Room Access]                           |
@@ -156,6 +168,7 @@ table th:nth-of-type(3) {
 }
 </style>
 
+[Auto-Rejecting Invites]: ./profile/safety.md#auto-rejecting-invites
 [Browsing Direct Messages]: ./rooms/browsing.md#browsing-direct-messages
 [Browsing Rooms]: ./rooms/browsing.md#browsing-rooms
 [Browsing Rooms And DMs Together]: ./rooms/browsing.md#browsing-rooms-and-dms-together
@@ -168,12 +181,15 @@ table th:nth-of-type(3) {
 [Display Name]: ./profile/#display-name
 [Editing Messages]: ./messages/#editing-messages
 [Exporting / Importing Keys]: ./e2ee/keys.md#exporting-importing-keys
+[Ignoring Users]: ./profile/safety.md#ignoring-users
 [Managing Room Membership]: ./rooms/admin.md#managing-room-membership
 [Marking Direct Rooms]: ./rooms/management.md#marking-direct-rooms
+[Message Details]: ./messages/#message-details
 [Opening Links]: ./messages/#opening-links
 [Opening Tabs]: ./layout/tabs.md#opening-tabs
 [Opening Windows]: ./layout/windows.md#opening-windows
 [Organizing Tabs]: ./layout/tabs.md#organizing-tabs
+[Pinned Messages]: ./messages/#pinned-messages
 [Reacting To A Message]: ./messages/#reacting-to-a-message
 [Redacting A Message]: ./messages/#redacting-a-message
 [Replying To A Message]: ./messages/#replying-to-a-message
@@ -193,6 +209,7 @@ table th:nth-of-type(3) {
 [Switching Tabs]: ./layout/tabs.md#switching-tabs
 [Uploads]: ./messages/#uploads
 [Upgraded Rooms]: ./rooms/management.md#upgraded-rooms
+[Themes]: ./themes/
 [Timezone]: ./profile/#timezone
 [User Avatar]: ./profile/#user-avatar
 [Verification]: ./e2ee/verify.md

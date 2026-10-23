@@ -17,6 +17,10 @@
     - [Window Management](./layout/windows.md)
     - [Tab Management](./layout/tabs.md)
 - [User Profile](./profile/README.md)
+    - [Privacy And Safety](./profile/safety.md)
+- [Themes](./themes/README.md)
+    - [Creating Themes](./themes/create.md)
+    - [Theme Gallery](./themes/gallery.md)
 - [Development](./development.md)
 
 [Command Reference](./commands.md)
