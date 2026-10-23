@@ -42,10 +42,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-6f5c9819.js";
+            window.path_to_searchindex_js = "searchindex-2dd56064.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-59fc035f.js"></script>
+        <script src="toc-e52e86da.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -231,6 +231,7 @@ also be placed within profile configurations to achieve per-profile values:</p>
 <li><code>layout</code></li>
 <li><code>macros</code></li>
 <li><code>settings</code></li>
+<li><code>theme</code></li>
 </ul>
 <p>Per-profile values will be merged on top of the global values. For example:</p>
 <pre><code class="language-toml">[profiles.user.layout]
@@ -261,7 +262,8 @@ url = "https://example.com"
 </thead>
 <tbody>
 <tr><td><code>auto_focus_message_bar</code></td><td><code>false</code></td><td>Whether to automatically focus the message bar when entering Insert mode in a room window.</td></tr>
-<tr><td><code>cache_policy</code></td><td></td><td></td></tr>
+<tr><td><code>cache_policy</code></td><td>(unset)</td><td>Configure how downloaded files and image previews are cached internally.</td></tr>
+<tr><td><code>date_format</code></td><td><code>"%A, %B %d %Y"</code></td><td>A date format to use above messages in room timelines.</td></tr>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
 <tr><td><code>default_markup</code></td><td><code>"markdown"</code></td><td>The default markup format for interpreting text in the message bar. Valid values are <code>"markdown"</code>, <code>"html"</code>, and <code>"plaintext"</code>.</td></tr>
 <tr><td><code>default_register</code></td><td><code>"</code></td><td>The default register to use for yanking, deleting and pasting.</td></tr>
@@ -272,8 +274,9 @@ url = "https://example.com"
 <tr><td><code>ignorecase</code></td><td><code>false</code></td><td>Configures whether to disable case sensitivity for the regular expressions entered in the search bar.</td></tr>
 <tr><td><code>image_preview</code></td><td>(unset)</td><td>Configures displaying image attachments for terminals that support previewing images. See <a href="#image-previews">Image Previews</a> below.</td></tr>
 <tr><td><code>input_prompt</code></td><td>(unset)</td><td>Configures a value to display as the prompt in the message bar.</td></tr>
-<tr><td><code>log_level</code></td><td><code>"info"</code></td><td>Configures the minimum log level. Valid values are <code>"trace"</code>, <code>"debug"</code>, <code>"info"</code>, <code>"warn"</code> or <code>"error"</code>.</td></tr>
+<tr><td><code>log_level</code></td><td><code>"off"</code></td><td>Configures the minimum log level. Valid values are <code>"trace"</code>, <code>"debug"</code>, <code>"info"</code>, <code>"warn"</code>, <code>"error"</code> or <code>"off"</code>.</td></tr>
 <tr><td><code>max_log_files</code></td><td><code>7</code></td><td>Configures how many days worth of logs to keep. Setting this to <code>0</code> disables automatically deleting the files.</td></tr>
+<tr><td><code>message_formatted_display</code></td><td><code>true</code></td><td>Whether to display the formatted body of messages in the room timeline. When set to <code>false</code>, only the plaintext body will be shown.</td></tr>
 <tr><td><code>message_user_color</code></td><td><code>false</code></td><td>Whether to color entire messages using the same color used for the sender’s username and display name.</td></tr>
 <tr><td><code>message_shortcode_display</code></td><td><code>false</code></td><td>Whether to replace Emojis in message bodies with their shortcodes.</td></tr>
 <tr><td><code>mouse</code></td><td>(unset)</td><td>Configures mouse scroll support in the message scrollback. See <a href="#mouse-support">Mouse Support</a> below.</td></tr>
@@ -287,10 +290,14 @@ url = "https://example.com"
 <tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
 <tr><td><code>read_receipt_trigger</code></td><td><code>"focused"</code></td><td>When to send read receipts for viewed rooms. Valid values are <code>"focused"</code>, <code>"visible"</code>, <code>"scrollback"</code>, and <code>"message"</code>.</td></tr>
 <tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
+<tr><td><code>room_labels</code></td><td></td><td>What labels to show next to rooms. See <a href="#room-labels">Room Labels</a> below.</td></tr>
 <tr><td><code>sort</code></td><td></td><td>Configures how to sort the lists in different windows like <code>:rooms</code> or <code>:members</code>. See <a href="#sorting-lists">Sorting Lists</a> below.</td></tr>
 <tr><td><code>ssl_verify</code></td><td><code>true</code></td><td>Configures whether the homeserver’s certificate should be rejected when invalid, to protect against insecure connections.</td></tr>
 <tr><td><code>state_event_display</code></td><td><code>true</code></td><td>Whether to render state events (e.g. room membership changes, name changes, topic updates) in room timelines.</td></tr>
+<tr><td><code>sync_delay_ms</code></td><td><code>250</code></td><td>How long to wait after each sync finishes before attempting to sync with the homeserver again.</td></tr>
 <tr><td><code>terminal</code></td><td></td><td>Configures how <strong>iamb</strong> should interact with your terminal. See <a href="#terminal">Terminal</a> below.</td></tr>
+<tr><td><code>theme</code></td><td><code>"default"</code></td><td>Configures which theme should be loaded and used at startup. See <a href="./themes/">Themes</a> for more details.</td></tr>
+<tr><td><code>time_format</code></td><td><code>"  [%T]"</code></td><td>Configures how the time should be shown next to messages.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
 <tr><td><code>user_gutter_width</code></td><td><code>30</code></td><td>How much space to reserve for displaying the message sender in room history.</td></tr>
@@ -404,6 +411,28 @@ enabled = true
 </code></pre>
 <p>When enabled, scrolling with the mouse wheel inside a room is handled as
 if they were <code>&lt;C-E&gt;</code> and <code>&lt;C-Y&gt;</code> scroll movements.</p>
+<h3 id="room-labels"><a class="header" href="#room-labels">Room Labels</a></h3>
+<p>You can use <code>settings.room_labels</code> to configure what labels and which order
+is used when rendering the labels shown next to rooms in lists like <code>:chats</code>
+or when viewing space members. For example:</p>
+<pre><code class="language-toml">[settings]
+room_labels = ["unread", "membership", "tags", "muted", "type"]
+</code></pre>
+<p>The possible values you can use in the array are:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>membership</code></td><td>Show whether you’re not currently a room member, such as when you’re invited to a room.</td></tr>
+<tr><td><code>muted</code></td><td>Show “Muted” and “Calmed” if the room doesn’t notify for all new messages.</td></tr>
+<tr><td><code>tags</code></td><td>Show if the room has been tagged, such as a Favorite or Low Priority room.</td></tr>
+<tr><td><code>type</code></td><td>Show if this is a regular room, a DM or a space when the current window shows multiple kinds.</td></tr>
+<tr><td><code>unread</code></td><td>Show if a non-muted, non-calmed room has unread messages or mentions.</td></tr>
+</tbody>
+</table>
+</div>
 <h3 id="sorting-lists"><a class="header" href="#sorting-lists">Sorting Lists</a></h3>
 <p>The <code>settings.sort</code> section allows you to customize how lists of rooms or users are
 sorted in the different <strong>iamb</strong> windows by specifying which values you want to
@@ -421,9 +450,10 @@ members = ["server", "~localpart"]
 <tr><th>Name</th><th>Default</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><code>rooms</code></td><td><code>["favorite", "lowpriority", "unread", "name"]</code></td><td>How to sort the <code>:rooms</code> window</td></tr>
+<tr><td><code>rooms</code></td><td><code>["favorite", "invite", "lowpriority", "mentions", "notifications", "joined", "space", "dm", "recent", "name"]</code></td><td>How to sort the <code>:rooms</code> window</td></tr>
 <tr><td><code>chats</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:chats</code> window</td></tr>
 <tr><td><code>dms</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:dms</code> window</td></tr>
+<tr><td><code>space</code></td><td><code>["space", "joined", "spaceorder"]</code></td><td>How to sort rooms that belong to a space</td></tr>
 <tr><td><code>spaces</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:spaces</code> window</td></tr>
 <tr><td><code>members</code></td><td><code>["power", "knock", "~invite", "id"]</code></td><td>How to sort the <code>:members</code> window</td></tr>
 </tbody>
@@ -436,15 +466,31 @@ members = ["server", "~localpart"]
 <tr><th>Name</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><code>"favorite"</code></td><td>Sort rooms with the “Favorite” tag towards the top.</td></tr>
-<tr><td><code>"invite"</code></td><td>Sort pending room invitations towards the top.</td></tr>
-<tr><td><code>"lowpriority"</code></td><td>Sort rooms with the “Low Priority” tag towards the bottom.</td></tr>
-<tr><td><code>"recent"</code></td><td>Sort rooms with recent messages towards the top.</td></tr>
-<tr><td><code>"unread"</code></td><td>Sort rooms with unread messages towards the top.</td></tr>
-<tr><td><code>"name"</code></td><td>Sort rooms alphabetically by their room name.</td></tr>
 <tr><td><code>"alias"</code></td><td>Sort rooms alphabetically by their canonical alias (e.g., <code>#iamb-users:0x.badd.cafe</code>)</td></tr>
+<tr><td><code>"dm"</code></td><td>Sort direct messages before any other rooms.</td></tr>
+<tr><td><code>"favorite"</code></td><td>Sort rooms with the “Favorite” tag towards the top.</td></tr>
 <tr><td><code>"id"</code></td><td>Sort rooms alphabetically by their unique room identifier (e.g., <code>!nQTgloqKBScxNjsQzR:0x.badd.cafe</code>).</td></tr>
+<tr><td><code>"invite"</code></td><td>Sort pending room invitations towards the top.</td></tr>
+<tr><td><code>"joined"</code></td><td>Sort rooms that you are a member of before any unjoined rooms.</td></tr>
+<tr><td><code>"lowpriority"</code></td><td>Sort rooms with the “Low Priority” tag towards the bottom.</td></tr>
+<tr><td><code>"mentions"</code></td><td>Sort rooms that you have unread mentions in before any other rooms.</td></tr>
+<tr><td><code>"name"</code></td><td>Sort rooms alphabetically by their room name.</td></tr>
+<tr><td><code>"notifications"</code></td><td>Sort rooms that you have unread notifications in before any other rooms.</td></tr>
+<tr><td><code>"recent"</code></td><td>Sort rooms with recent messages towards the top.</td></tr>
 <tr><td><code>"server"</code></td><td>Sort rooms alphabetically by the server in their room alias, falling back to the room identifier if there isn’t one.</td></tr>
+<tr><td><code>"space"</code></td><td>Sort spaces before other rooms.</td></tr>
+<tr><td><code>"unread"</code></td><td>Sort rooms with unread messages towards the top.</td></tr>
+</tbody>
+</table>
+</div>
+<p>The <code>space</code> option for sorting child rooms within space also has an extra field that you can sort on:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>"spaceorder"</code></td><td>Sort rooms by the order defined with the space’s metadata.</td></tr>
 </tbody>
 </table>
 </div>
@@ -643,8 +689,8 @@ any of the following fields. Paths specified in <code>"dirs"</code> support expa
 <li><code>"light-red"</code></li>
 <li><code>"light-yellow"</code></li>
 <li><code>"magenta"</code></li>
-<li><code>"none"</code></li>
 <li><code>"red"</code></li>
+<li><code>"reset"</code></li>
 <li><code>"white"</code></li>
 <li><code>"yellow"</code></li>
 </ul>

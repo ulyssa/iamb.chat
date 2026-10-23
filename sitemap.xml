@@ -1,83 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://iamb.chat/commands.html</loc>
-        <lastmod>2026-10-01T03:26:54.923Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/configure.html</loc>
-        <lastmod>2026-10-01T03:26:54.921Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/development.html</loc>
-        <lastmod>2026-10-01T03:26:54.923Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/index.html</loc>
-        <lastmod>2026-10-01T03:26:54.920Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/install.html</loc>
-        <lastmod>2026-10-01T03:26:54.921Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/keybindings.html</loc>
-        <lastmod>2026-10-01T03:26:54.923Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/terminals.html</loc>
-        <lastmod>2026-10-01T03:26:54.923Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/e2ee/index.html</loc>
-        <lastmod>2026-10-01T03:26:54.921Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/e2ee/keys.html</loc>
-        <lastmod>2026-10-01T03:26:54.921Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/e2ee/verify.html</loc>
-        <lastmod>2026-10-01T03:26:54.921Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/layout/index.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/layout/tabs.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/layout/windows.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/messages/index.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/profile/index.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/rooms/admin.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/rooms/browsing.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/rooms/index.html</loc>
-        <lastmod>2026-10-01T03:26:54.921Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/rooms/management.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
-    <url>
-        <loc>https://iamb.chat/rooms/members.html</loc>
-        <lastmod>2026-10-01T03:26:54.922Z</lastmod>
-    </url>
+<url><loc>https://iamb.chat/commands.html</loc><lastmod>2026-10-23T06:13:02.670Z</lastmod></url>
+<url><loc>https://iamb.chat/configure.html</loc><lastmod>2026-10-23T06:13:02.667Z</lastmod></url>
+<url><loc>https://iamb.chat/development.html</loc><lastmod>2026-10-23T06:13:02.670Z</lastmod></url>
+<url><loc>https://iamb.chat/index.html</loc><lastmod>2026-10-23T06:13:02.666Z</lastmod></url>
+<url><loc>https://iamb.chat/install.html</loc><lastmod>2026-10-23T06:13:02.667Z</lastmod></url>
+<url><loc>https://iamb.chat/keybindings.html</loc><lastmod>2026-10-23T06:13:02.671Z</lastmod></url>
+<url><loc>https://iamb.chat/terminals.html</loc><lastmod>2026-10-23T06:13:02.671Z</lastmod></url>
+<url><loc>https://iamb.chat/e2ee/index.html</loc><lastmod>2026-10-23T06:13:02.667Z</lastmod></url>
+<url><loc>https://iamb.chat/e2ee/keys.html</loc><lastmod>2026-10-23T06:13:02.668Z</lastmod></url>
+<url><loc>https://iamb.chat/e2ee/verify.html</loc><lastmod>2026-10-23T06:13:02.667Z</lastmod></url>
+<url><loc>https://iamb.chat/layout/index.html</loc><lastmod>2026-10-23T06:13:02.668Z</lastmod></url>
+<url><loc>https://iamb.chat/layout/tabs.html</loc><lastmod>2026-10-23T06:13:02.669Z</lastmod></url>
+<url><loc>https://iamb.chat/layout/windows.html</loc><lastmod>2026-10-23T06:13:02.669Z</lastmod></url>
+<url><loc>https://iamb.chat/messages/index.html</loc><lastmod>2026-10-23T06:13:02.668Z</lastmod></url>
+<url><loc>https://iamb.chat/profile/index.html</loc><lastmod>2026-10-23T06:13:02.669Z</lastmod></url>
+<url><loc>https://iamb.chat/profile/safety.html</loc><lastmod>2026-10-23T06:13:02.669Z</lastmod></url>
+<url><loc>https://iamb.chat/rooms/admin.html</loc><lastmod>2026-10-23T06:13:02.668Z</lastmod></url>
+<url><loc>https://iamb.chat/rooms/browsing.html</loc><lastmod>2026-10-23T06:13:02.668Z</lastmod></url>
+<url><loc>https://iamb.chat/rooms/index.html</loc><lastmod>2026-10-23T06:13:02.668Z</lastmod></url>
+<url><loc>https://iamb.chat/rooms/management.html</loc><lastmod>2026-10-23T06:13:02.668Z</lastmod></url>
+<url><loc>https://iamb.chat/rooms/members.html</loc><lastmod>2026-10-23T06:13:02.668Z</lastmod></url>
+<url><loc>https://iamb.chat/themes/create.html</loc><lastmod>2026-10-23T06:13:02.670Z</lastmod></url>
+<url><loc>https://iamb.chat/themes/gallery.html</loc><lastmod>2026-10-23T06:13:02.670Z</lastmod></url>
+<url><loc>https://iamb.chat/themes/index.html</loc><lastmod>2026-10-23T06:13:02.669Z</lastmod></url>
 </urlset>

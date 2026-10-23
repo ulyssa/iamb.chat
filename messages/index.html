@@ -42,10 +42,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-6f5c9819.js";
+            window.path_to_searchindex_js = "../searchindex-2dd56064.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-59fc035f.js"></script>
+        <script src="../toc-e52e86da.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -334,6 +334,13 @@ default, this will remove all your reactions from the specified message, but
 you can give a name if you’ve made any that you want to keep:</p>
 <pre><code>:unreact heart
 </code></pre>
+<h2 id="message-details"><a class="header" href="#message-details">Message Details</a></h2>
+<p>You can view additional details about a message in its own window by selecting
+it and running:</p>
+<pre><code>:message
+</code></pre>
+<p>This will switch to a window dedicated to the message, and show details such as
+who has reacted to it and users who have seen the message.</p>
 <h2 id="redacting-a-message"><a class="header" href="#redacting-a-message">Redacting A Message</a></h2>
 <p>If you need to remove a message from a room, you can do so using the <code>:redact</code>
 command on the message. This command optionally takes a single argument giving
@@ -362,6 +369,18 @@ You can use <code>:download!</code> to replace the file.</p>
 than 10 links), which is shown within brackets (like <code>[0]</code>). You can use
 <code>:open</code> to view a list of their matching URLs, and pick one to open in a
 browser by typing its assigned character.</p>
+<h2 id="pinned-messages"><a class="header" href="#pinned-messages">Pinned Messages</a></h2>
+<p>You can view the pinned messages in a room using the <code>:pinned</code> command in the
+room whose pinned messages you wish to read:</p>
+<pre><code>:pinned
+</code></pre>
+<p>If you have permissions in the room, you can pin a message by selecting it in
+the timeline and running:</p>
+<pre><code>:pin
+</code></pre>
+<p>To then remove it from the list of pinned messages, run:</p>
+<pre><code>:unpin
+</code></pre>
 
                     </main>
 

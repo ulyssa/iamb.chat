@@ -39,10 +39,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-6f5c9819.js";
+            window.path_to_searchindex_js = "searchindex-2dd56064.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-59fc035f.js"></script>
+        <script src="toc-e52e86da.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -223,6 +223,17 @@ you can file an issue there.</p>
 </ul>
 <p>Both of these are in the <a href="https://matrix.to/#/#iamb:0x.badd.cafe">#iamb:0x.badd.cafe</a> space.</p>
 <h2 id="release-history"><a class="header" href="#release-history">Release History</a></h2>
+<h3 id="v0013-2026-10-21"><a class="header" href="#v0013-2026-10-21">v0.0.13 (2026-10-21)</a></h3>
+<p>Highlights:</p>
+<ul>
+<li>Add <code>:ignore</code> for managing account ignore list (<a href="#ignoring-users">docs</a>)</li>
+<li>Add <code>:message</code> for viewing more information about a message (<a href="messages#message-details">docs</a>)</li>
+<li>Add <code>:pinned</code>, <code>:pin</code> and <code>:unpin</code> for pinned messages (<a href="messages#pinned-messages">docs</a>)</li>
+<li>Add <code>:self invites</code> for enabling auto-rejecting room invitations (<a href="#auto-rejecting-invites">docs</a>)</li>
+<li>Add <code>:theme</code> and configuration options for changing theme (<a href="themes">docs</a>)</li>
+<li>Update to Rust Matrix SDK v0.19.1</li>
+<li>See <a href="https://github.com/ulyssa/iamb/releases/tag/v0.0.13">Release Notes</a> for the full list of changes!</li>
+</ul>
 <h3 id="v0012-2026-09-19"><a class="header" href="#v0012-2026-09-19">v0.0.12 (2026-09-19)</a></h3>
 <p>Highlights:</p>
 <ul>
@@ -428,6 +439,7 @@ also be placed within profile configurations to achieve per-profile values:</p>
 <li><code>layout</code></li>
 <li><code>macros</code></li>
 <li><code>settings</code></li>
+<li><code>theme</code></li>
 </ul>
 <p>Per-profile values will be merged on top of the global values. For example:</p>
 <pre><code class="language-toml">[profiles.user.layout]
@@ -458,7 +470,8 @@ url = "https://example.com"
 </thead>
 <tbody>
 <tr><td><code>auto_focus_message_bar</code></td><td><code>false</code></td><td>Whether to automatically focus the message bar when entering Insert mode in a room window.</td></tr>
-<tr><td><code>cache_policy</code></td><td></td><td></td></tr>
+<tr><td><code>cache_policy</code></td><td>(unset)</td><td>Configure how downloaded files and image previews are cached internally.</td></tr>
+<tr><td><code>date_format</code></td><td><code>"%A, %B %d %Y"</code></td><td>A date format to use above messages in room timelines.</td></tr>
 <tr><td><code>default_room</code></td><td></td><td>A default room name or username to open at startup, in place of showing the welcome screen.</td></tr>
 <tr><td><code>default_markup</code></td><td><code>"markdown"</code></td><td>The default markup format for interpreting text in the message bar. Valid values are <code>"markdown"</code>, <code>"html"</code>, and <code>"plaintext"</code>.</td></tr>
 <tr><td><code>default_register</code></td><td><code>"</code></td><td>The default register to use for yanking, deleting and pasting.</td></tr>
@@ -469,8 +482,9 @@ url = "https://example.com"
 <tr><td><code>ignorecase</code></td><td><code>false</code></td><td>Configures whether to disable case sensitivity for the regular expressions entered in the search bar.</td></tr>
 <tr><td><code>image_preview</code></td><td>(unset)</td><td>Configures displaying image attachments for terminals that support previewing images. See <a href="#image-previews">Image Previews</a> below.</td></tr>
 <tr><td><code>input_prompt</code></td><td>(unset)</td><td>Configures a value to display as the prompt in the message bar.</td></tr>
-<tr><td><code>log_level</code></td><td><code>"info"</code></td><td>Configures the minimum log level. Valid values are <code>"trace"</code>, <code>"debug"</code>, <code>"info"</code>, <code>"warn"</code> or <code>"error"</code>.</td></tr>
+<tr><td><code>log_level</code></td><td><code>"off"</code></td><td>Configures the minimum log level. Valid values are <code>"trace"</code>, <code>"debug"</code>, <code>"info"</code>, <code>"warn"</code>, <code>"error"</code> or <code>"off"</code>.</td></tr>
 <tr><td><code>max_log_files</code></td><td><code>7</code></td><td>Configures how many days worth of logs to keep. Setting this to <code>0</code> disables automatically deleting the files.</td></tr>
+<tr><td><code>message_formatted_display</code></td><td><code>true</code></td><td>Whether to display the formatted body of messages in the room timeline. When set to <code>false</code>, only the plaintext body will be shown.</td></tr>
 <tr><td><code>message_user_color</code></td><td><code>false</code></td><td>Whether to color entire messages using the same color used for the sender’s username and display name.</td></tr>
 <tr><td><code>message_shortcode_display</code></td><td><code>false</code></td><td>Whether to replace Emojis in message bodies with their shortcodes.</td></tr>
 <tr><td><code>mouse</code></td><td>(unset)</td><td>Configures mouse scroll support in the message scrollback. See <a href="#mouse-support">Mouse Support</a> below.</td></tr>
@@ -484,10 +498,14 @@ url = "https://example.com"
 <tr><td><code>read_receipt_send</code></td><td><code>true</code></td><td>Whether to send read receipts for viewed rooms.</td></tr>
 <tr><td><code>read_receipt_trigger</code></td><td><code>"focused"</code></td><td>When to send read receipts for viewed rooms. Valid values are <code>"focused"</code>, <code>"visible"</code>, <code>"scrollback"</code>, and <code>"message"</code>.</td></tr>
 <tr><td><code>request_timeout</code></td><td>120</td><td>How long to wait in seconds before timing out requests to the homeserver.</td></tr>
+<tr><td><code>room_labels</code></td><td></td><td>What labels to show next to rooms. See <a href="#room-labels">Room Labels</a> below.</td></tr>
 <tr><td><code>sort</code></td><td></td><td>Configures how to sort the lists in different windows like <code>:rooms</code> or <code>:members</code>. See <a href="#sorting-lists">Sorting Lists</a> below.</td></tr>
 <tr><td><code>ssl_verify</code></td><td><code>true</code></td><td>Configures whether the homeserver’s certificate should be rejected when invalid, to protect against insecure connections.</td></tr>
 <tr><td><code>state_event_display</code></td><td><code>true</code></td><td>Whether to render state events (e.g. room membership changes, name changes, topic updates) in room timelines.</td></tr>
+<tr><td><code>sync_delay_ms</code></td><td><code>250</code></td><td>How long to wait after each sync finishes before attempting to sync with the homeserver again.</td></tr>
 <tr><td><code>terminal</code></td><td></td><td>Configures how <strong>iamb</strong> should interact with your terminal. See <a href="#terminal">Terminal</a> below.</td></tr>
+<tr><td><code>theme</code></td><td><code>"default"</code></td><td>Configures which theme should be loaded and used at startup. See <a href="themes">Themes</a> for more details.</td></tr>
+<tr><td><code>time_format</code></td><td><code>"  [%T]"</code></td><td>Configures how the time should be shown next to messages.</td></tr>
 <tr><td><code>typing_notice_display</code></td><td><code>true</code></td><td>Whether to display the typing notifications bar.</td></tr>
 <tr><td><code>typing_notice_send</code></td><td><code>true</code></td><td>Whether to send notifications to other room members when typing.</td></tr>
 <tr><td><code>user_gutter_width</code></td><td><code>30</code></td><td>How much space to reserve for displaying the message sender in room history.</td></tr>
@@ -601,6 +619,28 @@ enabled = true
 </code></pre>
 <p>When enabled, scrolling with the mouse wheel inside a room is handled as
 if they were <code>&lt;C-E&gt;</code> and <code>&lt;C-Y&gt;</code> scroll movements.</p>
+<h3 id="room-labels"><a class="header" href="#room-labels">Room Labels</a></h3>
+<p>You can use <code>settings.room_labels</code> to configure what labels and which order
+is used when rendering the labels shown next to rooms in lists like <code>:chats</code>
+or when viewing space members. For example:</p>
+<pre><code class="language-toml">[settings]
+room_labels = ["unread", "membership", "tags", "muted", "type"]
+</code></pre>
+<p>The possible values you can use in the array are:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>membership</code></td><td>Show whether you’re not currently a room member, such as when you’re invited to a room.</td></tr>
+<tr><td><code>muted</code></td><td>Show “Muted” and “Calmed” if the room doesn’t notify for all new messages.</td></tr>
+<tr><td><code>tags</code></td><td>Show if the room has been tagged, such as a Favorite or Low Priority room.</td></tr>
+<tr><td><code>type</code></td><td>Show if this is a regular room, a DM or a space when the current window shows multiple kinds.</td></tr>
+<tr><td><code>unread</code></td><td>Show if a non-muted, non-calmed room has unread messages or mentions.</td></tr>
+</tbody>
+</table>
+</div>
 <h3 id="sorting-lists"><a class="header" href="#sorting-lists">Sorting Lists</a></h3>
 <p>The <code>settings.sort</code> section allows you to customize how lists of rooms or users are
 sorted in the different <strong>iamb</strong> windows by specifying which values you want to
@@ -618,9 +658,10 @@ members = ["server", "~localpart"]
 <tr><th>Name</th><th>Default</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><code>rooms</code></td><td><code>["favorite", "lowpriority", "unread", "name"]</code></td><td>How to sort the <code>:rooms</code> window</td></tr>
+<tr><td><code>rooms</code></td><td><code>["favorite", "invite", "lowpriority", "mentions", "notifications", "joined", "space", "dm", "recent", "name"]</code></td><td>How to sort the <code>:rooms</code> window</td></tr>
 <tr><td><code>chats</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:chats</code> window</td></tr>
 <tr><td><code>dms</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:dms</code> window</td></tr>
+<tr><td><code>space</code></td><td><code>["space", "joined", "spaceorder"]</code></td><td>How to sort rooms that belong to a space</td></tr>
 <tr><td><code>spaces</code></td><td>(defaults to <code>rooms</code> value)</td><td>How to sort the <code>:spaces</code> window</td></tr>
 <tr><td><code>members</code></td><td><code>["power", "knock", "~invite", "id"]</code></td><td>How to sort the <code>:members</code> window</td></tr>
 </tbody>
@@ -633,15 +674,31 @@ members = ["server", "~localpart"]
 <tr><th>Name</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><code>"favorite"</code></td><td>Sort rooms with the “Favorite” tag towards the top.</td></tr>
-<tr><td><code>"invite"</code></td><td>Sort pending room invitations towards the top.</td></tr>
-<tr><td><code>"lowpriority"</code></td><td>Sort rooms with the “Low Priority” tag towards the bottom.</td></tr>
-<tr><td><code>"recent"</code></td><td>Sort rooms with recent messages towards the top.</td></tr>
-<tr><td><code>"unread"</code></td><td>Sort rooms with unread messages towards the top.</td></tr>
-<tr><td><code>"name"</code></td><td>Sort rooms alphabetically by their room name.</td></tr>
 <tr><td><code>"alias"</code></td><td>Sort rooms alphabetically by their canonical alias (e.g., <code>#iamb-users:0x.badd.cafe</code>)</td></tr>
+<tr><td><code>"dm"</code></td><td>Sort direct messages before any other rooms.</td></tr>
+<tr><td><code>"favorite"</code></td><td>Sort rooms with the “Favorite” tag towards the top.</td></tr>
 <tr><td><code>"id"</code></td><td>Sort rooms alphabetically by their unique room identifier (e.g., <code>!nQTgloqKBScxNjsQzR:0x.badd.cafe</code>).</td></tr>
+<tr><td><code>"invite"</code></td><td>Sort pending room invitations towards the top.</td></tr>
+<tr><td><code>"joined"</code></td><td>Sort rooms that you are a member of before any unjoined rooms.</td></tr>
+<tr><td><code>"lowpriority"</code></td><td>Sort rooms with the “Low Priority” tag towards the bottom.</td></tr>
+<tr><td><code>"mentions"</code></td><td>Sort rooms that you have unread mentions in before any other rooms.</td></tr>
+<tr><td><code>"name"</code></td><td>Sort rooms alphabetically by their room name.</td></tr>
+<tr><td><code>"notifications"</code></td><td>Sort rooms that you have unread notifications in before any other rooms.</td></tr>
+<tr><td><code>"recent"</code></td><td>Sort rooms with recent messages towards the top.</td></tr>
 <tr><td><code>"server"</code></td><td>Sort rooms alphabetically by the server in their room alias, falling back to the room identifier if there isn’t one.</td></tr>
+<tr><td><code>"space"</code></td><td>Sort spaces before other rooms.</td></tr>
+<tr><td><code>"unread"</code></td><td>Sort rooms with unread messages towards the top.</td></tr>
+</tbody>
+</table>
+</div>
+<p>The <code>space</code> option for sorting child rooms within space also has an extra field that you can sort on:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>"spaceorder"</code></td><td>Sort rooms by the order defined with the space’s metadata.</td></tr>
 </tbody>
 </table>
 </div>
@@ -840,8 +897,8 @@ any of the following fields. Paths specified in <code>"dirs"</code> support expa
 <li><code>"light-red"</code></li>
 <li><code>"light-yellow"</code></li>
 <li><code>"magenta"</code></li>
-<li><code>"none"</code></li>
 <li><code>"red"</code></li>
+<li><code>"reset"</code></li>
 <li><code>"white"</code></li>
 <li><code>"yellow"</code></li>
 </ul>
@@ -874,6 +931,15 @@ the prompt of the message bar:</p>
 <li>Red <code style="color: red">[U]</code> indicates that the room is <strong>unencrypted</strong>.</li>
 <li>Yellow <code style="color: red">[?]</code> indicates that the room’s encryption state is <strong>unknown</strong>.</li>
 </ul>
+<p>Note that these are colored using the ANSI colors in the <code>default</code> theme, so depending
+on your terminal colors they may appear differently.</p>
+<p>Most of the themes made for <strong>iamb</strong> try to find shades of these colors for you
+to use, but some might drift a little. Notably, if you are colorblind and find
+it hard to distinguish between green and red, then you may wish to use the
+<code>okabe-ito-dark</code> theme, which uses
+a blue <code style="color: #0072B2">[E]</code>,
+orange <code style="color: #D55E00">[U]</code>, and
+yellow <code style="color: #F0E442">[?]</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="verification"><a class="header" href="#verification">Verification</a></h1>
 <h2 id="incoming-verifications"><a class="header" href="#incoming-verifications">Incoming Verifications</a></h2>
@@ -947,6 +1013,10 @@ come back to later, you can run:</p>
 <h2 id="browsing-spaces"><a class="header" href="#browsing-spaces">Browsing Spaces</a></h2>
 <p>You can switch to a list of joined spaces using the <code>:spaces</code> command.
 Use <code>/</code> and <code>?</code> to search by space name or room ID within the list.</p>
+<p>If you want to see just the top-level spaces without including any of
+the other child spaces you’re a member of, you can run:</p>
+<pre><code>:spaces toplevel
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="members"><a class="header" href="#members">Members</a></h1>
 <h2 id="viewing-roomspace-members"><a class="header" href="#viewing-roomspace-members">Viewing Room/Space Members</a></h2>
@@ -1328,6 +1398,13 @@ default, this will remove all your reactions from the specified message, but
 you can give a name if you’ve made any that you want to keep:</p>
 <pre><code>:unreact heart
 </code></pre>
+<h2 id="message-details"><a class="header" href="#message-details">Message Details</a></h2>
+<p>You can view additional details about a message in its own window by selecting
+it and running:</p>
+<pre><code>:message
+</code></pre>
+<p>This will switch to a window dedicated to the message, and show details such as
+who has reacted to it and users who have seen the message.</p>
 <h2 id="redacting-a-message"><a class="header" href="#redacting-a-message">Redacting A Message</a></h2>
 <p>If you need to remove a message from a room, you can do so using the <code>:redact</code>
 command on the message. This command optionally takes a single argument giving
@@ -1356,6 +1433,18 @@ You can use <code>:download!</code> to replace the file.</p>
 than 10 links), which is shown within brackets (like <code>[0]</code>). You can use
 <code>:open</code> to view a list of their matching URLs, and pick one to open in a
 browser by typing its assigned character.</p>
+<h2 id="pinned-messages"><a class="header" href="#pinned-messages">Pinned Messages</a></h2>
+<p>You can view the pinned messages in a room using the <code>:pinned</code> command in the
+room whose pinned messages you wish to read:</p>
+<pre><code>:pinned
+</code></pre>
+<p>If you have permissions in the room, you can pin a message by selecting it in
+the timeline and running:</p>
+<pre><code>:pin
+</code></pre>
+<p>To then remove it from the list of pinned messages, run:</p>
+<pre><code>:unpin
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="screen-navigation"><a class="header" href="#screen-navigation">Screen Navigation</a></h1>
 <h2 id="following-matrix-ids"><a class="header" href="#following-matrix-ids">Following Matrix IDs</a></h2>
@@ -1534,6 +1623,328 @@ any previously set values.</p>
 <pre><code>:self timezone unset
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="privacy-and-safety"><a class="header" href="#privacy-and-safety">Privacy And Safety</a></h1>
+<h2 id="ignoring-users"><a class="header" href="#ignoring-users">Ignoring Users</a></h2>
+<p>If you need to ignore a user who is spamming a room, harassing you, or otherwise
+causing you difficulty, you can ignore them with:</p>
+<pre><code>:ignore set @user:example.com
+</code></pre>
+<p>To see the users who you currently have ignored on your accont, then you can run:</p>
+<pre><code>:ignore show
+</code></pre>
+<p>If you change your mind or accidentally blocked the wrong user identifier, you
+can run:</p>
+<pre><code>:ignore unset @user:example.com
+</code></pre>
+<h2 id="auto-rejecting-invites"><a class="header" href="#auto-rejecting-invites">Auto-Rejecting Invites</a></h2>
+<p>If you are continuously receiving spam invites to rooms and unwanted direct
+messages, you can enable auto-rejecting all invitations with:</p>
+<pre><code>:self invites set block
+</code></pre>
+<p>To view the current state for your account’s settings:</p>
+<pre><code>:self invites show
+</code></pre>
+<p>To restore it, you can run one of:</p>
+<pre><code>:self invites set allow
+:self invites unset
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="themes"><a class="header" href="#themes">Themes</a></h1>
+<p><strong>iamb</strong> supports re-styling many aspects of the user interface both in your
+configuration and with dedicated theme files. You can put them into a <code>themes</code>
+directory in your configuration directory (e.g., <code>~/.config/iamb/themes/name.toml</code>
+on Linux systems), and then use it by running either <code>:theme name</code> to switch
+your theme to it, or by putting in your <code>config.toml</code>:</p>
+<pre><code class="language-toml">[settings]
+theme = "name"
+</code></pre>
+<p>The <strong>iamb</strong> repository contains <a href="https://github.com/ulyssa/iamb/tree/main/themes">multiple themes</a> ported from Vim’s
+colorschemes, which you can download and place in your <code>~/.config/iamb/themes</code>.
+Alternatively, your installation source may have already packaged them at
+<code>/usr/share/iamb/themes/</code>, which <strong>iamb</strong> will search for themes at startup.</p>
+<p>See <a href="#creating-themes">Creating Themes</a> and <a href="#theme-gallery">Theme Gallery</a> for building or picking a theme.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="creating-themes"><a class="header" href="#creating-themes">Creating Themes</a></h1>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>Themes can be defined either in your <code>config.toml</code> file, which will apply overrides
+to whatever values came from the current <code>settings.theme</code> value, or you can define
+them in their own TOML file in your <code>themes/</code> directory, which will allow for easier
+switching between different themes.</p>
+<p>Everything related to a theme goes in a top-level <code>[theme]</code> section:</p>
+<pre><code class="language-toml">[theme]
+default.color = "red"
+</code></pre>
+<p>The subsections within <code>[theme]</code> then allow you to override the colors used for the
+relevant parts of the user interface.  Individual, stylable UI elements all have the
+following properties:</p>
+<ul>
+<li><code>color</code>, which configures the foreground color for text. This can be one of:
+<ul>
+<li>An ANSI color name: <code>"black"</code>, <code>"blue"</code>, <code>"cyan"</code>, <code>"dark-gray"</code>, <code>"gray"</code>,
+<code>"green"</code>, <code>"light-blue"</code>, <code>"light-cyan"</code>, <code>"light-green"</code>, <code>"light-magenta"</code>,
+<code>"light-red"</code>, <code>"light-yellow"</code>, <code>"magenta"</code>, <code>"red"</code>, <code>"reset"</code>, <code>"white"</code>,
+and <code>"yellow"</code>.</li>
+<li>An indexed color to specify an offset in the 256-color range, e.g. <code>"57"</code>
+for a shade of purple, or <code>"232"</code> to <code>"255"</code> for the greyscale colors.</li>
+<li>A 24-bit True Color hexadecimal color code, such as <code>"#000000"</code> for black
+or <code>"#ffffff"</code> for white.</li>
+</ul>
+</li>
+<li><code>background</code>, which configures the background color for the UI element.</li>
+<li><code>modifiers</code>, which is an array of strings specifying modifiers to how the
+text is styled. Possible values are <code>"bold"</code>, <code>"crossed-out"</code>, <code>"dim"</code>,
+<code>"hidden"</code>, <code>"italic"</code>, <code>"rapid-blink"</code>, <code>"reversed"</code>, <code>"slow-blink"</code>, and
+<code>"underlined"</code>.  Modifier names prefixed with <code>~</code> will remove the modifier if
+it was inherited from another default, global config, etc.</li>
+</ul>
+<p>Some special UI elements have additional properties:</p>
+<ul>
+<li><code>line</code>, for UI elements that draw a block, such as <code>theme.windows.border</code>,
+<code>theme.messages.code_block</code>, and <code>theme.messages.table</code>. You can specify what
+characters should be used to draw the bounding line using the following values:
+Possible values are <code>"plain"</code>, <code>"rounded"</code>, <code>"double"</code>, <code>"thick"</code>,
+<code>"double-dashed-light"</code>, <code>"double-dashed-heavy"</code>, <code>"triple-dashed-light"</code>,
+<code>"triple-dashed-heavy"</code>, <code>"quadruple-dashed-light"</code>, and <code>"quadruple-dashed-heavy"</code>.</li>
+<li><code>colors</code>, for UI elements that can use multiple colors, like <code>theme.users</code>
+for usernames. You can specify an array of colors that make up the pallete
+to pick from, or you can set it to <code>"rainbow-light"</code> or <code>"rainbow-dark"</code> to
+get a large palette of light or dark colors.</li>
+</ul>
+<h2 id="theme"><a class="header" href="#theme"><code>theme</code></a></h2>
+<p>The top-level <code>theme</code> section contains several special subsections worth noting:</p>
+<ul>
+<li><code>default</code>: the base, default style that everything else should inherit.</li>
+<li><code>selected</code>: how to style selected items in lists and timelines.</li>
+<li><code>users</code>: for controlling how usernames and identifiers are styled.</li>
+</ul>
+<h2 id="cmdbar"><a class="header" href="#cmdbar"><code>cmdbar</code></a></h2>
+<p>The <code>theme.cmdbar</code> subsections allows controlling how the text in the command bar is styled.
+It contains the following stylable subsections:</p>
+<ul>
+<li><code>default</code>, for configure the default styling for the command bar.</li>
+<li><code>prompt</code>, for configuring how the prompt in the command bar is displayed.</li>
+<li><code>completions</code>, for configuring how possible command bar completions are displayed.</li>
+<li><code>error</code>, for configuring how error messages shown in the command bar are displayed.</li>
+<li><code>info</code>, for configuring how information messages shown in the command bar are displayed.</li>
+</ul>
+<h2 id="completion"><a class="header" href="#completion"><code>completion</code></a></h2>
+<p>The <code>theme.completion</code> subsection allows controlling how the completion menu is styled.
+It contains the following stylable subsections:</p>
+<ul>
+<li><code>default</code>, for configuring the default style for entries in the menu.</li>
+<li><code>selected</code>, for configuring how the selected entry is styled.</li>
+</ul>
+<h2 id="encryption-1"><a class="header" href="#encryption-1"><code>encryption</code></a></h2>
+<p>The <code>theme.encryption</code> subsections allow controlling how the encryption status indicators are styled.
+It contains the following stylable subsections:</p>
+<ul>
+<li><code>default</code>, for configuring the default styling for the encryption status indicators.</li>
+<li><code>icon_encrypted</code>, for configuring how the encrypted indicator is styled.</li>
+<li><code>icon_unencrypted</code>, for configuring how the unencrypted indicator is styled.</li>
+<li><code>icon_unknown</code>, for configuring how the unknown encryption status indicator is styled.</li>
+</ul>
+<h2 id="msgbar"><a class="header" href="#msgbar"><code>msgbar</code></a></h2>
+<p>The <code>theme.msgbar</code> subsection allows controlling how the text in the message bar is styled.<br>It contains the following stylable subsections:</p>
+<ul>
+<li><code>default</code>, for configuring the default style for the message bar.</li>
+</ul>
+<h2 id="messages-1"><a class="header" href="#messages-1"><code>messages</code></a></h2>
+<p>The <code>theme.messages</code> subsection allows controlling how the bodies of messages are styled.
+It contains the following stylable subsections:</p>
+<ul>
+<li><code>default</code>, for configuring the default styling for messages.</li>
+<li><code>blockquote</code>, for configuring how the line used for indenting <code>&lt;blockquote&gt;</code> elements in formatted message bodies is styled.</li>
+<li><code>code</code>, for configuring how <code>&lt;code&gt;</code> elements in formatted message bodies are displayed.</li>
+<li><code>code_block</code>, for configuring how <code>&lt;pre&gt;</code> elements in formatted message bodies are displayed.</li>
+<li><code>emphasis</code>, for configuring how <code>&lt;em&gt;</code> and <code>&lt;i&gt;</code> elements in formatted message bodies are displayed.</li>
+<li><code>ruler</code>, for configuring the line used for drawing <code>&lt;ruler&gt;</code> elements in formatted message bodies.</li>
+<li><code>strikethrough</code>, for configuring how <code>&lt;del&gt;</code>, <code>&lt;s&gt;</code>, and <code>&lt;strike&gt;</code> elements in formatted message bodies are displayed.</li>
+<li><code>strong</code>, for configuring how <code>&lt;strong&gt;</code> and <code>&lt;b&gt;</code> elements in formatted message bodies are displayed.</li>
+<li><code>table</code>, for configuring the line used for drawing the cells for <code>&lt;table&gt;</code> elements in formatted message bodies.</li>
+<li><code>underlined</code>, for configuring how <code>&lt;u&gt;</code> elements in formatted message bodies are displayed.</li>
+</ul>
+<h2 id="timeline"><a class="header" href="#timeline"><code>timeline</code></a></h2>
+<p>The <code>theme.timeline</code> subsection allows controlling how other elements within the timeline are styled.
+It contains the following stylable subsections:</p>
+<ul>
+<li><code>default</code>, for configure the default styling for text in the timeline.</li>
+<li><code>date</code>, for configuring how the dates for messages are styled.</li>
+<li><code>time</code>, for configuring how the time a message was sent is styled.</li>
+<li><code>unread_marker</code>, for configuring line that marks the start of unread messages.</li>
+<li><code>state</code>, for configuring how the text shown for state events is styled.</li>
+<li><code>sticker</code>, for configuring how any text shown for stickers is styled.</li>
+<li><code>poll</code>, for configuring how the text in polls is styled.</li>
+<li><code>notice</code>, for configuring how server notices is styled.</li>
+<li><code>redacted</code>, for configuring how redacted events in the timeline is styled.</li>
+</ul>
+<h2 id="tabs"><a class="header" href="#tabs"><code>tabs</code></a></h2>
+<p>The <code>theme.tabs</code> subsection allows controlling how tabs are styled.
+It contains the following stylable subsections:</p>
+<ul>
+<li><code>title</code>, for configuring how tab titles are styled.</li>
+<li><code>title_focused</code>, for configuring how the title of the focused tab is styled.</li>
+</ul>
+<h2 id="windows"><a class="header" href="#windows"><code>windows</code></a></h2>
+<p>The <code>theme.windows</code> subsections allows controlling how the windows are styled.
+It contains the following stylable subsections:</p>
+<ul>
+<li><code>default</code>, for configuring the default style for characters that draw the window border or title.</li>
+<li><code>border</code>, for configuring how the border line is styled.</li>
+<li><code>border_focused</code>, for configuring how the border line for the focused window are styled.</li>
+<li><code>title</code>, for configuring how the window titles are styled.</li>
+</ul>
+<h2 id="rooms-1"><a class="header" href="#rooms-1"><code>rooms</code></a></h2>
+<p>The <code>theme.rooms</code> section allows you to control how lists of rooms like <code>:unreads</code>
+or <code>:chats</code> are styled, and contains several additional subsections that you can
+set the core styling properties on:</p>
+<ul>
+<li><code>default</code>, for configuring the default style for text in room lists.</li>
+<li><code>labels</code>, for configuring the style for the labels following room names in lists.</li>
+<li><code>notification</code>, which configures how rooms with unread notifications are
+displayed. This contains the same subsections as <code>unread</code>.</li>
+<li><code>unread</code>, for configuring how rooms with unread muted messages are
+displayed. This then contains the following stylable subsections:
+<ul>
+<li><code>number</code>, for configuring the style of the number showing how many unread notifications a room has.</li>
+<li><code>name</code>, for configuring the style for room names with unread notifications.</li>
+<li><code>labels</code>  Configure the style for the labels of rooms with unread notifications.</li>
+</ul>
+</li>
+<li><code>mention</code>, for configuring how rooms with unread mentions are displayed.
+This contains the same subsections as <code>unread</code>.</li>
+<li><code>marked_unread</code>, for configuring how rooms that are manually marked as unread
+are displayed. This contains the same subsections as <code>unread</code>.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="theme-gallery"><a class="header" href="#theme-gallery">Theme Gallery</a></h1>
+<h2 id="ansi-colors"><a class="header" href="#ansi-colors">ANSI Colors</a></h2>
+<h3 id="default"><a class="header" href="#default"><code>default</code></a></h3>
+<h2 id="true-color-24-bit"><a class="header" href="#true-color-24-bit">True Color (24-bit)</a></h2>
+<h3 id="apprentice-dark"><a class="header" href="#apprentice-dark"><code>apprentice-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/apprentice-dark.png" alt="apprentice-dark"><span class="img-wrapper"><img src="/static/themes/apprentice-dark.png" alt="apprentice-dark"></span></label></p>
+<h3 id="aurora-dark"><a class="header" href="#aurora-dark"><code>aurora-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/aurora-dark.png" alt="aurora-dark"><span class="img-wrapper"><img src="/static/themes/aurora-dark.png" alt="aurora-dark"></span></label></p>
+<h3 id="ayu-dark"><a class="header" href="#ayu-dark"><code>ayu-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/ayu-dark.png" alt="ayu-dark"><span class="img-wrapper"><img src="/static/themes/ayu-dark.png" alt="ayu-dark"></span></label></p>
+<h3 id="ayu-light"><a class="header" href="#ayu-light"><code>ayu-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/ayu-light.png" alt="ayu-light"><span class="img-wrapper"><img src="/static/themes/ayu-light.png" alt="ayu-light"></span></label></p>
+<h3 id="ayu-mirage-dark"><a class="header" href="#ayu-mirage-dark"><code>ayu-mirage-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/ayu-mirage-dark.png" alt="ayu-mirage-dark"><span class="img-wrapper"><img src="/static/themes/ayu-mirage-dark.png" alt="ayu-mirage-dark"></span></label></p>
+<h3 id="carbonfox-dark"><a class="header" href="#carbonfox-dark"><code>carbonfox-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/carbonfox-dark.png" alt="carbonfox-dark"><span class="img-wrapper"><img src="/static/themes/carbonfox-dark.png" alt="carbonfox-dark"></span></label></p>
+<h3 id="catppuccin-frappe-dark"><a class="header" href="#catppuccin-frappe-dark"><code>catppuccin-frappe-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/catppuccin-frappe-dark.png" alt="catppuccin-frappe-dark"><span class="img-wrapper"><img src="/static/themes/catppuccin-frappe-dark.png" alt="catppuccin-frappe-dark"></span></label></p>
+<h3 id="catppuccin-latte-dark"><a class="header" href="#catppuccin-latte-dark"><code>catppuccin-latte-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/catppuccin-latte-dark.png" alt="catppuccin-latte-dark"><span class="img-wrapper"><img src="/static/themes/catppuccin-latte-dark.png" alt="catppuccin-latte-dark"></span></label></p>
+<h3 id="catppuccin-light"><a class="header" href="#catppuccin-light"><code>catppuccin-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/catppuccin-light.png" alt="catppuccin-light"><span class="img-wrapper"><img src="/static/themes/catppuccin-light.png" alt="catppuccin-light"></span></label></p>
+<h3 id="catppuccin-macchiato-dark"><a class="header" href="#catppuccin-macchiato-dark"><code>catppuccin-macchiato-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/catppuccin-macchiato-dark.png" alt="catppuccin-macchiato-dark"><span class="img-wrapper"><img src="/static/themes/catppuccin-macchiato-dark.png" alt="catppuccin-macchiato-dark"></span></label></p>
+<h3 id="catppuccin-mocha-dark"><a class="header" href="#catppuccin-mocha-dark"><code>catppuccin-mocha-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/catppuccin-mocha-dark.png" alt="catppuccin-mocha-dark"><span class="img-wrapper"><img src="/static/themes/catppuccin-mocha-dark.png" alt="catppuccin-mocha-dark"></span></label></p>
+<h3 id="challenger-deep-dark"><a class="header" href="#challenger-deep-dark"><code>challenger-deep-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/challenger-deep-dark.png" alt="challenger-deep-dark"><span class="img-wrapper"><img src="/static/themes/challenger-deep-dark.png" alt="challenger-deep-dark"></span></label></p>
+<h3 id="dawnfox-light"><a class="header" href="#dawnfox-light"><code>dawnfox-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/dawnfox-light.png" alt="dawnfox-light"><span class="img-wrapper"><img src="/static/themes/dawnfox-light.png" alt="dawnfox-light"></span></label></p>
+<h3 id="dayfox-light"><a class="header" href="#dayfox-light"><code>dayfox-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/dayfox-light.png" alt="dayfox-light"><span class="img-wrapper"><img src="/static/themes/dayfox-light.png" alt="dayfox-light"></span></label></p>
+<h3 id="disciple-light"><a class="header" href="#disciple-light"><code>disciple-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/disciple-light.png" alt="disciple-light"><span class="img-wrapper"><img src="/static/themes/disciple-light.png" alt="disciple-light"></span></label></p>
+<h3 id="dracula-dark"><a class="header" href="#dracula-dark"><code>dracula-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/dracula-dark.png" alt="dracula-dark"><span class="img-wrapper"><img src="/static/themes/dracula-dark.png" alt="dracula-dark"></span></label></p>
+<h3 id="dracula-light"><a class="header" href="#dracula-light"><code>dracula-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/dracula-light.png" alt="dracula-light"><span class="img-wrapper"><img src="/static/themes/dracula-light.png" alt="dracula-light"></span></label></p>
+<h3 id="duskfox-dark"><a class="header" href="#duskfox-dark"><code>duskfox-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/duskfox-dark.png" alt="duskfox-dark"><span class="img-wrapper"><img src="/static/themes/duskfox-dark.png" alt="duskfox-dark"></span></label></p>
+<h3 id="embark-dark"><a class="header" href="#embark-dark"><code>embark-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/embark-dark.png" alt="embark-dark"><span class="img-wrapper"><img src="/static/themes/embark-dark.png" alt="embark-dark"></span></label></p>
+<h3 id="everforest-dark"><a class="header" href="#everforest-dark"><code>everforest-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/everforest-dark.png" alt="everforest-dark"><span class="img-wrapper"><img src="/static/themes/everforest-dark.png" alt="everforest-dark"></span></label></p>
+<h3 id="everforest-light"><a class="header" href="#everforest-light"><code>everforest-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/everforest-light.png" alt="everforest-light"><span class="img-wrapper"><img src="/static/themes/everforest-light.png" alt="everforest-light"></span></label></p>
+<h3 id="evergarden-dark"><a class="header" href="#evergarden-dark"><code>evergarden-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/evergarden-dark.png" alt="evergarden-dark"><span class="img-wrapper"><img src="/static/themes/evergarden-dark.png" alt="evergarden-dark"></span></label></p>
+<h3 id="gruvbox-dark"><a class="header" href="#gruvbox-dark"><code>gruvbox-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/gruvbox-dark.png" alt="gruvbox-dark"><span class="img-wrapper"><img src="/static/themes/gruvbox-dark.png" alt="gruvbox-dark"></span></label></p>
+<h3 id="gruvbox-light"><a class="header" href="#gruvbox-light"><code>gruvbox-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/gruvbox-light.png" alt="gruvbox-light"><span class="img-wrapper"><img src="/static/themes/gruvbox-light.png" alt="gruvbox-light"></span></label></p>
+<h3 id="gruvbox-material-light"><a class="header" href="#gruvbox-material-light"><code>gruvbox-material-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/gruvbox-material-light.png" alt="gruvbox-material-light"><span class="img-wrapper"><img src="/static/themes/gruvbox-material-light.png" alt="gruvbox-material-light"></span></label></p>
+<h3 id="iamb-dark"><a class="header" href="#iamb-dark"><code>iamb-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/iamb-dark.png" alt="iamb-dark"><span class="img-wrapper"><img src="/static/themes/iamb-dark.png" alt="iamb-dark"></span></label></p>
+<h3 id="iceberg-dark"><a class="header" href="#iceberg-dark"><code>iceberg-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/iceberg-dark.png" alt="iceberg-dark"><span class="img-wrapper"><img src="/static/themes/iceberg-dark.png" alt="iceberg-dark"></span></label></p>
+<h3 id="iceberg-light"><a class="header" href="#iceberg-light"><code>iceberg-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/iceberg-light.png" alt="iceberg-light"><span class="img-wrapper"><img src="/static/themes/iceberg-light.png" alt="iceberg-light"></span></label></p>
+<h3 id="jellybeans-dark"><a class="header" href="#jellybeans-dark"><code>jellybeans-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/jellybeans-dark.png" alt="jellybeans-dark"><span class="img-wrapper"><img src="/static/themes/jellybeans-dark.png" alt="jellybeans-dark"></span></label></p>
+<h3 id="jellybeans-light"><a class="header" href="#jellybeans-light"><code>jellybeans-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/jellybeans-light.png" alt="jellybeans-light"><span class="img-wrapper"><img src="/static/themes/jellybeans-light.png" alt="jellybeans-light"></span></label></p>
+<h3 id="kanagawa-dark"><a class="header" href="#kanagawa-dark"><code>kanagawa-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/kanagawa-dark.png" alt="kanagawa-dark"><span class="img-wrapper"><img src="/static/themes/kanagawa-dark.png" alt="kanagawa-dark"></span></label></p>
+<h3 id="kanagawa-dragon-dark"><a class="header" href="#kanagawa-dragon-dark"><code>kanagawa-dragon-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/kanagawa-dragon-dark.png" alt="kanagawa-dragon-dark"><span class="img-wrapper"><img src="/static/themes/kanagawa-dragon-dark.png" alt="kanagawa-dragon-dark"></span></label></p>
+<h3 id="kanagawa-light"><a class="header" href="#kanagawa-light"><code>kanagawa-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/kanagawa-light.png" alt="kanagawa-light"><span class="img-wrapper"><img src="/static/themes/kanagawa-light.png" alt="kanagawa-light"></span></label></p>
+<h3 id="kanagawa-paper-dark"><a class="header" href="#kanagawa-paper-dark"><code>kanagawa-paper-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/kanagawa-paper-dark.png" alt="kanagawa-paper-dark"><span class="img-wrapper"><img src="/static/themes/kanagawa-paper-dark.png" alt="kanagawa-paper-dark"></span></label></p>
+<h3 id="kanagawa-paper-light"><a class="header" href="#kanagawa-paper-light"><code>kanagawa-paper-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/kanagawa-paper-light.png" alt="kanagawa-paper-light"><span class="img-wrapper"><img src="/static/themes/kanagawa-paper-light.png" alt="kanagawa-paper-light"></span></label></p>
+<h3 id="monokai-dark"><a class="header" href="#monokai-dark"><code>monokai-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/monokai-dark.png" alt="monokai-dark"><span class="img-wrapper"><img src="/static/themes/monokai-dark.png" alt="monokai-dark"></span></label></p>
+<h3 id="moonfly-dark"><a class="header" href="#moonfly-dark"><code>moonfly-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/moonfly-dark.png" alt="moonfly-dark"><span class="img-wrapper"><img src="/static/themes/moonfly-dark.png" alt="moonfly-dark"></span></label></p>
+<h3 id="nightfly-dark"><a class="header" href="#nightfly-dark"><code>nightfly-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/nightfly-dark.png" alt="nightfly-dark"><span class="img-wrapper"><img src="/static/themes/nightfly-dark.png" alt="nightfly-dark"></span></label></p>
+<h3 id="nightfox-dark"><a class="header" href="#nightfox-dark"><code>nightfox-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/nightfox-dark.png" alt="nightfox-dark"><span class="img-wrapper"><img src="/static/themes/nightfox-dark.png" alt="nightfox-dark"></span></label></p>
+<h3 id="nordfox-dark"><a class="header" href="#nordfox-dark"><code>nordfox-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/nordfox-dark.png" alt="nordfox-dark"><span class="img-wrapper"><img src="/static/themes/nordfox-dark.png" alt="nordfox-dark"></span></label></p>
+<h3 id="okabe-ito-dark"><a class="header" href="#okabe-ito-dark"><code>okabe-ito-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/okabe-ito-dark.png" alt="okabe-ito-dark"><span class="img-wrapper"><img src="/static/themes/okabe-ito-dark.png" alt="okabe-ito-dark"></span></label></p>
+<h3 id="papercolor-dark"><a class="header" href="#papercolor-dark"><code>papercolor-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/papercolor-dark.png" alt="papercolor-dark"><span class="img-wrapper"><img src="/static/themes/papercolor-dark.png" alt="papercolor-dark"></span></label></p>
+<h3 id="papercolor-light"><a class="header" href="#papercolor-light"><code>papercolor-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/papercolor-light.png" alt="papercolor-light"><span class="img-wrapper"><img src="/static/themes/papercolor-light.png" alt="papercolor-light"></span></label></p>
+<h3 id="rosebones-dark"><a class="header" href="#rosebones-dark"><code>rosebones-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/rosebones-dark.png" alt="rosebones-dark"><span class="img-wrapper"><img src="/static/themes/rosebones-dark.png" alt="rosebones-dark"></span></label></p>
+<h3 id="rosebones-light"><a class="header" href="#rosebones-light"><code>rosebones-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/rosebones-light.png" alt="rosebones-light"><span class="img-wrapper"><img src="/static/themes/rosebones-light.png" alt="rosebones-light"></span></label></p>
+<h3 id="rose-pine-dark"><a class="header" href="#rose-pine-dark"><code>rose-pine-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/rose-pine-dark.png" alt="rose-pine-dark"><span class="img-wrapper"><img src="/static/themes/rose-pine-dark.png" alt="rose-pine-dark"></span></label></p>
+<h3 id="rose-pine-dawn-light"><a class="header" href="#rose-pine-dawn-light"><code>rose-pine-dawn-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/rose-pine-dawn-light.png" alt="rose-pine-dawn-light"><span class="img-wrapper"><img src="/static/themes/rose-pine-dawn-light.png" alt="rose-pine-dawn-light"></span></label></p>
+<h3 id="rose-pine-moon-dark"><a class="header" href="#rose-pine-moon-dark"><code>rose-pine-moon-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/rose-pine-moon-dark.png" alt="rose-pine-moon-dark"><span class="img-wrapper"><img src="/static/themes/rose-pine-moon-dark.png" alt="rose-pine-moon-dark"></span></label></p>
+<h3 id="seoul256-dark"><a class="header" href="#seoul256-dark"><code>seoul256-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/seoul256-dark.png" alt="seoul256-dark"><span class="img-wrapper"><img src="/static/themes/seoul256-dark.png" alt="seoul256-dark"></span></label></p>
+<h3 id="seoul256-light"><a class="header" href="#seoul256-light"><code>seoul256-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/seoul256-light.png" alt="seoul256-light"><span class="img-wrapper"><img src="/static/themes/seoul256-light.png" alt="seoul256-light"></span></label></p>
+<h3 id="solarized-dark"><a class="header" href="#solarized-dark"><code>solarized-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/solarized-dark.png" alt="solarized-dark"><span class="img-wrapper"><img src="/static/themes/solarized-dark.png" alt="solarized-dark"></span></label></p>
+<h3 id="solarized-light"><a class="header" href="#solarized-light"><code>solarized-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/solarized-light.png" alt="solarized-light"><span class="img-wrapper"><img src="/static/themes/solarized-light.png" alt="solarized-light"></span></label></p>
+<h3 id="srcery-dark"><a class="header" href="#srcery-dark"><code>srcery-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/srcery-dark.png" alt="srcery-dark"><span class="img-wrapper"><img src="/static/themes/srcery-dark.png" alt="srcery-dark"></span></label></p>
+<h3 id="terafox-dark"><a class="header" href="#terafox-dark"><code>terafox-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/terafox-dark.png" alt="terafox-dark"><span class="img-wrapper"><img src="/static/themes/terafox-dark.png" alt="terafox-dark"></span></label></p>
+<h3 id="tokyobones-dark"><a class="header" href="#tokyobones-dark"><code>tokyobones-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/tokyobones-dark.png" alt="tokyobones-dark"><span class="img-wrapper"><img src="/static/themes/tokyobones-dark.png" alt="tokyobones-dark"></span></label></p>
+<h3 id="tokyobones-light"><a class="header" href="#tokyobones-light"><code>tokyobones-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/tokyobones-light.png" alt="tokyobones-light"><span class="img-wrapper"><img src="/static/themes/tokyobones-light.png" alt="tokyobones-light"></span></label></p>
+<h3 id="tokyonight-dark"><a class="header" href="#tokyonight-dark"><code>tokyonight-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/tokyonight-dark.png" alt="tokyonight-dark"><span class="img-wrapper"><img src="/static/themes/tokyonight-dark.png" alt="tokyonight-dark"></span></label></p>
+<h3 id="tokyonight-light"><a class="header" href="#tokyonight-light"><code>tokyonight-light</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/tokyonight-light.png" alt="tokyonight-light"><span class="img-wrapper"><img src="/static/themes/tokyonight-light.png" alt="tokyonight-light"></span></label></p>
+<h3 id="tokyonight-moon-dark"><a class="header" href="#tokyonight-moon-dark"><code>tokyonight-moon-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/tokyonight-moon-dark.png" alt="tokyonight-moon-dark"><span class="img-wrapper"><img src="/static/themes/tokyonight-moon-dark.png" alt="tokyonight-moon-dark"></span></label></p>
+<h3 id="tokyonight-night-dark"><a class="header" href="#tokyonight-night-dark"><code>tokyonight-night-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/tokyonight-night-dark.png" alt="tokyonight-night-dark"><span class="img-wrapper"><img src="/static/themes/tokyonight-night-dark.png" alt="tokyonight-night-dark"></span></label></p>
+<h3 id="tokyonight-storm-dark"><a class="header" href="#tokyonight-storm-dark"><code>tokyonight-storm-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/tokyonight-storm-dark.png" alt="tokyonight-storm-dark"><span class="img-wrapper"><img src="/static/themes/tokyonight-storm-dark.png" alt="tokyonight-storm-dark"></span></label></p>
+<h3 id="zenburn-dark"><a class="header" href="#zenburn-dark"><code>zenburn-dark</code></a></h3>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/zenburn-dark.png" alt="zenburn-dark"><span class="img-wrapper"><img src="/static/themes/zenburn-dark.png" alt="zenburn-dark"></span></label></p>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="development"><a class="header" href="#development">Development</a></h1>
 <h2 id="setting-up-your-environment"><a class="header" href="#setting-up-your-environment">Setting Up Your Environment</a></h2>
 <p>In order to work on and build <strong>iamb</strong> locally, you will need:</p>
@@ -1626,6 +2037,8 @@ please open a Draft Pull Request, so that someone can take a look.</p>
 <tr><td><code>:mentions</code></td><td></td><td>See <a href="#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:rooms</code></td><td></td><td>See <a href="#browsing-rooms">Browsing Rooms</a></td></tr>
 <tr><td><code>:spaces</code></td><td></td><td>See <a href="#browsing-spaces">Browsing Spaces</a></td></tr>
+<tr><td><code>:spaces toplevel</code></td><td></td><td>See <a href="#browsing-spaces">Browsing Spaces</a></td></tr>
+<tr><td><code>:theme</code></td><td></td><td>See <a href="themes">Themes</a></td></tr>
 <tr><td><code>:unreads</code></td><td></td><td>See <a href="#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:unreads clear</code></td><td></td><td>See <a href="#browsing-unreads">Browsing Unreads</a></td></tr>
 <tr><td><code>:verify</code></td><td></td><td>See <a href="#verification">Verification</a></td></tr>
@@ -1646,11 +2059,14 @@ sending new ones:</p>
 <tr><td><code>:download</code></td><td></td><td>See <a href="messages#downloading-attachments">Downloading Attachments</a></td></tr>
 <tr><td><code>:edit</code></td><td></td><td>See <a href="messages#editing-messages">Editing Messages</a></td></tr>
 <tr><td><code>:editor</code></td><td></td><td>See <a href="messages#sending">Sending</a></td></tr>
+<tr><td><code>:message</code></td><td></td><td>See <a href="messages#message-details">Message Details</a></td></tr>
 <tr><td><code>:open</code></td><td></td><td>See <a href="messages#downloading-attachments">Downloading Attachments</a> and <a href="messages#opening-links">Opening Links</a></td></tr>
+<tr><td><code>:pin</code></td><td></td><td>See <a href="messages#pinned-messages">Pinned Messages</a></td></tr>
 <tr><td><code>:react</code></td><td></td><td>See <a href="messages#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:redact</code></td><td></td><td>See <a href="messages#redacting-a-message">Redacting A Message</a></td></tr>
 <tr><td><code>:replied</code></td><td></td><td>See <a href="messages#replying-to-a-message">Replying To A Message</a></td></tr>
 <tr><td><code>:reply</code></td><td></td><td>See <a href="messages#replying-to-a-message">Replying To A Message</a></td></tr>
+<tr><td><code>:unpin</code></td><td></td><td>See <a href="messages#pinned-messages">Pinned Messages</a></td></tr>
 <tr><td><code>:unreact</code></td><td></td><td>See <a href="messages#reacting-to-a-message">Reacting To A Message</a></td></tr>
 <tr><td><code>:upload</code></td><td></td><td>See <a href="messages#uploads">Uploads</a></td></tr>
 </tbody>
@@ -1665,9 +2081,15 @@ the homeserver:</p>
 <tr><th>Command</th><th>Aliases</th><th>Help</th></tr>
 </thead>
 <tbody>
+<tr><td><code>:ignore set</code></td><td></td><td>See <a href="#ignoring-users">Ignoring Users</a></td></tr>
+<tr><td><code>:ignore show</code></td><td></td><td>See <a href="#ignoring-users">Ignoring Users</a></td></tr>
+<tr><td><code>:ignore unset</code></td><td></td><td>See <a href="#ignoring-users">Ignoring Users</a></td></tr>
 <tr><td><code>:self avatar set</code></td><td></td><td>See <a href="profile#user-avatar">User Avatar</a></td></tr>
 <tr><td><code>:self avatar show</code></td><td></td><td>See <a href="profile#user-avatar">User Avatar</a></td></tr>
 <tr><td><code>:self avatar unset</code></td><td></td><td>See <a href="profile#user-avatar">User Avatar</a></td></tr>
+<tr><td><code>:self invites set</code></td><td></td><td>See <a href="#auto-rejecting-invites">Auto-Rejecting Invites</a></td></tr>
+<tr><td><code>:self invites show</code></td><td></td><td>See <a href="#auto-rejecting-invites">Auto-Rejecting Invites</a></td></tr>
+<tr><td><code>:self invites unset</code></td><td></td><td>See <a href="#auto-rejecting-invites">Auto-Rejecting Invites</a></td></tr>
 <tr><td><code>:self name set</code></td><td><code>:self nick set</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
 <tr><td><code>:self name show</code></td><td><code>:self nick show</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
 <tr><td><code>:self name unset</code></td><td><code>:self nick unset</code></td><td>See <a href="profile#display-name">Display Name</a></td></tr>
@@ -1695,6 +2117,7 @@ the homeserver:</p>
 <tr><td><code>:knock ban</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
 <tr><td><code>:knock reject</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
 <tr><td><code>:leave</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
+<tr><td><code>:pinned</code></td><td></td><td>See <a href="messages#pinned-messages">Pinned Messages</a></td></tr>
 <tr><td><code>:room access set</code></td><td></td><td>See <a href="#setting-room-access">Setting Room Access</a></td></tr>
 <tr><td><code>:room access show</code></td><td></td><td>See <a href="#setting-room-access">Setting Room Access</a></td></tr>
 <tr><td><code>:room access unset</code></td><td></td><td>See <a href="#setting-room-access">Setting Room Access</a></td></tr>
