@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-2dd56064.js";
+            window.path_to_searchindex_js = "searchindex-fda280c7.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-e52e86da.js"></script>
@@ -929,7 +929,7 @@ the prompt of the message bar:</p>
 <ul>
 <li>Green <code style="color: green">[E]</code> indicates that the room is <strong>encrypted</strong>.</li>
 <li>Red <code style="color: red">[U]</code> indicates that the room is <strong>unencrypted</strong>.</li>
-<li>Yellow <code style="color: red">[?]</code> indicates that the room’s encryption state is <strong>unknown</strong>.</li>
+<li>Yellow <code style="color: yellow">[?]</code> indicates that the room’s encryption state is <strong>unknown</strong>.</li>
 </ul>
 <p>Note that these are colored using the ANSI colors in the <code>default</code> theme, so depending
 on your terminal colors they may appear differently.</p>
@@ -1819,6 +1819,11 @@ are displayed. This contains the same subsections as <code>unread</code>.</li>
 <h1 id="theme-gallery"><a class="header" href="#theme-gallery">Theme Gallery</a></h1>
 <h2 id="ansi-colors"><a class="header" href="#ansi-colors">ANSI Colors</a></h2>
 <h3 id="default"><a class="header" href="#default"><code>default</code></a></h3>
+<p>This is the default theme, which uses only ANSI colors and doesn’t change
+the background for any text, which means that it will look like how your
+terminal colors usually do. How this looks will depend a lot on your
+terminal’s configuration, but it should work in many different environments,
+including those that don’t support 24-bit True Color.</p>
 <h2 id="true-color-24-bit"><a class="header" href="#true-color-24-bit">True Color (24-bit)</a></h2>
 <h3 id="apprentice-dark"><a class="header" href="#apprentice-dark"><code>apprentice-dark</code></a></h3>
 <p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="/static/themes/apprentice-dark.png" alt="apprentice-dark"><span class="img-wrapper"><img src="/static/themes/apprentice-dark.png" alt="apprentice-dark"></span></label></p>
