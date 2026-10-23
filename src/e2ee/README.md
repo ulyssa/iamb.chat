@@ -9,7 +9,7 @@ the prompt of the message bar:
 
 - Green <code style="color: green">[E]</code> indicates that the room is **encrypted**.
 - Red <code style="color: red">[U]</code> indicates that the room is **unencrypted**.
-- Yellow <code style="color: red">[?]</code> indicates that the room's encryption state is **unknown**.
+- Yellow <code style="color: yellow">[?]</code> indicates that the room's encryption state is **unknown**.
 
 Note that these are colored using the ANSI colors in the `default` theme, so depending
 on your terminal colors they may appear differently.

@@ -4,6 +4,12 @@
 
 ### `default`
 
+This is the default theme, which uses only ANSI colors and doesn't change
+the background for any text, which means that it will look like how your
+terminal colors usually do. How this looks will depend a lot on your
+terminal's configuration, but it should work in many different environments,
+including those that don't support 24-bit True Color.
+
 ## True Color (24-bit)
 
 ### `apprentice-dark`
