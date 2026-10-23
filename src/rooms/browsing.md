@@ -47,3 +47,10 @@ Or to remote the explicit unread marker:
 
 You can switch to a list of joined spaces using the `:spaces` command.
 Use `/` and `?` to search by space name or room ID within the list.
+
+If you want to see just the top-level spaces without including any of
+the other child spaces you're a member of, you can run:
+
+```
+:spaces toplevel
+```

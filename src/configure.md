@@ -61,6 +61,7 @@ also be placed within profile configurations to achieve per-profile values:
 - `layout`
 - `macros`
 - `settings`
+- `theme`
 
 Per-profile values will be merged on top of the global values. For example:
 
@@ -95,7 +96,8 @@ url = "https://example.com"
 | Name                         | Default              | Description                                                                                                                          |
 | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `auto_focus_message_bar`     | `false`              | Whether to automatically focus the message bar when entering Insert mode in a room window.                                           |
-| `cache_policy`               |                      |                                                                                                                                      |
+| `cache_policy`               | (unset)              | Configure how downloaded files and image previews are cached internally.                                                             |
+| `date_format`                | `"%A, %B %d %Y"`     | A date format to use above messages in room timelines.                                                                               |
 | `default_room`               |                      | A default room name or username to open at startup, in place of showing the welcome screen.                                          |
 | `default_markup`             | `"markdown"`         | The default markup format for interpreting text in the message bar. Valid values are `"markdown"`, `"html"`, and `"plaintext"`.      |
 | `default_register`           | `"`                  | The default register to use for yanking, deleting and pasting.                                                                       |
@@ -106,8 +108,9 @@ url = "https://example.com"
 | `ignorecase`                 | `false`              | Configures whether to disable case sensitivity for the regular expressions entered in the search bar.                                |
 | `image_preview`              | (unset)              | Configures displaying image attachments for terminals that support previewing images. See [Image Previews](#image-previews) below.   |
 | `input_prompt`               | (unset)              | Configures a value to display as the prompt in the message bar.                                                                      |
-| `log_level`                  | `"info"`             | Configures the minimum log level. Valid values are `"trace"`, `"debug"`, `"info"`, `"warn"` or `"error"`.                            |
+| `log_level`                  | `"off"`              | Configures the minimum log level. Valid values are `"trace"`, `"debug"`, `"info"`, `"warn"`, `"error"` or `"off"`.                   |
 | `max_log_files`              | `7`                  | Configures how many days worth of logs to keep. Setting this to `0` disables automatically deleting the files.                       |
+| `message_formatted_display`  | `true`               | Whether to display the formatted body of messages in the room timeline. When set to `false`, only the plaintext body will be shown.  |
 | `message_user_color`         | `false`              | Whether to color entire messages using the same color used for the sender's username and display name.                               |
 | `message_shortcode_display`  | `false`              | Whether to replace Emojis in message bodies with their shortcodes.                                                                   |
 | `mouse`                      | (unset)              | Configures mouse scroll support in the message scrollback. See [Mouse Support](#mouse-support) below.                                |
@@ -121,10 +124,14 @@ url = "https://example.com"
 | `read_receipt_send`          | `true`               | Whether to send read receipts for viewed rooms.                                                                                      |
 | `read_receipt_trigger`       | `"focused"`          | When to send read receipts for viewed rooms. Valid values are `"focused"`, `"visible"`, `"scrollback"`, and `"message"`.             |
 | `request_timeout`            | 120                  | How long to wait in seconds before timing out requests to the homeserver.                                                            |
+| `room_labels`                |                      | What labels to show next to rooms. See [Room Labels](#room-labels) below.                                                            |
 | `sort`                       |                      | Configures how to sort the lists in different windows like `:rooms` or `:members`. See [Sorting Lists](#sorting-lists) below.        |
 | `ssl_verify`                 | `true`               | Configures whether the homeserver's certificate should be rejected when invalid, to protect against insecure connections.            |
 | `state_event_display`        | `true`               | Whether to render state events (e.g. room membership changes, name changes, topic updates) in room timelines.                        |
+| `sync_delay_ms`              | `250`                | How long to wait after each sync finishes before attempting to sync with the homeserver again.                                       |
 | `terminal`                   |                      | Configures how __iamb__ should interact with your terminal. See [Terminal](#terminal) below.                                         |
+| `theme`                      | `"default"`          | Configures which theme should be loaded and used at startup. See [Themes](./themes/) for more details.                               |
+| `time_format`                | `"  [%T]"`           | Configures how the time should be shown next to messages.                                                                            |
 | `typing_notice_display`      | `true`               | Whether to display the typing notifications bar.                                                                                     |
 | `typing_notice_send`         | `true`               | Whether to send notifications to other room members when typing.                                                                     |
 | `user_gutter_width`          | `30`                 | How much space to reserve for displaying the message sender in room history.                                                         |
@@ -256,6 +263,27 @@ enabled = true
 When enabled, scrolling with the mouse wheel inside a room is handled as
 if they were `<C-E>` and `<C-Y>` scroll movements.
 
+### Room Labels
+
+You can use `settings.room_labels` to configure what labels and which order
+is used when rendering the labels shown next to rooms in lists like `:chats`
+or when viewing space members. For example:
+
+```toml
+[settings]
+room_labels = ["unread", "membership", "tags", "muted", "type"]
+```
+
+The possible values you can use in the array are:
+
+| Name        | Description                                                                                   |
+| ---------   | --------------------------------------------------------------------------------------------- |
+| `membership`| Show whether you're not currently a room member, such as when you're invited to a room.       |
+| `muted`     | Show “Muted” and “Calmed” if the room doesn't notify for all new messages.                    |
+| `tags`      | Show if the room has been tagged, such as a Favorite or Low Priority room.                    |
+| `type`      | Show if this is a regular room, a DM or a space when the current window shows multiple kinds. |
+| `unread`    | Show if a non-muted, non-calmed room has unread messages or mentions.                         |
+
 ### Sorting Lists
 
 The `settings.sort` section allows you to customize how lists of rooms or users are
@@ -275,26 +303,37 @@ members = ["server", "~localpart"]
 
 | Name      | Default                                         | Description                       |
 | --------- | --------------------                            | --------------------------------- |
-| `rooms`   | `["favorite", "lowpriority", "unread", "name"]` | How to sort the `:rooms` window   |
+| `rooms`   | `["favorite", "invite", "lowpriority", "mentions", "notifications", "joined", "space", "dm", "recent", "name"]` | How to sort the `:rooms` window   |
 | `chats`   | (defaults to `rooms` value)                     | How to sort the `:chats` window   |
 | `dms`     | (defaults to `rooms` value)                     | How to sort the `:dms` window     |
+| `space`   | `["space", "joined", "spaceorder"]`             | How to sort rooms that belong to a space |
 | `spaces`  | (defaults to `rooms` value)                     | How to sort the `:spaces` window  |
 | `members` | `["power", "knock", "~invite", "id"]`           | How to sort the `:members` window |
 
 #### Room Fields
 
-| Name            | Description                                                                                                       |
-| --------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `"favorite"`    | Sort rooms with the "Favorite" tag towards the top.                                                               |
-| `"invite"`      | Sort pending room invitations towards the top.                                                                    |
-| `"lowpriority"` | Sort rooms with the "Low Priority" tag towards the bottom.                                                        |
-| `"recent"`      | Sort rooms with recent messages towards the top.                                                                  |
-| `"unread"`      | Sort rooms with unread messages towards the top.                                                                  |
-| `"name"`        | Sort rooms alphabetically by their room name.                                                                     |
-| `"alias"`       | Sort rooms alphabetically by their canonical alias (e.g., `#iamb-users:0x.badd.cafe`)                             |
-| `"id"`          | Sort rooms alphabetically by their unique room identifier (e.g., `!nQTgloqKBScxNjsQzR:0x.badd.cafe`).             |
-| `"server"`      | Sort rooms alphabetically by the server in their room alias, falling back to the room identifier if there isn't one. |
+| Name             | Description                                                                                                       |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `"alias"`        | Sort rooms alphabetically by their canonical alias (e.g., `#iamb-users:0x.badd.cafe`)                             |
+| `"dm"`           | Sort direct messages before any other rooms.                                                                      |
+| `"favorite"`     | Sort rooms with the "Favorite" tag towards the top.                                                               |
+| `"id"`           | Sort rooms alphabetically by their unique room identifier (e.g., `!nQTgloqKBScxNjsQzR:0x.badd.cafe`).             |
+| `"invite"`       | Sort pending room invitations towards the top.                                                                    |
+| `"joined"`       | Sort rooms that you are a member of before any unjoined rooms.                                                    |
+| `"lowpriority"`  | Sort rooms with the "Low Priority" tag towards the bottom.                                                        |
+| `"mentions"`     | Sort rooms that you have unread mentions in before any other rooms.                                               |
+| `"name"`         | Sort rooms alphabetically by their room name.                                                                     |
+| `"notifications"`| Sort rooms that you have unread notifications in before any other rooms.                                          |
+| `"recent"`       | Sort rooms with recent messages towards the top.                                                                  |
+| `"server"`       | Sort rooms alphabetically by the server in their room alias, falling back to the room identifier if there isn't one. |
+| `"space"`        | Sort spaces before other rooms.                                                                                   |
+| `"unread"`       | Sort rooms with unread messages towards the top.                                                                  |
 
+The `space` option for sorting child rooms within space also has an extra field that you can sort on:
+
+| Name             | Description                                                                                                       |
+| ---------------  | ----------------------------------------------------------------------------------------------------------------- |
+| `"spaceorder"`   | Sort rooms by the order defined with the space's metadata.                                                        |
 #### User Fields
 
 | Name            | Description                                                                                                       |
@@ -507,8 +546,8 @@ Valid values for the `color` field are:
 - `"light-red"`
 - `"light-yellow"`
 - `"magenta"`
-- `"none"`
 - `"red"`
+- `"reset"`
 - `"white"`
 - `"yellow"`
 

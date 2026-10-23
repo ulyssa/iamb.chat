@@ -202,6 +202,18 @@ you can give a name if you've made any that you want to keep:
 :unreact heart
 ```
 
+## Message Details
+
+You can view additional details about a message in its own window by selecting
+it and running:
+
+```
+:message
+```
+
+This will switch to a window dedicated to the message, and show details such as
+who has reacted to it and users who have seen the message.
+
 ## Redacting A Message
 
 If you need to remove a message from a room, you can do so using the `:redact`
@@ -239,6 +251,28 @@ Links in messages are each assigned a number (or a letter when there are more
 than 10 links), which is shown within brackets (like `[0]`). You can use
 `:open` to view a list of their matching URLs, and pick one to open in a
 browser by typing its assigned character.
+
+## Pinned Messages
+
+You can view the pinned messages in a room using the `:pinned` command in the
+room whose pinned messages you wish to read:
+
+```
+:pinned
+```
+
+If you have permissions in the room, you can pin a message by selecting it in
+the timeline and running:
+
+```
+:pin
+```
+
+To then remove it from the list of pinned messages, run:
+
+```
+:unpin
+```
 
 [GitHub Emoji shortcodes]: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
 [open_command]: ./configure.md#settings
