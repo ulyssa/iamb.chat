@@ -22,7 +22,7 @@ jobs:
       - name: Generate sitemap
         run: |
           cd book
-          npx sscli --no-clean --base https://iamb.chat
+          npx sscli --urls raw --base https://iamb.chat
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
