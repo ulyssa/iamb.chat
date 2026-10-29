@@ -1,15 +1,15 @@
 # Rooms
 
-## Joining And Leaving Rooms
+## Joining And Leaving Rooms or Direct Messages
 
-You can join a new room or space using the `:join` command. For example, to
+You can join a new room, space or direct message using the `:join` command. For example, to
 join the Matrix community space, you can run:
 
 ```
 :join #community:matrix.org
 ```
 
-You can similarly start a new direct message:
+You can similarly start a new direct message and **iamb** will automatically handle the user invite:
 
 ```
 :join @user:example.com
