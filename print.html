@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fda280c7.js";
+            window.path_to_searchindex_js = "searchindex-9467bc4f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-e52e86da.js"></script>
@@ -257,7 +257,7 @@ you can file an issue there.</p>
 <li>Add <code>:space</code> commands for updating space hierarchy (<a href="../rooms/admin.html#updating-space-hierarchy">docs</a>)</li>
 <li>New <code>mouse</code> configuration options to enable mouse scrolling (<a href="#mouse-support">docs</a>)</li>
 <li>Add <code>:replied</code> to go to the message the selected message replied to (<a href="messages#replying-to-a-message">docs</a>)</li>
-<li>Add <code>:forget</code> to forget all left rooms (<a href="rooms#joining-and-leaving-rooms">docs</a>)</li>
+<li>Add <code>:forget</code> to forget all left rooms (<a href="rooms#joining-and-leaving-rooms-or-dms">docs</a>)</li>
 <li>Indicate encryption state of room in messagebar (<a href="e2ee#encryption-status-indicator">docs</a>)</li>
 <li>Show state events in the timeline (<a href="messages#message-scrollback">docs</a>)</li>
 <li>Support per-thread receipts (<a href="messages#threads">docs</a>)</li>
@@ -293,7 +293,7 @@ you can file an issue there.</p>
 <h3 id="v008-2023-07-08"><a class="header" href="#v008-2023-07-08">v0.0.8 (2023-07-08)</a></h3>
 <p>Highlights:</p>
 <ul>
-<li>Add a <code>:leave</code> command to leave rooms (<a href="rooms#joining-and-leaving-rooms">docs</a>)</li>
+<li>Add a <code>:leave</code> command to leave rooms (<a href="rooms#joining-and-leaving-rooms-or-dms">docs</a>)</li>
 <li>New <code>username_display</code> configuration option for specifying how usernames are displayed (<a href="settings.html#settings">docs</a>)</li>
 <li>New <code>open_command</code> configuration option for specifying an external program for opening downloads (<a href="settings.html#settings">docs</a>)</li>
 <li>Restore layout on restart (<a href="#startup-layout">docs</a>)</li>
@@ -969,12 +969,12 @@ with:</p>
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="rooms"><a class="header" href="#rooms">Rooms</a></h1>
-<h2 id="joining-and-leaving-rooms"><a class="header" href="#joining-and-leaving-rooms">Joining And Leaving Rooms</a></h2>
-<p>You can join a new room or space using the <code>:join</code> command. For example, to
+<h2 id="joining-and-leaving-rooms-or-dms"><a class="header" href="#joining-and-leaving-rooms-or-dms">Joining And Leaving Rooms or DMs</a></h2>
+<p>You can join a new room, space or direct message using the <code>:join</code> command. For example, to
 join the Matrix community space, you can run:</p>
 <pre><code>:join #community:matrix.org
 </code></pre>
-<p>You can similarly start a new direct message:</p>
+<p>You can similarly start a new direct message and <strong>iamb</strong> will automatically handle the user invite:</p>
 <pre><code>:join @user:example.com
 </code></pre>
 <p>You can leave the currently focused room via the <code>:leave</code> command. This will
@@ -2031,9 +2031,9 @@ please open a Draft Pull Request, so that someone can take a look.</p>
 <tr><td><code>:chats</code></td><td></td><td>See <a href="#browsing-rooms-and-dms-together">Browsing Rooms And DMs Together</a></td></tr>
 <tr><td><code>:create</code></td><td></td><td>See <a href="#room-creation">Room Creation</a></td></tr>
 <tr><td><code>:dms</code></td><td></td><td>See <a href="#browsing-direct-messages">Browsing Direct Messages</a></td></tr>
-<tr><td><code>:forget</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
+<tr><td><code>:forget</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms-or-dms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:invites</code></td><td></td><td>See <a href="#room-invitations">Room Invitations</a></td></tr>
-<tr><td><code>:join</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
+<tr><td><code>:join</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms-or-dms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:keys export</code></td><td></td><td>See <a href="#exporting-importing-keys">Exporting / Importing Keys</a></td></tr>
 <tr><td><code>:keys import</code></td><td></td><td>See <a href="#exporting-importing-keys">Exporting / Importing Keys</a></td></tr>
 <tr><td><code>:knock send</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
@@ -2121,7 +2121,7 @@ the homeserver:</p>
 <tr><td><code>:knock accept</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
 <tr><td><code>:knock ban</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
 <tr><td><code>:knock reject</code></td><td></td><td>See <a href="#room-knocking">Room Knocking</a></td></tr>
-<tr><td><code>:leave</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms">Joining And Leaving Rooms</a></td></tr>
+<tr><td><code>:leave</code></td><td></td><td>See <a href="rooms#joining-and-leaving-rooms-or-dms">Joining And Leaving Rooms</a></td></tr>
 <tr><td><code>:pinned</code></td><td></td><td>See <a href="messages#pinned-messages">Pinned Messages</a></td></tr>
 <tr><td><code>:room access set</code></td><td></td><td>See <a href="#setting-room-access">Setting Room Access</a></td></tr>
 <tr><td><code>:room access show</code></td><td></td><td>See <a href="#setting-room-access">Setting Room Access</a></td></tr>
