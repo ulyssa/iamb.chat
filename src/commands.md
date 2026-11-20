@@ -199,7 +199,7 @@ table th:nth-of-type(3) {
 [Room Invitations]: ./rooms/management.md#room-invitations
 [Room Knocking]: ./rooms/management.md#room-knocking
 [Updating Space Hierarchy]: ../rooms/admin.md#updating-space-hierarchy
-[Joining And Leaving Rooms]: ./rooms/#joining-and-leaving-rooms
+[Joining And Leaving Rooms]: ./rooms/#joining-and-leaving-rooms-or-dms
 [Sending]: ./messages/#sending
 [Setting History Visibility]: ./rooms/admin.md#setting-history-visibility
 [Setting Room Access]: ./rooms/admin.md#setting-room-access
