@@ -163,7 +163,7 @@ iamb and its documentation are released under the [Apache License, Version 2.0].
 [Exporting / Importing Keys]: ./e2ee/keys.md#exporting-importing-keys
 [Ignoring Users]: ./profile/safety.md#ignoring-users
 [Image Previews]: ./configure.md#image-previews
-[Joining And Leaving Rooms]: ./rooms/#joining-and-leaving-rooms
+[Joining And Leaving Rooms]: ./rooms/#joining-and-leaving-rooms-or-dms
 [Managing Room Membership]: ./rooms/admin.md#managing-room-membership
 [Marking Direct Rooms]: ./rooms/management.md#marking-direct-rooms
 [Mentioning Users And Rooms]: ./messages/#mentioning-users-and-rooms

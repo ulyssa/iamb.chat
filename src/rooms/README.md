@@ -1,6 +1,6 @@
 # Rooms
 
-## Joining And Leaving Rooms or Direct Messages
+## Joining And Leaving Rooms or DMs
 
 You can join a new room, space or direct message using the `:join` command. For example, to
 join the Matrix community space, you can run:
